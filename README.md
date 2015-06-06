@@ -11,10 +11,12 @@ All the code in this repo will use AWS credentials from the environment.
 
 ## Installing
 
-Simply use go get to download the code
+Simply use go get to download the code:
+
     $ go get github.com/gombadi/aws-tools
 
-To install all applications change to the new directory and run
+To install all applications change to the new directory and run:
+
     $ for d in $(ls -1 -d awsgo-*); do (cd $d && go install); done
 
 
