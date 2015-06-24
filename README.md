@@ -32,6 +32,7 @@ Available commands are:
     asgservers    Display auto scale ip addresses
     autostop      Auto stop tagged instances
     iamssl        IAM SSL CSV Output
+    snapshot      Snapshot instance & create AMI
 ```
 
 
