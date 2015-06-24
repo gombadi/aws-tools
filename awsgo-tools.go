@@ -45,6 +45,13 @@ func main() {
 				},
 			}, nil
 		},
+		"snapshot": func() (cli.Command, error) {
+			return &SSCommand{
+				Ui: &cli.ColoredUi{
+					Ui: ui,
+				},
+			}, nil
+		},
 	}
 
 	exitStatus, err := c.Run()
