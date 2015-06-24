@@ -23,16 +23,17 @@ Dependencies:
 
 
 
-The following sub applications are available at the moment:
+The following sub commands are available at the moment:
 
 ```
-Usage: awsgo-tools [--version] [--help] <command> [<args>]
+usage: awsgo-tools [--version] [--help] <command> [<args>]
 
 Available commands are:
-    asgservers    Display auto scale ip addresses
-    autostop      Auto stop tagged instances
-    iamssl        IAM SSL CSV Output
-    snapshot      Snapshot instance & create AMI
+    asgservers         Display auto scale ip addresses
+    autostop           Auto stop tagged instances
+    iamssl             IAM SSL CSV Output
+    reserved-report    Reserved Instance report CSV Output
+    snapshot           Snapshot instance & create AMI
 ```
 
 

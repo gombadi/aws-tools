@@ -32,7 +32,7 @@ func (c *ASGServersCommand) Help() string {
 }
 
 func (c *ASGServersCommand) Synopsis() string {
-	return "Display auto scale ip addresses"
+	return "Display auto scale server internal ip addresses"
 }
 
 func (c *ASGServersCommand) Run(args []string) int {

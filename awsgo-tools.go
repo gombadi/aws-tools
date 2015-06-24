@@ -52,6 +52,13 @@ func main() {
 				},
 			}, nil
 		},
+		"reserved-report": func() (cli.Command, error) {
+			return &RRCommand{
+				Ui: &cli.ColoredUi{
+					Ui: ui,
+				},
+			}, nil
+		},
 	}
 
 	exitStatus, err := c.Run()
