@@ -26,7 +26,7 @@ Dependencies:
 The following sub applications are available at the moment:
 
 ```
-age: asgo-tools [--version] [--help] <command> [<args>]
+Usage: awsgo-tools [--version] [--help] <command> [<args>]
 
 Available commands are:
     asgservers    Display auto scale ip addresses

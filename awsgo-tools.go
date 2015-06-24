@@ -20,7 +20,7 @@ func main() {
 		ErrorWriter: os.Stderr,
 	}
 
-	c := cli.NewCLI("asgo-tools", "0.0.5")
+	c := cli.NewCLI("awsgo-tools", "0.0.5")
 	c.Args = os.Args[1:]
 
 	c.Commands = map[string]cli.CommandFactory{
