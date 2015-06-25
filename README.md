@@ -29,11 +29,12 @@ The following sub commands are available at the moment:
 usage: awsgo-tools [--version] [--help] <command> [<args>]
 
 Available commands are:
-    asgservers         Display auto scale ip addresses
+    ami-cleanup        Delete AMI & snapshots
+    asgservers         Display auto scale server internal ip addresses
     autostop           Auto stop tagged instances
     iamssl             IAM SSL CSV Output
     reserved-report    Reserved Instance report CSV Output
     snapshot           Snapshot instance & create AMI
+
+
 ```
-
-
