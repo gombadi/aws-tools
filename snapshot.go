@@ -22,7 +22,7 @@ type SSCommand struct {
 func (c *SSCommand) Help() string {
 	return `
 	Description:
-	Snapshot an instance and create an AMI
+	Snapshot an instance (no reboot) and create an AMI
 
 	Usage:
 		awsgo-tools snapshot [flags]
@@ -53,7 +53,7 @@ func (c *SSCommand) Run(args []string) int {
 	// make sure we are in auto mode or an ami id has been provided
 	if !c.automode && len(c.instanceId) == 0 {
 		fmt.Printf("No instance details provided. Please provide an instance id to snapshot\nor enable auto mode to snapshot all tagged instances.\n\n")
-		return RCOK
+		return RCERR
 	}
 
 	// Create an EC2 service object
@@ -64,35 +64,71 @@ func (c *SSCommand) Run(args []string) int {
 	bkupInstances, err := getBkupInstances(svc, c.instanceId)
 
 	if err != nil {
+		// AWS DescribeInstances failed
 		fmt.Printf("Fatal error: %s\n", err)
 		return RCERR
 	}
 
-	// now we have the slice of instances to be backed up we can create the AMI then tag them
+	var amis []string
 
+	// now we have the slice of instanceIds to be backed up we can create the AMI then tag them
 	for _, abkupInstance := range bkupInstances {
+
 		// snapshot the instance.
-		if newAMI := ssInstance(svc, abkupInstance); newAMI != "" {
-			if c.verbose {
-				fmt.Printf("Backing up instance Id: %s named %s completed. New AMI: %s\n",
-					*abkupInstance.InstanceID,
-					*abkupInstance.Name,
-					newAMI)
-			}
+		newAMI, err := ssInstance(svc, abkupInstance)
 
-		} else {
+		if err != nil {
 			fmt.Printf("Error creating AWS AMI for instance %s\n", abkupInstance.InstanceID)
+			fmt.Printf("Error details - %s\n", err)
+		} else {
+			if c.verbose {
+				fmt.Printf("Info - Started creating AMI: %s\n", newAMI)
+			}
+			// add the amiid to the list of ami's to tag
+			amis = append(amis, newAMI)
 		}
+	}
 
+	// if no AMI's created then lets leave
+	if len(amis) == 0 {
+		return RCOK
+	}
+
+	if c.verbose {
+		fmt.Printf("AMI's creation has started. Now waiting for AWS to make AMI's available to tag...\n")
+	}
+	time.Sleep(47 * time.Second)
+
+	theTags := []*ec2.Tag{
+		&ec2.Tag{
+			Key:   aws.String("autocleanup"),
+			Value: aws.String(strconv.FormatInt(time.Now().Unix(), 10))}}
+
+	for _, ami := range amis {
+
+		ec2cti := ec2.CreateTagsInput{
+			Resources: []*string{aws.String(ami)},
+			Tags:      theTags}
+
+		// call the create tag func
+		err := createTags(svc, &ec2cti)
+
+		if err != nil {
+			fmt.Printf("Warning - problem adding tags to AMI: %s. Error was %s\n", ami, err)
+		}
+		if c.verbose {
+			fmt.Printf("Info - Tagged AMI: %s\n", ami)
+		}
 	}
 
 	if c.verbose {
 		fmt.Printf("All done.\n")
-
 	}
 	return RCOK
 }
 
+// getBkupInstances will return a slice of CreateImageInput structures for either a single instance
+// or all instances in an account that have a tag key of autobkup
 func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateImageInput, err error) {
 
 	var instanceSlice []*string
@@ -166,7 +202,8 @@ LOOP:
 	return bkupInstances, nil
 }
 
-func ssInstance(svc *ec2.EC2, abkupInstance *ec2.CreateImageInput) (newAMI string) {
+// ssInstance will create an AMI for an instance and return the new AMI reference
+func ssInstance(svc *ec2.EC2, abkupInstance *ec2.CreateImageInput) (newAMI string, err error) {
 
 	td := 499
 LOOPCI:
@@ -188,27 +225,18 @@ LOOPCI:
 	}
 	if err != nil {
 		fmt.Printf("Fatal error: %s\n", err)
-		return ""
+		return "", err
 	}
+	return *createImageResp.ImageID, nil
+}
 
-	// Having some issues with AMI not valid when we try and tag it so give it some time to become ready
-	// FIXME - takes too long. Need to reduce or change to multiple go routines to tag
-	time.Sleep(47 * time.Second)
-	// store the creation time in the tag so it can be checked during auto cleanup
-	ec2cti := ec2.CreateTagsInput{
-		Resources: []*string{createImageResp.ImageID},
-		Tags: []*ec2.Tag{
-			&ec2.Tag{
-				Key:   aws.String("autocleanup"),
-				Value: aws.String(strconv.FormatInt(time.Now().Unix(), 10))},
-			&ec2.Tag{
-				Key:   aws.String("Name"),
-				Value: aws.String("Autobkup-" + *abkupInstance.InstanceID)}}}
+// createTags is a helper function that will add tags to a given resource
+func createTags(svc *ec2.EC2, ec2cti *ec2.CreateTagsInput) (err error) {
 
-	td = 499
+	td := 499
 LOOPCT:
 
-	_, err = svc.CreateTags(&ec2cti)
+	_, err = svc.CreateTags(ec2cti)
 
 	// AWS retry logic
 	if err != nil {
@@ -224,9 +252,5 @@ LOOPCT:
 			}
 		}
 	}
-	if err != nil {
-		fmt.Printf("non-fatal error adding autocleanup tag to image: %v\n", err)
-	}
-
-	return *createImageResp.ImageID
+	return
 }
