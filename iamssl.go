@@ -18,6 +18,7 @@ type IAMsslCommand struct {
 	Ui         cli.Ui
 }
 
+// Help function displays detailed help for ths iamssl sub command
 func (c *IAMsslCommand) Help() string {
 	return `
 	Description:
@@ -33,10 +34,12 @@ func (c *IAMsslCommand) Help() string {
 	`
 }
 
+// Synopsis function returns a string with concise details of the sub command
 func (c *IAMsslCommand) Synopsis() string {
 	return "IAM SSL CSV Output"
 }
 
+// Run function is the function called by the cli library to run the actual sub command code.
 func (c *IAMsslCommand) Run(args []string) int {
 
 	cmdFlags := flag.NewFlagSet("iamssl", flag.ContinueOnError)
@@ -46,7 +49,7 @@ func (c *IAMsslCommand) Run(args []string) int {
 	cmdFlags.BoolVar(&c.printEmpty, "e", false, "Print empty line if no SSL Certs found")
 	cmdFlags.StringVar(&c.account, "a", "unknown", "AWS Account Name to use")
 	if err := cmdFlags.Parse(args); err != nil {
-		return 1
+		return RCERR
 	}
 
 	if c.header {

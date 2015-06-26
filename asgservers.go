@@ -17,6 +17,7 @@ type ASGServersCommand struct {
 	Ui      cli.Ui
 }
 
+// Help function displays detailed help for the asgservers sub command
 func (c *ASGServersCommand) Help() string {
 	return `
 	Description:
@@ -31,10 +32,12 @@ func (c *ASGServersCommand) Help() string {
 	`
 }
 
+// Synopsis function returns a string with concise details of the sub command
 func (c *ASGServersCommand) Synopsis() string {
 	return "Display auto scale server internal ip addresses"
 }
 
+// Run function is the function called by the cli library to run the actual sub command code.
 func (c *ASGServersCommand) Run(args []string) int {
 
 	cmdFlags := flag.NewFlagSet("asgservers", flag.ContinueOnError)

@@ -16,6 +16,7 @@ type ASCommand struct {
 	Ui    cli.Ui
 }
 
+// Help function displays detailed help for ths autostop sub command
 func (c *ASCommand) Help() string {
 	return `
 	Description:
@@ -30,10 +31,12 @@ func (c *ASCommand) Help() string {
 	`
 }
 
+// Synopsis function returns a string with concise details of the sub command
 func (c *ASCommand) Synopsis() string {
 	return "Auto stop tagged instances"
 }
 
+// Run function is the function called by the cli library to run the actual sub command code.
 func (c *ASCommand) Run(args []string) int {
 
 	cmdFlags := flag.NewFlagSet("autostop", flag.ContinueOnError)

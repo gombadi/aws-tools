@@ -19,6 +19,7 @@ type SSCommand struct {
 	Ui         cli.Ui
 }
 
+// Help function displays detailed help for ths snapshot sub command
 func (c *SSCommand) Help() string {
 	return `
 	Description:
@@ -34,10 +35,12 @@ func (c *SSCommand) Help() string {
 	`
 }
 
+// Synopsis function returns a string with concise details of the sub command
 func (c *SSCommand) Synopsis() string {
 	return "Snapshot instance & create AMI"
 }
 
+// Run function is the function called by the cli library to run the actual sub command code.
 func (c *SSCommand) Run(args []string) int {
 
 	cmdFlags := flag.NewFlagSet("snapshot", flag.ContinueOnError)
@@ -69,6 +72,7 @@ func (c *SSCommand) Run(args []string) int {
 		return RCERR
 	}
 
+	// amis contains the list of AMI's that have been created and need tagged
 	var amis []string
 
 	// now we have the slice of instanceIds to be backed up we can create the AMI then tag them

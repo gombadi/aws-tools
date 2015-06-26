@@ -19,6 +19,7 @@ type AMICommand struct {
 	Ui       cli.Ui
 }
 
+// Help function displays detailed help for ths ami-cleanup sub command
 func (c *AMICommand) Help() string {
 	return `
 	Description:
@@ -34,10 +35,12 @@ func (c *AMICommand) Help() string {
 	`
 }
 
+// Synopsis function returns a string with concise details of the sub command
 func (c *AMICommand) Synopsis() string {
 	return "Delete AMI & snapshots"
 }
 
+// Run function is the function called by the cli library to run the actual sub command code.
 func (c *AMICommand) Run(args []string) int {
 
 	cmdFlags := flag.NewFlagSet("amicleanup", flag.ContinueOnError)
@@ -114,7 +117,7 @@ LOOP:
 		return RCOK
 	}
 
-	// contains a list of all snapshotID's that need to be deleted from all deregistered AMI's
+	// snapshots contains a list of all snapshotID's that need to be deleted from all deregistered AMI's
 	var snapshots []string
 
 	//
@@ -195,6 +198,8 @@ LOOP:
 	return RCOK
 }
 
+// cleanupAMI takes pointer to the current AWS service object and a pounter to the AMI to be
+// deregistered.
 func cleanupAMI(svc *ec2.EC2, cleanupImage *ec2.Image) (err error) {
 
 	ec2dii := &ec2.DeregisterImageInput{
@@ -224,6 +229,9 @@ LOOPDI:
 	return
 }
 
+// deleteSnapshot function takes a pointer to the current AWS service object and
+// a string containing the snapshotId to be deleted.
+// It returns the AWS error
 func deleteSnapshot(svc *ec2.EC2, snapshotID string) (err error) {
 
 	ec2dsi := ec2.DeleteSnapshotInput{SnapshotID: aws.String(snapshotID)}

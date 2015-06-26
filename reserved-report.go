@@ -19,6 +19,7 @@ type RRCommand struct {
 	Ui         cli.Ui
 }
 
+// Help function displays detailed help for ths reserver-report sub command
 func (c *RRCommand) Help() string {
 	return `
 	Description:
@@ -34,10 +35,12 @@ func (c *RRCommand) Help() string {
 	`
 }
 
+// Synopsis function returns a string with concise details of the sub command
 func (c *RRCommand) Synopsis() string {
 	return "Reserved Instance report CSV Output"
 }
 
+// Run function is the function called by the cli library to run the actual sub command code.
 func (c *RRCommand) Run(args []string) int {
 
 	cmdFlags := flag.NewFlagSet("reserved-report", flag.ContinueOnError)
@@ -47,7 +50,7 @@ func (c *RRCommand) Run(args []string) int {
 	cmdFlags.BoolVar(&c.printEmpty, "e", false, "Print empty line if no reserved instances found")
 	cmdFlags.StringVar(&c.account, "a", "unknown", "AWS Account Name to use")
 	if err := cmdFlags.Parse(args); err != nil {
-		return 1
+		return RCERR
 	}
 
 	if c.header {

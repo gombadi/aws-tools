@@ -1,3 +1,5 @@
+// The awsgo-tools package brings together a number of cli apps that can be used
+// to manage and monitor Amazon Web Services resources
 package main
 
 import (
@@ -54,6 +56,13 @@ func main() {
 		},
 		"reserved-report": func() (cli.Command, error) {
 			return &RRCommand{
+				Ui: &cli.ColoredUi{
+					Ui: ui,
+				},
+			}, nil
+		},
+		"ami-cleanup": func() (cli.Command, error) {
+			return &AMICommand{
 				Ui: &cli.ColoredUi{
 					Ui: ui,
 				},
