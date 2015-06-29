@@ -68,6 +68,13 @@ func main() {
 				},
 			}, nil
 		},
+		"audit": func() (cli.Command, error) {
+			return &AuditCommand{
+				Ui: &cli.ColoredUi{
+					Ui: ui,
+				},
+			}, nil
+		},
 	}
 
 	exitStatus, err := c.Run()
