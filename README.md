@@ -9,6 +9,10 @@ https://github.com/aws/aws-sdk-go
 
 All the code in this repo will use AWS credentials from the environment.
 
+> **NOTE:** This repository is under heavy ongoing development and
+is likely to break over time. Use at your own risk.
+
+
 ## Installing
 
 Simply use go get to download the code:

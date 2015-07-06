@@ -34,7 +34,7 @@ func (c *AuditCommand) Help() string {
 }
 
 func (c *AuditCommand) Synopsis() string {
-	return "IAM SSL CSV Output"
+	return "Audit various AWS services"
 }
 
 func (c *AuditCommand) Run(args []string) int {
