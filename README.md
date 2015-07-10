@@ -9,7 +9,7 @@ https://github.com/aws/aws-sdk-go
 
 All the code in this repo will use AWS credentials from the environment.
 
-> **NOTE:** This repository is under heavy ongoing development and
+> **NOTE:** This repository is under ongoing development and
 is likely to break over time. Use at your own risk.
 
 
@@ -35,6 +35,7 @@ usage: awsgo-tools [--version] [--help] <command> [<args>]
 Available commands are:
     ami-cleanup        Delete AMI & snapshots
     asgservers         Display auto scale server internal ip addresses
+    audit              Audit various AWS services
     autostop           Auto stop tagged instances
     iamssl             IAM SSL CSV Output
     reserved-report    Reserved Instance report CSV Output
