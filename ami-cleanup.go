@@ -60,7 +60,7 @@ func (c *AMICommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{})
+	svc := ec2.New(&aws.Config{MaxRetries: 10})
 
 	ec2Filter := ec2.Filter{}
 
@@ -81,7 +81,7 @@ func (c *AMICommand) Run(args []string) int {
 		ec2dii = ec2.DescribeImagesInput{ImageIDs: []*string{aws.String(c.amiId)}}
 	}
 
-	imagesResp, err := describeImages(svc, &ec2dii)
+	imagesResp, err := svc.DescribeImages(&ec2dii)
 
 	if err != nil {
 		fmt.Printf("Fatal error: %s\n", err)
@@ -121,7 +121,11 @@ func (c *AMICommand) Run(args []string) int {
 						fmt.Printf("Info - Deregistering AMI: %s\n", *imagesResp.Images[image].ImageID)
 					}
 
-					err := cleanupAMI(svc, imagesResp.Images[image])
+					ec2dii := &ec2.DeregisterImageInput{
+						ImageID: imagesResp.Images[image].ImageID, // Required
+					}
+
+					_, err = svc.DeregisterImage(ec2dii)
 
 					if err != nil {
 						fmt.Printf("error deregistering AMI %s. Image and snapshots not cleaned up. Error details\n%si\n",
@@ -165,7 +169,8 @@ func (c *AMICommand) Run(args []string) int {
 		if c.verbose {
 			fmt.Printf("Info - Deleting snapshot: %s.\n", snapshot)
 		}
-		err := deleteSnapshot(svc, snapshot)
+		ec2dsi := ec2.DeleteSnapshotInput{SnapshotID: aws.String(snapshot)}
+		_, err = svc.DeleteSnapshot(&ec2dsi)
 
 		if err != nil {
 			fmt.Printf("error deleting snapshot %s. Snapshot has not been removed\n", snapshot)

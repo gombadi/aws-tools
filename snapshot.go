@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/mitchellh/cli"
 )
@@ -61,7 +60,7 @@ func (c *SSCommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{})
+	svc := ec2.New(&aws.Config{MaxRetries: 10})
 
 	// load the struct that has details on all instances to be snapshotted
 	bkupInstances, err := getBkupInstances(svc, c.instanceId)
@@ -79,17 +78,17 @@ func (c *SSCommand) Run(args []string) int {
 	for _, abkupInstance := range bkupInstances {
 
 		// snapshot the instance.
-		newAMI, err := ssInstance(svc, abkupInstance)
+		createImageResp, err := svc.CreateImage(abkupInstance)
 
 		if err != nil {
 			fmt.Printf("Error creating AWS AMI for instance %s\n", abkupInstance.InstanceID)
 			fmt.Printf("Error details - %s\n", err)
 		} else {
 			if c.verbose {
-				fmt.Printf("Info - Started creating AMI: %s\n", newAMI)
+				fmt.Printf("Info - Started creating AMI: %s\n", *createImageResp.ImageID)
 			}
 			// add the amiid to the list of ami's to tag
-			amis = append(amis, newAMI)
+			amis = append(amis, *createImageResp.ImageID)
 		}
 	}
 
@@ -115,7 +114,7 @@ func (c *SSCommand) Run(args []string) int {
 			Tags:      theTags}
 
 		// call the create tag func
-		err := createTags(svc, &ec2cti)
+		_, err = svc.CreateTags(&ec2cti)
 
 		if err != nil {
 			fmt.Printf("Warning - problem adding tags to AMI: %s. Error was %s\n", ami, err)
@@ -151,25 +150,7 @@ func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateI
 
 	ec2dii := ec2.DescribeInstancesInput{InstanceIDs: instanceSlice, Filters: []*ec2.Filter{&ec2Filter}}
 
-	td := 499
-LOOP:
-
 	resp, err := svc.DescribeInstances(&ec2dii)
-
-	// AWS retry logic
-	if err != nil {
-		if reqErr, ok := err.(awserr.RequestFailure); ok {
-			if scErr := reqErr.StatusCode(); scErr >= 500 && scErr < 600 {
-				// if retryable then double the delay for the next run
-				// if time delay > 64 seconds then give up on this request & move on
-				if td = td + td; td < 64000 {
-					time.Sleep(time.Duration(td) * time.Millisecond)
-					// loop around and try again
-					goto LOOP
-				}
-			}
-		}
-	}
 
 	if err != nil {
 		return nil, err
@@ -204,57 +185,4 @@ LOOP:
 		}
 	}
 	return bkupInstances, nil
-}
-
-// ssInstance will create an AMI for an instance and return the new AMI reference
-func ssInstance(svc *ec2.EC2, abkupInstance *ec2.CreateImageInput) (newAMI string, err error) {
-
-	td := 499
-LOOPCI:
-	createImageResp, err := svc.CreateImage(abkupInstance)
-
-	// AWS retry logic
-	if err != nil {
-		if reqErr, ok := err.(awserr.RequestFailure); ok {
-			if scErr := reqErr.StatusCode(); scErr >= 500 && scErr < 600 {
-				// if retryable then double the delay for the next run
-				// if time delay > 64 seconds then give up on this request & move on
-				if td = td + td; td < 64000 {
-					time.Sleep(time.Duration(td) * time.Millisecond)
-					// loop around and try again
-					goto LOOPCI
-				}
-			}
-		}
-	}
-	if err != nil {
-		fmt.Printf("Fatal error: %s\n", err)
-		return "", err
-	}
-	return *createImageResp.ImageID, nil
-}
-
-// createTags is a helper function that will add tags to a given resource
-func createTags(svc *ec2.EC2, ec2cti *ec2.CreateTagsInput) (err error) {
-
-	td := 499
-LOOPCT:
-
-	_, err = svc.CreateTags(ec2cti)
-
-	// AWS retry logic
-	if err != nil {
-		if reqErr, ok := err.(awserr.RequestFailure); ok {
-			if scErr := reqErr.StatusCode(); scErr >= 500 && scErr < 600 {
-				// if retryable then double the delay for the next run
-				// if time delay > 64 seconds then give up on this request & move on
-				if td = td + td; td < 64000 {
-					time.Sleep(time.Duration(td) * time.Millisecond)
-					// loop around and try again
-					goto LOOPCT
-				}
-			}
-		}
-	}
-	return
 }

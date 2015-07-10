@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -59,27 +58,9 @@ func (c *IAMsslCommand) Run(args []string) int {
 
 	// Create an IAM service object
 	// Config details Keys, secret keys and region will be read from environment
-	svc := iam.New(&aws.Config{})
-
-	td := 499
-LOOP:
+	svc := iam.New(&aws.Config{MaxRetries: 10})
 
 	resp, err := svc.ListServerCertificates(nil)
-
-	// AWS retry logic
-	if err != nil {
-		if reqErr, ok := err.(awserr.RequestFailure); ok {
-			if scErr := reqErr.StatusCode(); scErr >= 500 && scErr < 600 {
-				// if retryable then double the delay for the next run
-				// if time delay > 64 seconds then give up on this request & move on
-				if td = td + td; td < 64000 {
-					time.Sleep(time.Duration(td) * time.Millisecond)
-					// loop around and try again
-					goto LOOP
-				}
-			}
-		}
-	}
 
 	if err != nil {
 		if awsErr, ok := err.(awserr.Error); ok {

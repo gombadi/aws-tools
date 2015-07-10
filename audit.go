@@ -50,16 +50,6 @@ func (c *AuditCommand) Run(args []string) int {
 		return RCERR
 	}
 
-	/*
-		Need to switch to each func depending on what flags present.
-		Also need to support --all and multiple --audit_a --audit_b --audit_c situations
-		solution - long list of if, one for each option then only need to set all true if
-		--all is given
-
-		Also need to support csv output. Where is that done? Here or in the function
-
-	*/
-
 	if c.public_ami == true || c.all == true {
 		public_ami(c.verbose, c.csv)
 	}
@@ -80,7 +70,7 @@ func public_ami(verbose bool, csv bool) {
 
 	ec2dii := ec2.DescribeImagesInput{Owners: []*string{aws.String("self")}}
 
-	imagesResp, err := describeImages(svc, &ec2dii)
+	imagesResp, err := svc.DescribeImages(&ec2dii)
 
 	if err != nil {
 		fmt.Printf("AWS Error: %s\n", err)

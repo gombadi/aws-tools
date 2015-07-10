@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -57,28 +56,10 @@ func (c *ASGServersCommand) Run(args []string) int {
 
 	// Create an Autoscaling service object
 	// config values keys, sercet key & region read from environment
-	svcAs := autoscaling.New(&aws.Config{})
+	svcAs := autoscaling.New(&aws.Config{MaxRetries: 10})
 	asgi := autoscaling.DescribeAutoScalingGroupsInput{AutoScalingGroupNames: asgNames}
 
-	td := 499
-LOOPDASG:
-
 	resp, err := svcAs.DescribeAutoScalingGroups(&asgi)
-
-	// AWS retry logic
-	if err != nil {
-		if reqErr, ok := err.(awserr.RequestFailure); ok {
-			if scErr := reqErr.StatusCode(); scErr >= 500 && scErr < 600 {
-				// if retryable then double the delay for the next run
-				// if time delay > 64 seconds then give up on this request & move on
-				if td = td + td; td < 64000 {
-					time.Sleep(time.Duration(td) * time.Millisecond)
-					// loop around and try again
-					goto LOOPDASG
-				}
-			}
-		}
-	}
 
 	if err != nil {
 		if awsErr, ok := err.(awserr.Error); ok {
@@ -123,27 +104,9 @@ LOOPDASG:
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svcEc2 := ec2.New(&aws.Config{})
-
-	td = 499
-LOOPDI:
+	svcEc2 := ec2.New(&aws.Config{MaxRetries: 10})
 
 	respEc2, err := svcEc2.DescribeInstances(&ec2i)
-
-	// AWS retry logic
-	if err != nil {
-		if reqErr, ok := err.(awserr.RequestFailure); ok {
-			if scErr := reqErr.StatusCode(); scErr >= 500 && scErr < 600 {
-				// if retryable then double the delay for the next run
-				// if time delay > 64 seconds then give up on this request & move on
-				if td = td + td; td < 64000 {
-					time.Sleep(time.Duration(td) * time.Millisecond)
-					// loop around and try again
-					goto LOOPDI
-				}
-			}
-		}
-	}
 
 	if err != nil {
 		if awsErr, ok := err.(awserr.Error); ok {
