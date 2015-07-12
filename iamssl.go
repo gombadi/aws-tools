@@ -77,8 +77,8 @@ func (c *IAMsslCommand) Run(args []string) int {
 		fmt.Printf("%s,%s,%s,%s,%s\n",
 			c.account,
 			fmt.Sprintf("%d-%d-%d", scml.Expiration.Year(), scml.Expiration.Month(), scml.Expiration.Day()),
-			*(chkStringValue(scml.ServerCertificateName)),
-			*(chkStringValue(scml.ServerCertificateID)),
+			safeString(scml.ServerCertificateName),
+			safeString(scml.ServerCertificateID),
 			fmt.Sprintf("%d-%d-%d", scml.UploadDate.Year(), scml.UploadDate.Month(), scml.UploadDate.Day()))
 
 	}
@@ -91,4 +91,4 @@ func (c *IAMsslCommand) Run(args []string) int {
 
 /*
 
-*/
+ */

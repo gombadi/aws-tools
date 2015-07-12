@@ -82,15 +82,15 @@ func (c *RRCommand) Run(args []string) int {
 		endDate := ri.Start.Add(time.Duration(*ri.Duration) * time.Second)
 
 		fmt.Printf("%s,%s,%s,%s,%d,%s,%s,%s,%s\n",
-			*(chkStringValue(&c.account)),
-			*(chkStringValue(ri.State)),
-			*(chkStringValue(aws.String("ec2"))),
+			safeString(&c.account),
+			safeString(ri.State),
+			safeString(aws.String("ec2")),
 			fmt.Sprintf("%d-%d-%d", endDate.Year(), endDate.Month(), endDate.Day()),
 			*ri.InstanceCount,
-			*(chkStringValue(ri.AvailabilityZone)),
-			*(chkStringValue(ri.InstanceType)),
-			*(chkStringValue(ri.OfferingType)),
-			*(chkStringValue(ri.ReservedInstancesID)))
+			safeString(ri.AvailabilityZone),
+			safeString(ri.InstanceType),
+			safeString(ri.OfferingType),
+			safeString(ri.ReservedInstancesID))
 
 	}
 
@@ -124,15 +124,15 @@ func (c *RRCommand) Run(args []string) int {
 		}
 
 		fmt.Printf("%s,%s,%s,%s,%d,%s,%s,%s,%s\n",
-			*(chkStringValue(&c.account)),
-			*(chkStringValue(ri.State)),
-			*(chkStringValue(aws.String("rds"))),
+			safeString(&c.account),
+			safeString(ri.State),
+			safeString(aws.String("rds")),
 			fmt.Sprintf("%d-%d-%d", endDate.Year(), endDate.Month(), endDate.Day()),
 			*ri.DBInstanceCount,
 			avZone,
-			*(chkStringValue(ri.DBInstanceClass)),
-			*(chkStringValue(ri.OfferingType)),
-			*(chkStringValue(ri.ReservedDBInstanceID)))
+			safeString(ri.DBInstanceClass),
+			safeString(ri.OfferingType),
+			safeString(ri.ReservedDBInstanceID))
 
 	}
 
@@ -145,4 +145,4 @@ func (c *RRCommand) Run(args []string) int {
 
 /*
 
-*/
+ */

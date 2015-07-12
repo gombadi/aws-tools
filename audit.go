@@ -151,7 +151,7 @@ func users(verbose bool, csv bool) {
 
 			fmt.Printf("\nUsername: %s\nPassword Last Used: %s\n",
 				*user.UserName,
-				safeDate(user.PasswordLastUsed))
+				safeDateString(user.PasswordLastUsed))
 
 			iamlako, err := svc.ListAccessKeys(iamlaki)
 			if err != nil {
@@ -176,9 +176,9 @@ func users(verbose bool, csv bool) {
 				fmt.Printf("AccessKey: %s\nStatus: %s\nDate Last Used: %s\nRegion: %s\nService: %s\n",
 					*accesskey.AccessKeyID,
 					*accesskey.Status,
-					safeDate(iamgakluo.AccessKeyLastUsed.LastUsedDate),
-					*(chkStringValue(iamgakluo.AccessKeyLastUsed.Region)),
-					*(chkStringValue(iamgakluo.AccessKeyLastUsed.ServiceName)))
+					safeDateString(iamgakluo.AccessKeyLastUsed.LastUsedDate),
+					safeString(iamgakluo.AccessKeyLastUsed.Region),
+					safeString(iamgakluo.AccessKeyLastUsed.ServiceName))
 			}
 		}
 
@@ -257,4 +257,4 @@ func snapshots(verbose bool, csv bool) {
 
 /*
 
-*/
+ */
