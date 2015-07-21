@@ -92,7 +92,7 @@ func (c *RRCommand) Run(args []string) int {
 		rdssvc := rds.New(&aws.Config{MaxRetries: 10})
 
 		// Call the DescribeInstances Operation. Note Filters are not currently supported
-		rdsresp, rdserr := rdssvc.DescribeReservedDBInstances(nil)
+		rdsresp, rdserr = rdssvc.DescribeReservedDBInstances(nil)
 
 	}()
 
