@@ -19,11 +19,10 @@ Simply use go get to download the code:
 
     $ go get github.com/gombadi/aws-tools
 
-Dependencies:
+Dependencies are handled by the Go vendor directory.
 
-    $ go get github.com/mitchellh/cli
+Note: This means the codebase requires Go 1.5+ and use of GO15VENDOREXPERIMENT=1
 
-    $ go get github.com/aws/aws-sdk-go/...
 
 
 
