@@ -58,7 +58,7 @@ func (c *IAMsslCommand) Run(args []string) int {
 
 	// Create an IAM service object
 	// Config details Keys, secret keys and region will be read from environment
-	svc := iam.New(&aws.Config{MaxRetries: 10})
+	svc := iam.New(&aws.Config{MaxRetries: aws.Int(10)})
 
 	resp, err := svc.ListServerCertificates(nil)
 

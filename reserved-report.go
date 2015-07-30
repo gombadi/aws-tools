@@ -77,7 +77,7 @@ func (c *RRCommand) Run(args []string) int {
 
 		// Create an EC2 service object
 		// Config details Keys, secret keys and region will be read from environment
-		ec2svc := ec2.New(&aws.Config{MaxRetries: 10})
+		ec2svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
 
 		// Call the DescribeInstances Operation
 		ec2resp, ec2err = ec2svc.DescribeReservedInstances(&ec2drii)
@@ -89,7 +89,7 @@ func (c *RRCommand) Run(args []string) int {
 
 		defer wg.Done()
 		// Config details Keys, secret keys and region will be read from environment
-		rdssvc := rds.New(&aws.Config{MaxRetries: 10})
+		rdssvc := rds.New(&aws.Config{MaxRetries: aws.Int(10)})
 
 		// Call the DescribeInstances Operation. Note Filters are not currently supported
 		rdsresp, rdserr = rdssvc.DescribeReservedDBInstances(nil)

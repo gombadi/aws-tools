@@ -56,7 +56,7 @@ func (c *ASGServersCommand) Run(args []string) int {
 
 	// Create an Autoscaling service object
 	// config values keys, sercet key & region read from environment
-	svcAs := autoscaling.New(&aws.Config{MaxRetries: 10})
+	svcAs := autoscaling.New(&aws.Config{MaxRetries: aws.Int(10)})
 	asgi := autoscaling.DescribeAutoScalingGroupsInput{AutoScalingGroupNames: asgNames}
 
 	resp, err := svcAs.DescribeAutoScalingGroups(&asgi)
@@ -104,7 +104,7 @@ func (c *ASGServersCommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svcEc2 := ec2.New(&aws.Config{MaxRetries: 10})
+	svcEc2 := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
 
 	respEc2, err := svcEc2.DescribeInstances(&ec2i)
 
@@ -130,4 +130,4 @@ func (c *ASGServersCommand) Run(args []string) int {
 
 /*
 
-*/
+ */

@@ -60,7 +60,7 @@ func (c *SSCommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{MaxRetries: 10})
+	svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
 
 	// load the struct that has details on all instances to be snapshotted
 	bkupInstances, err := getBkupInstances(svc, c.instanceId)
@@ -179,7 +179,7 @@ func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateI
 			}
 			theInstance.Description = aws.String("Auto backup of instance " + *resp.Reservations[reservation].Instances[instance].InstanceID)
 			theInstance.InstanceID = resp.Reservations[reservation].Instances[instance].InstanceID
-			theInstance.NoReboot = aws.Boolean(true)
+			theInstance.NoReboot = aws.Bool(true)
 			// append details on this instance to the slice
 			bkupInstances = append(bkupInstances, &theInstance)
 		}

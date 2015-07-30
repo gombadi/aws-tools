@@ -50,7 +50,7 @@ func (c *ASCommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{MaxRetries: 10})
+	svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
 
 	resp, err := svc.DescribeInstances(nil)
 
