@@ -24,7 +24,7 @@ Dependencies are handled by the Go vendor directory.
 Note: This means the codebase requires Go 1.5+ and use of GO15VENDOREXPERIMENT=1
 
 
-
+## Usage
 
 The following sub commands are available at the moment:
 
