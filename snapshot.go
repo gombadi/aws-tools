@@ -13,6 +13,7 @@ import (
 
 type SSCommand struct {
 	verbose    bool
+	dryrun     bool
 	automode   bool
 	instanceId string
 	Ui         cli.Ui
@@ -28,9 +29,10 @@ func (c *SSCommand) Help() string {
 		awsgo-tools snapshot [flags]
 
 	Flags:
-	-v to produce verbose output
 	-a to use auto mode to snapshot all instances with tag key of autobkup
 	-i <instanceid> to snapshot one EC2 instance
+	-n - Dry run. Report what would have happened but make no changes
+	-v to produce verbose output
 	`
 }
 
@@ -46,6 +48,7 @@ func (c *SSCommand) Run(args []string) int {
 	cmdFlags.Usage = func() { c.Ui.Output(c.Help()) }
 
 	cmdFlags.BoolVar(&c.verbose, "v", false, "Produce verbose output")
+	cmdFlags.BoolVar(&c.dryrun, "n", false, "Dry Run")
 	cmdFlags.BoolVar(&c.automode, "a", false, "auto mode to snapshot any instance with a tag key of autobkup")
 	cmdFlags.StringVar(&c.instanceId, "i", "", "instance to be backed up")
 	if err := cmdFlags.Parse(args); err != nil {
@@ -77,18 +80,22 @@ func (c *SSCommand) Run(args []string) int {
 	// now we have the slice of instanceIds to be backed up we can create the AMI then tag them
 	for _, abkupInstance := range bkupInstances {
 
-		// snapshot the instance.
-		createImageResp, err := svc.CreateImage(abkupInstance)
+		if c.dryrun == false {
+			// snapshot the instance.
+			createImageResp, err := svc.CreateImage(abkupInstance)
 
-		if err != nil {
-			fmt.Printf("Error creating AWS AMI for instance %s\n", abkupInstance.InstanceID)
-			fmt.Printf("Error details - %s\n", err)
-		} else {
-			if c.verbose {
-				fmt.Printf("Info - Started creating AMI: %s\n", *createImageResp.ImageID)
+			if err != nil {
+				fmt.Printf("Error creating AWS AMI for instance %s\n", *abkupInstance.InstanceID)
+				fmt.Printf("Error details - %s\n", err)
+			} else {
+				if c.verbose {
+					fmt.Printf("Info - Started creating AMI: %s\n", *createImageResp.ImageID)
+				}
+				// add the amiid to the list of ami's to tag
+				amis = append(amis, *createImageResp.ImageID)
 			}
-			// add the amiid to the list of ami's to tag
-			amis = append(amis, *createImageResp.ImageID)
+		} else {
+			fmt.Printf("Dry Run - Would have created AMI for instance %s\n", *abkupInstance.InstanceID)
 		}
 	}
 

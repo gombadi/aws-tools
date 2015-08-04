@@ -11,8 +11,9 @@ import (
 )
 
 type ASCommand struct {
-	quiet bool
-	Ui    cli.Ui
+	dryrun bool
+	quiet  bool
+	Ui     cli.Ui
 }
 
 // Help function displays detailed help for ths autostop sub command
@@ -26,6 +27,7 @@ func (c *ASCommand) Help() string {
 		awsgo-tools autostop [flags]
 	
 	Flags:
+	-n - Dry Run to show which instances would be stopped but not make any changes
 	-q to suppress the no instances found message
 	`
 }
@@ -41,6 +43,7 @@ func (c *ASCommand) Run(args []string) int {
 	cmdFlags := flag.NewFlagSet("autostop", flag.ContinueOnError)
 	cmdFlags.Usage = func() { c.Ui.Output(c.Help()) }
 
+	cmdFlags.BoolVar(&c.dryrun, "n", false, "Dry Run")
 	cmdFlags.BoolVar(&c.quiet, "q", false, "Suppress no instances found message")
 	if err := cmdFlags.Parse(args); err != nil {
 		return RCERR
@@ -80,6 +83,13 @@ func (c *ASCommand) Run(args []string) int {
 	if len(instanceSlice) < 1 {
 		if !c.quiet {
 			fmt.Printf("No autostop instances found\n")
+		}
+		return RCOK
+	}
+
+	if c.dryrun == true {
+		for _, i := range instanceSlice {
+			fmt.Printf("Dry Run - Would have stopped instance %s\n", *i)
 		}
 		return RCOK
 	}

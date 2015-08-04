@@ -13,6 +13,7 @@ import (
 
 type AMICommand struct {
 	verbose  bool
+	dryrun   bool
 	autoDays int
 	amiId    string
 	Ui       cli.Ui
@@ -28,8 +29,9 @@ func (c *AMICommand) Help() string {
 		awsgo-tools ami-cleanup [flags]
 
 	Flags:
-	-i <AMI Id> - Delete single AMI & snapshots
 	-a <days> - Auto cleanup AMI & snapshots that have create date more then <days> ago
+	-i <AMI Id> - Delete single AMI & snapshots
+	-n - Dry Run. Report on wnat would have been done but make no changes.
 	-v - Produce verbose output
 	`
 }
@@ -46,6 +48,7 @@ func (c *AMICommand) Run(args []string) int {
 	cmdFlags.Usage = func() { c.Ui.Output(c.Help()) }
 
 	cmdFlags.BoolVar(&c.verbose, "v", false, "Produce verbose output")
+	cmdFlags.BoolVar(&c.dryrun, "n", false, "Dry Run")
 	cmdFlags.IntVar(&c.autoDays, "a", 0, "In auto cleanup mode, cleanup any AMI's older than this number of days")
 	cmdFlags.StringVar(&c.amiId, "i", "", "AMI to be deeted")
 	if err := cmdFlags.Parse(args); err != nil {
@@ -121,21 +124,29 @@ func (c *AMICommand) Run(args []string) int {
 						fmt.Printf("Info - Deregistering AMI: %s\n", *imagesResp.Images[image].ImageID)
 					}
 
-					ec2dii := &ec2.DeregisterImageInput{
-						ImageID: imagesResp.Images[image].ImageID, // Required
+					if c.dryrun == false {
+						ec2dii := &ec2.DeregisterImageInput{
+							ImageID: imagesResp.Images[image].ImageID, // Required
+						}
+
+						_, err = svc.DeregisterImage(ec2dii)
+
+						if err != nil {
+							fmt.Printf("error deregistering AMI %s. Image and snapshots not cleaned up. Error details\n%si\n",
+								*imagesResp.Images[image].ImageID,
+								err)
+							// continue with next tag
+							continue
+						}
+					} else {
+						fmt.Printf("Dry Run - Would have deregistered image: %s\n", *imagesResp.Images[image].ImageID)
+
 					}
-
-					_, err = svc.DeregisterImage(ec2dii)
-
-					if err != nil {
-						fmt.Printf("error deregistering AMI %s. Image and snapshots not cleaned up. Error details\n%si\n",
-							*imagesResp.Images[image].ImageID,
-							err)
-						// continue with next tag
-						continue
-					}
-
 					for blockDM := range imagesResp.Images[image].BlockDeviceMappings {
+						// some block devices are not on EBS
+						if imagesResp.Images[image].BlockDeviceMappings[blockDM].EBS == nil {
+							continue
+						}
 						if len(*imagesResp.Images[image].BlockDeviceMappings[blockDM].EBS.SnapshotID) > 0 {
 							if c.verbose {
 								fmt.Printf("Info - Will delete associated snapshot: %s from ami: %s\n",
@@ -162,18 +173,24 @@ func (c *AMICommand) Run(args []string) int {
 			fmt.Printf("Waiting for AWS to break linkage between AMI & snapshot so snapshots can be deleted...\n")
 		}
 		// pause a while to make sure AWS has broken link between AMI and snapshots so the snapshots can be deleted
-		time.Sleep(12 * time.Second)
+		if c.dryrun == false {
+			time.Sleep(12 * time.Second)
+		}
 	}
 
 	for _, snapshot := range snapshots {
 		if c.verbose {
 			fmt.Printf("Info - Deleting snapshot: %s.\n", snapshot)
 		}
-		ec2dsi := ec2.DeleteSnapshotInput{SnapshotID: aws.String(snapshot)}
-		_, err = svc.DeleteSnapshot(&ec2dsi)
+		if c.dryrun == false {
+			ec2dsi := ec2.DeleteSnapshotInput{SnapshotID: aws.String(snapshot)}
+			_, err = svc.DeleteSnapshot(&ec2dsi)
 
-		if err != nil {
-			fmt.Printf("error deleting snapshot %s. Snapshot has not been removed\n", snapshot)
+			if err != nil {
+				fmt.Printf("error deleting snapshot %s. Snapshot has not been removed\n", snapshot)
+			}
+		} else {
+			fmt.Printf("Dry Run - Would have removed snapshot: %s\n", snapshot)
 		}
 	}
 
