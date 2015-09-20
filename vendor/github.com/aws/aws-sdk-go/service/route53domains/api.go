@@ -6,15 +6,15 @@ package route53domains
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opCheckDomainAvailability = "CheckDomainAvailability"
 
 // CheckDomainAvailabilityRequest generates a request for the CheckDomainAvailability operation.
-func (c *Route53Domains) CheckDomainAvailabilityRequest(input *CheckDomainAvailabilityInput) (req *aws.Request, output *CheckDomainAvailabilityOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) CheckDomainAvailabilityRequest(input *CheckDomainAvailabilityInput) (req *request.Request, output *CheckDomainAvailabilityOutput) {
+	op := &request.Operation{
 		Name:       opCheckDomainAvailability,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -43,8 +43,8 @@ func (c *Route53Domains) CheckDomainAvailability(input *CheckDomainAvailabilityI
 const opDeleteTagsForDomain = "DeleteTagsForDomain"
 
 // DeleteTagsForDomainRequest generates a request for the DeleteTagsForDomain operation.
-func (c *Route53Domains) DeleteTagsForDomainRequest(input *DeleteTagsForDomainInput) (req *aws.Request, output *DeleteTagsForDomainOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) DeleteTagsForDomainRequest(input *DeleteTagsForDomainInput) (req *request.Request, output *DeleteTagsForDomainOutput) {
+	op := &request.Operation{
 		Name:       opDeleteTagsForDomain,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -73,8 +73,8 @@ func (c *Route53Domains) DeleteTagsForDomain(input *DeleteTagsForDomainInput) (*
 const opDisableDomainAutoRenew = "DisableDomainAutoRenew"
 
 // DisableDomainAutoRenewRequest generates a request for the DisableDomainAutoRenew operation.
-func (c *Route53Domains) DisableDomainAutoRenewRequest(input *DisableDomainAutoRenewInput) (req *aws.Request, output *DisableDomainAutoRenewOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) DisableDomainAutoRenewRequest(input *DisableDomainAutoRenewInput) (req *request.Request, output *DisableDomainAutoRenewOutput) {
+	op := &request.Operation{
 		Name:       opDisableDomainAutoRenew,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -106,8 +106,8 @@ func (c *Route53Domains) DisableDomainAutoRenew(input *DisableDomainAutoRenewInp
 const opDisableDomainTransferLock = "DisableDomainTransferLock"
 
 // DisableDomainTransferLockRequest generates a request for the DisableDomainTransferLock operation.
-func (c *Route53Domains) DisableDomainTransferLockRequest(input *DisableDomainTransferLockInput) (req *aws.Request, output *DisableDomainTransferLockOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) DisableDomainTransferLockRequest(input *DisableDomainTransferLockInput) (req *request.Request, output *DisableDomainTransferLockOutput) {
+	op := &request.Operation{
 		Name:       opDisableDomainTransferLock,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -139,8 +139,8 @@ func (c *Route53Domains) DisableDomainTransferLock(input *DisableDomainTransferL
 const opEnableDomainAutoRenew = "EnableDomainAutoRenew"
 
 // EnableDomainAutoRenewRequest generates a request for the EnableDomainAutoRenew operation.
-func (c *Route53Domains) EnableDomainAutoRenewRequest(input *EnableDomainAutoRenewInput) (req *aws.Request, output *EnableDomainAutoRenewOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) EnableDomainAutoRenewRequest(input *EnableDomainAutoRenewInput) (req *request.Request, output *EnableDomainAutoRenewOutput) {
+	op := &request.Operation{
 		Name:       opEnableDomainAutoRenew,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -175,8 +175,8 @@ func (c *Route53Domains) EnableDomainAutoRenew(input *EnableDomainAutoRenewInput
 const opEnableDomainTransferLock = "EnableDomainTransferLock"
 
 // EnableDomainTransferLockRequest generates a request for the EnableDomainTransferLock operation.
-func (c *Route53Domains) EnableDomainTransferLockRequest(input *EnableDomainTransferLockInput) (req *aws.Request, output *EnableDomainTransferLockOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) EnableDomainTransferLockRequest(input *EnableDomainTransferLockInput) (req *request.Request, output *EnableDomainTransferLockOutput) {
+	op := &request.Operation{
 		Name:       opEnableDomainTransferLock,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -206,8 +206,8 @@ func (c *Route53Domains) EnableDomainTransferLock(input *EnableDomainTransferLoc
 const opGetDomainDetail = "GetDomainDetail"
 
 // GetDomainDetailRequest generates a request for the GetDomainDetail operation.
-func (c *Route53Domains) GetDomainDetailRequest(input *GetDomainDetailInput) (req *aws.Request, output *GetDomainDetailOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) GetDomainDetailRequest(input *GetDomainDetailInput) (req *request.Request, output *GetDomainDetailOutput) {
+	op := &request.Operation{
 		Name:       opGetDomainDetail,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -234,8 +234,8 @@ func (c *Route53Domains) GetDomainDetail(input *GetDomainDetailInput) (*GetDomai
 const opGetOperationDetail = "GetOperationDetail"
 
 // GetOperationDetailRequest generates a request for the GetOperationDetail operation.
-func (c *Route53Domains) GetOperationDetailRequest(input *GetOperationDetailInput) (req *aws.Request, output *GetOperationDetailOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) GetOperationDetailRequest(input *GetOperationDetailInput) (req *request.Request, output *GetOperationDetailOutput) {
+	op := &request.Operation{
 		Name:       opGetOperationDetail,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -261,12 +261,12 @@ func (c *Route53Domains) GetOperationDetail(input *GetOperationDetailInput) (*Ge
 const opListDomains = "ListDomains"
 
 // ListDomainsRequest generates a request for the ListDomains operation.
-func (c *Route53Domains) ListDomainsRequest(input *ListDomainsInput) (req *aws.Request, output *ListDomainsOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) ListDomainsRequest(input *ListDomainsInput) (req *request.Request, output *ListDomainsOutput) {
+	op := &request.Operation{
 		Name:       opListDomains,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"NextPageMarker"},
 			LimitToken:      "MaxItems",
@@ -302,12 +302,12 @@ func (c *Route53Domains) ListDomainsPages(input *ListDomainsInput, fn func(p *Li
 const opListOperations = "ListOperations"
 
 // ListOperationsRequest generates a request for the ListOperations operation.
-func (c *Route53Domains) ListOperationsRequest(input *ListOperationsInput) (req *aws.Request, output *ListOperationsOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) ListOperationsRequest(input *ListOperationsInput) (req *request.Request, output *ListOperationsOutput) {
+	op := &request.Operation{
 		Name:       opListOperations,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"NextPageMarker"},
 			LimitToken:      "MaxItems",
@@ -342,8 +342,8 @@ func (c *Route53Domains) ListOperationsPages(input *ListOperationsInput, fn func
 const opListTagsForDomain = "ListTagsForDomain"
 
 // ListTagsForDomainRequest generates a request for the ListTagsForDomain operation.
-func (c *Route53Domains) ListTagsForDomainRequest(input *ListTagsForDomainInput) (req *aws.Request, output *ListTagsForDomainOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) ListTagsForDomainRequest(input *ListTagsForDomainInput) (req *request.Request, output *ListTagsForDomainOutput) {
+	op := &request.Operation{
 		Name:       opListTagsForDomain,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -373,8 +373,8 @@ func (c *Route53Domains) ListTagsForDomain(input *ListTagsForDomainInput) (*List
 const opRegisterDomain = "RegisterDomain"
 
 // RegisterDomainRequest generates a request for the RegisterDomain operation.
-func (c *Route53Domains) RegisterDomainRequest(input *RegisterDomainInput) (req *aws.Request, output *RegisterDomainOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) RegisterDomainRequest(input *RegisterDomainInput) (req *request.Request, output *RegisterDomainOutput) {
+	op := &request.Operation{
 		Name:       opRegisterDomain,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -418,8 +418,8 @@ func (c *Route53Domains) RegisterDomain(input *RegisterDomainInput) (*RegisterDo
 const opRetrieveDomainAuthCode = "RetrieveDomainAuthCode"
 
 // RetrieveDomainAuthCodeRequest generates a request for the RetrieveDomainAuthCode operation.
-func (c *Route53Domains) RetrieveDomainAuthCodeRequest(input *RetrieveDomainAuthCodeInput) (req *aws.Request, output *RetrieveDomainAuthCodeOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) RetrieveDomainAuthCodeRequest(input *RetrieveDomainAuthCodeInput) (req *request.Request, output *RetrieveDomainAuthCodeOutput) {
+	op := &request.Operation{
 		Name:       opRetrieveDomainAuthCode,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -446,8 +446,8 @@ func (c *Route53Domains) RetrieveDomainAuthCode(input *RetrieveDomainAuthCodeInp
 const opTransferDomain = "TransferDomain"
 
 // TransferDomainRequest generates a request for the TransferDomain operation.
-func (c *Route53Domains) TransferDomainRequest(input *TransferDomainInput) (req *aws.Request, output *TransferDomainOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) TransferDomainRequest(input *TransferDomainInput) (req *request.Request, output *TransferDomainOutput) {
+	op := &request.Operation{
 		Name:       opTransferDomain,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -496,8 +496,8 @@ func (c *Route53Domains) TransferDomain(input *TransferDomainInput) (*TransferDo
 const opUpdateDomainContact = "UpdateDomainContact"
 
 // UpdateDomainContactRequest generates a request for the UpdateDomainContact operation.
-func (c *Route53Domains) UpdateDomainContactRequest(input *UpdateDomainContactInput) (req *aws.Request, output *UpdateDomainContactOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) UpdateDomainContactRequest(input *UpdateDomainContactInput) (req *request.Request, output *UpdateDomainContactOutput) {
+	op := &request.Operation{
 		Name:       opUpdateDomainContact,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -530,8 +530,8 @@ func (c *Route53Domains) UpdateDomainContact(input *UpdateDomainContactInput) (*
 const opUpdateDomainContactPrivacy = "UpdateDomainContactPrivacy"
 
 // UpdateDomainContactPrivacyRequest generates a request for the UpdateDomainContactPrivacy operation.
-func (c *Route53Domains) UpdateDomainContactPrivacyRequest(input *UpdateDomainContactPrivacyInput) (req *aws.Request, output *UpdateDomainContactPrivacyOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) UpdateDomainContactPrivacyRequest(input *UpdateDomainContactPrivacyInput) (req *request.Request, output *UpdateDomainContactPrivacyOutput) {
+	op := &request.Operation{
 		Name:       opUpdateDomainContactPrivacy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -567,8 +567,8 @@ func (c *Route53Domains) UpdateDomainContactPrivacy(input *UpdateDomainContactPr
 const opUpdateDomainNameservers = "UpdateDomainNameservers"
 
 // UpdateDomainNameserversRequest generates a request for the UpdateDomainNameservers operation.
-func (c *Route53Domains) UpdateDomainNameserversRequest(input *UpdateDomainNameserversInput) (req *aws.Request, output *UpdateDomainNameserversOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) UpdateDomainNameserversRequest(input *UpdateDomainNameserversInput) (req *request.Request, output *UpdateDomainNameserversOutput) {
+	op := &request.Operation{
 		Name:       opUpdateDomainNameservers,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -601,8 +601,8 @@ func (c *Route53Domains) UpdateDomainNameservers(input *UpdateDomainNameserversI
 const opUpdateTagsForDomain = "UpdateTagsForDomain"
 
 // UpdateTagsForDomainRequest generates a request for the UpdateTagsForDomain operation.
-func (c *Route53Domains) UpdateTagsForDomainRequest(input *UpdateTagsForDomainInput) (req *aws.Request, output *UpdateTagsForDomainOutput) {
-	op := &aws.Operation{
+func (c *Route53Domains) UpdateTagsForDomainRequest(input *UpdateTagsForDomainInput) (req *request.Request, output *UpdateTagsForDomainOutput) {
+	op := &request.Operation{
 		Name:       opUpdateTagsForDomain,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -644,7 +644,7 @@ type CheckDomainAvailabilityInput struct {
 	DomainName *string `type:"string" required:"true"`
 
 	// Reserved for future use.
-	IDNLangCode *string `locationName:"IdnLangCode" type:"string"`
+	IdnLangCode *string `type:"string"`
 
 	metadataCheckDomainAvailabilityInput `json:"-" xml:"-"`
 }
@@ -1056,7 +1056,7 @@ type DisableDomainTransferLockOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataDisableDomainTransferLockOutput `json:"-" xml:"-"`
 }
@@ -1198,7 +1198,7 @@ type EnableDomainTransferLockOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataEnableDomainTransferLockOutput `json:"-" xml:"-"`
 }
@@ -1340,7 +1340,7 @@ type GetDomainDetailOutput struct {
 	CreationDate *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// Reserved for future use.
-	DNSSec *string `locationName:"DnsSec" type:"string"`
+	DnsSec *string `type:"string"`
 
 	// The name of a domain.
 	//
@@ -1382,10 +1382,10 @@ type GetDomainDetailOutput struct {
 	// Web address of the registrar.
 	//
 	// Type: String
-	RegistrarURL *string `locationName:"RegistrarUrl" type:"string"`
+	RegistrarUrl *string `type:"string"`
 
 	// Reserved for future use.
-	RegistryDomainID *string `locationName:"RegistryDomainId" type:"string"`
+	RegistryDomainId *string `type:"string"`
 
 	// Reseller of the domain. Domains registered or transferred using Amazon Route
 	// 53 domains will have "Amazon" as the reseller.
@@ -1465,7 +1465,7 @@ type GetOperationDetailInput struct {
 	// Default: None
 	//
 	// Required: Yes
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataGetOperationDetailInput `json:"-" xml:"-"`
 }
@@ -1499,7 +1499,7 @@ type GetOperationDetailOutput struct {
 	// The identifier for the operation.
 	//
 	// Type: String
-	OperationID *string `locationName:"OperationId" type:"string"`
+	OperationId *string `type:"string"`
 
 	// The current status of the requested operation in the system.
 	//
@@ -1763,7 +1763,7 @@ type Nameserver struct {
 	// Constraints: The list can contain only one IPv4 and one IPv6 address.
 	//
 	// Parent: Nameservers
-	GlueIPs []*string `locationName:"GlueIps" type:"list"`
+	GlueIps []*string `type:"list"`
 
 	// The fully qualified host name of the name server.
 	//
@@ -1796,7 +1796,7 @@ type OperationSummary struct {
 	// Identifier returned to track the requested action.
 	//
 	// Type: String
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	// The current status of the requested operation in the system.
 	//
@@ -1879,10 +1879,10 @@ type RegisterDomainInput struct {
 	// Valid values: Integer from 1 to 10
 	//
 	// Required: Yes
-	DurationInYears *int64 `type:"integer" required:"true"`
+	DurationInYears *int64 `min:"1" type:"integer" required:"true"`
 
 	// Reserved for future use.
-	IDNLangCode *string `locationName:"IdnLangCode" type:"string"`
+	IdnLangCode *string `type:"string"`
 
 	// Whether you want to conceal contact information from WHOIS queries. If you
 	// specify true, WHOIS ("who is") queries will return contact information for
@@ -1975,7 +1975,7 @@ type RegisterDomainOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataRegisterDomainOutput `json:"-" xml:"-"`
 }
@@ -2151,10 +2151,10 @@ type TransferDomainInput struct {
 	// Valid values: Integer from 1 to 10
 	//
 	// Required: Yes
-	DurationInYears *int64 `type:"integer" required:"true"`
+	DurationInYears *int64 `min:"1" type:"integer" required:"true"`
 
 	// Reserved for future use.
-	IDNLangCode *string `locationName:"IdnLangCode" type:"string"`
+	IdnLangCode *string `type:"string"`
 
 	// Contains details for the host and glue IP addresses.
 	//
@@ -2256,7 +2256,7 @@ type TransferDomainOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataTransferDomainOutput `json:"-" xml:"-"`
 }
@@ -2350,7 +2350,7 @@ type UpdateDomainContactOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataUpdateDomainContactOutput `json:"-" xml:"-"`
 }
@@ -2453,7 +2453,7 @@ type UpdateDomainContactPrivacyOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataUpdateDomainContactPrivacyOutput `json:"-" xml:"-"`
 }
@@ -2526,7 +2526,7 @@ type UpdateDomainNameserversOutput struct {
 	// Default: None
 	//
 	// Constraints: Maximum 255 characters.
-	OperationID *string `locationName:"OperationId" type:"string" required:"true"`
+	OperationId *string `type:"string" required:"true"`
 
 	metadataUpdateDomainNameserversOutput `json:"-" xml:"-"`
 }

@@ -6,15 +6,15 @@ package redshift
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opAuthorizeClusterSecurityGroupIngress = "AuthorizeClusterSecurityGroupIngress"
 
 // AuthorizeClusterSecurityGroupIngressRequest generates a request for the AuthorizeClusterSecurityGroupIngress operation.
-func (c *Redshift) AuthorizeClusterSecurityGroupIngressRequest(input *AuthorizeClusterSecurityGroupIngressInput) (req *aws.Request, output *AuthorizeClusterSecurityGroupIngressOutput) {
-	op := &aws.Operation{
+func (c *Redshift) AuthorizeClusterSecurityGroupIngressRequest(input *AuthorizeClusterSecurityGroupIngressInput) (req *request.Request, output *AuthorizeClusterSecurityGroupIngressOutput) {
+	op := &request.Operation{
 		Name:       opAuthorizeClusterSecurityGroupIngress,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -54,8 +54,8 @@ func (c *Redshift) AuthorizeClusterSecurityGroupIngress(input *AuthorizeClusterS
 const opAuthorizeSnapshotAccess = "AuthorizeSnapshotAccess"
 
 // AuthorizeSnapshotAccessRequest generates a request for the AuthorizeSnapshotAccess operation.
-func (c *Redshift) AuthorizeSnapshotAccessRequest(input *AuthorizeSnapshotAccessInput) (req *aws.Request, output *AuthorizeSnapshotAccessOutput) {
-	op := &aws.Operation{
+func (c *Redshift) AuthorizeSnapshotAccessRequest(input *AuthorizeSnapshotAccessInput) (req *request.Request, output *AuthorizeSnapshotAccessOutput) {
+	op := &request.Operation{
 		Name:       opAuthorizeSnapshotAccess,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -85,8 +85,8 @@ func (c *Redshift) AuthorizeSnapshotAccess(input *AuthorizeSnapshotAccessInput) 
 const opCopyClusterSnapshot = "CopyClusterSnapshot"
 
 // CopyClusterSnapshotRequest generates a request for the CopyClusterSnapshot operation.
-func (c *Redshift) CopyClusterSnapshotRequest(input *CopyClusterSnapshotInput) (req *aws.Request, output *CopyClusterSnapshotOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CopyClusterSnapshotRequest(input *CopyClusterSnapshotInput) (req *request.Request, output *CopyClusterSnapshotOutput) {
+	op := &request.Operation{
 		Name:       opCopyClusterSnapshot,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -124,8 +124,8 @@ func (c *Redshift) CopyClusterSnapshot(input *CopyClusterSnapshotInput) (*CopyCl
 const opCreateCluster = "CreateCluster"
 
 // CreateClusterRequest generates a request for the CreateCluster operation.
-func (c *Redshift) CreateClusterRequest(input *CreateClusterInput) (req *aws.Request, output *CreateClusterOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateClusterRequest(input *CreateClusterInput) (req *request.Request, output *CreateClusterOutput) {
+	op := &request.Operation{
 		Name:       opCreateCluster,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -157,8 +157,8 @@ func (c *Redshift) CreateCluster(input *CreateClusterInput) (*CreateClusterOutpu
 const opCreateClusterParameterGroup = "CreateClusterParameterGroup"
 
 // CreateClusterParameterGroupRequest generates a request for the CreateClusterParameterGroup operation.
-func (c *Redshift) CreateClusterParameterGroupRequest(input *CreateClusterParameterGroupInput) (req *aws.Request, output *CreateClusterParameterGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateClusterParameterGroupRequest(input *CreateClusterParameterGroupInput) (req *request.Request, output *CreateClusterParameterGroupOutput) {
+	op := &request.Operation{
 		Name:       opCreateClusterParameterGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -194,8 +194,8 @@ func (c *Redshift) CreateClusterParameterGroup(input *CreateClusterParameterGrou
 const opCreateClusterSecurityGroup = "CreateClusterSecurityGroup"
 
 // CreateClusterSecurityGroupRequest generates a request for the CreateClusterSecurityGroup operation.
-func (c *Redshift) CreateClusterSecurityGroupRequest(input *CreateClusterSecurityGroupInput) (req *aws.Request, output *CreateClusterSecurityGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateClusterSecurityGroupRequest(input *CreateClusterSecurityGroupInput) (req *request.Request, output *CreateClusterSecurityGroupOutput) {
+	op := &request.Operation{
 		Name:       opCreateClusterSecurityGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -226,8 +226,8 @@ func (c *Redshift) CreateClusterSecurityGroup(input *CreateClusterSecurityGroupI
 const opCreateClusterSnapshot = "CreateClusterSnapshot"
 
 // CreateClusterSnapshotRequest generates a request for the CreateClusterSnapshot operation.
-func (c *Redshift) CreateClusterSnapshotRequest(input *CreateClusterSnapshotInput) (req *aws.Request, output *CreateClusterSnapshotOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateClusterSnapshotRequest(input *CreateClusterSnapshotInput) (req *request.Request, output *CreateClusterSnapshotOutput) {
+	op := &request.Operation{
 		Name:       opCreateClusterSnapshot,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -258,8 +258,8 @@ func (c *Redshift) CreateClusterSnapshot(input *CreateClusterSnapshotInput) (*Cr
 const opCreateClusterSubnetGroup = "CreateClusterSubnetGroup"
 
 // CreateClusterSubnetGroupRequest generates a request for the CreateClusterSubnetGroup operation.
-func (c *Redshift) CreateClusterSubnetGroupRequest(input *CreateClusterSubnetGroupInput) (req *aws.Request, output *CreateClusterSubnetGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateClusterSubnetGroupRequest(input *CreateClusterSubnetGroupInput) (req *request.Request, output *CreateClusterSubnetGroupOutput) {
+	op := &request.Operation{
 		Name:       opCreateClusterSubnetGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -291,8 +291,8 @@ func (c *Redshift) CreateClusterSubnetGroup(input *CreateClusterSubnetGroupInput
 const opCreateEventSubscription = "CreateEventSubscription"
 
 // CreateEventSubscriptionRequest generates a request for the CreateEventSubscription operation.
-func (c *Redshift) CreateEventSubscriptionRequest(input *CreateEventSubscriptionInput) (req *aws.Request, output *CreateEventSubscriptionOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateEventSubscriptionRequest(input *CreateEventSubscriptionInput) (req *request.Request, output *CreateEventSubscriptionOutput) {
+	op := &request.Operation{
 		Name:       opCreateEventSubscription,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -336,22 +336,22 @@ func (c *Redshift) CreateEventSubscription(input *CreateEventSubscriptionInput) 
 	return out, err
 }
 
-const opCreateHSMClientCertificate = "CreateHsmClientCertificate"
+const opCreateHsmClientCertificate = "CreateHsmClientCertificate"
 
-// CreateHSMClientCertificateRequest generates a request for the CreateHSMClientCertificate operation.
-func (c *Redshift) CreateHSMClientCertificateRequest(input *CreateHSMClientCertificateInput) (req *aws.Request, output *CreateHSMClientCertificateOutput) {
-	op := &aws.Operation{
-		Name:       opCreateHSMClientCertificate,
+// CreateHsmClientCertificateRequest generates a request for the CreateHsmClientCertificate operation.
+func (c *Redshift) CreateHsmClientCertificateRequest(input *CreateHsmClientCertificateInput) (req *request.Request, output *CreateHsmClientCertificateOutput) {
+	op := &request.Operation{
+		Name:       opCreateHsmClientCertificate,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &CreateHSMClientCertificateInput{}
+		input = &CreateHsmClientCertificateInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &CreateHSMClientCertificateOutput{}
+	output = &CreateHsmClientCertificateOutput{}
 	req.Data = output
 	return
 }
@@ -365,28 +365,28 @@ func (c *Redshift) CreateHSMClientCertificateRequest(input *CreateHSMClientCerti
 // that provides a cluster the information needed to store and use encryption
 // keys in the HSM. For more information, go to Hardware Security Modules (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
 // in the Amazon Redshift Cluster Management Guide.
-func (c *Redshift) CreateHSMClientCertificate(input *CreateHSMClientCertificateInput) (*CreateHSMClientCertificateOutput, error) {
-	req, out := c.CreateHSMClientCertificateRequest(input)
+func (c *Redshift) CreateHsmClientCertificate(input *CreateHsmClientCertificateInput) (*CreateHsmClientCertificateOutput, error) {
+	req, out := c.CreateHsmClientCertificateRequest(input)
 	err := req.Send()
 	return out, err
 }
 
-const opCreateHSMConfiguration = "CreateHsmConfiguration"
+const opCreateHsmConfiguration = "CreateHsmConfiguration"
 
-// CreateHSMConfigurationRequest generates a request for the CreateHSMConfiguration operation.
-func (c *Redshift) CreateHSMConfigurationRequest(input *CreateHSMConfigurationInput) (req *aws.Request, output *CreateHSMConfigurationOutput) {
-	op := &aws.Operation{
-		Name:       opCreateHSMConfiguration,
+// CreateHsmConfigurationRequest generates a request for the CreateHsmConfiguration operation.
+func (c *Redshift) CreateHsmConfigurationRequest(input *CreateHsmConfigurationInput) (req *request.Request, output *CreateHsmConfigurationOutput) {
+	op := &request.Operation{
+		Name:       opCreateHsmConfiguration,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &CreateHSMConfigurationInput{}
+		input = &CreateHsmConfigurationInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &CreateHSMConfigurationOutput{}
+	output = &CreateHsmConfigurationOutput{}
 	req.Data = output
 	return
 }
@@ -401,8 +401,8 @@ func (c *Redshift) CreateHSMConfigurationRequest(input *CreateHSMConfigurationIn
 // client certificate. For more information, go to Hardware Security Modules
 // (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html) in
 // the Amazon Redshift Cluster Management Guide.
-func (c *Redshift) CreateHSMConfiguration(input *CreateHSMConfigurationInput) (*CreateHSMConfigurationOutput, error) {
-	req, out := c.CreateHSMConfigurationRequest(input)
+func (c *Redshift) CreateHsmConfiguration(input *CreateHsmConfigurationInput) (*CreateHsmConfigurationOutput, error) {
+	req, out := c.CreateHsmConfigurationRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -410,8 +410,8 @@ func (c *Redshift) CreateHSMConfiguration(input *CreateHSMConfigurationInput) (*
 const opCreateSnapshotCopyGrant = "CreateSnapshotCopyGrant"
 
 // CreateSnapshotCopyGrantRequest generates a request for the CreateSnapshotCopyGrant operation.
-func (c *Redshift) CreateSnapshotCopyGrantRequest(input *CreateSnapshotCopyGrantInput) (req *aws.Request, output *CreateSnapshotCopyGrantOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateSnapshotCopyGrantRequest(input *CreateSnapshotCopyGrantInput) (req *request.Request, output *CreateSnapshotCopyGrantOutput) {
+	op := &request.Operation{
 		Name:       opCreateSnapshotCopyGrant,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -443,8 +443,8 @@ func (c *Redshift) CreateSnapshotCopyGrant(input *CreateSnapshotCopyGrantInput) 
 const opCreateTags = "CreateTags"
 
 // CreateTagsRequest generates a request for the CreateTags operation.
-func (c *Redshift) CreateTagsRequest(input *CreateTagsInput) (req *aws.Request, output *CreateTagsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) CreateTagsRequest(input *CreateTagsInput) (req *request.Request, output *CreateTagsOutput) {
+	op := &request.Operation{
 		Name:       opCreateTags,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -476,8 +476,8 @@ func (c *Redshift) CreateTags(input *CreateTagsInput) (*CreateTagsOutput, error)
 const opDeleteCluster = "DeleteCluster"
 
 // DeleteClusterRequest generates a request for the DeleteCluster operation.
-func (c *Redshift) DeleteClusterRequest(input *DeleteClusterInput) (req *aws.Request, output *DeleteClusterOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteClusterRequest(input *DeleteClusterInput) (req *request.Request, output *DeleteClusterOutput) {
+	op := &request.Operation{
 		Name:       opDeleteCluster,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -519,8 +519,8 @@ func (c *Redshift) DeleteCluster(input *DeleteClusterInput) (*DeleteClusterOutpu
 const opDeleteClusterParameterGroup = "DeleteClusterParameterGroup"
 
 // DeleteClusterParameterGroupRequest generates a request for the DeleteClusterParameterGroup operation.
-func (c *Redshift) DeleteClusterParameterGroupRequest(input *DeleteClusterParameterGroupInput) (req *aws.Request, output *DeleteClusterParameterGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteClusterParameterGroupRequest(input *DeleteClusterParameterGroupInput) (req *request.Request, output *DeleteClusterParameterGroupOutput) {
+	op := &request.Operation{
 		Name:       opDeleteClusterParameterGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -547,8 +547,8 @@ func (c *Redshift) DeleteClusterParameterGroup(input *DeleteClusterParameterGrou
 const opDeleteClusterSecurityGroup = "DeleteClusterSecurityGroup"
 
 // DeleteClusterSecurityGroupRequest generates a request for the DeleteClusterSecurityGroup operation.
-func (c *Redshift) DeleteClusterSecurityGroupRequest(input *DeleteClusterSecurityGroupInput) (req *aws.Request, output *DeleteClusterSecurityGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteClusterSecurityGroupRequest(input *DeleteClusterSecurityGroupInput) (req *request.Request, output *DeleteClusterSecurityGroupOutput) {
+	op := &request.Operation{
 		Name:       opDeleteClusterSecurityGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -579,8 +579,8 @@ func (c *Redshift) DeleteClusterSecurityGroup(input *DeleteClusterSecurityGroupI
 const opDeleteClusterSnapshot = "DeleteClusterSnapshot"
 
 // DeleteClusterSnapshotRequest generates a request for the DeleteClusterSnapshot operation.
-func (c *Redshift) DeleteClusterSnapshotRequest(input *DeleteClusterSnapshotInput) (req *aws.Request, output *DeleteClusterSnapshotOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteClusterSnapshotRequest(input *DeleteClusterSnapshotInput) (req *request.Request, output *DeleteClusterSnapshotOutput) {
+	op := &request.Operation{
 		Name:       opDeleteClusterSnapshot,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -613,8 +613,8 @@ func (c *Redshift) DeleteClusterSnapshot(input *DeleteClusterSnapshotInput) (*De
 const opDeleteClusterSubnetGroup = "DeleteClusterSubnetGroup"
 
 // DeleteClusterSubnetGroupRequest generates a request for the DeleteClusterSubnetGroup operation.
-func (c *Redshift) DeleteClusterSubnetGroupRequest(input *DeleteClusterSubnetGroupInput) (req *aws.Request, output *DeleteClusterSubnetGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteClusterSubnetGroupRequest(input *DeleteClusterSubnetGroupInput) (req *request.Request, output *DeleteClusterSubnetGroupOutput) {
+	op := &request.Operation{
 		Name:       opDeleteClusterSubnetGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -640,8 +640,8 @@ func (c *Redshift) DeleteClusterSubnetGroup(input *DeleteClusterSubnetGroupInput
 const opDeleteEventSubscription = "DeleteEventSubscription"
 
 // DeleteEventSubscriptionRequest generates a request for the DeleteEventSubscription operation.
-func (c *Redshift) DeleteEventSubscriptionRequest(input *DeleteEventSubscriptionInput) (req *aws.Request, output *DeleteEventSubscriptionOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteEventSubscriptionRequest(input *DeleteEventSubscriptionInput) (req *request.Request, output *DeleteEventSubscriptionOutput) {
+	op := &request.Operation{
 		Name:       opDeleteEventSubscription,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -664,56 +664,56 @@ func (c *Redshift) DeleteEventSubscription(input *DeleteEventSubscriptionInput) 
 	return out, err
 }
 
-const opDeleteHSMClientCertificate = "DeleteHsmClientCertificate"
+const opDeleteHsmClientCertificate = "DeleteHsmClientCertificate"
 
-// DeleteHSMClientCertificateRequest generates a request for the DeleteHSMClientCertificate operation.
-func (c *Redshift) DeleteHSMClientCertificateRequest(input *DeleteHSMClientCertificateInput) (req *aws.Request, output *DeleteHSMClientCertificateOutput) {
-	op := &aws.Operation{
-		Name:       opDeleteHSMClientCertificate,
+// DeleteHsmClientCertificateRequest generates a request for the DeleteHsmClientCertificate operation.
+func (c *Redshift) DeleteHsmClientCertificateRequest(input *DeleteHsmClientCertificateInput) (req *request.Request, output *DeleteHsmClientCertificateOutput) {
+	op := &request.Operation{
+		Name:       opDeleteHsmClientCertificate,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &DeleteHSMClientCertificateInput{}
+		input = &DeleteHsmClientCertificateInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &DeleteHSMClientCertificateOutput{}
+	output = &DeleteHsmClientCertificateOutput{}
 	req.Data = output
 	return
 }
 
 // Deletes the specified HSM client certificate.
-func (c *Redshift) DeleteHSMClientCertificate(input *DeleteHSMClientCertificateInput) (*DeleteHSMClientCertificateOutput, error) {
-	req, out := c.DeleteHSMClientCertificateRequest(input)
+func (c *Redshift) DeleteHsmClientCertificate(input *DeleteHsmClientCertificateInput) (*DeleteHsmClientCertificateOutput, error) {
+	req, out := c.DeleteHsmClientCertificateRequest(input)
 	err := req.Send()
 	return out, err
 }
 
-const opDeleteHSMConfiguration = "DeleteHsmConfiguration"
+const opDeleteHsmConfiguration = "DeleteHsmConfiguration"
 
-// DeleteHSMConfigurationRequest generates a request for the DeleteHSMConfiguration operation.
-func (c *Redshift) DeleteHSMConfigurationRequest(input *DeleteHSMConfigurationInput) (req *aws.Request, output *DeleteHSMConfigurationOutput) {
-	op := &aws.Operation{
-		Name:       opDeleteHSMConfiguration,
+// DeleteHsmConfigurationRequest generates a request for the DeleteHsmConfiguration operation.
+func (c *Redshift) DeleteHsmConfigurationRequest(input *DeleteHsmConfigurationInput) (req *request.Request, output *DeleteHsmConfigurationOutput) {
+	op := &request.Operation{
+		Name:       opDeleteHsmConfiguration,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &DeleteHSMConfigurationInput{}
+		input = &DeleteHsmConfigurationInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &DeleteHSMConfigurationOutput{}
+	output = &DeleteHsmConfigurationOutput{}
 	req.Data = output
 	return
 }
 
 // Deletes the specified Amazon Redshift HSM configuration.
-func (c *Redshift) DeleteHSMConfiguration(input *DeleteHSMConfigurationInput) (*DeleteHSMConfigurationOutput, error) {
-	req, out := c.DeleteHSMConfigurationRequest(input)
+func (c *Redshift) DeleteHsmConfiguration(input *DeleteHsmConfigurationInput) (*DeleteHsmConfigurationOutput, error) {
+	req, out := c.DeleteHsmConfigurationRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -721,8 +721,8 @@ func (c *Redshift) DeleteHSMConfiguration(input *DeleteHSMConfigurationInput) (*
 const opDeleteSnapshotCopyGrant = "DeleteSnapshotCopyGrant"
 
 // DeleteSnapshotCopyGrantRequest generates a request for the DeleteSnapshotCopyGrant operation.
-func (c *Redshift) DeleteSnapshotCopyGrantRequest(input *DeleteSnapshotCopyGrantInput) (req *aws.Request, output *DeleteSnapshotCopyGrantOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteSnapshotCopyGrantRequest(input *DeleteSnapshotCopyGrantInput) (req *request.Request, output *DeleteSnapshotCopyGrantOutput) {
+	op := &request.Operation{
 		Name:       opDeleteSnapshotCopyGrant,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -748,8 +748,8 @@ func (c *Redshift) DeleteSnapshotCopyGrant(input *DeleteSnapshotCopyGrantInput) 
 const opDeleteTags = "DeleteTags"
 
 // DeleteTagsRequest generates a request for the DeleteTags operation.
-func (c *Redshift) DeleteTagsRequest(input *DeleteTagsInput) (req *aws.Request, output *DeleteTagsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DeleteTagsRequest(input *DeleteTagsInput) (req *request.Request, output *DeleteTagsOutput) {
+	op := &request.Operation{
 		Name:       opDeleteTags,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -776,12 +776,12 @@ func (c *Redshift) DeleteTags(input *DeleteTagsInput) (*DeleteTagsOutput, error)
 const opDescribeClusterParameterGroups = "DescribeClusterParameterGroups"
 
 // DescribeClusterParameterGroupsRequest generates a request for the DescribeClusterParameterGroups operation.
-func (c *Redshift) DescribeClusterParameterGroupsRequest(input *DescribeClusterParameterGroupsInput) (req *aws.Request, output *DescribeClusterParameterGroupsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClusterParameterGroupsRequest(input *DescribeClusterParameterGroupsInput) (req *request.Request, output *DescribeClusterParameterGroupsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusterParameterGroups,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -834,12 +834,12 @@ func (c *Redshift) DescribeClusterParameterGroupsPages(input *DescribeClusterPar
 const opDescribeClusterParameters = "DescribeClusterParameters"
 
 // DescribeClusterParametersRequest generates a request for the DescribeClusterParameters operation.
-func (c *Redshift) DescribeClusterParametersRequest(input *DescribeClusterParametersInput) (req *aws.Request, output *DescribeClusterParametersOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClusterParametersRequest(input *DescribeClusterParametersInput) (req *request.Request, output *DescribeClusterParametersOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusterParameters,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -885,12 +885,12 @@ func (c *Redshift) DescribeClusterParametersPages(input *DescribeClusterParamete
 const opDescribeClusterSecurityGroups = "DescribeClusterSecurityGroups"
 
 // DescribeClusterSecurityGroupsRequest generates a request for the DescribeClusterSecurityGroups operation.
-func (c *Redshift) DescribeClusterSecurityGroupsRequest(input *DescribeClusterSecurityGroupsInput) (req *aws.Request, output *DescribeClusterSecurityGroupsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClusterSecurityGroupsRequest(input *DescribeClusterSecurityGroupsInput) (req *request.Request, output *DescribeClusterSecurityGroupsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusterSecurityGroups,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -941,12 +941,12 @@ func (c *Redshift) DescribeClusterSecurityGroupsPages(input *DescribeClusterSecu
 const opDescribeClusterSnapshots = "DescribeClusterSnapshots"
 
 // DescribeClusterSnapshotsRequest generates a request for the DescribeClusterSnapshots operation.
-func (c *Redshift) DescribeClusterSnapshotsRequest(input *DescribeClusterSnapshotsInput) (req *aws.Request, output *DescribeClusterSnapshotsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClusterSnapshotsRequest(input *DescribeClusterSnapshotsInput) (req *request.Request, output *DescribeClusterSnapshotsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusterSnapshots,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -996,12 +996,12 @@ func (c *Redshift) DescribeClusterSnapshotsPages(input *DescribeClusterSnapshots
 const opDescribeClusterSubnetGroups = "DescribeClusterSubnetGroups"
 
 // DescribeClusterSubnetGroupsRequest generates a request for the DescribeClusterSubnetGroups operation.
-func (c *Redshift) DescribeClusterSubnetGroupsRequest(input *DescribeClusterSubnetGroupsInput) (req *aws.Request, output *DescribeClusterSubnetGroupsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClusterSubnetGroupsRequest(input *DescribeClusterSubnetGroupsInput) (req *request.Request, output *DescribeClusterSubnetGroupsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusterSubnetGroups,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1048,12 +1048,12 @@ func (c *Redshift) DescribeClusterSubnetGroupsPages(input *DescribeClusterSubnet
 const opDescribeClusterVersions = "DescribeClusterVersions"
 
 // DescribeClusterVersionsRequest generates a request for the DescribeClusterVersions operation.
-func (c *Redshift) DescribeClusterVersionsRequest(input *DescribeClusterVersionsInput) (req *aws.Request, output *DescribeClusterVersionsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClusterVersionsRequest(input *DescribeClusterVersionsInput) (req *request.Request, output *DescribeClusterVersionsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusterVersions,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1092,12 +1092,12 @@ func (c *Redshift) DescribeClusterVersionsPages(input *DescribeClusterVersionsIn
 const opDescribeClusters = "DescribeClusters"
 
 // DescribeClustersRequest generates a request for the DescribeClusters operation.
-func (c *Redshift) DescribeClustersRequest(input *DescribeClustersInput) (req *aws.Request, output *DescribeClustersOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeClustersRequest(input *DescribeClustersInput) (req *request.Request, output *DescribeClustersOutput) {
+	op := &request.Operation{
 		Name:       opDescribeClusters,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1145,12 +1145,12 @@ func (c *Redshift) DescribeClustersPages(input *DescribeClustersInput, fn func(p
 const opDescribeDefaultClusterParameters = "DescribeDefaultClusterParameters"
 
 // DescribeDefaultClusterParametersRequest generates a request for the DescribeDefaultClusterParameters operation.
-func (c *Redshift) DescribeDefaultClusterParametersRequest(input *DescribeDefaultClusterParametersInput) (req *aws.Request, output *DescribeDefaultClusterParametersOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeDefaultClusterParametersRequest(input *DescribeDefaultClusterParametersInput) (req *request.Request, output *DescribeDefaultClusterParametersOutput) {
+	op := &request.Operation{
 		Name:       opDescribeDefaultClusterParameters,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"DefaultClusterParameters.Marker"},
 			LimitToken:      "MaxRecords",
@@ -1189,8 +1189,8 @@ func (c *Redshift) DescribeDefaultClusterParametersPages(input *DescribeDefaultC
 const opDescribeEventCategories = "DescribeEventCategories"
 
 // DescribeEventCategoriesRequest generates a request for the DescribeEventCategories operation.
-func (c *Redshift) DescribeEventCategoriesRequest(input *DescribeEventCategoriesInput) (req *aws.Request, output *DescribeEventCategoriesOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeEventCategoriesRequest(input *DescribeEventCategoriesInput) (req *request.Request, output *DescribeEventCategoriesOutput) {
+	op := &request.Operation{
 		Name:       opDescribeEventCategories,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1218,12 +1218,12 @@ func (c *Redshift) DescribeEventCategories(input *DescribeEventCategoriesInput) 
 const opDescribeEventSubscriptions = "DescribeEventSubscriptions"
 
 // DescribeEventSubscriptionsRequest generates a request for the DescribeEventSubscriptions operation.
-func (c *Redshift) DescribeEventSubscriptionsRequest(input *DescribeEventSubscriptionsInput) (req *aws.Request, output *DescribeEventSubscriptionsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeEventSubscriptionsRequest(input *DescribeEventSubscriptionsInput) (req *request.Request, output *DescribeEventSubscriptionsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeEventSubscriptions,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1260,12 +1260,12 @@ func (c *Redshift) DescribeEventSubscriptionsPages(input *DescribeEventSubscript
 const opDescribeEvents = "DescribeEvents"
 
 // DescribeEventsRequest generates a request for the DescribeEvents operation.
-func (c *Redshift) DescribeEventsRequest(input *DescribeEventsInput) (req *aws.Request, output *DescribeEventsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeEventsRequest(input *DescribeEventsInput) (req *request.Request, output *DescribeEventsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeEvents,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1300,15 +1300,15 @@ func (c *Redshift) DescribeEventsPages(input *DescribeEventsInput, fn func(p *De
 	})
 }
 
-const opDescribeHSMClientCertificates = "DescribeHsmClientCertificates"
+const opDescribeHsmClientCertificates = "DescribeHsmClientCertificates"
 
-// DescribeHSMClientCertificatesRequest generates a request for the DescribeHSMClientCertificates operation.
-func (c *Redshift) DescribeHSMClientCertificatesRequest(input *DescribeHSMClientCertificatesInput) (req *aws.Request, output *DescribeHSMClientCertificatesOutput) {
-	op := &aws.Operation{
-		Name:       opDescribeHSMClientCertificates,
+// DescribeHsmClientCertificatesRequest generates a request for the DescribeHsmClientCertificates operation.
+func (c *Redshift) DescribeHsmClientCertificatesRequest(input *DescribeHsmClientCertificatesInput) (req *request.Request, output *DescribeHsmClientCertificatesOutput) {
+	op := &request.Operation{
+		Name:       opDescribeHsmClientCertificates,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1317,11 +1317,11 @@ func (c *Redshift) DescribeHSMClientCertificatesRequest(input *DescribeHSMClient
 	}
 
 	if input == nil {
-		input = &DescribeHSMClientCertificatesInput{}
+		input = &DescribeHsmClientCertificatesInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &DescribeHSMClientCertificatesOutput{}
+	output = &DescribeHsmClientCertificatesOutput{}
 	req.Data = output
 	return
 }
@@ -1339,28 +1339,28 @@ func (c *Redshift) DescribeHSMClientCertificatesRequest(input *DescribeHSMClient
 // If both tag keys and values are omitted from the request, HSM client certificates
 // are returned regardless of whether they have tag keys or values associated
 // with them.
-func (c *Redshift) DescribeHSMClientCertificates(input *DescribeHSMClientCertificatesInput) (*DescribeHSMClientCertificatesOutput, error) {
-	req, out := c.DescribeHSMClientCertificatesRequest(input)
+func (c *Redshift) DescribeHsmClientCertificates(input *DescribeHsmClientCertificatesInput) (*DescribeHsmClientCertificatesOutput, error) {
+	req, out := c.DescribeHsmClientCertificatesRequest(input)
 	err := req.Send()
 	return out, err
 }
 
-func (c *Redshift) DescribeHSMClientCertificatesPages(input *DescribeHSMClientCertificatesInput, fn func(p *DescribeHSMClientCertificatesOutput, lastPage bool) (shouldContinue bool)) error {
-	page, _ := c.DescribeHSMClientCertificatesRequest(input)
+func (c *Redshift) DescribeHsmClientCertificatesPages(input *DescribeHsmClientCertificatesInput, fn func(p *DescribeHsmClientCertificatesOutput, lastPage bool) (shouldContinue bool)) error {
+	page, _ := c.DescribeHsmClientCertificatesRequest(input)
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
-		return fn(p.(*DescribeHSMClientCertificatesOutput), lastPage)
+		return fn(p.(*DescribeHsmClientCertificatesOutput), lastPage)
 	})
 }
 
-const opDescribeHSMConfigurations = "DescribeHsmConfigurations"
+const opDescribeHsmConfigurations = "DescribeHsmConfigurations"
 
-// DescribeHSMConfigurationsRequest generates a request for the DescribeHSMConfigurations operation.
-func (c *Redshift) DescribeHSMConfigurationsRequest(input *DescribeHSMConfigurationsInput) (req *aws.Request, output *DescribeHSMConfigurationsOutput) {
-	op := &aws.Operation{
-		Name:       opDescribeHSMConfigurations,
+// DescribeHsmConfigurationsRequest generates a request for the DescribeHsmConfigurations operation.
+func (c *Redshift) DescribeHsmConfigurationsRequest(input *DescribeHsmConfigurationsInput) (req *request.Request, output *DescribeHsmConfigurationsOutput) {
+	op := &request.Operation{
+		Name:       opDescribeHsmConfigurations,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1369,11 +1369,11 @@ func (c *Redshift) DescribeHSMConfigurationsRequest(input *DescribeHSMConfigurat
 	}
 
 	if input == nil {
-		input = &DescribeHSMConfigurationsInput{}
+		input = &DescribeHsmConfigurationsInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &DescribeHSMConfigurationsOutput{}
+	output = &DescribeHsmConfigurationsOutput{}
 	req.Data = output
 	return
 }
@@ -1391,24 +1391,24 @@ func (c *Redshift) DescribeHSMConfigurationsRequest(input *DescribeHSMConfigurat
 // If both tag keys and values are omitted from the request, HSM connections
 // are returned regardless of whether they have tag keys or values associated
 // with them.
-func (c *Redshift) DescribeHSMConfigurations(input *DescribeHSMConfigurationsInput) (*DescribeHSMConfigurationsOutput, error) {
-	req, out := c.DescribeHSMConfigurationsRequest(input)
+func (c *Redshift) DescribeHsmConfigurations(input *DescribeHsmConfigurationsInput) (*DescribeHsmConfigurationsOutput, error) {
+	req, out := c.DescribeHsmConfigurationsRequest(input)
 	err := req.Send()
 	return out, err
 }
 
-func (c *Redshift) DescribeHSMConfigurationsPages(input *DescribeHSMConfigurationsInput, fn func(p *DescribeHSMConfigurationsOutput, lastPage bool) (shouldContinue bool)) error {
-	page, _ := c.DescribeHSMConfigurationsRequest(input)
+func (c *Redshift) DescribeHsmConfigurationsPages(input *DescribeHsmConfigurationsInput, fn func(p *DescribeHsmConfigurationsOutput, lastPage bool) (shouldContinue bool)) error {
+	page, _ := c.DescribeHsmConfigurationsRequest(input)
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
-		return fn(p.(*DescribeHSMConfigurationsOutput), lastPage)
+		return fn(p.(*DescribeHsmConfigurationsOutput), lastPage)
 	})
 }
 
 const opDescribeLoggingStatus = "DescribeLoggingStatus"
 
 // DescribeLoggingStatusRequest generates a request for the DescribeLoggingStatus operation.
-func (c *Redshift) DescribeLoggingStatusRequest(input *DescribeLoggingStatusInput) (req *aws.Request, output *LoggingStatus) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeLoggingStatusRequest(input *DescribeLoggingStatusInput) (req *request.Request, output *LoggingStatus) {
+	op := &request.Operation{
 		Name:       opDescribeLoggingStatus,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1435,12 +1435,12 @@ func (c *Redshift) DescribeLoggingStatus(input *DescribeLoggingStatusInput) (*Lo
 const opDescribeOrderableClusterOptions = "DescribeOrderableClusterOptions"
 
 // DescribeOrderableClusterOptionsRequest generates a request for the DescribeOrderableClusterOptions operation.
-func (c *Redshift) DescribeOrderableClusterOptionsRequest(input *DescribeOrderableClusterOptionsInput) (req *aws.Request, output *DescribeOrderableClusterOptionsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeOrderableClusterOptionsRequest(input *DescribeOrderableClusterOptionsInput) (req *request.Request, output *DescribeOrderableClusterOptionsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeOrderableClusterOptions,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1483,12 +1483,12 @@ func (c *Redshift) DescribeOrderableClusterOptionsPages(input *DescribeOrderable
 const opDescribeReservedNodeOfferings = "DescribeReservedNodeOfferings"
 
 // DescribeReservedNodeOfferingsRequest generates a request for the DescribeReservedNodeOfferings operation.
-func (c *Redshift) DescribeReservedNodeOfferingsRequest(input *DescribeReservedNodeOfferingsInput) (req *aws.Request, output *DescribeReservedNodeOfferingsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeReservedNodeOfferingsRequest(input *DescribeReservedNodeOfferingsInput) (req *request.Request, output *DescribeReservedNodeOfferingsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeReservedNodeOfferings,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1532,12 +1532,12 @@ func (c *Redshift) DescribeReservedNodeOfferingsPages(input *DescribeReservedNod
 const opDescribeReservedNodes = "DescribeReservedNodes"
 
 // DescribeReservedNodesRequest generates a request for the DescribeReservedNodes operation.
-func (c *Redshift) DescribeReservedNodesRequest(input *DescribeReservedNodesInput) (req *aws.Request, output *DescribeReservedNodesOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeReservedNodesRequest(input *DescribeReservedNodesInput) (req *request.Request, output *DescribeReservedNodesOutput) {
+	op := &request.Operation{
 		Name:       opDescribeReservedNodes,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"Marker"},
 			LimitToken:      "MaxRecords",
@@ -1572,8 +1572,8 @@ func (c *Redshift) DescribeReservedNodesPages(input *DescribeReservedNodesInput,
 const opDescribeResize = "DescribeResize"
 
 // DescribeResizeRequest generates a request for the DescribeResize operation.
-func (c *Redshift) DescribeResizeRequest(input *DescribeResizeInput) (req *aws.Request, output *DescribeResizeOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeResizeRequest(input *DescribeResizeInput) (req *request.Request, output *DescribeResizeOutput) {
+	op := &request.Operation{
 		Name:       opDescribeResize,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1605,8 +1605,8 @@ func (c *Redshift) DescribeResize(input *DescribeResizeInput) (*DescribeResizeOu
 const opDescribeSnapshotCopyGrants = "DescribeSnapshotCopyGrants"
 
 // DescribeSnapshotCopyGrantsRequest generates a request for the DescribeSnapshotCopyGrants operation.
-func (c *Redshift) DescribeSnapshotCopyGrantsRequest(input *DescribeSnapshotCopyGrantsInput) (req *aws.Request, output *DescribeSnapshotCopyGrantsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeSnapshotCopyGrantsRequest(input *DescribeSnapshotCopyGrantsInput) (req *request.Request, output *DescribeSnapshotCopyGrantsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeSnapshotCopyGrants,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1637,8 +1637,8 @@ func (c *Redshift) DescribeSnapshotCopyGrants(input *DescribeSnapshotCopyGrantsI
 const opDescribeTags = "DescribeTags"
 
 // DescribeTagsRequest generates a request for the DescribeTags operation.
-func (c *Redshift) DescribeTagsRequest(input *DescribeTagsInput) (req *aws.Request, output *DescribeTagsOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DescribeTagsRequest(input *DescribeTagsInput) (req *request.Request, output *DescribeTagsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeTags,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1682,8 +1682,8 @@ func (c *Redshift) DescribeTags(input *DescribeTagsInput) (*DescribeTagsOutput, 
 const opDisableLogging = "DisableLogging"
 
 // DisableLoggingRequest generates a request for the DisableLogging operation.
-func (c *Redshift) DisableLoggingRequest(input *DisableLoggingInput) (req *aws.Request, output *LoggingStatus) {
-	op := &aws.Operation{
+func (c *Redshift) DisableLoggingRequest(input *DisableLoggingInput) (req *request.Request, output *LoggingStatus) {
+	op := &request.Operation{
 		Name:       opDisableLogging,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1710,8 +1710,8 @@ func (c *Redshift) DisableLogging(input *DisableLoggingInput) (*LoggingStatus, e
 const opDisableSnapshotCopy = "DisableSnapshotCopy"
 
 // DisableSnapshotCopyRequest generates a request for the DisableSnapshotCopy operation.
-func (c *Redshift) DisableSnapshotCopyRequest(input *DisableSnapshotCopyInput) (req *aws.Request, output *DisableSnapshotCopyOutput) {
-	op := &aws.Operation{
+func (c *Redshift) DisableSnapshotCopyRequest(input *DisableSnapshotCopyInput) (req *request.Request, output *DisableSnapshotCopyOutput) {
+	op := &request.Operation{
 		Name:       opDisableSnapshotCopy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1742,8 +1742,8 @@ func (c *Redshift) DisableSnapshotCopy(input *DisableSnapshotCopyInput) (*Disabl
 const opEnableLogging = "EnableLogging"
 
 // EnableLoggingRequest generates a request for the EnableLogging operation.
-func (c *Redshift) EnableLoggingRequest(input *EnableLoggingInput) (req *aws.Request, output *LoggingStatus) {
-	op := &aws.Operation{
+func (c *Redshift) EnableLoggingRequest(input *EnableLoggingInput) (req *request.Request, output *LoggingStatus) {
+	op := &request.Operation{
 		Name:       opEnableLogging,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1770,8 +1770,8 @@ func (c *Redshift) EnableLogging(input *EnableLoggingInput) (*LoggingStatus, err
 const opEnableSnapshotCopy = "EnableSnapshotCopy"
 
 // EnableSnapshotCopyRequest generates a request for the EnableSnapshotCopy operation.
-func (c *Redshift) EnableSnapshotCopyRequest(input *EnableSnapshotCopyInput) (req *aws.Request, output *EnableSnapshotCopyOutput) {
-	op := &aws.Operation{
+func (c *Redshift) EnableSnapshotCopyRequest(input *EnableSnapshotCopyInput) (req *request.Request, output *EnableSnapshotCopyOutput) {
+	op := &request.Operation{
 		Name:       opEnableSnapshotCopy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1798,8 +1798,8 @@ func (c *Redshift) EnableSnapshotCopy(input *EnableSnapshotCopyInput) (*EnableSn
 const opModifyCluster = "ModifyCluster"
 
 // ModifyClusterRequest generates a request for the ModifyCluster operation.
-func (c *Redshift) ModifyClusterRequest(input *ModifyClusterInput) (req *aws.Request, output *ModifyClusterOutput) {
-	op := &aws.Operation{
+func (c *Redshift) ModifyClusterRequest(input *ModifyClusterInput) (req *request.Request, output *ModifyClusterOutput) {
+	op := &request.Operation{
 		Name:       opModifyCluster,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1835,8 +1835,8 @@ func (c *Redshift) ModifyCluster(input *ModifyClusterInput) (*ModifyClusterOutpu
 const opModifyClusterParameterGroup = "ModifyClusterParameterGroup"
 
 // ModifyClusterParameterGroupRequest generates a request for the ModifyClusterParameterGroup operation.
-func (c *Redshift) ModifyClusterParameterGroupRequest(input *ModifyClusterParameterGroupInput) (req *aws.Request, output *ClusterParameterGroupNameMessage) {
-	op := &aws.Operation{
+func (c *Redshift) ModifyClusterParameterGroupRequest(input *ModifyClusterParameterGroupInput) (req *request.Request, output *ClusterParameterGroupNameMessage) {
+	op := &request.Operation{
 		Name:       opModifyClusterParameterGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1866,8 +1866,8 @@ func (c *Redshift) ModifyClusterParameterGroup(input *ModifyClusterParameterGrou
 const opModifyClusterSubnetGroup = "ModifyClusterSubnetGroup"
 
 // ModifyClusterSubnetGroupRequest generates a request for the ModifyClusterSubnetGroup operation.
-func (c *Redshift) ModifyClusterSubnetGroupRequest(input *ModifyClusterSubnetGroupInput) (req *aws.Request, output *ModifyClusterSubnetGroupOutput) {
-	op := &aws.Operation{
+func (c *Redshift) ModifyClusterSubnetGroupRequest(input *ModifyClusterSubnetGroupInput) (req *request.Request, output *ModifyClusterSubnetGroupOutput) {
+	op := &request.Operation{
 		Name:       opModifyClusterSubnetGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1895,8 +1895,8 @@ func (c *Redshift) ModifyClusterSubnetGroup(input *ModifyClusterSubnetGroupInput
 const opModifyEventSubscription = "ModifyEventSubscription"
 
 // ModifyEventSubscriptionRequest generates a request for the ModifyEventSubscription operation.
-func (c *Redshift) ModifyEventSubscriptionRequest(input *ModifyEventSubscriptionInput) (req *aws.Request, output *ModifyEventSubscriptionOutput) {
-	op := &aws.Operation{
+func (c *Redshift) ModifyEventSubscriptionRequest(input *ModifyEventSubscriptionInput) (req *request.Request, output *ModifyEventSubscriptionOutput) {
+	op := &request.Operation{
 		Name:       opModifyEventSubscription,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1922,8 +1922,8 @@ func (c *Redshift) ModifyEventSubscription(input *ModifyEventSubscriptionInput) 
 const opModifySnapshotCopyRetentionPeriod = "ModifySnapshotCopyRetentionPeriod"
 
 // ModifySnapshotCopyRetentionPeriodRequest generates a request for the ModifySnapshotCopyRetentionPeriod operation.
-func (c *Redshift) ModifySnapshotCopyRetentionPeriodRequest(input *ModifySnapshotCopyRetentionPeriodInput) (req *aws.Request, output *ModifySnapshotCopyRetentionPeriodOutput) {
-	op := &aws.Operation{
+func (c *Redshift) ModifySnapshotCopyRetentionPeriodRequest(input *ModifySnapshotCopyRetentionPeriodInput) (req *request.Request, output *ModifySnapshotCopyRetentionPeriodOutput) {
+	op := &request.Operation{
 		Name:       opModifySnapshotCopyRetentionPeriod,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1950,8 +1950,8 @@ func (c *Redshift) ModifySnapshotCopyRetentionPeriod(input *ModifySnapshotCopyRe
 const opPurchaseReservedNodeOffering = "PurchaseReservedNodeOffering"
 
 // PurchaseReservedNodeOfferingRequest generates a request for the PurchaseReservedNodeOffering operation.
-func (c *Redshift) PurchaseReservedNodeOfferingRequest(input *PurchaseReservedNodeOfferingInput) (req *aws.Request, output *PurchaseReservedNodeOfferingOutput) {
-	op := &aws.Operation{
+func (c *Redshift) PurchaseReservedNodeOfferingRequest(input *PurchaseReservedNodeOfferingInput) (req *request.Request, output *PurchaseReservedNodeOfferingOutput) {
+	op := &request.Operation{
 		Name:       opPurchaseReservedNodeOffering,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -1985,8 +1985,8 @@ func (c *Redshift) PurchaseReservedNodeOffering(input *PurchaseReservedNodeOffer
 const opRebootCluster = "RebootCluster"
 
 // RebootClusterRequest generates a request for the RebootCluster operation.
-func (c *Redshift) RebootClusterRequest(input *RebootClusterInput) (req *aws.Request, output *RebootClusterOutput) {
-	op := &aws.Operation{
+func (c *Redshift) RebootClusterRequest(input *RebootClusterInput) (req *request.Request, output *RebootClusterOutput) {
+	op := &request.Operation{
 		Name:       opRebootCluster,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -2018,8 +2018,8 @@ func (c *Redshift) RebootCluster(input *RebootClusterInput) (*RebootClusterOutpu
 const opResetClusterParameterGroup = "ResetClusterParameterGroup"
 
 // ResetClusterParameterGroupRequest generates a request for the ResetClusterParameterGroup operation.
-func (c *Redshift) ResetClusterParameterGroupRequest(input *ResetClusterParameterGroupInput) (req *aws.Request, output *ClusterParameterGroupNameMessage) {
-	op := &aws.Operation{
+func (c *Redshift) ResetClusterParameterGroupRequest(input *ResetClusterParameterGroupInput) (req *request.Request, output *ClusterParameterGroupNameMessage) {
+	op := &request.Operation{
 		Name:       opResetClusterParameterGroup,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -2048,8 +2048,8 @@ func (c *Redshift) ResetClusterParameterGroup(input *ResetClusterParameterGroupI
 const opRestoreFromClusterSnapshot = "RestoreFromClusterSnapshot"
 
 // RestoreFromClusterSnapshotRequest generates a request for the RestoreFromClusterSnapshot operation.
-func (c *Redshift) RestoreFromClusterSnapshotRequest(input *RestoreFromClusterSnapshotInput) (req *aws.Request, output *RestoreFromClusterSnapshotOutput) {
-	op := &aws.Operation{
+func (c *Redshift) RestoreFromClusterSnapshotRequest(input *RestoreFromClusterSnapshotInput) (req *request.Request, output *RestoreFromClusterSnapshotOutput) {
+	op := &request.Operation{
 		Name:       opRestoreFromClusterSnapshot,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -2089,8 +2089,8 @@ func (c *Redshift) RestoreFromClusterSnapshot(input *RestoreFromClusterSnapshotI
 const opRevokeClusterSecurityGroupIngress = "RevokeClusterSecurityGroupIngress"
 
 // RevokeClusterSecurityGroupIngressRequest generates a request for the RevokeClusterSecurityGroupIngress operation.
-func (c *Redshift) RevokeClusterSecurityGroupIngressRequest(input *RevokeClusterSecurityGroupIngressInput) (req *aws.Request, output *RevokeClusterSecurityGroupIngressOutput) {
-	op := &aws.Operation{
+func (c *Redshift) RevokeClusterSecurityGroupIngressRequest(input *RevokeClusterSecurityGroupIngressInput) (req *request.Request, output *RevokeClusterSecurityGroupIngressOutput) {
+	op := &request.Operation{
 		Name:       opRevokeClusterSecurityGroupIngress,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -2120,8 +2120,8 @@ func (c *Redshift) RevokeClusterSecurityGroupIngress(input *RevokeClusterSecurit
 const opRevokeSnapshotAccess = "RevokeSnapshotAccess"
 
 // RevokeSnapshotAccessRequest generates a request for the RevokeSnapshotAccess operation.
-func (c *Redshift) RevokeSnapshotAccessRequest(input *RevokeSnapshotAccessInput) (req *aws.Request, output *RevokeSnapshotAccessOutput) {
-	op := &aws.Operation{
+func (c *Redshift) RevokeSnapshotAccessRequest(input *RevokeSnapshotAccessInput) (req *request.Request, output *RevokeSnapshotAccessOutput) {
+	op := &request.Operation{
 		Name:       opRevokeSnapshotAccess,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -2153,8 +2153,8 @@ func (c *Redshift) RevokeSnapshotAccess(input *RevokeSnapshotAccessInput) (*Revo
 const opRotateEncryptionKey = "RotateEncryptionKey"
 
 // RotateEncryptionKeyRequest generates a request for the RotateEncryptionKey operation.
-func (c *Redshift) RotateEncryptionKeyRequest(input *RotateEncryptionKeyInput) (req *aws.Request, output *RotateEncryptionKeyOutput) {
-	op := &aws.Operation{
+func (c *Redshift) RotateEncryptionKeyRequest(input *RotateEncryptionKeyInput) (req *request.Request, output *RotateEncryptionKeyOutput) {
+	op := &request.Operation{
 		Name:       opRotateEncryptionKey,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -2180,7 +2180,7 @@ func (c *Redshift) RotateEncryptionKey(input *RotateEncryptionKeyInput) (*Rotate
 // Describes an AWS customer account authorized to restore a snapshot.
 type AccountWithRestoreAccess struct {
 	// The identifier of an AWS customer account authorized to restore a snapshot.
-	AccountID *string `locationName:"AccountId" type:"string"`
+	AccountId *string `type:"string"`
 
 	metadataAccountWithRestoreAccess `json:"-" xml:"-"`
 }
@@ -2215,7 +2215,7 @@ type AuthorizeClusterSecurityGroupIngressInput struct {
 	// value.
 	//
 	//  Example: 111122223333
-	EC2SecurityGroupOwnerID *string `locationName:"EC2SecurityGroupOwnerId" type:"string"`
+	EC2SecurityGroupOwnerId *string `type:"string"`
 
 	metadataAuthorizeClusterSecurityGroupIngressInput `json:"-" xml:"-"`
 }
@@ -2389,7 +2389,7 @@ type Cluster struct {
 	DBName *string `type:"string"`
 
 	// Describes the status of the elastic IP (EIP) address.
-	ElasticIPStatus *ElasticIPStatus `locationName:"ElasticIpStatus" type:"structure"`
+	ElasticIpStatus *ElasticIpStatus `type:"structure"`
 
 	// If true, data in the cluster is encrypted at rest.
 	Encrypted *bool `type:"boolean"`
@@ -2401,11 +2401,11 @@ type Cluster struct {
 	// settings changes specified in a modify cluster command.
 	//
 	// Values: active, applying
-	HSMStatus *HSMStatus `locationName:"HsmStatus" type:"structure"`
+	HsmStatus *HsmStatus `type:"structure"`
 
 	// The AWS Key Management Service (KMS) key ID of the encryption key used to
 	// encrypt data in the cluster.
-	KMSKeyID *string `locationName:"KmsKeyId" type:"string"`
+	KmsKeyId *string `type:"string"`
 
 	// The master user name for the cluster. This name is used to connect to the
 	// database that is specified in DBName.
@@ -2438,12 +2438,12 @@ type Cluster struct {
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
 	// The identifier of the VPC the cluster is in, if the cluster is in a VPC.
-	VPCID *string `locationName:"VpcId" type:"string"`
+	VpcId *string `type:"string"`
 
 	// A list of Virtual Private Cloud (VPC) security groups that are associated
 	// with the cluster. This parameter is returned only if the cluster is in a
 	// VPC.
-	VPCSecurityGroups []*VPCSecurityGroupMembership `locationName:"VpcSecurityGroups" locationNameList:"VpcSecurityGroup" type:"list"`
+	VpcSecurityGroups []*VpcSecurityGroupMembership `locationNameList:"VpcSecurityGroup" type:"list"`
 
 	metadataCluster `json:"-" xml:"-"`
 }
@@ -2735,7 +2735,7 @@ type ClusterSubnetGroup struct {
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
 	// The VPC ID of the cluster subnet group.
-	VPCID *string `locationName:"VpcId" type:"string"`
+	VpcId *string `type:"string"`
 
 	metadataClusterSubnetGroup `json:"-" xml:"-"`
 }
@@ -2959,7 +2959,7 @@ type CreateClusterInput struct {
 	// through an Internet gateway. For more information about provisioning clusters
 	// in EC2-VPC, go to Supported Platforms to Launch Your Cluster (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 	// in the Amazon Redshift Cluster Management Guide.
-	ElasticIP *string `locationName:"ElasticIp" type:"string"`
+	ElasticIp *string `type:"string"`
 
 	// If true, the data in the cluster is encrypted at rest.
 	//
@@ -2968,15 +2968,15 @@ type CreateClusterInput struct {
 
 	// Specifies the name of the HSM client certificate the Amazon Redshift cluster
 	// uses to retrieve the data encryption keys stored in an HSM.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string"`
+	HsmClientCertificateIdentifier *string `type:"string"`
 
 	// Specifies the name of the HSM configuration that contains the information
 	// the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string"`
+	HsmConfigurationIdentifier *string `type:"string"`
 
 	// The AWS Key Management Service (KMS) key ID of the encryption key that you
 	// want to use to encrypt data in the cluster.
-	KMSKeyID *string `locationName:"KmsKeyId" type:"string"`
+	KmsKeyId *string `type:"string"`
 
 	// The password associated with the master user account for the cluster that
 	// is being created.
@@ -3060,7 +3060,7 @@ type CreateClusterInput struct {
 	// the cluster.
 	//
 	// Default: The default VPC security group is associated with the cluster.
-	VPCSecurityGroupIDs []*string `locationName:"VpcSecurityGroupIds" locationNameList:"VpcSecurityGroupId" type:"list"`
+	VpcSecurityGroupIds []*string `locationNameList:"VpcSecurityGroupId" type:"list"`
 
 	metadataCreateClusterInput `json:"-" xml:"-"`
 }
@@ -3293,7 +3293,7 @@ type CreateClusterSubnetGroupInput struct {
 
 	// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
 	// single request.
-	SubnetIDs []*string `locationName:"SubnetIds" locationNameList:"SubnetIdentifier" type:"list" required:"true"`
+	SubnetIds []*string `locationNameList:"SubnetIdentifier" type:"list" required:"true"`
 
 	// A list of tag instances.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
@@ -3347,16 +3347,16 @@ type CreateEventSubscriptionInput struct {
 	// Values: Configuration, Management, Monitoring, Security
 	EventCategories []*string `locationNameList:"EventCategory" type:"list"`
 
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit the
-	// event notifications. The ARN is created by Amazon SNS when you create a topic
-	// and subscribe to it.
-	SNSTopicARN *string `locationName:"SnsTopicArn" type:"string" required:"true"`
-
 	// Specifies the Amazon Redshift event severity to be published by the event
 	// notification subscription.
 	//
 	// Values: ERROR, INFO
 	Severity *string `type:"string"`
+
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit the
+	// event notifications. The ARN is created by Amazon SNS when you create a topic
+	// and subscribe to it.
+	SnsTopicArn *string `type:"string" required:"true"`
 
 	// A list of one or more identifiers of Amazon Redshift source objects. All
 	// of the objects must be of the same type as was specified in the source type
@@ -3367,7 +3367,7 @@ type CreateEventSubscriptionInput struct {
 	// Example: my-cluster-1, my-cluster-2
 	//
 	// Example: my-snapshot-20131010
-	SourceIDs []*string `locationName:"SourceIds" locationNameList:"SourceId" type:"list"`
+	SourceIds []*string `locationNameList:"SourceId" type:"list"`
 
 	// The type of source that will be generating the events. For example, if you
 	// want to be notified of events generated by a cluster, you would set this
@@ -3428,115 +3428,115 @@ func (s CreateEventSubscriptionOutput) GoString() string {
 	return s.String()
 }
 
-type CreateHSMClientCertificateInput struct {
+type CreateHsmClientCertificateInput struct {
 	// The identifier to be assigned to the new HSM client certificate that the
 	// cluster will use to connect to the HSM to use the database encryption keys.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string" required:"true"`
+	HsmClientCertificateIdentifier *string `type:"string" required:"true"`
 
 	// A list of tag instances.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
-	metadataCreateHSMClientCertificateInput `json:"-" xml:"-"`
+	metadataCreateHsmClientCertificateInput `json:"-" xml:"-"`
 }
 
-type metadataCreateHSMClientCertificateInput struct {
+type metadataCreateHsmClientCertificateInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s CreateHSMClientCertificateInput) String() string {
+func (s CreateHsmClientCertificateInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s CreateHSMClientCertificateInput) GoString() string {
+func (s CreateHsmClientCertificateInput) GoString() string {
 	return s.String()
 }
 
-type CreateHSMClientCertificateOutput struct {
+type CreateHsmClientCertificateOutput struct {
 	// Returns information about an HSM client certificate. The certificate is stored
 	// in a secure Hardware Storage Module (HSM), and used by the Amazon Redshift
 	// cluster to encrypt data files.
-	HSMClientCertificate *HSMClientCertificate `locationName:"HsmClientCertificate" type:"structure"`
+	HsmClientCertificate *HsmClientCertificate `type:"structure"`
 
-	metadataCreateHSMClientCertificateOutput `json:"-" xml:"-"`
+	metadataCreateHsmClientCertificateOutput `json:"-" xml:"-"`
 }
 
-type metadataCreateHSMClientCertificateOutput struct {
+type metadataCreateHsmClientCertificateOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s CreateHSMClientCertificateOutput) String() string {
+func (s CreateHsmClientCertificateOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s CreateHSMClientCertificateOutput) GoString() string {
+func (s CreateHsmClientCertificateOutput) GoString() string {
 	return s.String()
 }
 
-type CreateHSMConfigurationInput struct {
+type CreateHsmConfigurationInput struct {
 	// A text description of the HSM configuration to be created.
 	Description *string `type:"string" required:"true"`
 
 	// The identifier to be assigned to the new Amazon Redshift HSM configuration.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string" required:"true"`
+	HsmConfigurationIdentifier *string `type:"string" required:"true"`
 
 	// The IP address that the Amazon Redshift cluster must use to access the HSM.
-	HSMIPAddress *string `locationName:"HsmIpAddress" type:"string" required:"true"`
+	HsmIpAddress *string `type:"string" required:"true"`
 
 	// The name of the partition in the HSM where the Amazon Redshift clusters will
 	// store their database encryption keys.
-	HSMPartitionName *string `locationName:"HsmPartitionName" type:"string" required:"true"`
+	HsmPartitionName *string `type:"string" required:"true"`
 
 	// The password required to access the HSM partition.
-	HSMPartitionPassword *string `locationName:"HsmPartitionPassword" type:"string" required:"true"`
+	HsmPartitionPassword *string `type:"string" required:"true"`
 
 	// The HSMs public certificate file. When using Cloud HSM, the file name is
 	// server.pem.
-	HSMServerPublicCertificate *string `locationName:"HsmServerPublicCertificate" type:"string" required:"true"`
+	HsmServerPublicCertificate *string `type:"string" required:"true"`
 
 	// A list of tag instances.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
-	metadataCreateHSMConfigurationInput `json:"-" xml:"-"`
+	metadataCreateHsmConfigurationInput `json:"-" xml:"-"`
 }
 
-type metadataCreateHSMConfigurationInput struct {
+type metadataCreateHsmConfigurationInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s CreateHSMConfigurationInput) String() string {
+func (s CreateHsmConfigurationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s CreateHSMConfigurationInput) GoString() string {
+func (s CreateHsmConfigurationInput) GoString() string {
 	return s.String()
 }
 
-type CreateHSMConfigurationOutput struct {
+type CreateHsmConfigurationOutput struct {
 	// Returns information about an HSM configuration, which is an object that describes
 	// to Amazon Redshift clusters the information they require to connect to an
 	// HSM where they can store database encryption keys.
-	HSMConfiguration *HSMConfiguration `locationName:"HsmConfiguration" type:"structure"`
+	HsmConfiguration *HsmConfiguration `type:"structure"`
 
-	metadataCreateHSMConfigurationOutput `json:"-" xml:"-"`
+	metadataCreateHsmConfigurationOutput `json:"-" xml:"-"`
 }
 
-type metadataCreateHSMConfigurationOutput struct {
+type metadataCreateHsmConfigurationOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s CreateHSMConfigurationOutput) String() string {
+func (s CreateHsmConfigurationOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s CreateHSMConfigurationOutput) GoString() string {
+func (s CreateHsmConfigurationOutput) GoString() string {
 	return s.String()
 }
 
@@ -3544,7 +3544,7 @@ func (s CreateHSMConfigurationOutput) GoString() string {
 type CreateSnapshotCopyGrantInput struct {
 	// The unique identifier of the customer master key (CMK) to which to grant
 	// Amazon Redshift permission. If no key is specified, the default key is used.
-	KMSKeyID *string `locationName:"KmsKeyId" type:"string"`
+	KmsKeyId *string `type:"string"`
 
 	// The name of the snapshot copy grant. This name must be unique in the region
 	// for the AWS account.
@@ -3964,81 +3964,81 @@ func (s DeleteEventSubscriptionOutput) GoString() string {
 	return s.String()
 }
 
-type DeleteHSMClientCertificateInput struct {
+type DeleteHsmClientCertificateInput struct {
 	// The identifier of the HSM client certificate to be deleted.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string" required:"true"`
+	HsmClientCertificateIdentifier *string `type:"string" required:"true"`
 
-	metadataDeleteHSMClientCertificateInput `json:"-" xml:"-"`
+	metadataDeleteHsmClientCertificateInput `json:"-" xml:"-"`
 }
 
-type metadataDeleteHSMClientCertificateInput struct {
+type metadataDeleteHsmClientCertificateInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DeleteHSMClientCertificateInput) String() string {
+func (s DeleteHsmClientCertificateInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DeleteHSMClientCertificateInput) GoString() string {
+func (s DeleteHsmClientCertificateInput) GoString() string {
 	return s.String()
 }
 
-type DeleteHSMClientCertificateOutput struct {
-	metadataDeleteHSMClientCertificateOutput `json:"-" xml:"-"`
+type DeleteHsmClientCertificateOutput struct {
+	metadataDeleteHsmClientCertificateOutput `json:"-" xml:"-"`
 }
 
-type metadataDeleteHSMClientCertificateOutput struct {
+type metadataDeleteHsmClientCertificateOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DeleteHSMClientCertificateOutput) String() string {
+func (s DeleteHsmClientCertificateOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DeleteHSMClientCertificateOutput) GoString() string {
+func (s DeleteHsmClientCertificateOutput) GoString() string {
 	return s.String()
 }
 
-type DeleteHSMConfigurationInput struct {
+type DeleteHsmConfigurationInput struct {
 	// The identifier of the Amazon Redshift HSM configuration to be deleted.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string" required:"true"`
+	HsmConfigurationIdentifier *string `type:"string" required:"true"`
 
-	metadataDeleteHSMConfigurationInput `json:"-" xml:"-"`
+	metadataDeleteHsmConfigurationInput `json:"-" xml:"-"`
 }
 
-type metadataDeleteHSMConfigurationInput struct {
+type metadataDeleteHsmConfigurationInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DeleteHSMConfigurationInput) String() string {
+func (s DeleteHsmConfigurationInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DeleteHSMConfigurationInput) GoString() string {
+func (s DeleteHsmConfigurationInput) GoString() string {
 	return s.String()
 }
 
-type DeleteHSMConfigurationOutput struct {
-	metadataDeleteHSMConfigurationOutput `json:"-" xml:"-"`
+type DeleteHsmConfigurationOutput struct {
+	metadataDeleteHsmConfigurationOutput `json:"-" xml:"-"`
 }
 
-type metadataDeleteHSMConfigurationOutput struct {
+type metadataDeleteHsmConfigurationOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DeleteHSMConfigurationOutput) String() string {
+func (s DeleteHsmConfigurationOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DeleteHSMConfigurationOutput) GoString() string {
+func (s DeleteHsmConfigurationOutput) GoString() string {
 	return s.String()
 }
 
@@ -5029,11 +5029,11 @@ func (s DescribeEventsOutput) GoString() string {
 	return s.String()
 }
 
-type DescribeHSMClientCertificatesInput struct {
+type DescribeHsmClientCertificatesInput struct {
 	// The identifier of a specific HSM client certificate for which you want information.
 	// If no identifier is specified, information is returned for all HSM client
 	// certificates owned by your AWS customer account.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string"`
+	HsmClientCertificateIdentifier *string `type:"string"`
 
 	// An optional parameter that specifies the starting point to return a set of
 	// response records. When the results of a DescribeHsmClientCertificates request
@@ -5069,28 +5069,28 @@ type DescribeHSMClientCertificatesInput struct {
 	// that have either or both of these tag values associated with them.
 	TagValues []*string `locationNameList:"TagValue" type:"list"`
 
-	metadataDescribeHSMClientCertificatesInput `json:"-" xml:"-"`
+	metadataDescribeHsmClientCertificatesInput `json:"-" xml:"-"`
 }
 
-type metadataDescribeHSMClientCertificatesInput struct {
+type metadataDescribeHsmClientCertificatesInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DescribeHSMClientCertificatesInput) String() string {
+func (s DescribeHsmClientCertificatesInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DescribeHSMClientCertificatesInput) GoString() string {
+func (s DescribeHsmClientCertificatesInput) GoString() string {
 	return s.String()
 }
 
-type DescribeHSMClientCertificatesOutput struct {
+type DescribeHsmClientCertificatesOutput struct {
 	// A list of the identifiers for one or more HSM client certificates used by
 	// Amazon Redshift clusters to store and retrieve database encryption keys in
 	// an HSM.
-	HSMClientCertificates []*HSMClientCertificate `locationName:"HsmClientCertificates" locationNameList:"HsmClientCertificate" type:"list"`
+	HsmClientCertificates []*HsmClientCertificate `locationNameList:"HsmClientCertificate" type:"list"`
 
 	// A value that indicates the starting point for the next set of response records
 	// in a subsequent request. If a value is returned in a response, you can retrieve
@@ -5099,28 +5099,28 @@ type DescribeHSMClientCertificatesOutput struct {
 	// records have been retrieved for the request.
 	Marker *string `type:"string"`
 
-	metadataDescribeHSMClientCertificatesOutput `json:"-" xml:"-"`
+	metadataDescribeHsmClientCertificatesOutput `json:"-" xml:"-"`
 }
 
-type metadataDescribeHSMClientCertificatesOutput struct {
+type metadataDescribeHsmClientCertificatesOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DescribeHSMClientCertificatesOutput) String() string {
+func (s DescribeHsmClientCertificatesOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DescribeHSMClientCertificatesOutput) GoString() string {
+func (s DescribeHsmClientCertificatesOutput) GoString() string {
 	return s.String()
 }
 
-type DescribeHSMConfigurationsInput struct {
+type DescribeHsmConfigurationsInput struct {
 	// The identifier of a specific Amazon Redshift HSM configuration to be described.
 	// If no identifier is specified, information is returned for all HSM configurations
 	// owned by your AWS customer account.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string"`
+	HsmConfigurationIdentifier *string `type:"string"`
 
 	// An optional parameter that specifies the starting point to return a set of
 	// response records. When the results of a DescribeHsmConfigurations request
@@ -5156,26 +5156,26 @@ type DescribeHSMConfigurationsInput struct {
 	// or both of these tag values associated with them.
 	TagValues []*string `locationNameList:"TagValue" type:"list"`
 
-	metadataDescribeHSMConfigurationsInput `json:"-" xml:"-"`
+	metadataDescribeHsmConfigurationsInput `json:"-" xml:"-"`
 }
 
-type metadataDescribeHSMConfigurationsInput struct {
+type metadataDescribeHsmConfigurationsInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DescribeHSMConfigurationsInput) String() string {
+func (s DescribeHsmConfigurationsInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DescribeHSMConfigurationsInput) GoString() string {
+func (s DescribeHsmConfigurationsInput) GoString() string {
 	return s.String()
 }
 
-type DescribeHSMConfigurationsOutput struct {
+type DescribeHsmConfigurationsOutput struct {
 	// A list of Amazon Redshift HSM configurations.
-	HSMConfigurations []*HSMConfiguration `locationName:"HsmConfigurations" locationNameList:"HsmConfiguration" type:"list"`
+	HsmConfigurations []*HsmConfiguration `locationNameList:"HsmConfiguration" type:"list"`
 
 	// A value that indicates the starting point for the next set of response records
 	// in a subsequent request. If a value is returned in a response, you can retrieve
@@ -5184,20 +5184,20 @@ type DescribeHSMConfigurationsOutput struct {
 	// records have been retrieved for the request.
 	Marker *string `type:"string"`
 
-	metadataDescribeHSMConfigurationsOutput `json:"-" xml:"-"`
+	metadataDescribeHsmConfigurationsOutput `json:"-" xml:"-"`
 }
 
-type metadataDescribeHSMConfigurationsOutput struct {
+type metadataDescribeHsmConfigurationsOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s DescribeHSMConfigurationsOutput) String() string {
+func (s DescribeHsmConfigurationsOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s DescribeHSMConfigurationsOutput) GoString() string {
+func (s DescribeHsmConfigurationsOutput) GoString() string {
 	return s.String()
 }
 
@@ -5322,7 +5322,7 @@ type DescribeReservedNodeOfferingsInput struct {
 	MaxRecords *int64 `type:"integer"`
 
 	// The unique identifier for the offering.
-	ReservedNodeOfferingID *string `locationName:"ReservedNodeOfferingId" type:"string"`
+	ReservedNodeOfferingId *string `type:"string"`
 
 	metadataDescribeReservedNodeOfferingsInput `json:"-" xml:"-"`
 }
@@ -5389,7 +5389,7 @@ type DescribeReservedNodesInput struct {
 	MaxRecords *int64 `type:"integer"`
 
 	// Identifier for the node reservation.
-	ReservedNodeID *string `locationName:"ReservedNodeId" type:"string"`
+	ReservedNodeId *string `type:"string"`
 
 	metadataDescribeReservedNodesInput `json:"-" xml:"-"`
 }
@@ -5799,7 +5799,7 @@ type EC2SecurityGroup struct {
 
 	// The AWS ID of the owner of the EC2 security group specified in the EC2SecurityGroupName
 	// field.
-	EC2SecurityGroupOwnerID *string `locationName:"EC2SecurityGroupOwnerId" type:"string"`
+	EC2SecurityGroupOwnerId *string `type:"string"`
 
 	// The status of the EC2 security group.
 	Status *string `type:"string"`
@@ -5825,27 +5825,27 @@ func (s EC2SecurityGroup) GoString() string {
 }
 
 // Describes the status of the elastic IP (EIP) address.
-type ElasticIPStatus struct {
+type ElasticIpStatus struct {
 	// The elastic IP (EIP) address for the cluster.
-	ElasticIP *string `locationName:"ElasticIp" type:"string"`
+	ElasticIp *string `type:"string"`
 
 	// Describes the status of the elastic IP (EIP) address.
 	Status *string `type:"string"`
 
-	metadataElasticIPStatus `json:"-" xml:"-"`
+	metadataElasticIpStatus `json:"-" xml:"-"`
 }
 
-type metadataElasticIPStatus struct {
+type metadataElasticIpStatus struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s ElasticIPStatus) String() string {
+func (s ElasticIpStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s ElasticIPStatus) GoString() string {
+func (s ElasticIpStatus) GoString() string {
 	return s.String()
 }
 
@@ -5989,7 +5989,7 @@ type Event struct {
 	EventCategories []*string `locationNameList:"EventCategory" type:"list"`
 
 	// The identifier of the event.
-	EventID *string `locationName:"EventId" type:"string"`
+	EventId *string `type:"string"`
 
 	// The text of this event.
 	Message *string `type:"string"`
@@ -6055,7 +6055,7 @@ type EventInfoMap struct {
 	EventDescription *string `type:"string"`
 
 	// The identifier of an Amazon Redshift event.
-	EventID *string `locationName:"EventId" type:"string"`
+	EventId *string `type:"string"`
 
 	// The severity of the event.
 	//
@@ -6081,11 +6081,11 @@ func (s EventInfoMap) GoString() string {
 
 type EventSubscription struct {
 	// The name of the Amazon Redshift event notification subscription.
-	CustSubscriptionID *string `locationName:"CustSubscriptionId" type:"string"`
+	CustSubscriptionId *string `type:"string"`
 
 	// The AWS customer account associated with the Amazon Redshift event notification
 	// subscription.
-	CustomerAWSID *string `locationName:"CustomerAwsId" type:"string"`
+	CustomerAwsId *string `type:"string"`
 
 	// A Boolean value indicating whether the subscription is enabled. true indicates
 	// the subscription is enabled.
@@ -6097,18 +6097,18 @@ type EventSubscription struct {
 	// Values: Configuration, Management, Monitoring, Security
 	EventCategoriesList []*string `locationNameList:"EventCategory" type:"list"`
 
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic used by the event
-	// notification subscription.
-	SNSTopicARN *string `locationName:"SnsTopicArn" type:"string"`
-
 	// The event severity specified in the Amazon Redshift event notification subscription.
 	//
 	// Values: ERROR, INFO
 	Severity *string `type:"string"`
 
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic used by the event
+	// notification subscription.
+	SnsTopicArn *string `type:"string"`
+
 	// A list of the sources that publish events to the Amazon Redshift event notification
 	// subscription.
-	SourceIDsList []*string `locationName:"SourceIdsList" locationNameList:"SourceId" type:"list"`
+	SourceIdsList []*string `locationNameList:"SourceId" type:"list"`
 
 	// The source type of the events returned the Amazon Redshift event notification,
 	// such as cluster, or cluster-snapshot.
@@ -6151,79 +6151,79 @@ func (s EventSubscription) GoString() string {
 // Returns information about an HSM client certificate. The certificate is stored
 // in a secure Hardware Storage Module (HSM), and used by the Amazon Redshift
 // cluster to encrypt data files.
-type HSMClientCertificate struct {
+type HsmClientCertificate struct {
 	// The identifier of the HSM client certificate.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string"`
+	HsmClientCertificateIdentifier *string `type:"string"`
 
 	// The public key that the Amazon Redshift cluster will use to connect to the
 	// HSM. You must register the public key in the HSM.
-	HSMClientCertificatePublicKey *string `locationName:"HsmClientCertificatePublicKey" type:"string"`
+	HsmClientCertificatePublicKey *string `type:"string"`
 
 	// The list of tags for the HSM client certificate.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
-	metadataHSMClientCertificate `json:"-" xml:"-"`
+	metadataHsmClientCertificate `json:"-" xml:"-"`
 }
 
-type metadataHSMClientCertificate struct {
+type metadataHsmClientCertificate struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s HSMClientCertificate) String() string {
+func (s HsmClientCertificate) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s HSMClientCertificate) GoString() string {
+func (s HsmClientCertificate) GoString() string {
 	return s.String()
 }
 
 // Returns information about an HSM configuration, which is an object that describes
 // to Amazon Redshift clusters the information they require to connect to an
 // HSM where they can store database encryption keys.
-type HSMConfiguration struct {
+type HsmConfiguration struct {
 	// A text description of the HSM configuration.
 	Description *string `type:"string"`
 
 	// The name of the Amazon Redshift HSM configuration.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string"`
+	HsmConfigurationIdentifier *string `type:"string"`
 
 	// The IP address that the Amazon Redshift cluster must use to access the HSM.
-	HSMIPAddress *string `locationName:"HsmIpAddress" type:"string"`
+	HsmIpAddress *string `type:"string"`
 
 	// The name of the partition in the HSM where the Amazon Redshift clusters will
 	// store their database encryption keys.
-	HSMPartitionName *string `locationName:"HsmPartitionName" type:"string"`
+	HsmPartitionName *string `type:"string"`
 
 	// The list of tags for the HSM configuration.
 	Tags []*Tag `locationNameList:"Tag" type:"list"`
 
-	metadataHSMConfiguration `json:"-" xml:"-"`
+	metadataHsmConfiguration `json:"-" xml:"-"`
 }
 
-type metadataHSMConfiguration struct {
+type metadataHsmConfiguration struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s HSMConfiguration) String() string {
+func (s HsmConfiguration) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s HSMConfiguration) GoString() string {
+func (s HsmConfiguration) GoString() string {
 	return s.String()
 }
 
-type HSMStatus struct {
+type HsmStatus struct {
 	// Specifies the name of the HSM client certificate the Amazon Redshift cluster
 	// uses to retrieve the data encryption keys stored in an HSM.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string"`
+	HsmClientCertificateIdentifier *string `type:"string"`
 
 	// Specifies the name of the HSM configuration that contains the information
 	// the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string"`
+	HsmConfigurationIdentifier *string `type:"string"`
 
 	// Reports whether the Amazon Redshift cluster has finished applying any HSM
 	// settings changes specified in a modify cluster command.
@@ -6231,20 +6231,20 @@ type HSMStatus struct {
 	// Values: active, applying
 	Status *string `type:"string"`
 
-	metadataHSMStatus `json:"-" xml:"-"`
+	metadataHsmStatus `json:"-" xml:"-"`
 }
 
-type metadataHSMStatus struct {
+type metadataHsmStatus struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s HSMStatus) String() string {
+func (s HsmStatus) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s HSMStatus) GoString() string {
+func (s HsmStatus) GoString() string {
 	return s.String()
 }
 
@@ -6385,11 +6385,11 @@ type ModifyClusterInput struct {
 
 	// Specifies the name of the HSM client certificate the Amazon Redshift cluster
 	// uses to retrieve the data encryption keys stored in an HSM.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string"`
+	HsmClientCertificateIdentifier *string `type:"string"`
 
 	// Specifies the name of the HSM configuration that contains the information
 	// the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string"`
+	HsmConfigurationIdentifier *string `type:"string"`
 
 	// The new password for the cluster master user. This change is asynchronously
 	// applied as soon as possible. Between the time of the request and the completion
@@ -6467,7 +6467,7 @@ type ModifyClusterInput struct {
 
 	// A list of virtual private cloud (VPC) security groups to be associated with
 	// the cluster.
-	VPCSecurityGroupIDs []*string `locationName:"VpcSecurityGroupIds" locationNameList:"VpcSecurityGroupId" type:"list"`
+	VpcSecurityGroupIds []*string `locationNameList:"VpcSecurityGroupId" type:"list"`
 
 	metadataModifyClusterInput `json:"-" xml:"-"`
 }
@@ -6547,7 +6547,7 @@ type ModifyClusterSubnetGroupInput struct {
 
 	// An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
 	// single request.
-	SubnetIDs []*string `locationName:"SubnetIds" locationNameList:"SubnetIdentifier" type:"list" required:"true"`
+	SubnetIds []*string `locationNameList:"SubnetIdentifier" type:"list" required:"true"`
 
 	metadataModifyClusterSubnetGroupInput `json:"-" xml:"-"`
 }
@@ -6598,15 +6598,15 @@ type ModifyEventSubscriptionInput struct {
 	// Values: Configuration, Management, Monitoring, Security
 	EventCategories []*string `locationNameList:"EventCategory" type:"list"`
 
-	// The Amazon Resource Name (ARN) of the SNS topic to be used by the event notification
-	// subscription.
-	SNSTopicARN *string `locationName:"SnsTopicArn" type:"string"`
-
 	// Specifies the Amazon Redshift event severity to be published by the event
 	// notification subscription.
 	//
 	// Values: ERROR, INFO
 	Severity *string `type:"string"`
+
+	// The Amazon Resource Name (ARN) of the SNS topic to be used by the event notification
+	// subscription.
+	SnsTopicArn *string `type:"string"`
 
 	// A list of one or more identifiers of Amazon Redshift source objects. All
 	// of the objects must be of the same type as was specified in the source type
@@ -6617,7 +6617,7 @@ type ModifyEventSubscriptionInput struct {
 	// Example: my-cluster-1, my-cluster-2
 	//
 	// Example: my-snapshot-20131010
-	SourceIDs []*string `locationName:"SourceIds" locationNameList:"SourceId" type:"list"`
+	SourceIds []*string `locationNameList:"SourceId" type:"list"`
 
 	// The type of source that will be generating the events. For example, if you
 	// want to be notified of events generated by a cluster, you would set this
@@ -6852,7 +6852,7 @@ type PurchaseReservedNodeOfferingInput struct {
 	NodeCount *int64 `type:"integer"`
 
 	// The unique identifier of the reserved node offering you want to purchase.
-	ReservedNodeOfferingID *string `locationName:"ReservedNodeOfferingId" type:"string" required:"true"`
+	ReservedNodeOfferingId *string `type:"string" required:"true"`
 
 	metadataPurchaseReservedNodeOfferingInput `json:"-" xml:"-"`
 }
@@ -6987,10 +6987,10 @@ type ReservedNode struct {
 	RecurringCharges []*RecurringCharge `locationNameList:"RecurringCharge" type:"list"`
 
 	// The unique identifier for the reservation.
-	ReservedNodeID *string `locationName:"ReservedNodeId" type:"string"`
+	ReservedNodeId *string `type:"string"`
 
 	// The identifier for the reserved node offering.
-	ReservedNodeOfferingID *string `locationName:"ReservedNodeOfferingId" type:"string"`
+	ReservedNodeOfferingId *string `type:"string"`
 
 	// The time the reservation started. You purchase a reserved node offering for
 	// a duration. This is the start time of that duration.
@@ -7051,7 +7051,7 @@ type ReservedNodeOffering struct {
 	RecurringCharges []*RecurringCharge `locationNameList:"RecurringCharge" type:"list"`
 
 	// The offering identifier.
-	ReservedNodeOfferingID *string `locationName:"ReservedNodeOfferingId" type:"string"`
+	ReservedNodeOfferingId *string `type:"string"`
 
 	// The rate you are charged for each hour the cluster that is using the offering
 	// is running.
@@ -7167,20 +7167,20 @@ type RestoreFromClusterSnapshotInput struct {
 	ClusterSubnetGroupName *string `type:"string"`
 
 	// The elastic IP (EIP) address for the cluster.
-	ElasticIP *string `locationName:"ElasticIp" type:"string"`
+	ElasticIp *string `type:"string"`
 
 	// Specifies the name of the HSM client certificate the Amazon Redshift cluster
 	// uses to retrieve the data encryption keys stored in an HSM.
-	HSMClientCertificateIdentifier *string `locationName:"HsmClientCertificateIdentifier" type:"string"`
+	HsmClientCertificateIdentifier *string `type:"string"`
 
 	// Specifies the name of the HSM configuration that contains the information
 	// the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
-	HSMConfigurationIdentifier *string `locationName:"HsmConfigurationIdentifier" type:"string"`
+	HsmConfigurationIdentifier *string `type:"string"`
 
 	// The AWS Key Management Service (KMS) key ID of the encryption key that you
 	// want to use to encrypt data in the cluster that you restore from a shared
 	// snapshot.
-	KMSKeyID *string `locationName:"KmsKeyId" type:"string"`
+	KmsKeyId *string `type:"string"`
 
 	// The node type that the restored cluster will be provisioned with.
 	//
@@ -7241,7 +7241,7 @@ type RestoreFromClusterSnapshotInput struct {
 	//  Default: The default VPC security group is associated with the cluster.
 	//
 	//  VPC security groups only apply to clusters in VPCs.
-	VPCSecurityGroupIDs []*string `locationName:"VpcSecurityGroupIds" locationNameList:"VpcSecurityGroupId" type:"list"`
+	VpcSecurityGroupIds []*string `locationNameList:"VpcSecurityGroupId" type:"list"`
 
 	metadataRestoreFromClusterSnapshotInput `json:"-" xml:"-"`
 }
@@ -7344,7 +7344,7 @@ type RevokeClusterSecurityGroupIngressInput struct {
 	// also be provided. and CIDRIP cannot be provided.
 	//
 	// Example: 111122223333
-	EC2SecurityGroupOwnerID *string `locationName:"EC2SecurityGroupOwnerId" type:"string"`
+	EC2SecurityGroupOwnerId *string `type:"string"`
 
 	metadataRevokeClusterSecurityGroupIngressInput `json:"-" xml:"-"`
 }
@@ -7529,7 +7529,7 @@ type Snapshot struct {
 
 	// The AWS Key Management Service (KMS) key ID of the encryption key that was
 	// used to encrypt data in the cluster from which the snapshot was taken.
-	KMSKeyID *string `locationName:"KmsKeyId" type:"string"`
+	KmsKeyId *string `type:"string"`
 
 	// The master user name for the cluster.
 	MasterUsername *string `type:"string"`
@@ -7580,7 +7580,7 @@ type Snapshot struct {
 
 	// The VPC identifier of the cluster if the snapshot is from a cluster in a
 	// VPC. Otherwise, this field is not in the output.
-	VPCID *string `locationName:"VpcId" type:"string"`
+	VpcId *string `type:"string"`
 
 	metadataSnapshot `json:"-" xml:"-"`
 }
@@ -7609,7 +7609,7 @@ func (s Snapshot) GoString() string {
 type SnapshotCopyGrant struct {
 	// The unique identifier of the customer master key (CMK) in AWS KMS to which
 	// Amazon Redshift is granted permission.
-	KMSKeyID *string `locationName:"KmsKeyId" type:"string"`
+	KmsKeyId *string `type:"string"`
 
 	// The name of the snapshot copy grant.
 	SnapshotCopyGrantName *string `type:"string"`
@@ -7723,25 +7723,25 @@ func (s TaggedResource) GoString() string {
 }
 
 // Describes the members of a VPC security group.
-type VPCSecurityGroupMembership struct {
+type VpcSecurityGroupMembership struct {
 	Status *string `type:"string"`
 
-	VPCSecurityGroupID *string `locationName:"VpcSecurityGroupId" type:"string"`
+	VpcSecurityGroupId *string `type:"string"`
 
-	metadataVPCSecurityGroupMembership `json:"-" xml:"-"`
+	metadataVpcSecurityGroupMembership `json:"-" xml:"-"`
 }
 
-type metadataVPCSecurityGroupMembership struct {
+type metadataVpcSecurityGroupMembership struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s VPCSecurityGroupMembership) String() string {
+func (s VpcSecurityGroupMembership) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s VPCSecurityGroupMembership) GoString() string {
+func (s VpcSecurityGroupMembership) GoString() string {
 	return s.String()
 }
 

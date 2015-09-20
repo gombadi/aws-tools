@@ -22,7 +22,7 @@ func main() {
 		ErrorWriter: os.Stderr,
 	}
 
-	c := cli.NewCLI("awsgo-tools", "0.0.5")
+	c := cli.NewCLI("awsgo-tools", "0.0.9")
 	c.Args = os.Args[1:]
 
 	c.Commands = map[string]cli.CommandFactory{
@@ -75,6 +75,13 @@ func main() {
 				},
 			}, nil
 		},
+		"s3info": func() (cli.Command, error) {
+			return &S3infoCommand{
+				Ui: &cli.ColoredUi{
+					Ui: ui,
+				},
+			}, nil
+		},
 	}
 
 	exitStatus, err := c.Run()
@@ -88,4 +95,4 @@ func main() {
 /*
 
 
-*/
+ */

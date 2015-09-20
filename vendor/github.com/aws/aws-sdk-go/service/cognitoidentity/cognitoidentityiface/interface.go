@@ -4,81 +4,81 @@
 package cognitoidentityiface
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/cognitoidentity"
 )
 
 // CognitoIdentityAPI is the interface type for cognitoidentity.CognitoIdentity.
 type CognitoIdentityAPI interface {
-	CreateIdentityPoolRequest(*cognitoidentity.CreateIdentityPoolInput) (*aws.Request, *cognitoidentity.IdentityPool)
+	CreateIdentityPoolRequest(*cognitoidentity.CreateIdentityPoolInput) (*request.Request, *cognitoidentity.IdentityPool)
 
 	CreateIdentityPool(*cognitoidentity.CreateIdentityPoolInput) (*cognitoidentity.IdentityPool, error)
 
-	DeleteIdentitiesRequest(*cognitoidentity.DeleteIdentitiesInput) (*aws.Request, *cognitoidentity.DeleteIdentitiesOutput)
+	DeleteIdentitiesRequest(*cognitoidentity.DeleteIdentitiesInput) (*request.Request, *cognitoidentity.DeleteIdentitiesOutput)
 
 	DeleteIdentities(*cognitoidentity.DeleteIdentitiesInput) (*cognitoidentity.DeleteIdentitiesOutput, error)
 
-	DeleteIdentityPoolRequest(*cognitoidentity.DeleteIdentityPoolInput) (*aws.Request, *cognitoidentity.DeleteIdentityPoolOutput)
+	DeleteIdentityPoolRequest(*cognitoidentity.DeleteIdentityPoolInput) (*request.Request, *cognitoidentity.DeleteIdentityPoolOutput)
 
 	DeleteIdentityPool(*cognitoidentity.DeleteIdentityPoolInput) (*cognitoidentity.DeleteIdentityPoolOutput, error)
 
-	DescribeIdentityRequest(*cognitoidentity.DescribeIdentityInput) (*aws.Request, *cognitoidentity.IdentityDescription)
+	DescribeIdentityRequest(*cognitoidentity.DescribeIdentityInput) (*request.Request, *cognitoidentity.IdentityDescription)
 
 	DescribeIdentity(*cognitoidentity.DescribeIdentityInput) (*cognitoidentity.IdentityDescription, error)
 
-	DescribeIdentityPoolRequest(*cognitoidentity.DescribeIdentityPoolInput) (*aws.Request, *cognitoidentity.IdentityPool)
+	DescribeIdentityPoolRequest(*cognitoidentity.DescribeIdentityPoolInput) (*request.Request, *cognitoidentity.IdentityPool)
 
 	DescribeIdentityPool(*cognitoidentity.DescribeIdentityPoolInput) (*cognitoidentity.IdentityPool, error)
 
-	GetCredentialsForIdentityRequest(*cognitoidentity.GetCredentialsForIdentityInput) (*aws.Request, *cognitoidentity.GetCredentialsForIdentityOutput)
+	GetCredentialsForIdentityRequest(*cognitoidentity.GetCredentialsForIdentityInput) (*request.Request, *cognitoidentity.GetCredentialsForIdentityOutput)
 
 	GetCredentialsForIdentity(*cognitoidentity.GetCredentialsForIdentityInput) (*cognitoidentity.GetCredentialsForIdentityOutput, error)
 
-	GetIDRequest(*cognitoidentity.GetIDInput) (*aws.Request, *cognitoidentity.GetIDOutput)
+	GetIdRequest(*cognitoidentity.GetIdInput) (*request.Request, *cognitoidentity.GetIdOutput)
 
-	GetID(*cognitoidentity.GetIDInput) (*cognitoidentity.GetIDOutput, error)
+	GetId(*cognitoidentity.GetIdInput) (*cognitoidentity.GetIdOutput, error)
 
-	GetIdentityPoolRolesRequest(*cognitoidentity.GetIdentityPoolRolesInput) (*aws.Request, *cognitoidentity.GetIdentityPoolRolesOutput)
+	GetIdentityPoolRolesRequest(*cognitoidentity.GetIdentityPoolRolesInput) (*request.Request, *cognitoidentity.GetIdentityPoolRolesOutput)
 
 	GetIdentityPoolRoles(*cognitoidentity.GetIdentityPoolRolesInput) (*cognitoidentity.GetIdentityPoolRolesOutput, error)
 
-	GetOpenIDTokenRequest(*cognitoidentity.GetOpenIDTokenInput) (*aws.Request, *cognitoidentity.GetOpenIDTokenOutput)
+	GetOpenIdTokenRequest(*cognitoidentity.GetOpenIdTokenInput) (*request.Request, *cognitoidentity.GetOpenIdTokenOutput)
 
-	GetOpenIDToken(*cognitoidentity.GetOpenIDTokenInput) (*cognitoidentity.GetOpenIDTokenOutput, error)
+	GetOpenIdToken(*cognitoidentity.GetOpenIdTokenInput) (*cognitoidentity.GetOpenIdTokenOutput, error)
 
-	GetOpenIDTokenForDeveloperIdentityRequest(*cognitoidentity.GetOpenIDTokenForDeveloperIdentityInput) (*aws.Request, *cognitoidentity.GetOpenIDTokenForDeveloperIdentityOutput)
+	GetOpenIdTokenForDeveloperIdentityRequest(*cognitoidentity.GetOpenIdTokenForDeveloperIdentityInput) (*request.Request, *cognitoidentity.GetOpenIdTokenForDeveloperIdentityOutput)
 
-	GetOpenIDTokenForDeveloperIdentity(*cognitoidentity.GetOpenIDTokenForDeveloperIdentityInput) (*cognitoidentity.GetOpenIDTokenForDeveloperIdentityOutput, error)
+	GetOpenIdTokenForDeveloperIdentity(*cognitoidentity.GetOpenIdTokenForDeveloperIdentityInput) (*cognitoidentity.GetOpenIdTokenForDeveloperIdentityOutput, error)
 
-	ListIdentitiesRequest(*cognitoidentity.ListIdentitiesInput) (*aws.Request, *cognitoidentity.ListIdentitiesOutput)
+	ListIdentitiesRequest(*cognitoidentity.ListIdentitiesInput) (*request.Request, *cognitoidentity.ListIdentitiesOutput)
 
 	ListIdentities(*cognitoidentity.ListIdentitiesInput) (*cognitoidentity.ListIdentitiesOutput, error)
 
-	ListIdentityPoolsRequest(*cognitoidentity.ListIdentityPoolsInput) (*aws.Request, *cognitoidentity.ListIdentityPoolsOutput)
+	ListIdentityPoolsRequest(*cognitoidentity.ListIdentityPoolsInput) (*request.Request, *cognitoidentity.ListIdentityPoolsOutput)
 
 	ListIdentityPools(*cognitoidentity.ListIdentityPoolsInput) (*cognitoidentity.ListIdentityPoolsOutput, error)
 
-	LookupDeveloperIdentityRequest(*cognitoidentity.LookupDeveloperIdentityInput) (*aws.Request, *cognitoidentity.LookupDeveloperIdentityOutput)
+	LookupDeveloperIdentityRequest(*cognitoidentity.LookupDeveloperIdentityInput) (*request.Request, *cognitoidentity.LookupDeveloperIdentityOutput)
 
 	LookupDeveloperIdentity(*cognitoidentity.LookupDeveloperIdentityInput) (*cognitoidentity.LookupDeveloperIdentityOutput, error)
 
-	MergeDeveloperIdentitiesRequest(*cognitoidentity.MergeDeveloperIdentitiesInput) (*aws.Request, *cognitoidentity.MergeDeveloperIdentitiesOutput)
+	MergeDeveloperIdentitiesRequest(*cognitoidentity.MergeDeveloperIdentitiesInput) (*request.Request, *cognitoidentity.MergeDeveloperIdentitiesOutput)
 
 	MergeDeveloperIdentities(*cognitoidentity.MergeDeveloperIdentitiesInput) (*cognitoidentity.MergeDeveloperIdentitiesOutput, error)
 
-	SetIdentityPoolRolesRequest(*cognitoidentity.SetIdentityPoolRolesInput) (*aws.Request, *cognitoidentity.SetIdentityPoolRolesOutput)
+	SetIdentityPoolRolesRequest(*cognitoidentity.SetIdentityPoolRolesInput) (*request.Request, *cognitoidentity.SetIdentityPoolRolesOutput)
 
 	SetIdentityPoolRoles(*cognitoidentity.SetIdentityPoolRolesInput) (*cognitoidentity.SetIdentityPoolRolesOutput, error)
 
-	UnlinkDeveloperIdentityRequest(*cognitoidentity.UnlinkDeveloperIdentityInput) (*aws.Request, *cognitoidentity.UnlinkDeveloperIdentityOutput)
+	UnlinkDeveloperIdentityRequest(*cognitoidentity.UnlinkDeveloperIdentityInput) (*request.Request, *cognitoidentity.UnlinkDeveloperIdentityOutput)
 
 	UnlinkDeveloperIdentity(*cognitoidentity.UnlinkDeveloperIdentityInput) (*cognitoidentity.UnlinkDeveloperIdentityOutput, error)
 
-	UnlinkIdentityRequest(*cognitoidentity.UnlinkIdentityInput) (*aws.Request, *cognitoidentity.UnlinkIdentityOutput)
+	UnlinkIdentityRequest(*cognitoidentity.UnlinkIdentityInput) (*request.Request, *cognitoidentity.UnlinkIdentityOutput)
 
 	UnlinkIdentity(*cognitoidentity.UnlinkIdentityInput) (*cognitoidentity.UnlinkIdentityOutput, error)
 
-	UpdateIdentityPoolRequest(*cognitoidentity.IdentityPool) (*aws.Request, *cognitoidentity.IdentityPool)
+	UpdateIdentityPoolRequest(*cognitoidentity.IdentityPool) (*request.Request, *cognitoidentity.IdentityPool)
 
 	UpdateIdentityPool(*cognitoidentity.IdentityPool) (*cognitoidentity.IdentityPool, error)
 }

@@ -9,6 +9,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/internal/test/unit"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/stretchr/testify/assert"
@@ -26,12 +27,12 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func mockCRCResponse(svc *dynamodb.DynamoDB, status int, body, crc string) (req *aws.Request) {
+func mockCRCResponse(svc *dynamodb.DynamoDB, status int, body, crc string) (req *request.Request) {
 	header := http.Header{}
 	header.Set("x-amz-crc32", crc)
 
 	req, _ = svc.ListTablesRequest(nil)
-	req.Handlers.Send.PushBack(func(*aws.Request) {
+	req.Handlers.Send.PushBack(func(*request.Request) {
 		req.HTTPResponse = &http.Response{
 			StatusCode: status,
 			Body:       ioutil.NopCloser(bytes.NewReader([]byte(body))),

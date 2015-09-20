@@ -6,15 +6,15 @@ package cloudsearchdomain
 import (
 	"io"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opSearch = "Search"
 
 // SearchRequest generates a request for the Search operation.
-func (c *CloudSearchDomain) SearchRequest(input *SearchInput) (req *aws.Request, output *SearchOutput) {
-	op := &aws.Operation{
+func (c *CloudSearchDomain) SearchRequest(input *SearchInput) (req *request.Request, output *SearchOutput) {
+	op := &request.Operation{
 		Name:       opSearch,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2013-01-01/search?format=sdk&pretty=true",
@@ -58,8 +58,8 @@ func (c *CloudSearchDomain) Search(input *SearchInput) (*SearchOutput, error) {
 const opSuggest = "Suggest"
 
 // SuggestRequest generates a request for the Suggest operation.
-func (c *CloudSearchDomain) SuggestRequest(input *SuggestInput) (req *aws.Request, output *SuggestOutput) {
-	op := &aws.Operation{
+func (c *CloudSearchDomain) SuggestRequest(input *SuggestInput) (req *request.Request, output *SuggestOutput) {
+	op := &request.Operation{
 		Name:       opSuggest,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2013-01-01/suggest?format=sdk&pretty=true",
@@ -101,8 +101,8 @@ func (c *CloudSearchDomain) Suggest(input *SuggestInput) (*SuggestOutput, error)
 const opUploadDocuments = "UploadDocuments"
 
 // UploadDocumentsRequest generates a request for the UploadDocuments operation.
-func (c *CloudSearchDomain) UploadDocumentsRequest(input *UploadDocumentsInput) (req *aws.Request, output *UploadDocumentsOutput) {
-	op := &aws.Operation{
+func (c *CloudSearchDomain) UploadDocumentsRequest(input *UploadDocumentsInput) (req *request.Request, output *UploadDocumentsOutput) {
+	op := &request.Operation{
 		Name:       opUploadDocuments,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2013-01-01/documents/batch?format=sdk",
@@ -228,7 +228,7 @@ type Hit struct {
 	Highlights map[string]*string `locationName:"highlights" type:"map"`
 
 	// The document ID of a document that matches the search request.
-	ID *string `locationName:"id" type:"string"`
+	Id *string `locationName:"id" type:"string"`
 
 	metadataHit `json:"-" xml:"-"`
 }
@@ -608,10 +608,10 @@ func (s SearchOutput) GoString() string {
 // (timems).
 type SearchStatus struct {
 	// The encrypted resource ID for the request.
-	RID *string `locationName:"rid" type:"string"`
+	Rid *string `locationName:"rid" type:"string"`
 
 	// How long it took to process the request, in milliseconds.
-	TimeMS *int64 `locationName:"timems" type:"long"`
+	Timems *int64 `locationName:"timems" type:"long"`
 
 	metadataSearchStatus `json:"-" xml:"-"`
 }
@@ -716,10 +716,10 @@ func (s SuggestOutput) GoString() string {
 // (timems).
 type SuggestStatus struct {
 	// The encrypted resource ID for the request.
-	RID *string `locationName:"rid" type:"string"`
+	Rid *string `locationName:"rid" type:"string"`
 
 	// How long it took to process the request, in milliseconds.
-	TimeMS *int64 `locationName:"timems" type:"long"`
+	Timems *int64 `locationName:"timems" type:"long"`
 
 	metadataSuggestStatus `json:"-" xml:"-"`
 }
@@ -741,7 +741,7 @@ func (s SuggestStatus) GoString() string {
 // An autocomplete suggestion that matches the query string specified in a SuggestRequest.
 type SuggestionMatch struct {
 	// The document ID of the suggested document.
-	ID *string `locationName:"id" type:"string"`
+	Id *string `locationName:"id" type:"string"`
 
 	// The relevance score of a suggested match.
 	Score *int64 `locationName:"score" type:"long"`

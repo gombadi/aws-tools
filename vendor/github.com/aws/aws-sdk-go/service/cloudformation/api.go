@@ -6,15 +6,15 @@ package cloudformation
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opCancelUpdateStack = "CancelUpdateStack"
 
 // CancelUpdateStackRequest generates a request for the CancelUpdateStack operation.
-func (c *CloudFormation) CancelUpdateStackRequest(input *CancelUpdateStackInput) (req *aws.Request, output *CancelUpdateStackOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) CancelUpdateStackRequest(input *CancelUpdateStackInput) (req *request.Request, output *CancelUpdateStackOutput) {
+	op := &request.Operation{
 		Name:       opCancelUpdateStack,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -43,8 +43,8 @@ func (c *CloudFormation) CancelUpdateStack(input *CancelUpdateStackInput) (*Canc
 const opCreateStack = "CreateStack"
 
 // CreateStackRequest generates a request for the CreateStack operation.
-func (c *CloudFormation) CreateStackRequest(input *CreateStackInput) (req *aws.Request, output *CreateStackOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) CreateStackRequest(input *CreateStackInput) (req *request.Request, output *CreateStackOutput) {
+	op := &request.Operation{
 		Name:       opCreateStack,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -72,8 +72,8 @@ func (c *CloudFormation) CreateStack(input *CreateStackInput) (*CreateStackOutpu
 const opDeleteStack = "DeleteStack"
 
 // DeleteStackRequest generates a request for the DeleteStack operation.
-func (c *CloudFormation) DeleteStackRequest(input *DeleteStackInput) (req *aws.Request, output *DeleteStackOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) DeleteStackRequest(input *DeleteStackInput) (req *request.Request, output *DeleteStackOutput) {
+	op := &request.Operation{
 		Name:       opDeleteStack,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -101,12 +101,12 @@ func (c *CloudFormation) DeleteStack(input *DeleteStackInput) (*DeleteStackOutpu
 const opDescribeStackEvents = "DescribeStackEvents"
 
 // DescribeStackEventsRequest generates a request for the DescribeStackEvents operation.
-func (c *CloudFormation) DescribeStackEventsRequest(input *DescribeStackEventsInput) (req *aws.Request, output *DescribeStackEventsOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) DescribeStackEventsRequest(input *DescribeStackEventsInput) (req *request.Request, output *DescribeStackEventsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeStackEvents,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"NextToken"},
 			OutputTokens:    []string{"NextToken"},
 			LimitToken:      "",
@@ -146,8 +146,8 @@ func (c *CloudFormation) DescribeStackEventsPages(input *DescribeStackEventsInpu
 const opDescribeStackResource = "DescribeStackResource"
 
 // DescribeStackResourceRequest generates a request for the DescribeStackResource operation.
-func (c *CloudFormation) DescribeStackResourceRequest(input *DescribeStackResourceInput) (req *aws.Request, output *DescribeStackResourceOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) DescribeStackResourceRequest(input *DescribeStackResourceInput) (req *request.Request, output *DescribeStackResourceOutput) {
+	op := &request.Operation{
 		Name:       opDescribeStackResource,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -176,8 +176,8 @@ func (c *CloudFormation) DescribeStackResource(input *DescribeStackResourceInput
 const opDescribeStackResources = "DescribeStackResources"
 
 // DescribeStackResourcesRequest generates a request for the DescribeStackResources operation.
-func (c *CloudFormation) DescribeStackResourcesRequest(input *DescribeStackResourcesInput) (req *aws.Request, output *DescribeStackResourcesOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) DescribeStackResourcesRequest(input *DescribeStackResourcesInput) (req *request.Request, output *DescribeStackResourcesOutput) {
+	op := &request.Operation{
 		Name:       opDescribeStackResources,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -219,12 +219,12 @@ func (c *CloudFormation) DescribeStackResources(input *DescribeStackResourcesInp
 const opDescribeStacks = "DescribeStacks"
 
 // DescribeStacksRequest generates a request for the DescribeStacks operation.
-func (c *CloudFormation) DescribeStacksRequest(input *DescribeStacksInput) (req *aws.Request, output *DescribeStacksOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) DescribeStacksRequest(input *DescribeStacksInput) (req *request.Request, output *DescribeStacksOutput) {
+	op := &request.Operation{
 		Name:       opDescribeStacks,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"NextToken"},
 			OutputTokens:    []string{"NextToken"},
 			LimitToken:      "",
@@ -260,8 +260,8 @@ func (c *CloudFormation) DescribeStacksPages(input *DescribeStacksInput, fn func
 const opEstimateTemplateCost = "EstimateTemplateCost"
 
 // EstimateTemplateCostRequest generates a request for the EstimateTemplateCost operation.
-func (c *CloudFormation) EstimateTemplateCostRequest(input *EstimateTemplateCostInput) (req *aws.Request, output *EstimateTemplateCostOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) EstimateTemplateCostRequest(input *EstimateTemplateCostInput) (req *request.Request, output *EstimateTemplateCostOutput) {
+	op := &request.Operation{
 		Name:       opEstimateTemplateCost,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -289,8 +289,8 @@ func (c *CloudFormation) EstimateTemplateCost(input *EstimateTemplateCostInput) 
 const opGetStackPolicy = "GetStackPolicy"
 
 // GetStackPolicyRequest generates a request for the GetStackPolicy operation.
-func (c *CloudFormation) GetStackPolicyRequest(input *GetStackPolicyInput) (req *aws.Request, output *GetStackPolicyOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) GetStackPolicyRequest(input *GetStackPolicyInput) (req *request.Request, output *GetStackPolicyOutput) {
+	op := &request.Operation{
 		Name:       opGetStackPolicy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -317,8 +317,8 @@ func (c *CloudFormation) GetStackPolicy(input *GetStackPolicyInput) (*GetStackPo
 const opGetTemplate = "GetTemplate"
 
 // GetTemplateRequest generates a request for the GetTemplate operation.
-func (c *CloudFormation) GetTemplateRequest(input *GetTemplateInput) (req *aws.Request, output *GetTemplateOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) GetTemplateRequest(input *GetTemplateInput) (req *request.Request, output *GetTemplateOutput) {
+	op := &request.Operation{
 		Name:       opGetTemplate,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -350,8 +350,8 @@ func (c *CloudFormation) GetTemplate(input *GetTemplateInput) (*GetTemplateOutpu
 const opGetTemplateSummary = "GetTemplateSummary"
 
 // GetTemplateSummaryRequest generates a request for the GetTemplateSummary operation.
-func (c *CloudFormation) GetTemplateSummaryRequest(input *GetTemplateSummaryInput) (req *aws.Request, output *GetTemplateSummaryOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) GetTemplateSummaryRequest(input *GetTemplateSummaryInput) (req *request.Request, output *GetTemplateSummaryOutput) {
+	op := &request.Operation{
 		Name:       opGetTemplateSummary,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -386,12 +386,12 @@ func (c *CloudFormation) GetTemplateSummary(input *GetTemplateSummaryInput) (*Ge
 const opListStackResources = "ListStackResources"
 
 // ListStackResourcesRequest generates a request for the ListStackResources operation.
-func (c *CloudFormation) ListStackResourcesRequest(input *ListStackResourcesInput) (req *aws.Request, output *ListStackResourcesOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) ListStackResourcesRequest(input *ListStackResourcesInput) (req *request.Request, output *ListStackResourcesOutput) {
+	op := &request.Operation{
 		Name:       opListStackResources,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"NextToken"},
 			OutputTokens:    []string{"NextToken"},
 			LimitToken:      "",
@@ -429,12 +429,12 @@ func (c *CloudFormation) ListStackResourcesPages(input *ListStackResourcesInput,
 const opListStacks = "ListStacks"
 
 // ListStacksRequest generates a request for the ListStacks operation.
-func (c *CloudFormation) ListStacksRequest(input *ListStacksInput) (req *aws.Request, output *ListStacksOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) ListStacksRequest(input *ListStacksInput) (req *request.Request, output *ListStacksOutput) {
+	op := &request.Operation{
 		Name:       opListStacks,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"NextToken"},
 			OutputTokens:    []string{"NextToken"},
 			LimitToken:      "",
@@ -473,8 +473,8 @@ func (c *CloudFormation) ListStacksPages(input *ListStacksInput, fn func(p *List
 const opSetStackPolicy = "SetStackPolicy"
 
 // SetStackPolicyRequest generates a request for the SetStackPolicy operation.
-func (c *CloudFormation) SetStackPolicyRequest(input *SetStackPolicyInput) (req *aws.Request, output *SetStackPolicyOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) SetStackPolicyRequest(input *SetStackPolicyInput) (req *request.Request, output *SetStackPolicyOutput) {
+	op := &request.Operation{
 		Name:       opSetStackPolicy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -500,8 +500,8 @@ func (c *CloudFormation) SetStackPolicy(input *SetStackPolicyInput) (*SetStackPo
 const opSignalResource = "SignalResource"
 
 // SignalResourceRequest generates a request for the SignalResource operation.
-func (c *CloudFormation) SignalResourceRequest(input *SignalResourceInput) (req *aws.Request, output *SignalResourceOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) SignalResourceRequest(input *SignalResourceInput) (req *request.Request, output *SignalResourceOutput) {
+	op := &request.Operation{
 		Name:       opSignalResource,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -532,8 +532,8 @@ func (c *CloudFormation) SignalResource(input *SignalResourceInput) (*SignalReso
 const opUpdateStack = "UpdateStack"
 
 // UpdateStackRequest generates a request for the UpdateStack operation.
-func (c *CloudFormation) UpdateStackRequest(input *UpdateStackInput) (req *aws.Request, output *UpdateStackOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) UpdateStackRequest(input *UpdateStackInput) (req *request.Request, output *UpdateStackOutput) {
+	op := &request.Operation{
 		Name:       opUpdateStack,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -570,8 +570,8 @@ func (c *CloudFormation) UpdateStack(input *UpdateStackInput) (*UpdateStackOutpu
 const opValidateTemplate = "ValidateTemplate"
 
 // ValidateTemplateRequest generates a request for the ValidateTemplate operation.
-func (c *CloudFormation) ValidateTemplateRequest(input *ValidateTemplateInput) (req *aws.Request, output *ValidateTemplateOutput) {
-	op := &aws.Operation{
+func (c *CloudFormation) ValidateTemplateRequest(input *ValidateTemplateInput) (req *request.Request, output *ValidateTemplateOutput) {
+	op := &request.Operation{
 		Name:       opValidateTemplate,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -687,13 +687,13 @@ type CreateStackInput struct {
 	// Prevent Updates to Stack Resources (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 	// in the AWS CloudFormation User Guide. You can specify either the StackPolicyBody
 	// or the StackPolicyURL parameter, but not both.
-	StackPolicyBody *string `type:"string"`
+	StackPolicyBody *string `min:"1" type:"string"`
 
 	// Location of a file containing the stack policy. The URL must point to a policy
 	// (max size: 16KB) located in an S3 bucket in the same region as the stack.
 	// You can specify either the StackPolicyBody or the StackPolicyURL parameter,
 	// but not both.
-	StackPolicyURL *string `type:"string"`
+	StackPolicyURL *string `min:"1" type:"string"`
 
 	// A set of user-defined Tags to associate with this stack, represented by key/value
 	// pairs. Tags defined for the stack are propagated to EC2 resources that are
@@ -707,7 +707,7 @@ type CreateStackInput struct {
 	//
 	// Conditional: You must specify either the TemplateBody or the TemplateURL
 	// parameter, but not both.
-	TemplateBody *string `type:"string"`
+	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
 	// (max size: 460,800 bytes) located in an S3 bucket in the same region as the
@@ -716,12 +716,12 @@ type CreateStackInput struct {
 	//
 	// Conditional: You must specify either the TemplateBody or the TemplateURL
 	// parameter, but not both.
-	TemplateURL *string `type:"string"`
+	TemplateURL *string `min:"1" type:"string"`
 
 	// The amount of time that can pass before the stack status becomes CREATE_FAILED;
 	// if DisableRollback is not set or is set to false, the stack will be rolled
 	// back.
-	TimeoutInMinutes *int64 `type:"integer"`
+	TimeoutInMinutes *int64 `min:"1" type:"integer"`
 
 	metadataCreateStackInput `json:"-" xml:"-"`
 }
@@ -743,7 +743,7 @@ func (s CreateStackInput) GoString() string {
 // The output for a CreateStack action.
 type CreateStackOutput struct {
 	// Unique identifier of the stack.
-	StackID *string `locationName:"StackId" type:"string"`
+	StackId *string `type:"string"`
 
 	metadataCreateStackOutput `json:"-" xml:"-"`
 }
@@ -808,7 +808,7 @@ type DescribeStackEventsInput struct {
 	// one.
 	//
 	// Default: There is no default value.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// The name or the unique stack ID that is associated with the stack, which
 	// are not always interchangeable:
@@ -839,7 +839,7 @@ func (s DescribeStackEventsInput) GoString() string {
 type DescribeStackEventsOutput struct {
 	// String that identifies the start of the next list of events, if there is
 	// one.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// A list of StackEvents structures.
 	StackEvents []*StackEvent `type:"list"`
@@ -866,7 +866,7 @@ type DescribeStackResourceInput struct {
 	// The logical name of the resource as specified in the template.
 	//
 	// Default: There is no default value.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string" required:"true"`
+	LogicalResourceId *string `type:"string" required:"true"`
 
 	// The name or the unique stack ID that is associated with the stack, which
 	// are not always interchangeable:
@@ -921,7 +921,7 @@ type DescribeStackResourcesInput struct {
 	// The logical name of the resource as specified in the template.
 	//
 	// Default: There is no default value.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string"`
+	LogicalResourceId *string `type:"string"`
 
 	// The name or unique identifier that corresponds to a physical instance ID
 	// of a resource supported by AWS CloudFormation.
@@ -935,7 +935,7 @@ type DescribeStackResourcesInput struct {
 	// specify StackName.
 	//
 	// Default: There is no default value.
-	PhysicalResourceID *string `locationName:"PhysicalResourceId" type:"string"`
+	PhysicalResourceId *string `type:"string"`
 
 	// The name or the unique stack ID that is associated with the stack, which
 	// are not always interchangeable:
@@ -991,7 +991,7 @@ func (s DescribeStackResourcesOutput) GoString() string {
 type DescribeStacksInput struct {
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// The name or the unique stack ID that is associated with the stack, which
 	// are not always interchangeable:
@@ -1022,7 +1022,7 @@ func (s DescribeStacksInput) GoString() string {
 type DescribeStacksOutput struct {
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// A list of stack structures.
 	Stacks []*Stack `type:"list"`
@@ -1055,7 +1055,7 @@ type EstimateTemplateCostInput struct {
 	//
 	// Conditional: You must pass TemplateBody or TemplateURL. If both are passed,
 	// only TemplateBody is used.
-	TemplateBody *string `type:"string"`
+	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
 	// located in an S3 bucket in the same region as the stack. For more information,
@@ -1064,7 +1064,7 @@ type EstimateTemplateCostInput struct {
 	//
 	// Conditional: You must pass TemplateURL or TemplateBody. If both are passed,
 	// only TemplateBody is used.
-	TemplateURL *string `type:"string"`
+	TemplateURL *string `min:"1" type:"string"`
 
 	metadataEstimateTemplateCostInput `json:"-" xml:"-"`
 }
@@ -1087,7 +1087,7 @@ func (s EstimateTemplateCostInput) GoString() string {
 type EstimateTemplateCostOutput struct {
 	// An AWS Simple Monthly Calculator URL with a query string that describes the
 	// resources required to run the template.
-	URL *string `locationName:"Url" type:"string"`
+	Url *string `type:"string"`
 
 	metadataEstimateTemplateCostOutput `json:"-" xml:"-"`
 }
@@ -1134,7 +1134,7 @@ type GetStackPolicyOutput struct {
 	// Structure containing the stack policy body. (For more information, go to
 	//  Prevent Updates to Stack Resources (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 	// in the AWS CloudFormation User Guide.)
-	StackPolicyBody *string `type:"string"`
+	StackPolicyBody *string `min:"1" type:"string"`
 
 	metadataGetStackPolicyOutput `json:"-" xml:"-"`
 }
@@ -1185,7 +1185,7 @@ type GetTemplateOutput struct {
 	// Structure containing the template body. (For more information, go to Template
 	// Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.)
-	TemplateBody *string `type:"string"`
+	TemplateBody *string `min:"1" type:"string"`
 
 	metadataGetTemplateOutput `json:"-" xml:"-"`
 }
@@ -1213,7 +1213,7 @@ type GetTemplateSummaryInput struct {
 	//
 	// Conditional: You must specify only one of the following parameters: StackName,
 	// TemplateBody, or TemplateURL.
-	StackName *string `type:"string"`
+	StackName *string `min:"1" type:"string"`
 
 	// Structure containing the template body with a minimum length of 1 byte and
 	// a maximum length of 51,200 bytes. For more information about templates, see
@@ -1222,7 +1222,7 @@ type GetTemplateSummaryInput struct {
 	//
 	// Conditional: You must specify only one of the following parameters: StackName,
 	// TemplateBody, or TemplateURL.
-	TemplateBody *string `type:"string"`
+	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
 	// (max size: 460,800 bytes) located in an Amazon S3 bucket. For more information
@@ -1231,7 +1231,7 @@ type GetTemplateSummaryInput struct {
 	//
 	// Conditional: You must specify only one of the following parameters: StackName,
 	// TemplateBody, or TemplateURL.
-	TemplateURL *string `type:"string"`
+	TemplateURL *string `min:"1" type:"string"`
 
 	metadataGetTemplateSummaryInput `json:"-" xml:"-"`
 }
@@ -1300,7 +1300,7 @@ type ListStackResourcesInput struct {
 	// if there is one.
 	//
 	// Default: There is no default value.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// The name or the unique stack ID that is associated with the stack, which
 	// are not always interchangeable:
@@ -1331,7 +1331,7 @@ func (s ListStackResourcesInput) GoString() string {
 type ListStackResourcesOutput struct {
 	// String that identifies the start of the next list of stack resources, if
 	// there is one.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// A list of StackResourceSummary structures.
 	StackResourceSummaries []*StackResourceSummary `type:"list"`
@@ -1359,7 +1359,7 @@ type ListStacksInput struct {
 	// one.
 	//
 	// Default: There is no default value.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// Stack status to use as a filter. Specify one or more stack status codes to
 	// list only stacks with the specified status codes. For a complete list of
@@ -1387,7 +1387,7 @@ func (s ListStacksInput) GoString() string {
 type ListStacksOutput struct {
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
-	NextToken *string `type:"string"`
+	NextToken *string `min:"1" type:"string"`
 
 	// A list of StackSummary structures containing information about the specified
 	// stacks.
@@ -1541,13 +1541,13 @@ type SetStackPolicyInput struct {
 	// Prevent Updates to Stack Resources (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 	// in the AWS CloudFormation User Guide. You can specify either the StackPolicyBody
 	// or the StackPolicyURL parameter, but not both.
-	StackPolicyBody *string `type:"string"`
+	StackPolicyBody *string `min:"1" type:"string"`
 
 	// Location of a file containing the stack policy. The URL must point to a policy
 	// (max size: 16KB) located in an S3 bucket in the same region as the stack.
 	// You can specify either the StackPolicyBody or the StackPolicyURL parameter,
 	// but not both.
-	StackPolicyURL *string `type:"string"`
+	StackPolicyURL *string `min:"1" type:"string"`
 
 	metadataSetStackPolicyInput `json:"-" xml:"-"`
 }
@@ -1588,11 +1588,11 @@ func (s SetStackPolicyOutput) GoString() string {
 type SignalResourceInput struct {
 	// The logical ID of the resource that you want to signal. The logical ID is
 	// the name of the resource that given in the template.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string" required:"true"`
+	LogicalResourceId *string `type:"string" required:"true"`
 
 	// The stack name or unique stack ID that includes the resource that you want
 	// to signal.
-	StackName *string `type:"string" required:"true"`
+	StackName *string `min:"1" type:"string" required:"true"`
 
 	// The status of the signal, which is either success or failure. A failure signal
 	// causes AWS CloudFormation to immediately fail the stack creation or update.
@@ -1602,7 +1602,7 @@ type SignalResourceInput struct {
 	// groups, specify the instance ID that you are signaling as the unique ID.
 	// If you send multiple signals to a single resource (such as signaling a wait
 	// condition), each signal requires a different unique ID.
-	UniqueID *string `locationName:"UniqueId" type:"string" required:"true"`
+	UniqueId *string `min:"1" type:"string" required:"true"`
 
 	metadataSignalResourceInput `json:"-" xml:"-"`
 }
@@ -1669,7 +1669,7 @@ type Stack struct {
 	Parameters []*Parameter `type:"list"`
 
 	// Unique identifier of the stack.
-	StackID *string `locationName:"StackId" type:"string"`
+	StackId *string `type:"string"`
 
 	// The name associated with the stack.
 	StackName *string `type:"string" required:"true"`
@@ -1684,7 +1684,7 @@ type Stack struct {
 	Tags []*Tag `type:"list"`
 
 	// The amount of time within which stack creation should complete.
-	TimeoutInMinutes *int64 `type:"integer"`
+	TimeoutInMinutes *int64 `min:"1" type:"integer"`
 
 	metadataStack `json:"-" xml:"-"`
 }
@@ -1706,14 +1706,14 @@ func (s Stack) GoString() string {
 // The StackEvent data type.
 type StackEvent struct {
 	// The unique ID of this event.
-	EventID *string `locationName:"EventId" type:"string" required:"true"`
+	EventId *string `type:"string" required:"true"`
 
 	// The logical name of the resource specified in the template.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string"`
+	LogicalResourceId *string `type:"string"`
 
 	// The name or unique identifier associated with the physical instance of the
 	// resource.
-	PhysicalResourceID *string `locationName:"PhysicalResourceId" type:"string"`
+	PhysicalResourceId *string `type:"string"`
 
 	// BLOB of the properties used to create the resource.
 	ResourceProperties *string `type:"string"`
@@ -1730,7 +1730,7 @@ type StackEvent struct {
 	ResourceType *string `type:"string"`
 
 	// The unique ID name of the instance of the stack.
-	StackID *string `locationName:"StackId" type:"string" required:"true"`
+	StackId *string `type:"string" required:"true"`
 
 	// The name associated with a stack.
 	StackName *string `type:"string" required:"true"`
@@ -1761,11 +1761,11 @@ type StackResource struct {
 	Description *string `type:"string"`
 
 	// The logical name of the resource specified in the template.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string" required:"true"`
+	LogicalResourceId *string `type:"string" required:"true"`
 
 	// The name or unique identifier that corresponds to a physical instance ID
 	// of a resource supported by AWS CloudFormation.
-	PhysicalResourceID *string `locationName:"PhysicalResourceId" type:"string"`
+	PhysicalResourceId *string `type:"string"`
 
 	// Current status of the resource.
 	ResourceStatus *string `type:"string" required:"true" enum:"ResourceStatus"`
@@ -1779,7 +1779,7 @@ type StackResource struct {
 	ResourceType *string `type:"string" required:"true"`
 
 	// Unique identifier of the stack.
-	StackID *string `locationName:"StackId" type:"string"`
+	StackId *string `type:"string"`
 
 	// The name associated with the stack.
 	StackName *string `type:"string"`
@@ -1813,7 +1813,7 @@ type StackResourceDetail struct {
 	LastUpdatedTimestamp *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
 	// The logical name of the resource specified in the template.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string" required:"true"`
+	LogicalResourceId *string `type:"string" required:"true"`
 
 	// The JSON format content of the Metadata attribute declared for the resource.
 	// For more information, see Metadata Attribute (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html)
@@ -1822,7 +1822,7 @@ type StackResourceDetail struct {
 
 	// The name or unique identifier that corresponds to a physical instance ID
 	// of a resource supported by AWS CloudFormation.
-	PhysicalResourceID *string `locationName:"PhysicalResourceId" type:"string"`
+	PhysicalResourceId *string `type:"string"`
 
 	// Current status of the resource.
 	ResourceStatus *string `type:"string" required:"true" enum:"ResourceStatus"`
@@ -1836,7 +1836,7 @@ type StackResourceDetail struct {
 	ResourceType *string `type:"string" required:"true"`
 
 	// Unique identifier of the stack.
-	StackID *string `locationName:"StackId" type:"string"`
+	StackId *string `type:"string"`
 
 	// The name associated with the stack.
 	StackName *string `type:"string"`
@@ -1864,11 +1864,11 @@ type StackResourceSummary struct {
 	LastUpdatedTimestamp *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
 	// The logical name of the resource specified in the template.
-	LogicalResourceID *string `locationName:"LogicalResourceId" type:"string" required:"true"`
+	LogicalResourceId *string `type:"string" required:"true"`
 
 	// The name or unique identifier that corresponds to a physical instance ID
 	// of the resource.
-	PhysicalResourceID *string `locationName:"PhysicalResourceId" type:"string"`
+	PhysicalResourceId *string `type:"string"`
 
 	// Current status of the resource.
 	ResourceStatus *string `type:"string" required:"true" enum:"ResourceStatus"`
@@ -1911,7 +1911,7 @@ type StackSummary struct {
 	LastUpdatedTime *time.Time `type:"timestamp" timestampFormat:"iso8601"`
 
 	// Unique stack identifier.
-	StackID *string `locationName:"StackId" type:"string"`
+	StackId *string `type:"string"`
 
 	// The name associated with the stack.
 	StackName *string `type:"string" required:"true"`
@@ -2040,7 +2040,7 @@ type UpdateStackInput struct {
 	// You might update the stack policy, for example, in order to protect a new
 	// resource that you created during a stack update. If you do not specify a
 	// stack policy, the current policy that is associated with the stack is unchanged.
-	StackPolicyBody *string `type:"string"`
+	StackPolicyBody *string `min:"1" type:"string"`
 
 	// Structure containing the temporary overriding stack policy body. You can
 	// specify either the StackPolicyDuringUpdateBody or the StackPolicyDuringUpdateURL
@@ -2049,7 +2049,7 @@ type UpdateStackInput struct {
 	// If you want to update protected resources, specify a temporary overriding
 	// stack policy during this update. If you do not specify a stack policy, the
 	// current policy that is associated with the stack will be used.
-	StackPolicyDuringUpdateBody *string `type:"string"`
+	StackPolicyDuringUpdateBody *string `min:"1" type:"string"`
 
 	// Location of a file containing the temporary overriding stack policy. The
 	// URL must point to a policy (max size: 16KB) located in an S3 bucket in the
@@ -2059,7 +2059,7 @@ type UpdateStackInput struct {
 	// If you want to update protected resources, specify a temporary overriding
 	// stack policy during this update. If you do not specify a stack policy, the
 	// current policy that is associated with the stack will be used.
-	StackPolicyDuringUpdateURL *string `type:"string"`
+	StackPolicyDuringUpdateURL *string `min:"1" type:"string"`
 
 	// Location of a file containing the updated stack policy. The URL must point
 	// to a policy (max size: 16KB) located in an S3 bucket in the same region as
@@ -2069,7 +2069,7 @@ type UpdateStackInput struct {
 	// You might update the stack policy, for example, in order to protect a new
 	// resource that you created during a stack update. If you do not specify a
 	// stack policy, the current policy that is associated with the stack is unchanged.
-	StackPolicyURL *string `type:"string"`
+	StackPolicyURL *string `min:"1" type:"string"`
 
 	// Structure containing the template body with a minimum length of 1 byte and
 	// a maximum length of 51,200 bytes. (For more information, go to Template Anatomy
@@ -2078,7 +2078,7 @@ type UpdateStackInput struct {
 	//
 	// Conditional: You must specify either the TemplateBody or the TemplateURL
 	// parameter, but not both.
-	TemplateBody *string `type:"string"`
+	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
 	// located in an S3 bucket in the same region as the stack. For more information,
@@ -2087,7 +2087,7 @@ type UpdateStackInput struct {
 	//
 	// Conditional: You must specify either the TemplateBody or the TemplateURL
 	// parameter, but not both.
-	TemplateURL *string `type:"string"`
+	TemplateURL *string `min:"1" type:"string"`
 
 	// Reuse the existing template that is associated with the stack that you are
 	// updating.
@@ -2113,7 +2113,7 @@ func (s UpdateStackInput) GoString() string {
 // The output for a UpdateStack action.
 type UpdateStackOutput struct {
 	// Unique identifier of the stack.
-	StackID *string `locationName:"StackId" type:"string"`
+	StackId *string `type:"string"`
 
 	metadataUpdateStackOutput `json:"-" xml:"-"`
 }
@@ -2141,7 +2141,7 @@ type ValidateTemplateInput struct {
 	//
 	// Conditional: You must pass TemplateURL or TemplateBody. If both are passed,
 	// only TemplateBody is used.
-	TemplateBody *string `type:"string"`
+	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
 	// (max size: 460,800 bytes) located in an S3 bucket in the same region as the
@@ -2150,7 +2150,7 @@ type ValidateTemplateInput struct {
 	//
 	// Conditional: You must pass TemplateURL or TemplateBody. If both are passed,
 	// only TemplateBody is used.
-	TemplateURL *string `type:"string"`
+	TemplateURL *string `min:"1" type:"string"`
 
 	metadataValidateTemplateInput `json:"-" xml:"-"`
 }

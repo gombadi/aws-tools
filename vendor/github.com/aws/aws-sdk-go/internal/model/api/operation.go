@@ -44,12 +44,12 @@ const op{{ .ExportedName }} = "{{ .Name }}"
 
 // {{ .ExportedName }}Request generates a request for the {{ .ExportedName }} operation.
 func (c *{{ .API.StructName }}) {{ .ExportedName }}Request(` +
-	`input {{ .InputRef.GoType }}) (req *aws.Request, output {{ .OutputRef.GoType }}) {
-	op := &aws.Operation{
+	`input {{ .InputRef.GoType }}) (req *request.Request, output {{ .OutputRef.GoType }}) {
+	op := &request.Operation{
 		Name:       op{{ .ExportedName }},
 		{{ if ne .HTTP.Method "" }}HTTPMethod: "{{ .HTTP.Method }}",
 		{{ end }}{{ if ne .HTTP.RequestURI "" }}HTTPPath:   "{{ .HTTP.RequestURI }}",
-		{{ end }}{{ if .Paginator }}Paginator: &aws.Paginator{
+		{{ end }}{{ if .Paginator }}Paginator: &request.Paginator{
 				InputTokens: {{ .Paginator.InputTokensString }},
 				OutputTokens: {{ .Paginator.OutputTokensString }},
 				LimitToken: "{{ .Paginator.LimitKey }}",
@@ -99,7 +99,7 @@ func (o *Operation) GoCode() string {
 
 // tplInfSig defines the template for rendering an Operation's signature within an Interface definition.
 var tplInfSig = template.Must(template.New("opsig").Parse(`
-{{ .ExportedName }}Request({{ .InputRef.GoTypeWithPkgName }}) (*aws.Request, {{ .OutputRef.GoTypeWithPkgName }})
+{{ .ExportedName }}Request({{ .InputRef.GoTypeWithPkgName }}) (*request.Request, {{ .OutputRef.GoTypeWithPkgName }})
 
 {{ .ExportedName }}({{ .InputRef.GoTypeWithPkgName }}) ({{ .OutputRef.GoTypeWithPkgName }}, error)
 {{ if .Paginator }}
@@ -127,22 +127,14 @@ func Example{{ .API.StructName }}_{{ .ExportedName }}() {
 	resp, err := svc.{{ .ExportedName }}(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 `))
 

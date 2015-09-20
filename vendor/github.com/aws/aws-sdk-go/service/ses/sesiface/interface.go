@@ -4,99 +4,99 @@
 package sesiface
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/ses"
 )
 
 // SESAPI is the interface type for ses.SES.
 type SESAPI interface {
-	DeleteIdentityRequest(*ses.DeleteIdentityInput) (*aws.Request, *ses.DeleteIdentityOutput)
+	DeleteIdentityRequest(*ses.DeleteIdentityInput) (*request.Request, *ses.DeleteIdentityOutput)
 
 	DeleteIdentity(*ses.DeleteIdentityInput) (*ses.DeleteIdentityOutput, error)
 
-	DeleteIdentityPolicyRequest(*ses.DeleteIdentityPolicyInput) (*aws.Request, *ses.DeleteIdentityPolicyOutput)
+	DeleteIdentityPolicyRequest(*ses.DeleteIdentityPolicyInput) (*request.Request, *ses.DeleteIdentityPolicyOutput)
 
 	DeleteIdentityPolicy(*ses.DeleteIdentityPolicyInput) (*ses.DeleteIdentityPolicyOutput, error)
 
-	DeleteVerifiedEmailAddressRequest(*ses.DeleteVerifiedEmailAddressInput) (*aws.Request, *ses.DeleteVerifiedEmailAddressOutput)
+	DeleteVerifiedEmailAddressRequest(*ses.DeleteVerifiedEmailAddressInput) (*request.Request, *ses.DeleteVerifiedEmailAddressOutput)
 
 	DeleteVerifiedEmailAddress(*ses.DeleteVerifiedEmailAddressInput) (*ses.DeleteVerifiedEmailAddressOutput, error)
 
-	GetIdentityDKIMAttributesRequest(*ses.GetIdentityDKIMAttributesInput) (*aws.Request, *ses.GetIdentityDKIMAttributesOutput)
+	GetIdentityDkimAttributesRequest(*ses.GetIdentityDkimAttributesInput) (*request.Request, *ses.GetIdentityDkimAttributesOutput)
 
-	GetIdentityDKIMAttributes(*ses.GetIdentityDKIMAttributesInput) (*ses.GetIdentityDKIMAttributesOutput, error)
+	GetIdentityDkimAttributes(*ses.GetIdentityDkimAttributesInput) (*ses.GetIdentityDkimAttributesOutput, error)
 
-	GetIdentityNotificationAttributesRequest(*ses.GetIdentityNotificationAttributesInput) (*aws.Request, *ses.GetIdentityNotificationAttributesOutput)
+	GetIdentityNotificationAttributesRequest(*ses.GetIdentityNotificationAttributesInput) (*request.Request, *ses.GetIdentityNotificationAttributesOutput)
 
 	GetIdentityNotificationAttributes(*ses.GetIdentityNotificationAttributesInput) (*ses.GetIdentityNotificationAttributesOutput, error)
 
-	GetIdentityPoliciesRequest(*ses.GetIdentityPoliciesInput) (*aws.Request, *ses.GetIdentityPoliciesOutput)
+	GetIdentityPoliciesRequest(*ses.GetIdentityPoliciesInput) (*request.Request, *ses.GetIdentityPoliciesOutput)
 
 	GetIdentityPolicies(*ses.GetIdentityPoliciesInput) (*ses.GetIdentityPoliciesOutput, error)
 
-	GetIdentityVerificationAttributesRequest(*ses.GetIdentityVerificationAttributesInput) (*aws.Request, *ses.GetIdentityVerificationAttributesOutput)
+	GetIdentityVerificationAttributesRequest(*ses.GetIdentityVerificationAttributesInput) (*request.Request, *ses.GetIdentityVerificationAttributesOutput)
 
 	GetIdentityVerificationAttributes(*ses.GetIdentityVerificationAttributesInput) (*ses.GetIdentityVerificationAttributesOutput, error)
 
-	GetSendQuotaRequest(*ses.GetSendQuotaInput) (*aws.Request, *ses.GetSendQuotaOutput)
+	GetSendQuotaRequest(*ses.GetSendQuotaInput) (*request.Request, *ses.GetSendQuotaOutput)
 
 	GetSendQuota(*ses.GetSendQuotaInput) (*ses.GetSendQuotaOutput, error)
 
-	GetSendStatisticsRequest(*ses.GetSendStatisticsInput) (*aws.Request, *ses.GetSendStatisticsOutput)
+	GetSendStatisticsRequest(*ses.GetSendStatisticsInput) (*request.Request, *ses.GetSendStatisticsOutput)
 
 	GetSendStatistics(*ses.GetSendStatisticsInput) (*ses.GetSendStatisticsOutput, error)
 
-	ListIdentitiesRequest(*ses.ListIdentitiesInput) (*aws.Request, *ses.ListIdentitiesOutput)
+	ListIdentitiesRequest(*ses.ListIdentitiesInput) (*request.Request, *ses.ListIdentitiesOutput)
 
 	ListIdentities(*ses.ListIdentitiesInput) (*ses.ListIdentitiesOutput, error)
 
 	ListIdentitiesPages(*ses.ListIdentitiesInput, func(*ses.ListIdentitiesOutput, bool) bool) error
 
-	ListIdentityPoliciesRequest(*ses.ListIdentityPoliciesInput) (*aws.Request, *ses.ListIdentityPoliciesOutput)
+	ListIdentityPoliciesRequest(*ses.ListIdentityPoliciesInput) (*request.Request, *ses.ListIdentityPoliciesOutput)
 
 	ListIdentityPolicies(*ses.ListIdentityPoliciesInput) (*ses.ListIdentityPoliciesOutput, error)
 
-	ListVerifiedEmailAddressesRequest(*ses.ListVerifiedEmailAddressesInput) (*aws.Request, *ses.ListVerifiedEmailAddressesOutput)
+	ListVerifiedEmailAddressesRequest(*ses.ListVerifiedEmailAddressesInput) (*request.Request, *ses.ListVerifiedEmailAddressesOutput)
 
 	ListVerifiedEmailAddresses(*ses.ListVerifiedEmailAddressesInput) (*ses.ListVerifiedEmailAddressesOutput, error)
 
-	PutIdentityPolicyRequest(*ses.PutIdentityPolicyInput) (*aws.Request, *ses.PutIdentityPolicyOutput)
+	PutIdentityPolicyRequest(*ses.PutIdentityPolicyInput) (*request.Request, *ses.PutIdentityPolicyOutput)
 
 	PutIdentityPolicy(*ses.PutIdentityPolicyInput) (*ses.PutIdentityPolicyOutput, error)
 
-	SendEmailRequest(*ses.SendEmailInput) (*aws.Request, *ses.SendEmailOutput)
+	SendEmailRequest(*ses.SendEmailInput) (*request.Request, *ses.SendEmailOutput)
 
 	SendEmail(*ses.SendEmailInput) (*ses.SendEmailOutput, error)
 
-	SendRawEmailRequest(*ses.SendRawEmailInput) (*aws.Request, *ses.SendRawEmailOutput)
+	SendRawEmailRequest(*ses.SendRawEmailInput) (*request.Request, *ses.SendRawEmailOutput)
 
 	SendRawEmail(*ses.SendRawEmailInput) (*ses.SendRawEmailOutput, error)
 
-	SetIdentityDKIMEnabledRequest(*ses.SetIdentityDKIMEnabledInput) (*aws.Request, *ses.SetIdentityDKIMEnabledOutput)
+	SetIdentityDkimEnabledRequest(*ses.SetIdentityDkimEnabledInput) (*request.Request, *ses.SetIdentityDkimEnabledOutput)
 
-	SetIdentityDKIMEnabled(*ses.SetIdentityDKIMEnabledInput) (*ses.SetIdentityDKIMEnabledOutput, error)
+	SetIdentityDkimEnabled(*ses.SetIdentityDkimEnabledInput) (*ses.SetIdentityDkimEnabledOutput, error)
 
-	SetIdentityFeedbackForwardingEnabledRequest(*ses.SetIdentityFeedbackForwardingEnabledInput) (*aws.Request, *ses.SetIdentityFeedbackForwardingEnabledOutput)
+	SetIdentityFeedbackForwardingEnabledRequest(*ses.SetIdentityFeedbackForwardingEnabledInput) (*request.Request, *ses.SetIdentityFeedbackForwardingEnabledOutput)
 
 	SetIdentityFeedbackForwardingEnabled(*ses.SetIdentityFeedbackForwardingEnabledInput) (*ses.SetIdentityFeedbackForwardingEnabledOutput, error)
 
-	SetIdentityNotificationTopicRequest(*ses.SetIdentityNotificationTopicInput) (*aws.Request, *ses.SetIdentityNotificationTopicOutput)
+	SetIdentityNotificationTopicRequest(*ses.SetIdentityNotificationTopicInput) (*request.Request, *ses.SetIdentityNotificationTopicOutput)
 
 	SetIdentityNotificationTopic(*ses.SetIdentityNotificationTopicInput) (*ses.SetIdentityNotificationTopicOutput, error)
 
-	VerifyDomainDKIMRequest(*ses.VerifyDomainDKIMInput) (*aws.Request, *ses.VerifyDomainDKIMOutput)
+	VerifyDomainDkimRequest(*ses.VerifyDomainDkimInput) (*request.Request, *ses.VerifyDomainDkimOutput)
 
-	VerifyDomainDKIM(*ses.VerifyDomainDKIMInput) (*ses.VerifyDomainDKIMOutput, error)
+	VerifyDomainDkim(*ses.VerifyDomainDkimInput) (*ses.VerifyDomainDkimOutput, error)
 
-	VerifyDomainIdentityRequest(*ses.VerifyDomainIdentityInput) (*aws.Request, *ses.VerifyDomainIdentityOutput)
+	VerifyDomainIdentityRequest(*ses.VerifyDomainIdentityInput) (*request.Request, *ses.VerifyDomainIdentityOutput)
 
 	VerifyDomainIdentity(*ses.VerifyDomainIdentityInput) (*ses.VerifyDomainIdentityOutput, error)
 
-	VerifyEmailAddressRequest(*ses.VerifyEmailAddressInput) (*aws.Request, *ses.VerifyEmailAddressOutput)
+	VerifyEmailAddressRequest(*ses.VerifyEmailAddressInput) (*request.Request, *ses.VerifyEmailAddressOutput)
 
 	VerifyEmailAddress(*ses.VerifyEmailAddressInput) (*ses.VerifyEmailAddressOutput, error)
 
-	VerifyEmailIdentityRequest(*ses.VerifyEmailIdentityInput) (*aws.Request, *ses.VerifyEmailIdentityOutput)
+	VerifyEmailIdentityRequest(*ses.VerifyEmailIdentityInput) (*request.Request, *ses.VerifyEmailIdentityOutput)
 
 	VerifyEmailIdentity(*ses.VerifyEmailIdentityInput) (*ses.VerifyEmailIdentityOutput, error)
 }

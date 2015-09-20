@@ -81,7 +81,7 @@ func (c *AMICommand) Run(args []string) int {
 
 	} else {
 		// single ami manual mode
-		ec2dii = ec2.DescribeImagesInput{ImageIDs: []*string{aws.String(c.amiId)}}
+		ec2dii = ec2.DescribeImagesInput{ImageIds: []*string{aws.String(c.amiId)}}
 	}
 
 	imagesResp, err := svc.DescribeImages(&ec2dii)
@@ -121,47 +121,47 @@ func (c *AMICommand) Run(args []string) int {
 				if int64(c.autoDays*86000) < amiLifeSpan {
 
 					if c.verbose {
-						fmt.Printf("Info - Deregistering AMI: %s\n", *imagesResp.Images[image].ImageID)
+						fmt.Printf("Info - Deregistering AMI: %s\n", *imagesResp.Images[image].ImageId)
 					}
 
 					if c.dryrun == false {
 						ec2dii := &ec2.DeregisterImageInput{
-							ImageID: imagesResp.Images[image].ImageID, // Required
+							ImageId: imagesResp.Images[image].ImageId, // Required
 						}
 
 						_, err = svc.DeregisterImage(ec2dii)
 
 						if err != nil {
 							fmt.Printf("error deregistering AMI %s. Image and snapshots not cleaned up. Error details\n%si\n",
-								*imagesResp.Images[image].ImageID,
+								*imagesResp.Images[image].ImageId,
 								err)
 							// continue with next tag
 							continue
 						}
 					} else {
-						fmt.Printf("Dry Run - Would have deregistered image: %s\n", *imagesResp.Images[image].ImageID)
+						fmt.Printf("Dry Run - Would have deregistered image: %s\n", *imagesResp.Images[image].ImageId)
 
 					}
 					for blockDM := range imagesResp.Images[image].BlockDeviceMappings {
 						// some block devices are not on EBS
-						if imagesResp.Images[image].BlockDeviceMappings[blockDM].EBS == nil {
+						if imagesResp.Images[image].BlockDeviceMappings[blockDM].Ebs == nil {
 							continue
 						}
-						if len(*imagesResp.Images[image].BlockDeviceMappings[blockDM].EBS.SnapshotID) > 0 {
+						if len(*imagesResp.Images[image].BlockDeviceMappings[blockDM].Ebs.SnapshotId) > 0 {
 							if c.verbose {
 								fmt.Printf("Info - Will delete associated snapshot: %s from ami: %s\n",
-									*imagesResp.Images[image].BlockDeviceMappings[blockDM].EBS.SnapshotID,
-									*imagesResp.Images[image].ImageID)
+									*imagesResp.Images[image].BlockDeviceMappings[blockDM].Ebs.SnapshotId,
+									*imagesResp.Images[image].ImageId)
 							}
-							snapshots = append(snapshots, *imagesResp.Images[image].BlockDeviceMappings[blockDM].EBS.SnapshotID)
+							snapshots = append(snapshots, *imagesResp.Images[image].BlockDeviceMappings[blockDM].Ebs.SnapshotId)
 						}
 					}
 					if c.verbose {
-						fmt.Printf("Info - AMI: %s deregistered\n", *imagesResp.Images[image].ImageID)
+						fmt.Printf("Info - AMI: %s deregistered\n", *imagesResp.Images[image].ImageId)
 					}
 				} else {
 					if c.verbose {
-						fmt.Printf("Info - Not deregistering AMI: %s as expire time not reached\n", *imagesResp.Images[image].ImageID)
+						fmt.Printf("Info - Not deregistering AMI: %s as expire time not reached\n", *imagesResp.Images[image].ImageId)
 					}
 				}
 			}
@@ -183,7 +183,7 @@ func (c *AMICommand) Run(args []string) int {
 			fmt.Printf("Info - Deleting snapshot: %s.\n", snapshot)
 		}
 		if c.dryrun == false {
-			ec2dsi := ec2.DeleteSnapshotInput{SnapshotID: aws.String(snapshot)}
+			ec2dsi := ec2.DeleteSnapshotInput{SnapshotId: aws.String(snapshot)}
 			_, err = svc.DeleteSnapshot(&ec2dsi)
 
 			if err != nil {

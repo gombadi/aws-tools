@@ -4,15 +4,15 @@
 package directconnect
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opAllocateConnectionOnInterconnect = "AllocateConnectionOnInterconnect"
 
 // AllocateConnectionOnInterconnectRequest generates a request for the AllocateConnectionOnInterconnect operation.
-func (c *DirectConnect) AllocateConnectionOnInterconnectRequest(input *AllocateConnectionOnInterconnectInput) (req *aws.Request, output *Connection) {
-	op := &aws.Operation{
+func (c *DirectConnect) AllocateConnectionOnInterconnectRequest(input *AllocateConnectionOnInterconnectInput) (req *request.Request, output *Connection) {
+	op := &request.Operation{
 		Name:       opAllocateConnectionOnInterconnect,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -41,8 +41,8 @@ func (c *DirectConnect) AllocateConnectionOnInterconnect(input *AllocateConnecti
 const opAllocatePrivateVirtualInterface = "AllocatePrivateVirtualInterface"
 
 // AllocatePrivateVirtualInterfaceRequest generates a request for the AllocatePrivateVirtualInterface operation.
-func (c *DirectConnect) AllocatePrivateVirtualInterfaceRequest(input *AllocatePrivateVirtualInterfaceInput) (req *aws.Request, output *VirtualInterface) {
-	op := &aws.Operation{
+func (c *DirectConnect) AllocatePrivateVirtualInterfaceRequest(input *AllocatePrivateVirtualInterfaceInput) (req *request.Request, output *VirtualInterface) {
+	op := &request.Operation{
 		Name:       opAllocatePrivateVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -76,8 +76,8 @@ func (c *DirectConnect) AllocatePrivateVirtualInterface(input *AllocatePrivateVi
 const opAllocatePublicVirtualInterface = "AllocatePublicVirtualInterface"
 
 // AllocatePublicVirtualInterfaceRequest generates a request for the AllocatePublicVirtualInterface operation.
-func (c *DirectConnect) AllocatePublicVirtualInterfaceRequest(input *AllocatePublicVirtualInterfaceInput) (req *aws.Request, output *VirtualInterface) {
-	op := &aws.Operation{
+func (c *DirectConnect) AllocatePublicVirtualInterfaceRequest(input *AllocatePublicVirtualInterfaceInput) (req *request.Request, output *VirtualInterface) {
+	op := &request.Operation{
 		Name:       opAllocatePublicVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -111,8 +111,8 @@ func (c *DirectConnect) AllocatePublicVirtualInterface(input *AllocatePublicVirt
 const opConfirmConnection = "ConfirmConnection"
 
 // ConfirmConnectionRequest generates a request for the ConfirmConnection operation.
-func (c *DirectConnect) ConfirmConnectionRequest(input *ConfirmConnectionInput) (req *aws.Request, output *ConfirmConnectionOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) ConfirmConnectionRequest(input *ConfirmConnectionInput) (req *request.Request, output *ConfirmConnectionOutput) {
+	op := &request.Operation{
 		Name:       opConfirmConnection,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -142,8 +142,8 @@ func (c *DirectConnect) ConfirmConnection(input *ConfirmConnectionInput) (*Confi
 const opConfirmPrivateVirtualInterface = "ConfirmPrivateVirtualInterface"
 
 // ConfirmPrivateVirtualInterfaceRequest generates a request for the ConfirmPrivateVirtualInterface operation.
-func (c *DirectConnect) ConfirmPrivateVirtualInterfaceRequest(input *ConfirmPrivateVirtualInterfaceInput) (req *aws.Request, output *ConfirmPrivateVirtualInterfaceOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) ConfirmPrivateVirtualInterfaceRequest(input *ConfirmPrivateVirtualInterfaceInput) (req *request.Request, output *ConfirmPrivateVirtualInterfaceOutput) {
+	op := &request.Operation{
 		Name:       opConfirmPrivateVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -173,8 +173,8 @@ func (c *DirectConnect) ConfirmPrivateVirtualInterface(input *ConfirmPrivateVirt
 const opConfirmPublicVirtualInterface = "ConfirmPublicVirtualInterface"
 
 // ConfirmPublicVirtualInterfaceRequest generates a request for the ConfirmPublicVirtualInterface operation.
-func (c *DirectConnect) ConfirmPublicVirtualInterfaceRequest(input *ConfirmPublicVirtualInterfaceInput) (req *aws.Request, output *ConfirmPublicVirtualInterfaceOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) ConfirmPublicVirtualInterfaceRequest(input *ConfirmPublicVirtualInterfaceInput) (req *request.Request, output *ConfirmPublicVirtualInterfaceOutput) {
+	op := &request.Operation{
 		Name:       opConfirmPublicVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -203,8 +203,8 @@ func (c *DirectConnect) ConfirmPublicVirtualInterface(input *ConfirmPublicVirtua
 const opCreateConnection = "CreateConnection"
 
 // CreateConnectionRequest generates a request for the CreateConnection operation.
-func (c *DirectConnect) CreateConnectionRequest(input *CreateConnectionInput) (req *aws.Request, output *Connection) {
-	op := &aws.Operation{
+func (c *DirectConnect) CreateConnectionRequest(input *CreateConnectionInput) (req *request.Request, output *Connection) {
+	op := &request.Operation{
 		Name:       opCreateConnection,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -239,8 +239,8 @@ func (c *DirectConnect) CreateConnection(input *CreateConnectionInput) (*Connect
 const opCreateInterconnect = "CreateInterconnect"
 
 // CreateInterconnectRequest generates a request for the CreateInterconnect operation.
-func (c *DirectConnect) CreateInterconnectRequest(input *CreateInterconnectInput) (req *aws.Request, output *Interconnect) {
-	op := &aws.Operation{
+func (c *DirectConnect) CreateInterconnectRequest(input *CreateInterconnectInput) (req *request.Request, output *Interconnect) {
+	op := &request.Operation{
 		Name:       opCreateInterconnect,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -281,8 +281,8 @@ func (c *DirectConnect) CreateInterconnect(input *CreateInterconnectInput) (*Int
 const opCreatePrivateVirtualInterface = "CreatePrivateVirtualInterface"
 
 // CreatePrivateVirtualInterfaceRequest generates a request for the CreatePrivateVirtualInterface operation.
-func (c *DirectConnect) CreatePrivateVirtualInterfaceRequest(input *CreatePrivateVirtualInterfaceInput) (req *aws.Request, output *VirtualInterface) {
-	op := &aws.Operation{
+func (c *DirectConnect) CreatePrivateVirtualInterfaceRequest(input *CreatePrivateVirtualInterfaceInput) (req *request.Request, output *VirtualInterface) {
+	op := &request.Operation{
 		Name:       opCreatePrivateVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -310,8 +310,8 @@ func (c *DirectConnect) CreatePrivateVirtualInterface(input *CreatePrivateVirtua
 const opCreatePublicVirtualInterface = "CreatePublicVirtualInterface"
 
 // CreatePublicVirtualInterfaceRequest generates a request for the CreatePublicVirtualInterface operation.
-func (c *DirectConnect) CreatePublicVirtualInterfaceRequest(input *CreatePublicVirtualInterfaceInput) (req *aws.Request, output *VirtualInterface) {
-	op := &aws.Operation{
+func (c *DirectConnect) CreatePublicVirtualInterfaceRequest(input *CreatePublicVirtualInterfaceInput) (req *request.Request, output *VirtualInterface) {
+	op := &request.Operation{
 		Name:       opCreatePublicVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -340,8 +340,8 @@ func (c *DirectConnect) CreatePublicVirtualInterface(input *CreatePublicVirtualI
 const opDeleteConnection = "DeleteConnection"
 
 // DeleteConnectionRequest generates a request for the DeleteConnection operation.
-func (c *DirectConnect) DeleteConnectionRequest(input *DeleteConnectionInput) (req *aws.Request, output *Connection) {
-	op := &aws.Operation{
+func (c *DirectConnect) DeleteConnectionRequest(input *DeleteConnectionInput) (req *request.Request, output *Connection) {
+	op := &request.Operation{
 		Name:       opDeleteConnection,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -372,8 +372,8 @@ func (c *DirectConnect) DeleteConnection(input *DeleteConnectionInput) (*Connect
 const opDeleteInterconnect = "DeleteInterconnect"
 
 // DeleteInterconnectRequest generates a request for the DeleteInterconnect operation.
-func (c *DirectConnect) DeleteInterconnectRequest(input *DeleteInterconnectInput) (req *aws.Request, output *DeleteInterconnectOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) DeleteInterconnectRequest(input *DeleteInterconnectInput) (req *request.Request, output *DeleteInterconnectOutput) {
+	op := &request.Operation{
 		Name:       opDeleteInterconnect,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -399,8 +399,8 @@ func (c *DirectConnect) DeleteInterconnect(input *DeleteInterconnectInput) (*Del
 const opDeleteVirtualInterface = "DeleteVirtualInterface"
 
 // DeleteVirtualInterfaceRequest generates a request for the DeleteVirtualInterface operation.
-func (c *DirectConnect) DeleteVirtualInterfaceRequest(input *DeleteVirtualInterfaceInput) (req *aws.Request, output *DeleteVirtualInterfaceOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) DeleteVirtualInterfaceRequest(input *DeleteVirtualInterfaceInput) (req *request.Request, output *DeleteVirtualInterfaceOutput) {
+	op := &request.Operation{
 		Name:       opDeleteVirtualInterface,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -426,8 +426,8 @@ func (c *DirectConnect) DeleteVirtualInterface(input *DeleteVirtualInterfaceInpu
 const opDescribeConnections = "DescribeConnections"
 
 // DescribeConnectionsRequest generates a request for the DescribeConnections operation.
-func (c *DirectConnect) DescribeConnectionsRequest(input *DescribeConnectionsInput) (req *aws.Request, output *Connections) {
-	op := &aws.Operation{
+func (c *DirectConnect) DescribeConnectionsRequest(input *DescribeConnectionsInput) (req *request.Request, output *Connections) {
+	op := &request.Operation{
 		Name:       opDescribeConnections,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -455,8 +455,8 @@ func (c *DirectConnect) DescribeConnections(input *DescribeConnectionsInput) (*C
 const opDescribeConnectionsOnInterconnect = "DescribeConnectionsOnInterconnect"
 
 // DescribeConnectionsOnInterconnectRequest generates a request for the DescribeConnectionsOnInterconnect operation.
-func (c *DirectConnect) DescribeConnectionsOnInterconnectRequest(input *DescribeConnectionsOnInterconnectInput) (req *aws.Request, output *Connections) {
-	op := &aws.Operation{
+func (c *DirectConnect) DescribeConnectionsOnInterconnectRequest(input *DescribeConnectionsOnInterconnectInput) (req *request.Request, output *Connections) {
+	op := &request.Operation{
 		Name:       opDescribeConnectionsOnInterconnect,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -482,8 +482,8 @@ func (c *DirectConnect) DescribeConnectionsOnInterconnect(input *DescribeConnect
 const opDescribeInterconnects = "DescribeInterconnects"
 
 // DescribeInterconnectsRequest generates a request for the DescribeInterconnects operation.
-func (c *DirectConnect) DescribeInterconnectsRequest(input *DescribeInterconnectsInput) (req *aws.Request, output *DescribeInterconnectsOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) DescribeInterconnectsRequest(input *DescribeInterconnectsInput) (req *request.Request, output *DescribeInterconnectsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeInterconnects,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -511,8 +511,8 @@ func (c *DirectConnect) DescribeInterconnects(input *DescribeInterconnectsInput)
 const opDescribeLocations = "DescribeLocations"
 
 // DescribeLocationsRequest generates a request for the DescribeLocations operation.
-func (c *DirectConnect) DescribeLocationsRequest(input *DescribeLocationsInput) (req *aws.Request, output *DescribeLocationsOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) DescribeLocationsRequest(input *DescribeLocationsInput) (req *request.Request, output *DescribeLocationsOutput) {
+	op := &request.Operation{
 		Name:       opDescribeLocations,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -540,8 +540,8 @@ func (c *DirectConnect) DescribeLocations(input *DescribeLocationsInput) (*Descr
 const opDescribeVirtualGateways = "DescribeVirtualGateways"
 
 // DescribeVirtualGatewaysRequest generates a request for the DescribeVirtualGateways operation.
-func (c *DirectConnect) DescribeVirtualGatewaysRequest(input *DescribeVirtualGatewaysInput) (req *aws.Request, output *DescribeVirtualGatewaysOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) DescribeVirtualGatewaysRequest(input *DescribeVirtualGatewaysInput) (req *request.Request, output *DescribeVirtualGatewaysOutput) {
+	op := &request.Operation{
 		Name:       opDescribeVirtualGateways,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -573,8 +573,8 @@ func (c *DirectConnect) DescribeVirtualGateways(input *DescribeVirtualGatewaysIn
 const opDescribeVirtualInterfaces = "DescribeVirtualInterfaces"
 
 // DescribeVirtualInterfacesRequest generates a request for the DescribeVirtualInterfaces operation.
-func (c *DirectConnect) DescribeVirtualInterfacesRequest(input *DescribeVirtualInterfacesInput) (req *aws.Request, output *DescribeVirtualInterfacesOutput) {
-	op := &aws.Operation{
+func (c *DirectConnect) DescribeVirtualInterfacesRequest(input *DescribeVirtualInterfacesInput) (req *request.Request, output *DescribeVirtualInterfacesOutput) {
+	op := &request.Operation{
 		Name:       opDescribeVirtualInterfaces,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -629,7 +629,7 @@ type AllocateConnectionOnInterconnectInput struct {
 	// Example: dxcon-456abc78
 	//
 	// Default: None
-	InterconnectID *string `locationName:"interconnectId" type:"string" required:"true"`
+	InterconnectId *string `locationName:"interconnectId" type:"string" required:"true"`
 
 	// Numeric account Id of the customer for whom the connection will be provisioned.
 	//
@@ -643,7 +643,7 @@ type AllocateConnectionOnInterconnectInput struct {
 	// Example: 101
 	//
 	// Default: None
-	VLAN *int64 `locationName:"vlan" type:"integer" required:"true"`
+	Vlan *int64 `locationName:"vlan" type:"integer" required:"true"`
 
 	metadataAllocateConnectionOnInterconnectInput `json:"-" xml:"-"`
 }
@@ -667,7 +667,7 @@ type AllocatePrivateVirtualInterfaceInput struct {
 	// The connection ID on which the private virtual interface is provisioned.
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string" required:"true"`
+	ConnectionId *string `locationName:"connectionId" type:"string" required:"true"`
 
 	// Detailed information for the private virtual interface to be provisioned.
 	//
@@ -701,7 +701,7 @@ type AllocatePublicVirtualInterfaceInput struct {
 	// The connection ID on which the public virtual interface is provisioned.
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string" required:"true"`
+	ConnectionId *string `locationName:"connectionId" type:"string" required:"true"`
 
 	// Detailed information for the public virtual interface to be provisioned.
 	//
@@ -737,7 +737,7 @@ type ConfirmConnectionInput struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string" required:"true"`
+	ConnectionId *string `locationName:"connectionId" type:"string" required:"true"`
 
 	metadataConfirmConnectionInput `json:"-" xml:"-"`
 }
@@ -796,14 +796,14 @@ type ConfirmPrivateVirtualInterfaceInput struct {
 	// action.
 	//
 	// Default: None
-	VirtualGatewayID *string `locationName:"virtualGatewayId" type:"string" required:"true"`
+	VirtualGatewayId *string `locationName:"virtualGatewayId" type:"string" required:"true"`
 
 	// ID of the virtual interface.
 	//
 	// Example: dxvif-123dfg56
 	//
 	// Default: None
-	VirtualInterfaceID *string `locationName:"virtualInterfaceId" type:"string" required:"true"`
+	VirtualInterfaceId *string `locationName:"virtualInterfaceId" type:"string" required:"true"`
 
 	metadataConfirmPrivateVirtualInterfaceInput `json:"-" xml:"-"`
 }
@@ -866,7 +866,7 @@ type ConfirmPublicVirtualInterfaceInput struct {
 	// Example: dxvif-123dfg56
 	//
 	// Default: None
-	VirtualInterfaceID *string `locationName:"virtualInterfaceId" type:"string" required:"true"`
+	VirtualInterfaceId *string `locationName:"virtualInterfaceId" type:"string" required:"true"`
 
 	metadataConfirmPublicVirtualInterfaceInput `json:"-" xml:"-"`
 }
@@ -937,7 +937,7 @@ type Connection struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string"`
+	ConnectionId *string `locationName:"connectionId" type:"string"`
 
 	// The name of the connection.
 	//
@@ -979,7 +979,7 @@ type Connection struct {
 	// The VLAN ID.
 	//
 	// Example: 101
-	VLAN *int64 `locationName:"vlan" type:"integer"`
+	Vlan *int64 `locationName:"vlan" type:"integer"`
 
 	metadataConnection `json:"-" xml:"-"`
 }
@@ -1109,7 +1109,7 @@ type CreatePrivateVirtualInterfaceInput struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string" required:"true"`
+	ConnectionId *string `locationName:"connectionId" type:"string" required:"true"`
 
 	// Detailed information for the private virtual interface to be created.
 	//
@@ -1140,7 +1140,7 @@ type CreatePublicVirtualInterfaceInput struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string" required:"true"`
+	ConnectionId *string `locationName:"connectionId" type:"string" required:"true"`
 
 	// Detailed information for the public virtual interface to be created.
 	//
@@ -1171,7 +1171,7 @@ type DeleteConnectionInput struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string" required:"true"`
+	ConnectionId *string `locationName:"connectionId" type:"string" required:"true"`
 
 	metadataDeleteConnectionInput `json:"-" xml:"-"`
 }
@@ -1195,7 +1195,7 @@ type DeleteInterconnectInput struct {
 	// The ID of the interconnect.
 	//
 	// Example: dxcon-abc123
-	InterconnectID *string `locationName:"interconnectId" type:"string" required:"true"`
+	InterconnectId *string `locationName:"interconnectId" type:"string" required:"true"`
 
 	metadataDeleteInterconnectInput `json:"-" xml:"-"`
 }
@@ -1248,7 +1248,7 @@ type DeleteVirtualInterfaceInput struct {
 	// Example: dxvif-123dfg56
 	//
 	// Default: None
-	VirtualInterfaceID *string `locationName:"virtualInterfaceId" type:"string" required:"true"`
+	VirtualInterfaceId *string `locationName:"virtualInterfaceId" type:"string" required:"true"`
 
 	metadataDeleteVirtualInterfaceInput `json:"-" xml:"-"`
 }
@@ -1311,7 +1311,7 @@ type DescribeConnectionsInput struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string"`
+	ConnectionId *string `locationName:"connectionId" type:"string"`
 
 	metadataDescribeConnectionsInput `json:"-" xml:"-"`
 }
@@ -1337,7 +1337,7 @@ type DescribeConnectionsOnInterconnectInput struct {
 	// Example: dxcon-abc123
 	//
 	// Default: None
-	InterconnectID *string `locationName:"interconnectId" type:"string" required:"true"`
+	InterconnectId *string `locationName:"interconnectId" type:"string" required:"true"`
 
 	metadataDescribeConnectionsOnInterconnectInput `json:"-" xml:"-"`
 }
@@ -1361,7 +1361,7 @@ type DescribeInterconnectsInput struct {
 	// The ID of the interconnect.
 	//
 	// Example: dxcon-abc123
-	InterconnectID *string `locationName:"interconnectId" type:"string"`
+	InterconnectId *string `locationName:"interconnectId" type:"string"`
 
 	metadataDescribeInterconnectsInput `json:"-" xml:"-"`
 }
@@ -1487,14 +1487,14 @@ type DescribeVirtualInterfacesInput struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string"`
+	ConnectionId *string `locationName:"connectionId" type:"string"`
 
 	// ID of the virtual interface.
 	//
 	// Example: dxvif-123dfg56
 	//
 	// Default: None
-	VirtualInterfaceID *string `locationName:"virtualInterfaceId" type:"string"`
+	VirtualInterfaceId *string `locationName:"virtualInterfaceId" type:"string"`
 
 	metadataDescribeVirtualInterfacesInput `json:"-" xml:"-"`
 }
@@ -1558,7 +1558,7 @@ type Interconnect struct {
 	// The ID of the interconnect.
 	//
 	// Example: dxcon-abc123
-	InterconnectID *string `locationName:"interconnectId" type:"string"`
+	InterconnectId *string `locationName:"interconnectId" type:"string"`
 
 	// The name of the interconnect.
 	//
@@ -1633,15 +1633,15 @@ func (s Location) GoString() string {
 
 // A structure containing information about a new private virtual interface.
 type NewPrivateVirtualInterface struct {
-	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	//
-	// Example: 65000
-	ASN *int64 `locationName:"asn" type:"integer" required:"true"`
-
 	// IP address assigned to the Amazon interface.
 	//
 	// Example: 192.168.1.1/30
 	AmazonAddress *string `locationName:"amazonAddress" type:"string"`
+
+	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+	//
+	// Example: 65000
+	Asn *int64 `locationName:"asn" type:"integer" required:"true"`
 
 	// Authentication key for BGP configuration.
 	//
@@ -1653,21 +1653,21 @@ type NewPrivateVirtualInterface struct {
 	// Example: 192.168.1.2/30
 	CustomerAddress *string `locationName:"customerAddress" type:"string"`
 
-	// The VLAN ID.
-	//
-	// Example: 101
-	VLAN *int64 `locationName:"vlan" type:"integer" required:"true"`
-
 	// The ID of the virtual private gateway to a VPC. This only applies to private
 	// virtual interfaces.
 	//
 	// Example: vgw-123er56
-	VirtualGatewayID *string `locationName:"virtualGatewayId" type:"string" required:"true"`
+	VirtualGatewayId *string `locationName:"virtualGatewayId" type:"string" required:"true"`
 
 	// The name of the virtual interface assigned by the customer.
 	//
 	// Example: "My VPC"
 	VirtualInterfaceName *string `locationName:"virtualInterfaceName" type:"string" required:"true"`
+
+	// The VLAN ID.
+	//
+	// Example: 101
+	Vlan *int64 `locationName:"vlan" type:"integer" required:"true"`
 
 	metadataNewPrivateVirtualInterface `json:"-" xml:"-"`
 }
@@ -1689,15 +1689,15 @@ func (s NewPrivateVirtualInterface) GoString() string {
 // A structure containing information about a private virtual interface that
 // will be provisioned on a connection.
 type NewPrivateVirtualInterfaceAllocation struct {
-	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	//
-	// Example: 65000
-	ASN *int64 `locationName:"asn" type:"integer" required:"true"`
-
 	// IP address assigned to the Amazon interface.
 	//
 	// Example: 192.168.1.1/30
 	AmazonAddress *string `locationName:"amazonAddress" type:"string"`
+
+	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+	//
+	// Example: 65000
+	Asn *int64 `locationName:"asn" type:"integer" required:"true"`
 
 	// Authentication key for BGP configuration.
 	//
@@ -1709,15 +1709,15 @@ type NewPrivateVirtualInterfaceAllocation struct {
 	// Example: 192.168.1.2/30
 	CustomerAddress *string `locationName:"customerAddress" type:"string"`
 
-	// The VLAN ID.
-	//
-	// Example: 101
-	VLAN *int64 `locationName:"vlan" type:"integer" required:"true"`
-
 	// The name of the virtual interface assigned by the customer.
 	//
 	// Example: "My VPC"
 	VirtualInterfaceName *string `locationName:"virtualInterfaceName" type:"string" required:"true"`
+
+	// The VLAN ID.
+	//
+	// Example: 101
+	Vlan *int64 `locationName:"vlan" type:"integer" required:"true"`
 
 	metadataNewPrivateVirtualInterfaceAllocation `json:"-" xml:"-"`
 }
@@ -1738,15 +1738,15 @@ func (s NewPrivateVirtualInterfaceAllocation) GoString() string {
 
 // A structure containing information about a new public virtual interface.
 type NewPublicVirtualInterface struct {
-	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	//
-	// Example: 65000
-	ASN *int64 `locationName:"asn" type:"integer" required:"true"`
-
 	// IP address assigned to the Amazon interface.
 	//
 	// Example: 192.168.1.1/30
 	AmazonAddress *string `locationName:"amazonAddress" type:"string" required:"true"`
+
+	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+	//
+	// Example: 65000
+	Asn *int64 `locationName:"asn" type:"integer" required:"true"`
 
 	// Authentication key for BGP configuration.
 	//
@@ -1762,15 +1762,15 @@ type NewPublicVirtualInterface struct {
 	// virtual interface) or your VPC (private virtual interface).
 	RouteFilterPrefixes []*RouteFilterPrefix `locationName:"routeFilterPrefixes" type:"list" required:"true"`
 
-	// The VLAN ID.
-	//
-	// Example: 101
-	VLAN *int64 `locationName:"vlan" type:"integer" required:"true"`
-
 	// The name of the virtual interface assigned by the customer.
 	//
 	// Example: "My VPC"
 	VirtualInterfaceName *string `locationName:"virtualInterfaceName" type:"string" required:"true"`
+
+	// The VLAN ID.
+	//
+	// Example: 101
+	Vlan *int64 `locationName:"vlan" type:"integer" required:"true"`
 
 	metadataNewPublicVirtualInterface `json:"-" xml:"-"`
 }
@@ -1792,15 +1792,15 @@ func (s NewPublicVirtualInterface) GoString() string {
 // A structure containing information about a public virtual interface that
 // will be provisioned on a connection.
 type NewPublicVirtualInterfaceAllocation struct {
-	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	//
-	// Example: 65000
-	ASN *int64 `locationName:"asn" type:"integer" required:"true"`
-
 	// IP address assigned to the Amazon interface.
 	//
 	// Example: 192.168.1.1/30
 	AmazonAddress *string `locationName:"amazonAddress" type:"string" required:"true"`
+
+	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+	//
+	// Example: 65000
+	Asn *int64 `locationName:"asn" type:"integer" required:"true"`
 
 	// Authentication key for BGP configuration.
 	//
@@ -1816,15 +1816,15 @@ type NewPublicVirtualInterfaceAllocation struct {
 	// virtual interface) or your VPC (private virtual interface).
 	RouteFilterPrefixes []*RouteFilterPrefix `locationName:"routeFilterPrefixes" type:"list" required:"true"`
 
-	// The VLAN ID.
-	//
-	// Example: 101
-	VLAN *int64 `locationName:"vlan" type:"integer" required:"true"`
-
 	// The name of the virtual interface assigned by the customer.
 	//
 	// Example: "My VPC"
 	VirtualInterfaceName *string `locationName:"virtualInterfaceName" type:"string" required:"true"`
+
+	// The VLAN ID.
+	//
+	// Example: 101
+	Vlan *int64 `locationName:"vlan" type:"integer" required:"true"`
 
 	metadataNewPublicVirtualInterfaceAllocation `json:"-" xml:"-"`
 }
@@ -1850,7 +1850,7 @@ type RouteFilterPrefix struct {
 	// commas.
 	//
 	// Example: 10.10.10.0/24,10.10.11.0/24
-	CIDR *string `locationName:"cidr" type:"string"`
+	Cidr *string `locationName:"cidr" type:"string"`
 
 	metadataRouteFilterPrefix `json:"-" xml:"-"`
 }
@@ -1879,7 +1879,7 @@ type VirtualGateway struct {
 	// virtual interfaces.
 	//
 	// Example: vgw-123er56
-	VirtualGatewayID *string `locationName:"virtualGatewayId" type:"string"`
+	VirtualGatewayId *string `locationName:"virtualGatewayId" type:"string"`
 
 	// State of the virtual private gateway.   Pending: This is the initial state
 	// after calling CreateVpnGateway.  Available: Ready for use by a private virtual
@@ -1908,15 +1908,15 @@ func (s VirtualGateway) GoString() string {
 // A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect
 // location and the customer.
 type VirtualInterface struct {
-	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-	//
-	// Example: 65000
-	ASN *int64 `locationName:"asn" type:"integer"`
-
 	// IP address assigned to the Amazon interface.
 	//
 	// Example: 192.168.1.1/30
 	AmazonAddress *string `locationName:"amazonAddress" type:"string"`
+
+	// Autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+	//
+	// Example: 65000
+	Asn *int64 `locationName:"asn" type:"integer"`
 
 	// Authentication key for BGP configuration.
 	//
@@ -1928,7 +1928,7 @@ type VirtualInterface struct {
 	// Example: dxcon-fg5678gh
 	//
 	// Default: None
-	ConnectionID *string `locationName:"connectionId" type:"string"`
+	ConnectionId *string `locationName:"connectionId" type:"string"`
 
 	// IP address assigned to the customer interface.
 	//
@@ -1951,23 +1951,18 @@ type VirtualInterface struct {
 	// virtual interface) or your VPC (private virtual interface).
 	RouteFilterPrefixes []*RouteFilterPrefix `locationName:"routeFilterPrefixes" type:"list"`
 
-	// The VLAN ID.
-	//
-	// Example: 101
-	VLAN *int64 `locationName:"vlan" type:"integer"`
-
 	// The ID of the virtual private gateway to a VPC. This only applies to private
 	// virtual interfaces.
 	//
 	// Example: vgw-123er56
-	VirtualGatewayID *string `locationName:"virtualGatewayId" type:"string"`
+	VirtualGatewayId *string `locationName:"virtualGatewayId" type:"string"`
 
 	// ID of the virtual interface.
 	//
 	// Example: dxvif-123dfg56
 	//
 	// Default: None
-	VirtualInterfaceID *string `locationName:"virtualInterfaceId" type:"string"`
+	VirtualInterfaceId *string `locationName:"virtualInterfaceId" type:"string"`
 
 	// The name of the virtual interface assigned by the customer.
 	//
@@ -1997,6 +1992,11 @@ type VirtualInterface struct {
 	// Example: private (Amazon VPC) or public (Amazon S3, Amazon DynamoDB, and
 	// so on.)
 	VirtualInterfaceType *string `locationName:"virtualInterfaceType" type:"string"`
+
+	// The VLAN ID.
+	//
+	// Example: 101
+	Vlan *int64 `locationName:"vlan" type:"integer"`
 
 	metadataVirtualInterface `json:"-" xml:"-"`
 }

@@ -6,15 +6,15 @@ package ses
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opDeleteIdentity = "DeleteIdentity"
 
 // DeleteIdentityRequest generates a request for the DeleteIdentity operation.
-func (c *SES) DeleteIdentityRequest(input *DeleteIdentityInput) (req *aws.Request, output *DeleteIdentityOutput) {
-	op := &aws.Operation{
+func (c *SES) DeleteIdentityRequest(input *DeleteIdentityInput) (req *request.Request, output *DeleteIdentityOutput) {
+	op := &request.Operation{
 		Name:       opDeleteIdentity,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -43,8 +43,8 @@ func (c *SES) DeleteIdentity(input *DeleteIdentityInput) (*DeleteIdentityOutput,
 const opDeleteIdentityPolicy = "DeleteIdentityPolicy"
 
 // DeleteIdentityPolicyRequest generates a request for the DeleteIdentityPolicy operation.
-func (c *SES) DeleteIdentityPolicyRequest(input *DeleteIdentityPolicyInput) (req *aws.Request, output *DeleteIdentityPolicyOutput) {
-	op := &aws.Operation{
+func (c *SES) DeleteIdentityPolicyRequest(input *DeleteIdentityPolicyInput) (req *request.Request, output *DeleteIdentityPolicyOutput) {
+	op := &request.Operation{
 		Name:       opDeleteIdentityPolicy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -79,8 +79,8 @@ func (c *SES) DeleteIdentityPolicy(input *DeleteIdentityPolicyInput) (*DeleteIde
 const opDeleteVerifiedEmailAddress = "DeleteVerifiedEmailAddress"
 
 // DeleteVerifiedEmailAddressRequest generates a request for the DeleteVerifiedEmailAddress operation.
-func (c *SES) DeleteVerifiedEmailAddressRequest(input *DeleteVerifiedEmailAddressInput) (req *aws.Request, output *DeleteVerifiedEmailAddressOutput) {
-	op := &aws.Operation{
+func (c *SES) DeleteVerifiedEmailAddressRequest(input *DeleteVerifiedEmailAddressInput) (req *request.Request, output *DeleteVerifiedEmailAddressOutput) {
+	op := &request.Operation{
 		Name:       opDeleteVerifiedEmailAddress,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -107,22 +107,22 @@ func (c *SES) DeleteVerifiedEmailAddress(input *DeleteVerifiedEmailAddressInput)
 	return out, err
 }
 
-const opGetIdentityDKIMAttributes = "GetIdentityDkimAttributes"
+const opGetIdentityDkimAttributes = "GetIdentityDkimAttributes"
 
-// GetIdentityDKIMAttributesRequest generates a request for the GetIdentityDKIMAttributes operation.
-func (c *SES) GetIdentityDKIMAttributesRequest(input *GetIdentityDKIMAttributesInput) (req *aws.Request, output *GetIdentityDKIMAttributesOutput) {
-	op := &aws.Operation{
-		Name:       opGetIdentityDKIMAttributes,
+// GetIdentityDkimAttributesRequest generates a request for the GetIdentityDkimAttributes operation.
+func (c *SES) GetIdentityDkimAttributesRequest(input *GetIdentityDkimAttributesInput) (req *request.Request, output *GetIdentityDkimAttributesOutput) {
+	op := &request.Operation{
+		Name:       opGetIdentityDkimAttributes,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &GetIdentityDKIMAttributesInput{}
+		input = &GetIdentityDkimAttributesInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &GetIdentityDKIMAttributesOutput{}
+	output = &GetIdentityDkimAttributesOutput{}
 	req.Data = output
 	return
 }
@@ -145,8 +145,8 @@ func (c *SES) GetIdentityDKIMAttributesRequest(input *GetIdentityDKIMAttributesI
 //
 // For more information about creating DNS records using DKIM tokens, go to
 // the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
-func (c *SES) GetIdentityDKIMAttributes(input *GetIdentityDKIMAttributesInput) (*GetIdentityDKIMAttributesOutput, error) {
-	req, out := c.GetIdentityDKIMAttributesRequest(input)
+func (c *SES) GetIdentityDkimAttributes(input *GetIdentityDkimAttributesInput) (*GetIdentityDkimAttributesOutput, error) {
+	req, out := c.GetIdentityDkimAttributesRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -154,8 +154,8 @@ func (c *SES) GetIdentityDKIMAttributes(input *GetIdentityDKIMAttributesInput) (
 const opGetIdentityNotificationAttributes = "GetIdentityNotificationAttributes"
 
 // GetIdentityNotificationAttributesRequest generates a request for the GetIdentityNotificationAttributes operation.
-func (c *SES) GetIdentityNotificationAttributesRequest(input *GetIdentityNotificationAttributesInput) (req *aws.Request, output *GetIdentityNotificationAttributesOutput) {
-	op := &aws.Operation{
+func (c *SES) GetIdentityNotificationAttributesRequest(input *GetIdentityNotificationAttributesInput) (req *request.Request, output *GetIdentityNotificationAttributesOutput) {
+	op := &request.Operation{
 		Name:       opGetIdentityNotificationAttributes,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -188,8 +188,8 @@ func (c *SES) GetIdentityNotificationAttributes(input *GetIdentityNotificationAt
 const opGetIdentityPolicies = "GetIdentityPolicies"
 
 // GetIdentityPoliciesRequest generates a request for the GetIdentityPolicies operation.
-func (c *SES) GetIdentityPoliciesRequest(input *GetIdentityPoliciesInput) (req *aws.Request, output *GetIdentityPoliciesOutput) {
-	op := &aws.Operation{
+func (c *SES) GetIdentityPoliciesRequest(input *GetIdentityPoliciesInput) (req *request.Request, output *GetIdentityPoliciesOutput) {
+	op := &request.Operation{
 		Name:       opGetIdentityPolicies,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -224,8 +224,8 @@ func (c *SES) GetIdentityPolicies(input *GetIdentityPoliciesInput) (*GetIdentity
 const opGetIdentityVerificationAttributes = "GetIdentityVerificationAttributes"
 
 // GetIdentityVerificationAttributesRequest generates a request for the GetIdentityVerificationAttributes operation.
-func (c *SES) GetIdentityVerificationAttributesRequest(input *GetIdentityVerificationAttributesInput) (req *aws.Request, output *GetIdentityVerificationAttributesOutput) {
-	op := &aws.Operation{
+func (c *SES) GetIdentityVerificationAttributesRequest(input *GetIdentityVerificationAttributesInput) (req *request.Request, output *GetIdentityVerificationAttributesOutput) {
+	op := &request.Operation{
 		Name:       opGetIdentityVerificationAttributes,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -256,8 +256,8 @@ func (c *SES) GetIdentityVerificationAttributes(input *GetIdentityVerificationAt
 const opGetSendQuota = "GetSendQuota"
 
 // GetSendQuotaRequest generates a request for the GetSendQuota operation.
-func (c *SES) GetSendQuotaRequest(input *GetSendQuotaInput) (req *aws.Request, output *GetSendQuotaOutput) {
-	op := &aws.Operation{
+func (c *SES) GetSendQuotaRequest(input *GetSendQuotaInput) (req *request.Request, output *GetSendQuotaOutput) {
+	op := &request.Operation{
 		Name:       opGetSendQuota,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -285,8 +285,8 @@ func (c *SES) GetSendQuota(input *GetSendQuotaInput) (*GetSendQuotaOutput, error
 const opGetSendStatistics = "GetSendStatistics"
 
 // GetSendStatisticsRequest generates a request for the GetSendStatistics operation.
-func (c *SES) GetSendStatisticsRequest(input *GetSendStatisticsInput) (req *aws.Request, output *GetSendStatisticsOutput) {
-	op := &aws.Operation{
+func (c *SES) GetSendStatisticsRequest(input *GetSendStatisticsInput) (req *request.Request, output *GetSendStatisticsOutput) {
+	op := &request.Operation{
 		Name:       opGetSendStatistics,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -317,12 +317,12 @@ func (c *SES) GetSendStatistics(input *GetSendStatisticsInput) (*GetSendStatisti
 const opListIdentities = "ListIdentities"
 
 // ListIdentitiesRequest generates a request for the ListIdentities operation.
-func (c *SES) ListIdentitiesRequest(input *ListIdentitiesInput) (req *aws.Request, output *ListIdentitiesOutput) {
-	op := &aws.Operation{
+func (c *SES) ListIdentitiesRequest(input *ListIdentitiesInput) (req *request.Request, output *ListIdentitiesOutput) {
+	op := &request.Operation{
 		Name:       opListIdentities,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"NextToken"},
 			OutputTokens:    []string{"NextToken"},
 			LimitToken:      "MaxItems",
@@ -360,8 +360,8 @@ func (c *SES) ListIdentitiesPages(input *ListIdentitiesInput, fn func(p *ListIde
 const opListIdentityPolicies = "ListIdentityPolicies"
 
 // ListIdentityPoliciesRequest generates a request for the ListIdentityPolicies operation.
-func (c *SES) ListIdentityPoliciesRequest(input *ListIdentityPoliciesInput) (req *aws.Request, output *ListIdentityPoliciesOutput) {
-	op := &aws.Operation{
+func (c *SES) ListIdentityPoliciesRequest(input *ListIdentityPoliciesInput) (req *request.Request, output *ListIdentityPoliciesOutput) {
+	op := &request.Operation{
 		Name:       opListIdentityPolicies,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -396,8 +396,8 @@ func (c *SES) ListIdentityPolicies(input *ListIdentityPoliciesInput) (*ListIdent
 const opListVerifiedEmailAddresses = "ListVerifiedEmailAddresses"
 
 // ListVerifiedEmailAddressesRequest generates a request for the ListVerifiedEmailAddresses operation.
-func (c *SES) ListVerifiedEmailAddressesRequest(input *ListVerifiedEmailAddressesInput) (req *aws.Request, output *ListVerifiedEmailAddressesOutput) {
-	op := &aws.Operation{
+func (c *SES) ListVerifiedEmailAddressesRequest(input *ListVerifiedEmailAddressesInput) (req *request.Request, output *ListVerifiedEmailAddressesOutput) {
+	op := &request.Operation{
 		Name:       opListVerifiedEmailAddresses,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -427,8 +427,8 @@ func (c *SES) ListVerifiedEmailAddresses(input *ListVerifiedEmailAddressesInput)
 const opPutIdentityPolicy = "PutIdentityPolicy"
 
 // PutIdentityPolicyRequest generates a request for the PutIdentityPolicy operation.
-func (c *SES) PutIdentityPolicyRequest(input *PutIdentityPolicyInput) (req *aws.Request, output *PutIdentityPolicyOutput) {
-	op := &aws.Operation{
+func (c *SES) PutIdentityPolicyRequest(input *PutIdentityPolicyInput) (req *request.Request, output *PutIdentityPolicyOutput) {
+	op := &request.Operation{
 		Name:       opPutIdentityPolicy,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -462,8 +462,8 @@ func (c *SES) PutIdentityPolicy(input *PutIdentityPolicyInput) (*PutIdentityPoli
 const opSendEmail = "SendEmail"
 
 // SendEmailRequest generates a request for the SendEmail operation.
-func (c *SES) SendEmailRequest(input *SendEmailInput) (req *aws.Request, output *SendEmailOutput) {
-	op := &aws.Operation{
+func (c *SES) SendEmailRequest(input *SendEmailInput) (req *request.Request, output *SendEmailOutput) {
+	op := &request.Operation{
 		Name:       opSendEmail,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -508,8 +508,8 @@ func (c *SES) SendEmail(input *SendEmailInput) (*SendEmailOutput, error) {
 const opSendRawEmail = "SendRawEmail"
 
 // SendRawEmailRequest generates a request for the SendRawEmail operation.
-func (c *SES) SendRawEmailRequest(input *SendRawEmailInput) (req *aws.Request, output *SendRawEmailOutput) {
-	op := &aws.Operation{
+func (c *SES) SendRawEmailRequest(input *SendRawEmailInput) (req *request.Request, output *SendRawEmailOutput) {
+	op := &request.Operation{
 		Name:       opSendRawEmail,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -569,22 +569,22 @@ func (c *SES) SendRawEmail(input *SendRawEmailInput) (*SendRawEmailOutput, error
 	return out, err
 }
 
-const opSetIdentityDKIMEnabled = "SetIdentityDkimEnabled"
+const opSetIdentityDkimEnabled = "SetIdentityDkimEnabled"
 
-// SetIdentityDKIMEnabledRequest generates a request for the SetIdentityDKIMEnabled operation.
-func (c *SES) SetIdentityDKIMEnabledRequest(input *SetIdentityDKIMEnabledInput) (req *aws.Request, output *SetIdentityDKIMEnabledOutput) {
-	op := &aws.Operation{
-		Name:       opSetIdentityDKIMEnabled,
+// SetIdentityDkimEnabledRequest generates a request for the SetIdentityDkimEnabled operation.
+func (c *SES) SetIdentityDkimEnabledRequest(input *SetIdentityDkimEnabledInput) (req *request.Request, output *SetIdentityDkimEnabledOutput) {
+	op := &request.Operation{
+		Name:       opSetIdentityDkimEnabled,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &SetIdentityDKIMEnabledInput{}
+		input = &SetIdentityDkimEnabledInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &SetIdentityDKIMEnabledOutput{}
+	output = &SetIdentityDkimEnabledOutput{}
 	req.Data = output
 	return
 }
@@ -603,8 +603,8 @@ func (c *SES) SetIdentityDKIMEnabledRequest(input *SetIdentityDKIMEnabledInput) 
 //
 // For more information about Easy DKIM signing, go to the Amazon SES Developer
 // Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
-func (c *SES) SetIdentityDKIMEnabled(input *SetIdentityDKIMEnabledInput) (*SetIdentityDKIMEnabledOutput, error) {
-	req, out := c.SetIdentityDKIMEnabledRequest(input)
+func (c *SES) SetIdentityDkimEnabled(input *SetIdentityDkimEnabledInput) (*SetIdentityDkimEnabledOutput, error) {
+	req, out := c.SetIdentityDkimEnabledRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -612,8 +612,8 @@ func (c *SES) SetIdentityDKIMEnabled(input *SetIdentityDKIMEnabledInput) (*SetId
 const opSetIdentityFeedbackForwardingEnabled = "SetIdentityFeedbackForwardingEnabled"
 
 // SetIdentityFeedbackForwardingEnabledRequest generates a request for the SetIdentityFeedbackForwardingEnabled operation.
-func (c *SES) SetIdentityFeedbackForwardingEnabledRequest(input *SetIdentityFeedbackForwardingEnabledInput) (req *aws.Request, output *SetIdentityFeedbackForwardingEnabledOutput) {
-	op := &aws.Operation{
+func (c *SES) SetIdentityFeedbackForwardingEnabledRequest(input *SetIdentityFeedbackForwardingEnabledInput) (req *request.Request, output *SetIdentityFeedbackForwardingEnabledOutput) {
+	op := &request.Operation{
 		Name:       opSetIdentityFeedbackForwardingEnabled,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -649,8 +649,8 @@ func (c *SES) SetIdentityFeedbackForwardingEnabled(input *SetIdentityFeedbackFor
 const opSetIdentityNotificationTopic = "SetIdentityNotificationTopic"
 
 // SetIdentityNotificationTopicRequest generates a request for the SetIdentityNotificationTopic operation.
-func (c *SES) SetIdentityNotificationTopicRequest(input *SetIdentityNotificationTopicInput) (req *aws.Request, output *SetIdentityNotificationTopicOutput) {
-	op := &aws.Operation{
+func (c *SES) SetIdentityNotificationTopicRequest(input *SetIdentityNotificationTopicInput) (req *request.Request, output *SetIdentityNotificationTopicOutput) {
+	op := &request.Operation{
 		Name:       opSetIdentityNotificationTopic,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -682,22 +682,22 @@ func (c *SES) SetIdentityNotificationTopic(input *SetIdentityNotificationTopicIn
 	return out, err
 }
 
-const opVerifyDomainDKIM = "VerifyDomainDkim"
+const opVerifyDomainDkim = "VerifyDomainDkim"
 
-// VerifyDomainDKIMRequest generates a request for the VerifyDomainDKIM operation.
-func (c *SES) VerifyDomainDKIMRequest(input *VerifyDomainDKIMInput) (req *aws.Request, output *VerifyDomainDKIMOutput) {
-	op := &aws.Operation{
-		Name:       opVerifyDomainDKIM,
+// VerifyDomainDkimRequest generates a request for the VerifyDomainDkim operation.
+func (c *SES) VerifyDomainDkimRequest(input *VerifyDomainDkimInput) (req *request.Request, output *VerifyDomainDkimOutput) {
+	op := &request.Operation{
+		Name:       opVerifyDomainDkim,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
 	}
 
 	if input == nil {
-		input = &VerifyDomainDKIMInput{}
+		input = &VerifyDomainDkimInput{}
 	}
 
 	req = c.newRequest(op, input, output)
-	output = &VerifyDomainDKIMOutput{}
+	output = &VerifyDomainDkimOutput{}
 	req.Data = output
 	return
 }
@@ -717,8 +717,8 @@ func (c *SES) VerifyDomainDKIMRequest(input *VerifyDomainDKIMInput) (req *aws.Re
 //
 // For more information about creating DNS records using DKIM tokens, go to
 // the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
-func (c *SES) VerifyDomainDKIM(input *VerifyDomainDKIMInput) (*VerifyDomainDKIMOutput, error) {
-	req, out := c.VerifyDomainDKIMRequest(input)
+func (c *SES) VerifyDomainDkim(input *VerifyDomainDkimInput) (*VerifyDomainDkimOutput, error) {
+	req, out := c.VerifyDomainDkimRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -726,8 +726,8 @@ func (c *SES) VerifyDomainDKIM(input *VerifyDomainDKIMInput) (*VerifyDomainDKIMO
 const opVerifyDomainIdentity = "VerifyDomainIdentity"
 
 // VerifyDomainIdentityRequest generates a request for the VerifyDomainIdentity operation.
-func (c *SES) VerifyDomainIdentityRequest(input *VerifyDomainIdentityInput) (req *aws.Request, output *VerifyDomainIdentityOutput) {
-	op := &aws.Operation{
+func (c *SES) VerifyDomainIdentityRequest(input *VerifyDomainIdentityInput) (req *request.Request, output *VerifyDomainIdentityOutput) {
+	op := &request.Operation{
 		Name:       opVerifyDomainIdentity,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -755,8 +755,8 @@ func (c *SES) VerifyDomainIdentity(input *VerifyDomainIdentityInput) (*VerifyDom
 const opVerifyEmailAddress = "VerifyEmailAddress"
 
 // VerifyEmailAddressRequest generates a request for the VerifyEmailAddress operation.
-func (c *SES) VerifyEmailAddressRequest(input *VerifyEmailAddressInput) (req *aws.Request, output *VerifyEmailAddressOutput) {
-	op := &aws.Operation{
+func (c *SES) VerifyEmailAddressRequest(input *VerifyEmailAddressInput) (req *request.Request, output *VerifyEmailAddressOutput) {
+	op := &request.Operation{
 		Name:       opVerifyEmailAddress,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -787,8 +787,8 @@ func (c *SES) VerifyEmailAddress(input *VerifyEmailAddressInput) (*VerifyEmailAd
 const opVerifyEmailIdentity = "VerifyEmailIdentity"
 
 // VerifyEmailIdentityRequest generates a request for the VerifyEmailIdentity operation.
-func (c *SES) VerifyEmailIdentityRequest(input *VerifyEmailIdentityInput) (req *aws.Request, output *VerifyEmailIdentityOutput) {
-	op := &aws.Operation{
+func (c *SES) VerifyEmailIdentityRequest(input *VerifyEmailIdentityInput) (req *request.Request, output *VerifyEmailIdentityOutput) {
+	op := &request.Operation{
 		Name:       opVerifyEmailIdentity,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
@@ -821,7 +821,7 @@ type Body struct {
 	// The content of the message, in HTML format. Use this for email clients that
 	// can process HTML. You can include clickable links, formatted text, and much
 	// more in an HTML message.
-	HTML *Content `locationName:"Html" type:"structure"`
+	Html *Content `type:"structure"`
 
 	// The content of the message, in text format. Use this for text-based email
 	// clients, or clients on high-latency networks (such as mobile devices).
@@ -929,7 +929,7 @@ type DeleteIdentityPolicyInput struct {
 	Identity *string `type:"string" required:"true"`
 
 	// The name of the policy to be deleted.
-	PolicyName *string `type:"string" required:"true"`
+	PolicyName *string `min:"1" type:"string" required:"true"`
 
 	metadataDeleteIdentityPolicyInput `json:"-" xml:"-"`
 }
@@ -1018,10 +1018,10 @@ func (s DeleteVerifiedEmailAddressOutput) GoString() string {
 // For more information, see RFC 2047 (http://tools.ietf.org/html/rfc2047).
 type Destination struct {
 	// The BCC: field(s) of the message.
-	BCCAddresses []*string `locationName:"BccAddresses" type:"list"`
+	BccAddresses []*string `type:"list"`
 
 	// The CC: field(s) of the message.
-	CCAddresses []*string `locationName:"CcAddresses" type:"list"`
+	CcAddresses []*string `type:"list"`
 
 	// The To: field(s) of the message.
 	ToAddresses []*string `type:"list"`
@@ -1049,47 +1049,47 @@ func (s Destination) GoString() string {
 // of a domain name identity includes whether DKIM signing is enabled, as well
 // as the DNS records (tokens) that must remain published in the domain name's
 // DNS.
-type GetIdentityDKIMAttributesInput struct {
+type GetIdentityDkimAttributesInput struct {
 	// A list of one or more verified identities - email addresses, domains, or
 	// both.
 	Identities []*string `type:"list" required:"true"`
 
-	metadataGetIdentityDKIMAttributesInput `json:"-" xml:"-"`
+	metadataGetIdentityDkimAttributesInput `json:"-" xml:"-"`
 }
 
-type metadataGetIdentityDKIMAttributesInput struct {
+type metadataGetIdentityDkimAttributesInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s GetIdentityDKIMAttributesInput) String() string {
+func (s GetIdentityDkimAttributesInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s GetIdentityDKIMAttributesInput) GoString() string {
+func (s GetIdentityDkimAttributesInput) GoString() string {
 	return s.String()
 }
 
 // Represents a list of all the DKIM attributes for the specified identity.
-type GetIdentityDKIMAttributesOutput struct {
+type GetIdentityDkimAttributesOutput struct {
 	// The DKIM attributes for an email address or a domain.
-	DKIMAttributes map[string]*IdentityDKIMAttributes `locationName:"DkimAttributes" type:"map" required:"true"`
+	DkimAttributes map[string]*IdentityDkimAttributes `type:"map" required:"true"`
 
-	metadataGetIdentityDKIMAttributesOutput `json:"-" xml:"-"`
+	metadataGetIdentityDkimAttributesOutput `json:"-" xml:"-"`
 }
 
-type metadataGetIdentityDKIMAttributesOutput struct {
+type metadataGetIdentityDkimAttributesOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s GetIdentityDKIMAttributesOutput) String() string {
+func (s GetIdentityDkimAttributesOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s GetIdentityDKIMAttributesOutput) GoString() string {
+func (s GetIdentityDkimAttributesOutput) GoString() string {
 	return s.String()
 }
 
@@ -1336,9 +1336,9 @@ func (s GetSendStatisticsOutput) GoString() string {
 }
 
 // Represents the DKIM attributes of a verified email address or a domain.
-type IdentityDKIMAttributes struct {
+type IdentityDkimAttributes struct {
 	// True if DKIM signing is enabled for email sent from the identity; false otherwise.
-	DKIMEnabled *bool `locationName:"DkimEnabled" type:"boolean" required:"true"`
+	DkimEnabled *bool `type:"boolean" required:"true"`
 
 	// A set of character strings that represent the domain's identity. Using these
 	// tokens, you will need to create DNS CNAME records that point to DKIM public
@@ -1350,27 +1350,27 @@ type IdentityDKIMAttributes struct {
 	//
 	// For more information about creating DNS records using DKIM tokens, go to
 	// the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
-	DKIMTokens []*string `locationName:"DkimTokens" type:"list"`
+	DkimTokens []*string `type:"list"`
 
 	// Describes whether Amazon SES has successfully verified the DKIM DNS records
 	// (tokens) published in the domain name's DNS. (This only applies to domain
 	// identities, not email address identities.)
-	DKIMVerificationStatus *string `locationName:"DkimVerificationStatus" type:"string" required:"true" enum:"VerificationStatus"`
+	DkimVerificationStatus *string `type:"string" required:"true" enum:"VerificationStatus"`
 
-	metadataIdentityDKIMAttributes `json:"-" xml:"-"`
+	metadataIdentityDkimAttributes `json:"-" xml:"-"`
 }
 
-type metadataIdentityDKIMAttributes struct {
+type metadataIdentityDkimAttributes struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s IdentityDKIMAttributes) String() string {
+func (s IdentityDkimAttributes) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s IdentityDKIMAttributes) GoString() string {
+func (s IdentityDkimAttributes) GoString() string {
 	return s.String()
 }
 
@@ -1625,13 +1625,13 @@ type PutIdentityPolicyInput struct {
 	//
 	// For information about the syntax of sending authorization policies, see
 	// the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
-	Policy *string `type:"string" required:"true"`
+	Policy *string `min:"1" type:"string" required:"true"`
 
 	// The name of the policy.
 	//
 	// The policy name cannot exceed 64 characters and can only include alphanumeric
 	// characters, dashes, and underscores.
-	PolicyName *string `type:"string" required:"true"`
+	PolicyName *string `min:"1" type:"string" required:"true"`
 
 	metadataPutIdentityPolicyInput `json:"-" xml:"-"`
 }
@@ -1775,7 +1775,7 @@ type SendEmailInput struct {
 	//
 	// For more information about sending authorization, see the Amazon SES Developer
 	// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-	ReturnPathARN *string `locationName:"ReturnPathArn" type:"string"`
+	ReturnPathArn *string `type:"string"`
 
 	// The email address that is sending the email. This email address must be either
 	// individually verified with Amazon SES, or from a domain that has been verified
@@ -1805,7 +1805,7 @@ type SendEmailInput struct {
 	//
 	// For more information about sending authorization, see the Amazon SES Developer
 	// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-	SourceARN *string `locationName:"SourceArn" type:"string"`
+	SourceArn *string `type:"string"`
 
 	metadataSendEmailInput `json:"-" xml:"-"`
 }
@@ -1827,7 +1827,7 @@ func (s SendEmailInput) GoString() string {
 // Represents a unique message ID returned from a successful SendEmail request.
 type SendEmailOutput struct {
 	// The unique message identifier returned from the SendEmail action.
-	MessageID *string `locationName:"MessageId" type:"string" required:"true"`
+	MessageId *string `type:"string" required:"true"`
 
 	metadataSendEmailOutput `json:"-" xml:"-"`
 }
@@ -1866,7 +1866,7 @@ type SendRawEmailInput struct {
 	//
 	// For information about when to use this parameter, see the description of
 	// SendRawEmail in this guide, or see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
-	FromARN *string `locationName:"FromArn" type:"string"`
+	FromArn *string `type:"string"`
 
 	// The raw text of the message. The client is responsible for ensuring the following:
 	//
@@ -1894,7 +1894,7 @@ type SendRawEmailInput struct {
 	//
 	// For information about when to use this parameter, see the description of
 	// SendRawEmail in this guide, or see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
-	ReturnPathARN *string `locationName:"ReturnPathArn" type:"string"`
+	ReturnPathArn *string `type:"string"`
 
 	// The identity's email address. If you do not provide a value for this parameter,
 	// you must specify a "From" address in the raw text of the message. (You can
@@ -1927,7 +1927,7 @@ type SendRawEmailInput struct {
 	//
 	// For information about when to use this parameter, see the description of
 	// SendRawEmail in this guide, or see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
-	SourceARN *string `locationName:"SourceArn" type:"string"`
+	SourceArn *string `type:"string"`
 
 	metadataSendRawEmailInput `json:"-" xml:"-"`
 }
@@ -1949,7 +1949,7 @@ func (s SendRawEmailInput) GoString() string {
 // Represents a unique message ID returned from a successful SendRawEmail request.
 type SendRawEmailOutput struct {
 	// The unique message identifier returned from the SendRawEmail action.
-	MessageID *string `locationName:"MessageId" type:"string" required:"true"`
+	MessageId *string `type:"string" required:"true"`
 
 	metadataSendRawEmailOutput `json:"-" xml:"-"`
 }
@@ -1970,48 +1970,48 @@ func (s SendRawEmailOutput) GoString() string {
 
 // Represents a request instructing the service to enable or disable DKIM signing
 // for an identity.
-type SetIdentityDKIMEnabledInput struct {
+type SetIdentityDkimEnabledInput struct {
 	// Sets whether DKIM signing is enabled for an identity. Set to true to enable
 	// DKIM signing for this identity; false to disable it.
-	DKIMEnabled *bool `locationName:"DkimEnabled" type:"boolean" required:"true"`
+	DkimEnabled *bool `type:"boolean" required:"true"`
 
 	// The identity for which DKIM signing should be enabled or disabled.
 	Identity *string `type:"string" required:"true"`
 
-	metadataSetIdentityDKIMEnabledInput `json:"-" xml:"-"`
+	metadataSetIdentityDkimEnabledInput `json:"-" xml:"-"`
 }
 
-type metadataSetIdentityDKIMEnabledInput struct {
+type metadataSetIdentityDkimEnabledInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s SetIdentityDKIMEnabledInput) String() string {
+func (s SetIdentityDkimEnabledInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s SetIdentityDKIMEnabledInput) GoString() string {
+func (s SetIdentityDkimEnabledInput) GoString() string {
 	return s.String()
 }
 
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
-type SetIdentityDKIMEnabledOutput struct {
-	metadataSetIdentityDKIMEnabledOutput `json:"-" xml:"-"`
+type SetIdentityDkimEnabledOutput struct {
+	metadataSetIdentityDkimEnabledOutput `json:"-" xml:"-"`
 }
 
-type metadataSetIdentityDKIMEnabledOutput struct {
+type metadataSetIdentityDkimEnabledOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s SetIdentityDKIMEnabledOutput) String() string {
+func (s SetIdentityDkimEnabledOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s SetIdentityDKIMEnabledOutput) GoString() string {
+func (s SetIdentityDkimEnabledOutput) GoString() string {
 	return s.String()
 }
 
@@ -2079,7 +2079,7 @@ type SetIdentityNotificationTopicInput struct {
 	// The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter
 	// is omitted from the request or a null value is passed, SnsTopic is cleared
 	// and publishing is disabled.
-	SNSTopic *string `locationName:"SnsTopic" type:"string"`
+	SnsTopic *string `type:"string"`
 
 	metadataSetIdentityNotificationTopicInput `json:"-" xml:"-"`
 }
@@ -2120,30 +2120,30 @@ func (s SetIdentityNotificationTopicOutput) GoString() string {
 
 // Represents a request instructing the service to begin DKIM verification for
 // a domain.
-type VerifyDomainDKIMInput struct {
+type VerifyDomainDkimInput struct {
 	// The name of the domain to be verified for Easy DKIM signing.
 	Domain *string `type:"string" required:"true"`
 
-	metadataVerifyDomainDKIMInput `json:"-" xml:"-"`
+	metadataVerifyDomainDkimInput `json:"-" xml:"-"`
 }
 
-type metadataVerifyDomainDKIMInput struct {
+type metadataVerifyDomainDkimInput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s VerifyDomainDKIMInput) String() string {
+func (s VerifyDomainDkimInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s VerifyDomainDKIMInput) GoString() string {
+func (s VerifyDomainDkimInput) GoString() string {
 	return s.String()
 }
 
 // Represents the DNS records that must be published in the domain name's DNS
 // to complete DKIM setup.
-type VerifyDomainDKIMOutput struct {
+type VerifyDomainDkimOutput struct {
 	// A set of character strings that represent the domain's identity. If the identity
 	// is an email address, the tokens represent the domain of that address.
 	//
@@ -2155,22 +2155,22 @@ type VerifyDomainDKIMOutput struct {
 	//
 	// For more information about creating DNS records using DKIM tokens, go to
 	// the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
-	DKIMTokens []*string `locationName:"DkimTokens" type:"list" required:"true"`
+	DkimTokens []*string `type:"list" required:"true"`
 
-	metadataVerifyDomainDKIMOutput `json:"-" xml:"-"`
+	metadataVerifyDomainDkimOutput `json:"-" xml:"-"`
 }
 
-type metadataVerifyDomainDKIMOutput struct {
+type metadataVerifyDomainDkimOutput struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s VerifyDomainDKIMOutput) String() string {
+func (s VerifyDomainDkimOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s VerifyDomainDKIMOutput) GoString() string {
+func (s VerifyDomainDkimOutput) GoString() string {
 	return s.String()
 }
 

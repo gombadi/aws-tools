@@ -6,15 +6,15 @@ package cloudfront
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opCreateCloudFrontOriginAccessIdentity = "CreateCloudFrontOriginAccessIdentity2015_04_17"
 
 // CreateCloudFrontOriginAccessIdentityRequest generates a request for the CreateCloudFrontOriginAccessIdentity operation.
-func (c *CloudFront) CreateCloudFrontOriginAccessIdentityRequest(input *CreateCloudFrontOriginAccessIdentityInput) (req *aws.Request, output *CreateCloudFrontOriginAccessIdentityOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) CreateCloudFrontOriginAccessIdentityRequest(input *CreateCloudFrontOriginAccessIdentityInput) (req *request.Request, output *CreateCloudFrontOriginAccessIdentityOutput) {
+	op := &request.Operation{
 		Name:       opCreateCloudFrontOriginAccessIdentity,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-04-17/origin-access-identity/cloudfront",
@@ -40,8 +40,8 @@ func (c *CloudFront) CreateCloudFrontOriginAccessIdentity(input *CreateCloudFron
 const opCreateDistribution = "CreateDistribution2015_04_17"
 
 // CreateDistributionRequest generates a request for the CreateDistribution operation.
-func (c *CloudFront) CreateDistributionRequest(input *CreateDistributionInput) (req *aws.Request, output *CreateDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) CreateDistributionRequest(input *CreateDistributionInput) (req *request.Request, output *CreateDistributionOutput) {
+	op := &request.Operation{
 		Name:       opCreateDistribution,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-04-17/distribution",
@@ -67,8 +67,8 @@ func (c *CloudFront) CreateDistribution(input *CreateDistributionInput) (*Create
 const opCreateInvalidation = "CreateInvalidation2015_04_17"
 
 // CreateInvalidationRequest generates a request for the CreateInvalidation operation.
-func (c *CloudFront) CreateInvalidationRequest(input *CreateInvalidationInput) (req *aws.Request, output *CreateInvalidationOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) CreateInvalidationRequest(input *CreateInvalidationInput) (req *request.Request, output *CreateInvalidationOutput) {
+	op := &request.Operation{
 		Name:       opCreateInvalidation,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-04-17/distribution/{DistributionId}/invalidation",
@@ -94,8 +94,8 @@ func (c *CloudFront) CreateInvalidation(input *CreateInvalidationInput) (*Create
 const opCreateStreamingDistribution = "CreateStreamingDistribution2015_04_17"
 
 // CreateStreamingDistributionRequest generates a request for the CreateStreamingDistribution operation.
-func (c *CloudFront) CreateStreamingDistributionRequest(input *CreateStreamingDistributionInput) (req *aws.Request, output *CreateStreamingDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) CreateStreamingDistributionRequest(input *CreateStreamingDistributionInput) (req *request.Request, output *CreateStreamingDistributionOutput) {
+	op := &request.Operation{
 		Name:       opCreateStreamingDistribution,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-04-17/streaming-distribution",
@@ -121,8 +121,8 @@ func (c *CloudFront) CreateStreamingDistribution(input *CreateStreamingDistribut
 const opDeleteCloudFrontOriginAccessIdentity = "DeleteCloudFrontOriginAccessIdentity2015_04_17"
 
 // DeleteCloudFrontOriginAccessIdentityRequest generates a request for the DeleteCloudFrontOriginAccessIdentity operation.
-func (c *CloudFront) DeleteCloudFrontOriginAccessIdentityRequest(input *DeleteCloudFrontOriginAccessIdentityInput) (req *aws.Request, output *DeleteCloudFrontOriginAccessIdentityOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) DeleteCloudFrontOriginAccessIdentityRequest(input *DeleteCloudFrontOriginAccessIdentityInput) (req *request.Request, output *DeleteCloudFrontOriginAccessIdentityOutput) {
+	op := &request.Operation{
 		Name:       opDeleteCloudFrontOriginAccessIdentity,
 		HTTPMethod: "DELETE",
 		HTTPPath:   "/2015-04-17/origin-access-identity/cloudfront/{Id}",
@@ -148,8 +148,8 @@ func (c *CloudFront) DeleteCloudFrontOriginAccessIdentity(input *DeleteCloudFron
 const opDeleteDistribution = "DeleteDistribution2015_04_17"
 
 // DeleteDistributionRequest generates a request for the DeleteDistribution operation.
-func (c *CloudFront) DeleteDistributionRequest(input *DeleteDistributionInput) (req *aws.Request, output *DeleteDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) DeleteDistributionRequest(input *DeleteDistributionInput) (req *request.Request, output *DeleteDistributionOutput) {
+	op := &request.Operation{
 		Name:       opDeleteDistribution,
 		HTTPMethod: "DELETE",
 		HTTPPath:   "/2015-04-17/distribution/{Id}",
@@ -175,8 +175,8 @@ func (c *CloudFront) DeleteDistribution(input *DeleteDistributionInput) (*Delete
 const opDeleteStreamingDistribution = "DeleteStreamingDistribution2015_04_17"
 
 // DeleteStreamingDistributionRequest generates a request for the DeleteStreamingDistribution operation.
-func (c *CloudFront) DeleteStreamingDistributionRequest(input *DeleteStreamingDistributionInput) (req *aws.Request, output *DeleteStreamingDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) DeleteStreamingDistributionRequest(input *DeleteStreamingDistributionInput) (req *request.Request, output *DeleteStreamingDistributionOutput) {
+	op := &request.Operation{
 		Name:       opDeleteStreamingDistribution,
 		HTTPMethod: "DELETE",
 		HTTPPath:   "/2015-04-17/streaming-distribution/{Id}",
@@ -202,8 +202,8 @@ func (c *CloudFront) DeleteStreamingDistribution(input *DeleteStreamingDistribut
 const opGetCloudFrontOriginAccessIdentity = "GetCloudFrontOriginAccessIdentity2015_04_17"
 
 // GetCloudFrontOriginAccessIdentityRequest generates a request for the GetCloudFrontOriginAccessIdentity operation.
-func (c *CloudFront) GetCloudFrontOriginAccessIdentityRequest(input *GetCloudFrontOriginAccessIdentityInput) (req *aws.Request, output *GetCloudFrontOriginAccessIdentityOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetCloudFrontOriginAccessIdentityRequest(input *GetCloudFrontOriginAccessIdentityInput) (req *request.Request, output *GetCloudFrontOriginAccessIdentityOutput) {
+	op := &request.Operation{
 		Name:       opGetCloudFrontOriginAccessIdentity,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/origin-access-identity/cloudfront/{Id}",
@@ -229,8 +229,8 @@ func (c *CloudFront) GetCloudFrontOriginAccessIdentity(input *GetCloudFrontOrigi
 const opGetCloudFrontOriginAccessIdentityConfig = "GetCloudFrontOriginAccessIdentityConfig2015_04_17"
 
 // GetCloudFrontOriginAccessIdentityConfigRequest generates a request for the GetCloudFrontOriginAccessIdentityConfig operation.
-func (c *CloudFront) GetCloudFrontOriginAccessIdentityConfigRequest(input *GetCloudFrontOriginAccessIdentityConfigInput) (req *aws.Request, output *GetCloudFrontOriginAccessIdentityConfigOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetCloudFrontOriginAccessIdentityConfigRequest(input *GetCloudFrontOriginAccessIdentityConfigInput) (req *request.Request, output *GetCloudFrontOriginAccessIdentityConfigOutput) {
+	op := &request.Operation{
 		Name:       opGetCloudFrontOriginAccessIdentityConfig,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/origin-access-identity/cloudfront/{Id}/config",
@@ -256,8 +256,8 @@ func (c *CloudFront) GetCloudFrontOriginAccessIdentityConfig(input *GetCloudFron
 const opGetDistribution = "GetDistribution2015_04_17"
 
 // GetDistributionRequest generates a request for the GetDistribution operation.
-func (c *CloudFront) GetDistributionRequest(input *GetDistributionInput) (req *aws.Request, output *GetDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetDistributionRequest(input *GetDistributionInput) (req *request.Request, output *GetDistributionOutput) {
+	op := &request.Operation{
 		Name:       opGetDistribution,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/distribution/{Id}",
@@ -283,8 +283,8 @@ func (c *CloudFront) GetDistribution(input *GetDistributionInput) (*GetDistribut
 const opGetDistributionConfig = "GetDistributionConfig2015_04_17"
 
 // GetDistributionConfigRequest generates a request for the GetDistributionConfig operation.
-func (c *CloudFront) GetDistributionConfigRequest(input *GetDistributionConfigInput) (req *aws.Request, output *GetDistributionConfigOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetDistributionConfigRequest(input *GetDistributionConfigInput) (req *request.Request, output *GetDistributionConfigOutput) {
+	op := &request.Operation{
 		Name:       opGetDistributionConfig,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/distribution/{Id}/config",
@@ -310,8 +310,8 @@ func (c *CloudFront) GetDistributionConfig(input *GetDistributionConfigInput) (*
 const opGetInvalidation = "GetInvalidation2015_04_17"
 
 // GetInvalidationRequest generates a request for the GetInvalidation operation.
-func (c *CloudFront) GetInvalidationRequest(input *GetInvalidationInput) (req *aws.Request, output *GetInvalidationOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetInvalidationRequest(input *GetInvalidationInput) (req *request.Request, output *GetInvalidationOutput) {
+	op := &request.Operation{
 		Name:       opGetInvalidation,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/distribution/{DistributionId}/invalidation/{Id}",
@@ -337,8 +337,8 @@ func (c *CloudFront) GetInvalidation(input *GetInvalidationInput) (*GetInvalidat
 const opGetStreamingDistribution = "GetStreamingDistribution2015_04_17"
 
 // GetStreamingDistributionRequest generates a request for the GetStreamingDistribution operation.
-func (c *CloudFront) GetStreamingDistributionRequest(input *GetStreamingDistributionInput) (req *aws.Request, output *GetStreamingDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetStreamingDistributionRequest(input *GetStreamingDistributionInput) (req *request.Request, output *GetStreamingDistributionOutput) {
+	op := &request.Operation{
 		Name:       opGetStreamingDistribution,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/streaming-distribution/{Id}",
@@ -364,8 +364,8 @@ func (c *CloudFront) GetStreamingDistribution(input *GetStreamingDistributionInp
 const opGetStreamingDistributionConfig = "GetStreamingDistributionConfig2015_04_17"
 
 // GetStreamingDistributionConfigRequest generates a request for the GetStreamingDistributionConfig operation.
-func (c *CloudFront) GetStreamingDistributionConfigRequest(input *GetStreamingDistributionConfigInput) (req *aws.Request, output *GetStreamingDistributionConfigOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) GetStreamingDistributionConfigRequest(input *GetStreamingDistributionConfigInput) (req *request.Request, output *GetStreamingDistributionConfigOutput) {
+	op := &request.Operation{
 		Name:       opGetStreamingDistributionConfig,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/streaming-distribution/{Id}/config",
@@ -391,12 +391,12 @@ func (c *CloudFront) GetStreamingDistributionConfig(input *GetStreamingDistribut
 const opListCloudFrontOriginAccessIdentities = "ListCloudFrontOriginAccessIdentities2015_04_17"
 
 // ListCloudFrontOriginAccessIdentitiesRequest generates a request for the ListCloudFrontOriginAccessIdentities operation.
-func (c *CloudFront) ListCloudFrontOriginAccessIdentitiesRequest(input *ListCloudFrontOriginAccessIdentitiesInput) (req *aws.Request, output *ListCloudFrontOriginAccessIdentitiesOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) ListCloudFrontOriginAccessIdentitiesRequest(input *ListCloudFrontOriginAccessIdentitiesInput) (req *request.Request, output *ListCloudFrontOriginAccessIdentitiesOutput) {
+	op := &request.Operation{
 		Name:       opListCloudFrontOriginAccessIdentities,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/origin-access-identity/cloudfront",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"CloudFrontOriginAccessIdentityList.NextMarker"},
 			LimitToken:      "MaxItems",
@@ -431,12 +431,12 @@ func (c *CloudFront) ListCloudFrontOriginAccessIdentitiesPages(input *ListCloudF
 const opListDistributions = "ListDistributions2015_04_17"
 
 // ListDistributionsRequest generates a request for the ListDistributions operation.
-func (c *CloudFront) ListDistributionsRequest(input *ListDistributionsInput) (req *aws.Request, output *ListDistributionsOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) ListDistributionsRequest(input *ListDistributionsInput) (req *request.Request, output *ListDistributionsOutput) {
+	op := &request.Operation{
 		Name:       opListDistributions,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/distribution",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"DistributionList.NextMarker"},
 			LimitToken:      "MaxItems",
@@ -471,12 +471,12 @@ func (c *CloudFront) ListDistributionsPages(input *ListDistributionsInput, fn fu
 const opListInvalidations = "ListInvalidations2015_04_17"
 
 // ListInvalidationsRequest generates a request for the ListInvalidations operation.
-func (c *CloudFront) ListInvalidationsRequest(input *ListInvalidationsInput) (req *aws.Request, output *ListInvalidationsOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) ListInvalidationsRequest(input *ListInvalidationsInput) (req *request.Request, output *ListInvalidationsOutput) {
+	op := &request.Operation{
 		Name:       opListInvalidations,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/distribution/{DistributionId}/invalidation",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"InvalidationList.NextMarker"},
 			LimitToken:      "MaxItems",
@@ -511,12 +511,12 @@ func (c *CloudFront) ListInvalidationsPages(input *ListInvalidationsInput, fn fu
 const opListStreamingDistributions = "ListStreamingDistributions2015_04_17"
 
 // ListStreamingDistributionsRequest generates a request for the ListStreamingDistributions operation.
-func (c *CloudFront) ListStreamingDistributionsRequest(input *ListStreamingDistributionsInput) (req *aws.Request, output *ListStreamingDistributionsOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) ListStreamingDistributionsRequest(input *ListStreamingDistributionsInput) (req *request.Request, output *ListStreamingDistributionsOutput) {
+	op := &request.Operation{
 		Name:       opListStreamingDistributions,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-04-17/streaming-distribution",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"StreamingDistributionList.NextMarker"},
 			LimitToken:      "MaxItems",
@@ -551,8 +551,8 @@ func (c *CloudFront) ListStreamingDistributionsPages(input *ListStreamingDistrib
 const opUpdateCloudFrontOriginAccessIdentity = "UpdateCloudFrontOriginAccessIdentity2015_04_17"
 
 // UpdateCloudFrontOriginAccessIdentityRequest generates a request for the UpdateCloudFrontOriginAccessIdentity operation.
-func (c *CloudFront) UpdateCloudFrontOriginAccessIdentityRequest(input *UpdateCloudFrontOriginAccessIdentityInput) (req *aws.Request, output *UpdateCloudFrontOriginAccessIdentityOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) UpdateCloudFrontOriginAccessIdentityRequest(input *UpdateCloudFrontOriginAccessIdentityInput) (req *request.Request, output *UpdateCloudFrontOriginAccessIdentityOutput) {
+	op := &request.Operation{
 		Name:       opUpdateCloudFrontOriginAccessIdentity,
 		HTTPMethod: "PUT",
 		HTTPPath:   "/2015-04-17/origin-access-identity/cloudfront/{Id}/config",
@@ -578,8 +578,8 @@ func (c *CloudFront) UpdateCloudFrontOriginAccessIdentity(input *UpdateCloudFron
 const opUpdateDistribution = "UpdateDistribution2015_04_17"
 
 // UpdateDistributionRequest generates a request for the UpdateDistribution operation.
-func (c *CloudFront) UpdateDistributionRequest(input *UpdateDistributionInput) (req *aws.Request, output *UpdateDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) UpdateDistributionRequest(input *UpdateDistributionInput) (req *request.Request, output *UpdateDistributionOutput) {
+	op := &request.Operation{
 		Name:       opUpdateDistribution,
 		HTTPMethod: "PUT",
 		HTTPPath:   "/2015-04-17/distribution/{Id}/config",
@@ -605,8 +605,8 @@ func (c *CloudFront) UpdateDistribution(input *UpdateDistributionInput) (*Update
 const opUpdateStreamingDistribution = "UpdateStreamingDistribution2015_04_17"
 
 // UpdateStreamingDistributionRequest generates a request for the UpdateStreamingDistribution operation.
-func (c *CloudFront) UpdateStreamingDistributionRequest(input *UpdateStreamingDistributionInput) (req *aws.Request, output *UpdateStreamingDistributionOutput) {
-	op := &aws.Operation{
+func (c *CloudFront) UpdateStreamingDistributionRequest(input *UpdateStreamingDistributionInput) (req *request.Request, output *UpdateStreamingDistributionOutput) {
+	op := &request.Operation{
 		Name:       opUpdateStreamingDistribution,
 		HTTPMethod: "PUT",
 		HTTPPath:   "/2015-04-17/streaming-distribution/{Id}/config",
@@ -803,7 +803,7 @@ type CacheBehavior struct {
 	// The value of ID for the origin that you want CloudFront to route requests
 	// to when a request matches the path pattern either for a cache behavior or
 	// for the default cache behavior.
-	TargetOriginID *string `locationName:"TargetOriginId" type:"string" required:"true"`
+	TargetOriginId *string `type:"string" required:"true"`
 
 	// A complex type that specifies the AWS accounts, if any, that you want to
 	// allow to create signed URLs for private content. If you want to require signed
@@ -1066,7 +1066,7 @@ func (s CreateDistributionOutput) GoString() string {
 // The request to create an invalidation.
 type CreateInvalidationInput struct {
 	// The distribution's id.
-	DistributionID *string `location:"uri" locationName:"DistributionId" type:"string" required:"true"`
+	DistributionId *string `location:"uri" locationName:"DistributionId" type:"string" required:"true"`
 
 	// The batch information for the invalidation.
 	InvalidationBatch *InvalidationBatch `locationName:"InvalidationBatch" type:"structure" required:"true"`
@@ -1319,7 +1319,7 @@ type DefaultCacheBehavior struct {
 	// The value of ID for the origin that you want CloudFront to route requests
 	// to when a request matches the path pattern either for a cache behavior or
 	// for the default cache behavior.
-	TargetOriginID *string `locationName:"TargetOriginId" type:"string" required:"true"`
+	TargetOriginId *string `type:"string" required:"true"`
 
 	// A complex type that specifies the AWS accounts, if any, that you want to
 	// allow to create signed URLs for private content. If you want to require signed
@@ -1364,7 +1364,7 @@ func (s DefaultCacheBehavior) GoString() string {
 // The request to delete a origin access identity.
 type DeleteCloudFrontOriginAccessIdentityInput struct {
 	// The origin access identity's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	// The value of the ETag header you received from a previous GET or PUT request.
 	// For example: E2QWRUHAPOMQZL.
@@ -1408,7 +1408,7 @@ func (s DeleteCloudFrontOriginAccessIdentityOutput) GoString() string {
 // The request to delete a distribution.
 type DeleteDistributionInput struct {
 	// The distribution id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	// The value of the ETag header you received when you disabled the distribution.
 	// For example: E2QWRUHAPOMQZL.
@@ -1452,7 +1452,7 @@ func (s DeleteDistributionOutput) GoString() string {
 // The request to delete a streaming distribution.
 type DeleteStreamingDistributionInput struct {
 	// The distribution id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	// The value of the ETag header you received when you disabled the streaming
 	// distribution. For example: E2QWRUHAPOMQZL.
@@ -1512,7 +1512,7 @@ type Distribution struct {
 	DomainName *string `type:"string" required:"true"`
 
 	// The identifier for the distribution. For example: EDFDVBD632BHDS5.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The number of invalidation batches currently in progress.
 	InProgressInvalidationBatches *int64 `type:"integer" required:"true"`
@@ -1691,7 +1691,7 @@ type DistributionSummary struct {
 	Enabled *bool `type:"boolean" required:"true"`
 
 	// The identifier for the distribution. For example: EDFDVBD632BHDS5.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The date and time the distribution was last modified.
 	LastModifiedTime *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
@@ -1814,7 +1814,7 @@ func (s GeoRestriction) GoString() string {
 // The request to get an origin access identity's configuration.
 type GetCloudFrontOriginAccessIdentityConfigInput struct {
 	// The identity's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetCloudFrontOriginAccessIdentityConfigInput `json:"-" xml:"-"`
 }
@@ -1861,7 +1861,7 @@ func (s GetCloudFrontOriginAccessIdentityConfigOutput) GoString() string {
 // The request to get an origin access identity's information.
 type GetCloudFrontOriginAccessIdentityInput struct {
 	// The identity's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetCloudFrontOriginAccessIdentityInput `json:"-" xml:"-"`
 }
@@ -1909,7 +1909,7 @@ func (s GetCloudFrontOriginAccessIdentityOutput) GoString() string {
 // The request to get a distribution configuration.
 type GetDistributionConfigInput struct {
 	// The distribution's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetDistributionConfigInput `json:"-" xml:"-"`
 }
@@ -1956,7 +1956,7 @@ func (s GetDistributionConfigOutput) GoString() string {
 // The request to get a distribution's information.
 type GetDistributionInput struct {
 	// The distribution's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetDistributionInput `json:"-" xml:"-"`
 }
@@ -2003,10 +2003,10 @@ func (s GetDistributionOutput) GoString() string {
 // The request to get an invalidation's information.
 type GetInvalidationInput struct {
 	// The distribution's id.
-	DistributionID *string `location:"uri" locationName:"DistributionId" type:"string" required:"true"`
+	DistributionId *string `location:"uri" locationName:"DistributionId" type:"string" required:"true"`
 
 	// The invalidation's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetInvalidationInput `json:"-" xml:"-"`
 }
@@ -2050,7 +2050,7 @@ func (s GetInvalidationOutput) GoString() string {
 // To request to get a streaming distribution configuration.
 type GetStreamingDistributionConfigInput struct {
 	// The streaming distribution's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetStreamingDistributionConfigInput `json:"-" xml:"-"`
 }
@@ -2097,7 +2097,7 @@ func (s GetStreamingDistributionConfigOutput) GoString() string {
 // The request to get a streaming distribution's information.
 type GetStreamingDistributionInput struct {
 	// The streaming distribution's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	metadataGetStreamingDistributionInput `json:"-" xml:"-"`
 }
@@ -2188,7 +2188,7 @@ type Invalidation struct {
 	CreateTime *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
 	// The identifier for the invalidation request. For example: IDFDVBD632BHDS5.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The current invalidation information for the batch request.
 	InvalidationBatch *InvalidationBatch `type:"structure" required:"true"`
@@ -2300,7 +2300,7 @@ type InvalidationSummary struct {
 	CreateTime *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
 	// The unique ID for an invalidation request.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The status of an invalidation request.
 	Status *string `type:"string" required:"true"`
@@ -2324,7 +2324,7 @@ func (s InvalidationSummary) GoString() string {
 
 // A complex type that lists the active CloudFront key pairs, if any, that are
 // associated with AwsAccountNumber.
-type KeyPairIDs struct {
+type KeyPairIds struct {
 	// A complex type that lists the active CloudFront key pairs, if any, that are
 	// associated with AwsAccountNumber.
 	Items []*string `locationNameList:"KeyPairId" type:"list"`
@@ -2332,20 +2332,20 @@ type KeyPairIDs struct {
 	// The number of active CloudFront key pairs for AwsAccountNumber.
 	Quantity *int64 `type:"integer" required:"true"`
 
-	metadataKeyPairIDs `json:"-" xml:"-"`
+	metadataKeyPairIds `json:"-" xml:"-"`
 }
 
-type metadataKeyPairIDs struct {
+type metadataKeyPairIds struct {
 	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
-func (s KeyPairIDs) String() string {
+func (s KeyPairIds) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s KeyPairIDs) GoString() string {
+func (s KeyPairIds) GoString() string {
 	return s.String()
 }
 
@@ -2454,7 +2454,7 @@ func (s ListDistributionsOutput) GoString() string {
 // The request to list invalidations.
 type ListInvalidationsInput struct {
 	// The distribution's id.
-	DistributionID *string `location:"uri" locationName:"DistributionId" type:"string" required:"true"`
+	DistributionId *string `location:"uri" locationName:"DistributionId" type:"string" required:"true"`
 
 	// Use this parameter when paginating results to indicate where to begin in
 	// your list of invalidation batches. Because the results are returned in decreasing
@@ -2620,7 +2620,7 @@ type Origin struct {
 	// the distribution. You use the value of Id when you create a cache behavior.
 	// The Id identifies the origin that CloudFront routes a request to when the
 	// request matches the path pattern for that cache behavior.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// An optional element that causes CloudFront to request your content from a
 	// directory in your Amazon S3 bucket or your custom origin. When you include
@@ -2655,12 +2655,12 @@ type OriginAccessIdentity struct {
 	CloudFrontOriginAccessIdentityConfig *OriginAccessIdentityConfig `type:"structure"`
 
 	// The ID for the origin access identity. For example: E74FTE3AJFJ256A.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The Amazon S3 canonical user ID for the origin access identity, which you
 	// use when giving the origin access identity read permission to an object in
 	// Amazon S3.
-	S3CanonicalUserID *string `locationName:"S3CanonicalUserId" type:"string" required:"true"`
+	S3CanonicalUserId *string `type:"string" required:"true"`
 
 	metadataOriginAccessIdentity `json:"-" xml:"-"`
 }
@@ -2765,12 +2765,12 @@ type OriginAccessIdentitySummary struct {
 	Comment *string `type:"string" required:"true"`
 
 	// The ID for the origin access identity. For example: E74FTE3AJFJ256A.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The Amazon S3 canonical user ID for the origin access identity, which you
 	// use when giving the origin access identity read permission to an object in
 	// Amazon S3.
-	S3CanonicalUserID *string `locationName:"S3CanonicalUserId" type:"string" required:"true"`
+	S3CanonicalUserId *string `type:"string" required:"true"`
 
 	metadataOriginAccessIdentitySummary `json:"-" xml:"-"`
 }
@@ -2792,7 +2792,7 @@ func (s OriginAccessIdentitySummary) GoString() string {
 // A complex type that contains information about origins for this distribution.
 type Origins struct {
 	// A complex type that contains origins for this distribution.
-	Items []*Origin `locationNameList:"Origin" type:"list"`
+	Items []*Origin `locationNameList:"Origin" min:"1" type:"list"`
 
 	// The number of origins for this distribution.
 	Quantity *int64 `type:"integer" required:"true"`
@@ -2934,11 +2934,11 @@ type Signer struct {
 	// indicates that the AWS account that was used to create the distribution can
 	// created signed URLs, or an AWS account number. Omit the dashes in the account
 	// number.
-	AWSAccountNumber *string `locationName:"AwsAccountNumber" type:"string"`
+	AwsAccountNumber *string `type:"string"`
 
 	// A complex type that lists the active CloudFront key pairs, if any, that are
 	// associated with AwsAccountNumber.
-	KeyPairIDs *KeyPairIDs `locationName:"KeyPairIds" type:"structure"`
+	KeyPairIds *KeyPairIds `type:"structure"`
 
 	metadataSigner `json:"-" xml:"-"`
 }
@@ -2974,7 +2974,7 @@ type StreamingDistribution struct {
 	DomainName *string `type:"string" required:"true"`
 
 	// The identifier for the streaming distribution. For example: EGTXBD79H29TRA8.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The date and time the distribution was last modified.
 	LastModifiedTime *time.Time `type:"timestamp" timestampFormat:"iso8601"`
@@ -3131,7 +3131,7 @@ type StreamingDistributionSummary struct {
 	Enabled *bool `type:"boolean" required:"true"`
 
 	// The identifier for the distribution. For example: EDFDVBD632BHDS5.
-	ID *string `locationName:"Id" type:"string" required:"true"`
+	Id *string `type:"string" required:"true"`
 
 	// The date and time the distribution was last modified.
 	LastModifiedTime *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
@@ -3260,7 +3260,7 @@ type UpdateCloudFrontOriginAccessIdentityInput struct {
 	CloudFrontOriginAccessIdentityConfig *OriginAccessIdentityConfig `locationName:"CloudFrontOriginAccessIdentityConfig" type:"structure" required:"true"`
 
 	// The identity's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	// The value of the ETag header you received when retrieving the identity's
 	// configuration. For example: E2QWRUHAPOMQZL.
@@ -3314,7 +3314,7 @@ type UpdateDistributionInput struct {
 	DistributionConfig *DistributionConfig `locationName:"DistributionConfig" type:"structure" required:"true"`
 
 	// The distribution's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	// The value of the ETag header you received when retrieving the distribution's
 	// configuration. For example: E2QWRUHAPOMQZL.
@@ -3365,7 +3365,7 @@ func (s UpdateDistributionOutput) GoString() string {
 // The request to update a streaming distribution.
 type UpdateStreamingDistributionInput struct {
 	// The streaming distribution's id.
-	ID *string `location:"uri" locationName:"Id" type:"string" required:"true"`
+	Id *string `location:"uri" locationName:"Id" type:"string" required:"true"`
 
 	// The value of the ETag header you received when retrieving the streaming distribution's
 	// configuration. For example: E2QWRUHAPOMQZL.
@@ -3429,7 +3429,7 @@ type ViewerCertificate struct {
 	// an alternate domain name in your object URLs (for example, https://example.com/logo.jpg),
 	// specify the IAM certificate identifier of the custom viewer certificate for
 	// this distribution. Specify either this value or CloudFrontDefaultCertificate.
-	IAMCertificateID *string `locationName:"IAMCertificateId" type:"string"`
+	IAMCertificateId *string `type:"string"`
 
 	// Specify the minimum version of the SSL protocol that you want CloudFront
 	// to use, SSLv3 or TLSv1, for HTTPS connections. CloudFront will serve your

@@ -95,7 +95,7 @@ func public_ami(verbose bool, csv bool) {
 
 	for _, image := range imagesResp.Images {
 		if *image.Public == true {
-			fmt.Printf("AMI %s has Public launch permissions\n", *image.ImageID)
+			fmt.Printf("AMI %s has Public launch permissions\n", *image.ImageId)
 		}
 
 	}
@@ -163,7 +163,7 @@ func users(verbose bool, csv bool) {
 			for _, accesskey := range iamlako.AccessKeyMetadata {
 
 				iamgaklui := &iam.GetAccessKeyLastUsedInput{
-					AccessKeyID: accesskey.AccessKeyID,
+					AccessKeyId: accesskey.AccessKeyId,
 				}
 
 				iamgakluo, err := svc.GetAccessKeyLastUsed(iamgaklui)
@@ -174,7 +174,7 @@ func users(verbose bool, csv bool) {
 				}
 
 				fmt.Printf("AccessKey: %s\nStatus: %s\nDate Last Used: %s\nRegion: %s\nService: %s\n",
-					*accesskey.AccessKeyID,
+					*accesskey.AccessKeyId,
 					*accesskey.Status,
 					safeDateString(iamgakluo.AccessKeyLastUsed.LastUsedDate),
 					safeString(iamgakluo.AccessKeyLastUsed.Region),
@@ -196,7 +196,7 @@ func snapshots(verbose bool, csv bool) {
 
 	owners := []*string{aws.String("self")}
 
-	ec2dssi := ec2.DescribeSnapshotsInput{OwnerIDs: owners}
+	ec2dssi := ec2.DescribeSnapshotsInput{OwnerIds: owners}
 
 	resp, err := svc.DescribeSnapshots(&ec2dssi)
 
@@ -214,7 +214,7 @@ func snapshots(verbose bool, csv bool) {
 
 	// fill the map with a key of each snapshot you own
 	for _, ss := range resp.Snapshots {
-		ssm[*ss.SnapshotID] = *ss.Description
+		ssm[*ss.SnapshotId] = *ss.Description
 	}
 
 	// Find all the account ami's
@@ -230,9 +230,9 @@ func snapshots(verbose bool, csv bool) {
 	for _, image := range imagesResp.Images {
 		for _, blockDM := range image.BlockDeviceMappings {
 
-			if blockDM.EBS != nil {
+			if blockDM.Ebs != nil {
 				// remove this snapshot reference as it is associated with an AMI
-				delete(ssm, *blockDM.EBS.SnapshotID)
+				delete(ssm, *blockDM.Ebs.SnapshotId)
 			}
 		}
 

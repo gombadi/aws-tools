@@ -1786,6 +1786,13 @@
         "locationName":"AllocationId"
       }
     },
+    "AllocationStrategy":{
+      "type":"string",
+      "enum":[
+        "lowestPrice",
+        "diversified"
+      ]
+    },
     "ArchitectureValues":{
       "type":"string",
       "enum":[
@@ -7959,7 +7966,7 @@
         },
         "ImageId":{"shape":"String"},
         "Attribute":{"shape":"String"},
-        "OperationType":{"shape":"String"},
+        "OperationType":{"shape":"OperationType"},
         "UserIds":{
           "shape":"UserIdStringList",
           "locationName":"UserId"
@@ -8110,7 +8117,7 @@
         },
         "SnapshotId":{"shape":"String"},
         "Attribute":{"shape":"SnapshotAttributeName"},
-        "OperationType":{"shape":"String"},
+        "OperationType":{"shape":"OperationType"},
         "UserIds":{
           "shape":"UserIdStringList",
           "locationName":"UserId"
@@ -8596,6 +8603,13 @@
         "No Upfront",
         "Partial Upfront",
         "All Upfront"
+      ]
+    },
+    "OperationType":{
+      "type":"string",
+      "enum":[
+        "add",
+        "remove"
       ]
     },
     "OwnerStringList":{
@@ -10246,6 +10260,10 @@
           "shape":"SnapshotState",
           "locationName":"status"
         },
+        "StateMessage":{
+          "shape":"String",
+          "locationName":"statusMessage"
+        },
         "StartTime":{
           "shape":"DateTime",
           "locationName":"startTime"
@@ -10281,6 +10299,10 @@
         "KmsKeyId":{
           "shape":"String",
           "locationName":"kmsKeyId"
+        },
+        "DataEncryptionKeyId":{
+          "shape":"String",
+          "locationName":"dataEncryptionKeyId"
         }
       }
     },
@@ -10502,6 +10524,14 @@
         "EbsOptimized":{
           "shape":"Boolean",
           "locationName":"ebsOptimized"
+        },
+        "WeightedCapacity":{
+          "shape":"Double",
+          "locationName":"weightedCapacity"
+        },
+        "SpotPrice":{
+          "shape":"String",
+          "locationName":"spotPrice"
         }
       }
     },
@@ -10576,6 +10606,10 @@
         "LaunchSpecifications":{
           "shape":"LaunchSpecsList",
           "locationName":"launchSpecifications"
+        },
+        "AllocationStrategy":{
+          "shape":"AllocationStrategy",
+          "locationName":"allocationStrategy"
         }
       }
     },

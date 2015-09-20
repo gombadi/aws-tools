@@ -124,7 +124,7 @@ func (c *RRCommand) Run(args []string) int {
 			safeString(ri.AvailabilityZone),
 			safeString(ri.InstanceType),
 			safeString(ri.OfferingType),
-			safeString(ri.ReservedInstancesID))
+			safeString(ri.ReservedInstancesId))
 
 	}
 
@@ -155,7 +155,7 @@ func (c *RRCommand) Run(args []string) int {
 			avZone,
 			safeString(ri.DBInstanceClass),
 			safeString(ri.OfferingType),
-			safeString(ri.ReservedDBInstanceID))
+			safeString(ri.ReservedDBInstanceId))
 
 	}
 

@@ -7,15 +7,15 @@ import (
 	"io"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
+	"github.com/aws/aws-sdk-go/aws/request"
 )
 
 const opAddPermission = "AddPermission"
 
 // AddPermissionRequest generates a request for the AddPermission operation.
-func (c *Lambda) AddPermissionRequest(input *AddPermissionInput) (req *aws.Request, output *AddPermissionOutput) {
-	op := &aws.Operation{
+func (c *Lambda) AddPermissionRequest(input *AddPermissionInput) (req *request.Request, output *AddPermissionOutput) {
+	op := &request.Operation{
 		Name:       opAddPermission,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD/policy",
@@ -50,8 +50,8 @@ func (c *Lambda) AddPermission(input *AddPermissionInput) (*AddPermissionOutput,
 const opCreateEventSourceMapping = "CreateEventSourceMapping"
 
 // CreateEventSourceMappingRequest generates a request for the CreateEventSourceMapping operation.
-func (c *Lambda) CreateEventSourceMappingRequest(input *CreateEventSourceMappingInput) (req *aws.Request, output *EventSourceMappingConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) CreateEventSourceMappingRequest(input *CreateEventSourceMappingInput) (req *request.Request, output *EventSourceMappingConfiguration) {
+	op := &request.Operation{
 		Name:       opCreateEventSourceMapping,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-03-31/event-source-mappings/",
@@ -95,8 +95,8 @@ func (c *Lambda) CreateEventSourceMapping(input *CreateEventSourceMappingInput) 
 const opCreateFunction = "CreateFunction"
 
 // CreateFunctionRequest generates a request for the CreateFunction operation.
-func (c *Lambda) CreateFunctionRequest(input *CreateFunctionInput) (req *aws.Request, output *FunctionConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) CreateFunctionRequest(input *CreateFunctionInput) (req *request.Request, output *FunctionConfiguration) {
+	op := &request.Operation{
 		Name:       opCreateFunction,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-03-31/functions",
@@ -127,8 +127,8 @@ func (c *Lambda) CreateFunction(input *CreateFunctionInput) (*FunctionConfigurat
 const opDeleteEventSourceMapping = "DeleteEventSourceMapping"
 
 // DeleteEventSourceMappingRequest generates a request for the DeleteEventSourceMapping operation.
-func (c *Lambda) DeleteEventSourceMappingRequest(input *DeleteEventSourceMappingInput) (req *aws.Request, output *EventSourceMappingConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) DeleteEventSourceMappingRequest(input *DeleteEventSourceMappingInput) (req *request.Request, output *EventSourceMappingConfiguration) {
+	op := &request.Operation{
 		Name:       opDeleteEventSourceMapping,
 		HTTPMethod: "DELETE",
 		HTTPPath:   "/2015-03-31/event-source-mappings/{UUID}",
@@ -158,8 +158,8 @@ func (c *Lambda) DeleteEventSourceMapping(input *DeleteEventSourceMappingInput) 
 const opDeleteFunction = "DeleteFunction"
 
 // DeleteFunctionRequest generates a request for the DeleteFunction operation.
-func (c *Lambda) DeleteFunctionRequest(input *DeleteFunctionInput) (req *aws.Request, output *DeleteFunctionOutput) {
-	op := &aws.Operation{
+func (c *Lambda) DeleteFunctionRequest(input *DeleteFunctionInput) (req *request.Request, output *DeleteFunctionOutput) {
+	op := &request.Operation{
 		Name:       opDeleteFunction,
 		HTTPMethod: "DELETE",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}",
@@ -190,8 +190,8 @@ func (c *Lambda) DeleteFunction(input *DeleteFunctionInput) (*DeleteFunctionOutp
 const opGetEventSourceMapping = "GetEventSourceMapping"
 
 // GetEventSourceMappingRequest generates a request for the GetEventSourceMapping operation.
-func (c *Lambda) GetEventSourceMappingRequest(input *GetEventSourceMappingInput) (req *aws.Request, output *EventSourceMappingConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) GetEventSourceMappingRequest(input *GetEventSourceMappingInput) (req *request.Request, output *EventSourceMappingConfiguration) {
+	op := &request.Operation{
 		Name:       opGetEventSourceMapping,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-03-31/event-source-mappings/{UUID}",
@@ -221,8 +221,8 @@ func (c *Lambda) GetEventSourceMapping(input *GetEventSourceMappingInput) (*Even
 const opGetFunction = "GetFunction"
 
 // GetFunctionRequest generates a request for the GetFunction operation.
-func (c *Lambda) GetFunctionRequest(input *GetFunctionInput) (req *aws.Request, output *GetFunctionOutput) {
-	op := &aws.Operation{
+func (c *Lambda) GetFunctionRequest(input *GetFunctionInput) (req *request.Request, output *GetFunctionOutput) {
+	op := &request.Operation{
 		Name:       opGetFunction,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD",
@@ -254,8 +254,8 @@ func (c *Lambda) GetFunction(input *GetFunctionInput) (*GetFunctionOutput, error
 const opGetFunctionConfiguration = "GetFunctionConfiguration"
 
 // GetFunctionConfigurationRequest generates a request for the GetFunctionConfiguration operation.
-func (c *Lambda) GetFunctionConfigurationRequest(input *GetFunctionConfigurationInput) (req *aws.Request, output *FunctionConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) GetFunctionConfigurationRequest(input *GetFunctionConfigurationInput) (req *request.Request, output *FunctionConfiguration) {
+	op := &request.Operation{
 		Name:       opGetFunctionConfiguration,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD/configuration",
@@ -286,8 +286,8 @@ func (c *Lambda) GetFunctionConfiguration(input *GetFunctionConfigurationInput) 
 const opGetPolicy = "GetPolicy"
 
 // GetPolicyRequest generates a request for the GetPolicy operation.
-func (c *Lambda) GetPolicyRequest(input *GetPolicyInput) (req *aws.Request, output *GetPolicyOutput) {
-	op := &aws.Operation{
+func (c *Lambda) GetPolicyRequest(input *GetPolicyInput) (req *request.Request, output *GetPolicyOutput) {
+	op := &request.Operation{
 		Name:       opGetPolicy,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD/policy",
@@ -316,8 +316,8 @@ func (c *Lambda) GetPolicy(input *GetPolicyInput) (*GetPolicyOutput, error) {
 const opInvoke = "Invoke"
 
 // InvokeRequest generates a request for the Invoke operation.
-func (c *Lambda) InvokeRequest(input *InvokeInput) (req *aws.Request, output *InvokeOutput) {
-	op := &aws.Operation{
+func (c *Lambda) InvokeRequest(input *InvokeInput) (req *request.Request, output *InvokeOutput) {
+	op := &request.Operation{
 		Name:       opInvoke,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/invocations",
@@ -345,8 +345,8 @@ func (c *Lambda) Invoke(input *InvokeInput) (*InvokeOutput, error) {
 const opInvokeAsync = "InvokeAsync"
 
 // InvokeAsyncRequest generates a request for the InvokeAsync operation.
-func (c *Lambda) InvokeAsyncRequest(input *InvokeAsyncInput) (req *aws.Request, output *InvokeAsyncOutput) {
-	op := &aws.Operation{
+func (c *Lambda) InvokeAsyncRequest(input *InvokeAsyncInput) (req *request.Request, output *InvokeAsyncOutput) {
+	op := &request.Operation{
 		Name:       opInvokeAsync,
 		HTTPMethod: "POST",
 		HTTPPath:   "/2014-11-13/functions/{FunctionName}/invoke-async/",
@@ -377,12 +377,12 @@ func (c *Lambda) InvokeAsync(input *InvokeAsyncInput) (*InvokeAsyncOutput, error
 const opListEventSourceMappings = "ListEventSourceMappings"
 
 // ListEventSourceMappingsRequest generates a request for the ListEventSourceMappings operation.
-func (c *Lambda) ListEventSourceMappingsRequest(input *ListEventSourceMappingsInput) (req *aws.Request, output *ListEventSourceMappingsOutput) {
-	op := &aws.Operation{
+func (c *Lambda) ListEventSourceMappingsRequest(input *ListEventSourceMappingsInput) (req *request.Request, output *ListEventSourceMappingsOutput) {
+	op := &request.Operation{
 		Name:       opListEventSourceMappings,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-03-31/event-source-mappings/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"NextMarker"},
 			LimitToken:      "MaxItems",
@@ -425,12 +425,12 @@ func (c *Lambda) ListEventSourceMappingsPages(input *ListEventSourceMappingsInpu
 const opListFunctions = "ListFunctions"
 
 // ListFunctionsRequest generates a request for the ListFunctions operation.
-func (c *Lambda) ListFunctionsRequest(input *ListFunctionsInput) (req *aws.Request, output *ListFunctionsOutput) {
-	op := &aws.Operation{
+func (c *Lambda) ListFunctionsRequest(input *ListFunctionsInput) (req *request.Request, output *ListFunctionsOutput) {
+	op := &request.Operation{
 		Name:       opListFunctions,
 		HTTPMethod: "GET",
 		HTTPPath:   "/2015-03-31/functions/",
-		Paginator: &aws.Paginator{
+		Paginator: &request.Paginator{
 			InputTokens:     []string{"Marker"},
 			OutputTokens:    []string{"NextMarker"},
 			LimitToken:      "MaxItems",
@@ -469,8 +469,8 @@ func (c *Lambda) ListFunctionsPages(input *ListFunctionsInput, fn func(p *ListFu
 const opRemovePermission = "RemovePermission"
 
 // RemovePermissionRequest generates a request for the RemovePermission operation.
-func (c *Lambda) RemovePermissionRequest(input *RemovePermissionInput) (req *aws.Request, output *RemovePermissionOutput) {
-	op := &aws.Operation{
+func (c *Lambda) RemovePermissionRequest(input *RemovePermissionInput) (req *request.Request, output *RemovePermissionOutput) {
+	op := &request.Operation{
 		Name:       opRemovePermission,
 		HTTPMethod: "DELETE",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD/policy/{StatementId}",
@@ -502,8 +502,8 @@ func (c *Lambda) RemovePermission(input *RemovePermissionInput) (*RemovePermissi
 const opUpdateEventSourceMapping = "UpdateEventSourceMapping"
 
 // UpdateEventSourceMappingRequest generates a request for the UpdateEventSourceMapping operation.
-func (c *Lambda) UpdateEventSourceMappingRequest(input *UpdateEventSourceMappingInput) (req *aws.Request, output *EventSourceMappingConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) UpdateEventSourceMappingRequest(input *UpdateEventSourceMappingInput) (req *request.Request, output *EventSourceMappingConfiguration) {
+	op := &request.Operation{
 		Name:       opUpdateEventSourceMapping,
 		HTTPMethod: "PUT",
 		HTTPPath:   "/2015-03-31/event-source-mappings/{UUID}",
@@ -535,8 +535,8 @@ func (c *Lambda) UpdateEventSourceMapping(input *UpdateEventSourceMappingInput) 
 const opUpdateFunctionCode = "UpdateFunctionCode"
 
 // UpdateFunctionCodeRequest generates a request for the UpdateFunctionCode operation.
-func (c *Lambda) UpdateFunctionCodeRequest(input *UpdateFunctionCodeInput) (req *aws.Request, output *FunctionConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) UpdateFunctionCodeRequest(input *UpdateFunctionCodeInput) (req *request.Request, output *FunctionConfiguration) {
+	op := &request.Operation{
 		Name:       opUpdateFunctionCode,
 		HTTPMethod: "PUT",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD/code",
@@ -566,8 +566,8 @@ func (c *Lambda) UpdateFunctionCode(input *UpdateFunctionCodeInput) (*FunctionCo
 const opUpdateFunctionConfiguration = "UpdateFunctionConfiguration"
 
 // UpdateFunctionConfigurationRequest generates a request for the UpdateFunctionConfiguration operation.
-func (c *Lambda) UpdateFunctionConfigurationRequest(input *UpdateFunctionConfigurationInput) (req *aws.Request, output *FunctionConfiguration) {
-	op := &aws.Operation{
+func (c *Lambda) UpdateFunctionConfigurationRequest(input *UpdateFunctionConfigurationInput) (req *request.Request, output *FunctionConfiguration) {
+	op := &request.Operation{
 		Name:       opUpdateFunctionConfiguration,
 		HTTPMethod: "PUT",
 		HTTPPath:   "/2015-03-31/functions/{FunctionName}/versions/HEAD/configuration",
@@ -612,7 +612,7 @@ type AddPermissionInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	// The principal who is getting this permission. It can be Amazon S3 service
 	// Principal ("s3.amazonaws.com") if you want Amazon S3 to invoke the function,
@@ -621,16 +621,6 @@ type AddPermissionInput struct {
 	// want to allow a custom application in another AWS account to push events
 	// to AWS Lambda by invoking your function.
 	Principal *string `type:"string" required:"true"`
-
-	// This is optional; however, when granting Amazon S3 permission to invoke your
-	// function, you should specify this field with the bucket Amazon Resource Name
-	// (ARN) as its value. This ensures that only events generated from the specified
-	// bucket can invoke the function.
-	//
-	// If you add a permission for the Amazon S3 principal without providing the
-	// source ARN, any AWS account that creates a mapping to your function ARN can
-	// send events to invoke your Lambda function from Amazon S3.
-	SourceARN *string `locationName:"SourceArn" type:"string"`
 
 	// The AWS account ID (without a hyphen) of the source owner. For example, if
 	// the SourceArn identifies a bucket, then this is the bucket owner's account
@@ -641,8 +631,18 @@ type AddPermissionInput struct {
 	// owned by a specific account.
 	SourceAccount *string `type:"string"`
 
+	// This is optional; however, when granting Amazon S3 permission to invoke your
+	// function, you should specify this field with the bucket Amazon Resource Name
+	// (ARN) as its value. This ensures that only events generated from the specified
+	// bucket can invoke the function.
+	//
+	// If you add a permission for the Amazon S3 principal without providing the
+	// source ARN, any AWS account that creates a mapping to your function ARN can
+	// send events to invoke your Lambda function from Amazon S3.
+	SourceArn *string `type:"string"`
+
 	// A unique statement identifier.
-	StatementID *string `locationName:"StatementId" type:"string" required:"true"`
+	StatementId *string `min:"1" type:"string" required:"true"`
 
 	metadataAddPermissionInput `json:"-" xml:"-"`
 }
@@ -687,7 +687,7 @@ type CreateEventSourceMappingInput struct {
 	// The largest number of records that AWS Lambda will retrieve from your event
 	// source at the time of invoking your function. Your function receives an event
 	// with all the retrieved records. The default is 100 records.
-	BatchSize *int64 `type:"integer"`
+	BatchSize *int64 `min:"1" type:"integer"`
 
 	// Indicates whether AWS Lambda should begin polling the event source, the default
 	// is not enabled.
@@ -698,7 +698,7 @@ type CreateEventSourceMappingInput struct {
 	// AWS Lambda to invoke your Lambda function, it depends on the BatchSize. AWS
 	// Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda
 	// function as JSON.
-	EventSourceARN *string `locationName:"EventSourceArn" type:"string" required:"true"`
+	EventSourceArn *string `type:"string" required:"true"`
 
 	// The Lambda function to invoke when AWS Lambda detects an event on the stream.
 	//
@@ -708,7 +708,7 @@ type CreateEventSourceMappingInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `type:"string" required:"true"`
+	FunctionName *string `min:"1" type:"string" required:"true"`
 
 	// The position in the stream where AWS Lambda should start reading. For more
 	// information, go to ShardIteratorType (http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)
@@ -749,7 +749,7 @@ type CreateFunctionInput struct {
 	// 64 character in length. The function names appear in the console and are
 	// returned in the ListFunctions API. Function names are used to specify functions
 	// to other AWS Lambda APIs, such as Invoke.
-	FunctionName *string `type:"string" required:"true"`
+	FunctionName *string `min:"1" type:"string" required:"true"`
 
 	// The function within your code that Lambda calls to begin execution. For Node.js,
 	// it is the module-name.export value in your function. For Java, it can be
@@ -763,7 +763,7 @@ type CreateFunctionInput struct {
 	// a database operation might need less memory compared to an image processing
 	// function. The default value is 128 MB. The value must be a multiple of 64
 	// MB.
-	MemorySize *int64 `type:"integer"`
+	MemorySize *int64 `min:"128" type:"integer"`
 
 	// The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it
 	// executes your function to access any other Amazon Web Services (AWS) resources.
@@ -777,7 +777,7 @@ type CreateFunctionInput struct {
 	// The function execution time at which Lambda should terminate the function.
 	// Because the execution time has cost implications, we recommend you set this
 	// value based on your expected execution time. The default is 3 seconds.
-	Timeout *int64 `type:"integer"`
+	Timeout *int64 `min:"1" type:"integer"`
 
 	metadataCreateFunctionInput `json:"-" xml:"-"`
 }
@@ -826,7 +826,7 @@ type DeleteFunctionInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	metadataDeleteFunctionInput `json:"-" xml:"-"`
 }
@@ -868,14 +868,14 @@ type EventSourceMappingConfiguration struct {
 	// The largest number of records that AWS Lambda will retrieve from your event
 	// source at the time of invoking your function. Your function receives an event
 	// with all the retrieved records.
-	BatchSize *int64 `type:"integer"`
+	BatchSize *int64 `min:"1" type:"integer"`
 
 	// The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source
 	// of events.
-	EventSourceARN *string `locationName:"EventSourceArn" type:"string"`
+	EventSourceArn *string `type:"string"`
 
 	// The Lambda function to invoke when AWS Lambda detects an event on the stream.
-	FunctionARN *string `locationName:"FunctionArn" type:"string"`
+	FunctionArn *string `type:"string"`
 
 	// The UTC time string indicating the last time the event mapping was updated.
 	LastModified *time.Time `type:"timestamp" timestampFormat:"unix"`
@@ -916,13 +916,13 @@ type FunctionCode struct {
 	// Amazon S3 bucket name where the .zip file containing your deployment package
 	// is stored. This bucket must reside in the same AWS region where you are creating
 	// the Lambda function.
-	S3Bucket *string `type:"string"`
+	S3Bucket *string `min:"3" type:"string"`
 
 	// The Amazon S3 object (the deployment package) key name you want to upload.
-	S3Key *string `type:"string"`
+	S3Key *string `min:"1" type:"string"`
 
 	// The Amazon S3 object (the deployment package) version you want to upload.
-	S3ObjectVersion *string `type:"string"`
+	S3ObjectVersion *string `min:"1" type:"string"`
 
 	// A base64-encoded .zip file containing your deployment package. For more information
 	// about creating a .zip file, go to Execution Permissions (http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html)
@@ -981,10 +981,10 @@ type FunctionConfiguration struct {
 	Description *string `type:"string"`
 
 	// The Amazon Resource Name (ARN) assigned to the function.
-	FunctionARN *string `locationName:"FunctionArn" type:"string"`
+	FunctionArn *string `type:"string"`
 
 	// The name of the function.
-	FunctionName *string `type:"string"`
+	FunctionName *string `min:"1" type:"string"`
 
 	// The function Lambda calls to begin executing your function.
 	Handler *string `type:"string"`
@@ -994,7 +994,7 @@ type FunctionConfiguration struct {
 
 	// The memory size, in MB, you configured for the function. Must be a multiple
 	// of 64 MB.
-	MemorySize *int64 `type:"integer"`
+	MemorySize *int64 `min:"128" type:"integer"`
 
 	// The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it
 	// executes your function to access any other Amazon Web Services (AWS) resources.
@@ -1006,7 +1006,7 @@ type FunctionConfiguration struct {
 	// The function execution time at which Lambda should terminate the function.
 	// Because the execution time has cost implications, we recommend you set this
 	// value based on your expected execution time. The default is 3 seconds.
-	Timeout *int64 `type:"integer"`
+	Timeout *int64 `min:"1" type:"integer"`
 
 	metadataFunctionConfiguration `json:"-" xml:"-"`
 }
@@ -1056,7 +1056,7 @@ type GetFunctionConfigurationInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	metadataGetFunctionConfigurationInput `json:"-" xml:"-"`
 }
@@ -1084,7 +1084,7 @@ type GetFunctionInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	metadataGetFunctionInput `json:"-" xml:"-"`
 }
@@ -1137,7 +1137,7 @@ type GetPolicyInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	metadataGetPolicyInput `json:"-" xml:"-"`
 }
@@ -1180,7 +1180,7 @@ func (s GetPolicyOutput) GoString() string {
 
 type InvokeAsyncInput struct {
 	// The Lambda function name.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	// JSON that you want to provide to your Lambda function as input.
 	InvokeArgs io.ReadSeeker `type:"blob" required:"true"`
@@ -1242,7 +1242,7 @@ type InvokeInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	// By default, the Invoke API assumes "RequestResponse" invocation type. You
 	// can optionally request asynchronous execution by specifying "Event" as the
@@ -1327,7 +1327,7 @@ func (s InvokeOutput) GoString() string {
 
 type ListEventSourceMappingsInput struct {
 	// The Amazon Resource Name (ARN) of the Amazon Kinesis stream.
-	EventSourceARN *string `location:"querystring" locationName:"EventSourceArn" type:"string"`
+	EventSourceArn *string `location:"querystring" locationName:"EventSourceArn" type:"string"`
 
 	// The name of the Lambda function.
 	//
@@ -1337,7 +1337,7 @@ type ListEventSourceMappingsInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"querystring" locationName:"FunctionName" type:"string"`
+	FunctionName *string `location:"querystring" locationName:"FunctionName" min:"1" type:"string"`
 
 	// Optional string. An opaque pagination token returned from a previous ListEventSourceMappings
 	// operation. If present, specifies to continue the list from where the returning
@@ -1346,7 +1346,7 @@ type ListEventSourceMappingsInput struct {
 
 	// Optional integer. Specifies the maximum number of event sources to return
 	// in response. This value must be greater than 0.
-	MaxItems *int64 `location:"querystring" locationName:"MaxItems" type:"integer"`
+	MaxItems *int64 `location:"querystring" locationName:"MaxItems" min:"1" type:"integer"`
 
 	metadataListEventSourceMappingsInput `json:"-" xml:"-"`
 }
@@ -1397,7 +1397,7 @@ type ListFunctionsInput struct {
 
 	// Optional integer. Specifies the maximum number of AWS Lambda functions to
 	// return in response. This parameter value must be greater than 0.
-	MaxItems *int64 `location:"querystring" locationName:"MaxItems" type:"integer"`
+	MaxItems *int64 `location:"querystring" locationName:"MaxItems" min:"1" type:"integer"`
 
 	metadataListFunctionsInput `json:"-" xml:"-"`
 }
@@ -1450,10 +1450,10 @@ type RemovePermissionInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	// Statement ID of the permission to remove.
-	StatementID *string `location:"uri" locationName:"StatementId" type:"string" required:"true"`
+	StatementId *string `location:"uri" locationName:"StatementId" min:"1" type:"string" required:"true"`
 
 	metadataRemovePermissionInput `json:"-" xml:"-"`
 }
@@ -1493,7 +1493,7 @@ func (s RemovePermissionOutput) GoString() string {
 type UpdateEventSourceMappingInput struct {
 	// The maximum number of stream records that can be sent to your Lambda function
 	// for a single invocation.
-	BatchSize *int64 `type:"integer"`
+	BatchSize *int64 `min:"1" type:"integer"`
 
 	// Specifies whether AWS Lambda should actively poll the stream or not. If disabled,
 	// AWS Lambda will not poll the stream.
@@ -1507,7 +1507,7 @@ type UpdateEventSourceMappingInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `type:"string"`
+	FunctionName *string `min:"1" type:"string"`
 
 	// The event source mapping identifier.
 	UUID *string `location:"uri" locationName:"UUID" type:"string" required:"true"`
@@ -1538,18 +1538,18 @@ type UpdateFunctionCodeInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	// Amazon S3 bucket name where the .zip file containing your deployment package
 	// is stored. This bucket must reside in the same AWS region where you are creating
 	// the Lambda function.
-	S3Bucket *string `type:"string"`
+	S3Bucket *string `min:"3" type:"string"`
 
 	// The Amazon S3 object (the deployment package) key name you want to upload.
-	S3Key *string `type:"string"`
+	S3Key *string `min:"1" type:"string"`
 
 	// The Amazon S3 object (the deployment package) version you want to upload.
-	S3ObjectVersion *string `type:"string"`
+	S3ObjectVersion *string `min:"1" type:"string"`
 
 	// Based64-encoded .zip file containing your packaged source code.
 	ZipFile []byte `type:"blob"`
@@ -1584,7 +1584,7 @@ type UpdateFunctionConfigurationInput struct {
 	// allows you to specify only the account ID qualifier (for example, "account-id:Thumbnail").
 	// Note that the length constraint applies only to the ARN. If you specify only
 	// the function name, it is limited to 64 character in length.
-	FunctionName *string `location:"uri" locationName:"FunctionName" type:"string" required:"true"`
+	FunctionName *string `location:"uri" locationName:"FunctionName" min:"1" type:"string" required:"true"`
 
 	// The function that Lambda calls to begin executing your function. For Node.js,
 	// it is the module-name.export value in your function.
@@ -1596,7 +1596,7 @@ type UpdateFunctionConfigurationInput struct {
 	// a database operation might need less memory compared to an image processing
 	// function. The default value is 128 MB. The value must be a multiple of 64
 	// MB.
-	MemorySize *int64 `type:"integer"`
+	MemorySize *int64 `min:"128" type:"integer"`
 
 	// The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when
 	// it executes your function.
@@ -1605,7 +1605,7 @@ type UpdateFunctionConfigurationInput struct {
 	// The function execution time at which AWS Lambda should terminate the function.
 	// Because the execution time has cost implications, we recommend you set this
 	// value based on your expected execution time. The default is 3 seconds.
-	Timeout *int64 `type:"integer"`
+	Timeout *int64 `min:"1" type:"integer"`
 
 	metadataUpdateFunctionConfigurationInput `json:"-" xml:"-"`
 }

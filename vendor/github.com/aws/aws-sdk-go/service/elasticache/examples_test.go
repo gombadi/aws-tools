@@ -8,8 +8,6 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/awsutil"
 	"github.com/aws/aws-sdk-go/service/elasticache"
 )
 
@@ -32,22 +30,14 @@ func ExampleElastiCache_AddTagsToResource() {
 	resp, err := svc.AddTagsToResource(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_AuthorizeCacheSecurityGroupIngress() {
@@ -56,27 +46,19 @@ func ExampleElastiCache_AuthorizeCacheSecurityGroupIngress() {
 	params := &elasticache.AuthorizeCacheSecurityGroupIngressInput{
 		CacheSecurityGroupName:  aws.String("String"), // Required
 		EC2SecurityGroupName:    aws.String("String"), // Required
-		EC2SecurityGroupOwnerID: aws.String("String"), // Required
+		EC2SecurityGroupOwnerId: aws.String("String"), // Required
 	}
 	resp, err := svc.AuthorizeCacheSecurityGroupIngress(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CopySnapshot() {
@@ -89,29 +71,21 @@ func ExampleElastiCache_CopySnapshot() {
 	resp, err := svc.CopySnapshot(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CreateCacheCluster() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.CreateCacheClusterInput{
-		CacheClusterID:          aws.String("String"), // Required
+		CacheClusterId:          aws.String("String"), // Required
 		AZMode:                  aws.String("AZMode"),
 		AutoMinorVersionUpgrade: aws.Bool(true),
 		CacheNodeType:           aws.String("String"),
@@ -123,7 +97,7 @@ func ExampleElastiCache_CreateCacheCluster() {
 		CacheSubnetGroupName: aws.String("String"),
 		Engine:               aws.String("String"),
 		EngineVersion:        aws.String("String"),
-		NotificationTopicARN: aws.String("String"),
+		NotificationTopicArn: aws.String("String"),
 		NumCacheNodes:        aws.Int64(1),
 		Port:                 aws.Int64(1),
 		PreferredAvailabilityZone: aws.String("String"),
@@ -132,12 +106,12 @@ func ExampleElastiCache_CreateCacheCluster() {
 			// More values...
 		},
 		PreferredMaintenanceWindow: aws.String("String"),
-		ReplicationGroupID:         aws.String("String"),
-		SecurityGroupIDs: []*string{
+		ReplicationGroupId:         aws.String("String"),
+		SecurityGroupIds: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
-		SnapshotARNs: []*string{
+		SnapshotArns: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -155,22 +129,14 @@ func ExampleElastiCache_CreateCacheCluster() {
 	resp, err := svc.CreateCacheCluster(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CreateCacheParameterGroup() {
@@ -184,22 +150,14 @@ func ExampleElastiCache_CreateCacheParameterGroup() {
 	resp, err := svc.CreateCacheParameterGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CreateCacheSecurityGroup() {
@@ -212,22 +170,14 @@ func ExampleElastiCache_CreateCacheSecurityGroup() {
 	resp, err := svc.CreateCacheSecurityGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CreateCacheSubnetGroup() {
@@ -236,7 +186,7 @@ func ExampleElastiCache_CreateCacheSubnetGroup() {
 	params := &elasticache.CreateCacheSubnetGroupInput{
 		CacheSubnetGroupDescription: aws.String("String"), // Required
 		CacheSubnetGroupName:        aws.String("String"), // Required
-		SubnetIDs: []*string{ // Required
+		SubnetIds: []*string{ // Required
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -244,22 +194,14 @@ func ExampleElastiCache_CreateCacheSubnetGroup() {
 	resp, err := svc.CreateCacheSubnetGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CreateReplicationGroup() {
@@ -267,7 +209,7 @@ func ExampleElastiCache_CreateReplicationGroup() {
 
 	params := &elasticache.CreateReplicationGroupInput{
 		ReplicationGroupDescription: aws.String("String"), // Required
-		ReplicationGroupID:          aws.String("String"), // Required
+		ReplicationGroupId:          aws.String("String"), // Required
 		AutoMinorVersionUpgrade:     aws.Bool(true),
 		AutomaticFailoverEnabled:    aws.Bool(true),
 		CacheNodeType:               aws.String("String"),
@@ -279,7 +221,7 @@ func ExampleElastiCache_CreateReplicationGroup() {
 		CacheSubnetGroupName: aws.String("String"),
 		Engine:               aws.String("String"),
 		EngineVersion:        aws.String("String"),
-		NotificationTopicARN: aws.String("String"),
+		NotificationTopicArn: aws.String("String"),
 		NumCacheClusters:     aws.Int64(1),
 		Port:                 aws.Int64(1),
 		PreferredCacheClusterAZs: []*string{
@@ -287,12 +229,12 @@ func ExampleElastiCache_CreateReplicationGroup() {
 			// More values...
 		},
 		PreferredMaintenanceWindow: aws.String("String"),
-		PrimaryClusterID:           aws.String("String"),
-		SecurityGroupIDs: []*string{
+		PrimaryClusterId:           aws.String("String"),
+		SecurityGroupIds: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
-		SnapshotARNs: []*string{
+		SnapshotArns: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -310,78 +252,54 @@ func ExampleElastiCache_CreateReplicationGroup() {
 	resp, err := svc.CreateReplicationGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_CreateSnapshot() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.CreateSnapshotInput{
-		CacheClusterID: aws.String("String"), // Required
+		CacheClusterId: aws.String("String"), // Required
 		SnapshotName:   aws.String("String"), // Required
 	}
 	resp, err := svc.CreateSnapshot(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DeleteCacheCluster() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.DeleteCacheClusterInput{
-		CacheClusterID:          aws.String("String"), // Required
+		CacheClusterId:          aws.String("String"), // Required
 		FinalSnapshotIdentifier: aws.String("String"),
 	}
 	resp, err := svc.DeleteCacheCluster(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DeleteCacheParameterGroup() {
@@ -393,22 +311,14 @@ func ExampleElastiCache_DeleteCacheParameterGroup() {
 	resp, err := svc.DeleteCacheParameterGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DeleteCacheSecurityGroup() {
@@ -420,22 +330,14 @@ func ExampleElastiCache_DeleteCacheSecurityGroup() {
 	resp, err := svc.DeleteCacheSecurityGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DeleteCacheSubnetGroup() {
@@ -447,51 +349,35 @@ func ExampleElastiCache_DeleteCacheSubnetGroup() {
 	resp, err := svc.DeleteCacheSubnetGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DeleteReplicationGroup() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.DeleteReplicationGroupInput{
-		ReplicationGroupID:      aws.String("String"), // Required
+		ReplicationGroupId:      aws.String("String"), // Required
 		FinalSnapshotIdentifier: aws.String("String"),
 		RetainPrimaryCluster:    aws.Bool(true),
 	}
 	resp, err := svc.DeleteReplicationGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DeleteSnapshot() {
@@ -503,29 +389,21 @@ func ExampleElastiCache_DeleteSnapshot() {
 	resp, err := svc.DeleteSnapshot(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeCacheClusters() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.DescribeCacheClustersInput{
-		CacheClusterID:    aws.String("String"),
+		CacheClusterId:    aws.String("String"),
 		Marker:            aws.String("String"),
 		MaxRecords:        aws.Int64(1),
 		ShowCacheNodeInfo: aws.Bool(true),
@@ -533,22 +411,14 @@ func ExampleElastiCache_DescribeCacheClusters() {
 	resp, err := svc.DescribeCacheClusters(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeCacheEngineVersions() {
@@ -565,22 +435,14 @@ func ExampleElastiCache_DescribeCacheEngineVersions() {
 	resp, err := svc.DescribeCacheEngineVersions(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeCacheParameterGroups() {
@@ -594,22 +456,14 @@ func ExampleElastiCache_DescribeCacheParameterGroups() {
 	resp, err := svc.DescribeCacheParameterGroups(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeCacheParameters() {
@@ -624,22 +478,14 @@ func ExampleElastiCache_DescribeCacheParameters() {
 	resp, err := svc.DescribeCacheParameters(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeCacheSecurityGroups() {
@@ -653,22 +499,14 @@ func ExampleElastiCache_DescribeCacheSecurityGroups() {
 	resp, err := svc.DescribeCacheSecurityGroups(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeCacheSubnetGroups() {
@@ -682,22 +520,14 @@ func ExampleElastiCache_DescribeCacheSubnetGroups() {
 	resp, err := svc.DescribeCacheSubnetGroups(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeEngineDefaultParameters() {
@@ -711,22 +541,14 @@ func ExampleElastiCache_DescribeEngineDefaultParameters() {
 	resp, err := svc.DescribeEngineDefaultParameters(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeEvents() {
@@ -744,22 +566,14 @@ func ExampleElastiCache_DescribeEvents() {
 	resp, err := svc.DescribeEvents(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeReplicationGroups() {
@@ -768,27 +582,19 @@ func ExampleElastiCache_DescribeReplicationGroups() {
 	params := &elasticache.DescribeReplicationGroupsInput{
 		Marker:             aws.String("String"),
 		MaxRecords:         aws.Int64(1),
-		ReplicationGroupID: aws.String("String"),
+		ReplicationGroupId: aws.String("String"),
 	}
 	resp, err := svc.DescribeReplicationGroups(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeReservedCacheNodes() {
@@ -801,28 +607,20 @@ func ExampleElastiCache_DescribeReservedCacheNodes() {
 		MaxRecords:                   aws.Int64(1),
 		OfferingType:                 aws.String("String"),
 		ProductDescription:           aws.String("String"),
-		ReservedCacheNodeID:          aws.String("String"),
-		ReservedCacheNodesOfferingID: aws.String("String"),
+		ReservedCacheNodeId:          aws.String("String"),
+		ReservedCacheNodesOfferingId: aws.String("String"),
 	}
 	resp, err := svc.DescribeReservedCacheNodes(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeReservedCacheNodesOfferings() {
@@ -835,34 +633,26 @@ func ExampleElastiCache_DescribeReservedCacheNodesOfferings() {
 		MaxRecords:                   aws.Int64(1),
 		OfferingType:                 aws.String("String"),
 		ProductDescription:           aws.String("String"),
-		ReservedCacheNodesOfferingID: aws.String("String"),
+		ReservedCacheNodesOfferingId: aws.String("String"),
 	}
 	resp, err := svc.DescribeReservedCacheNodesOfferings(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_DescribeSnapshots() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.DescribeSnapshotsInput{
-		CacheClusterID: aws.String("String"),
+		CacheClusterId: aws.String("String"),
 		Marker:         aws.String("String"),
 		MaxRecords:     aws.Int64(1),
 		SnapshotName:   aws.String("String"),
@@ -871,22 +661,14 @@ func ExampleElastiCache_DescribeSnapshots() {
 	resp, err := svc.DescribeSnapshots(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_ListTagsForResource() {
@@ -898,33 +680,25 @@ func ExampleElastiCache_ListTagsForResource() {
 	resp, err := svc.ListTagsForResource(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_ModifyCacheCluster() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.ModifyCacheClusterInput{
-		CacheClusterID:          aws.String("String"), // Required
+		CacheClusterId:          aws.String("String"), // Required
 		AZMode:                  aws.String("AZMode"),
 		ApplyImmediately:        aws.Bool(true),
 		AutoMinorVersionUpgrade: aws.Bool(true),
-		CacheNodeIDsToRemove: []*string{
+		CacheNodeIdsToRemove: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -938,11 +712,11 @@ func ExampleElastiCache_ModifyCacheCluster() {
 			aws.String("String"), // Required
 			// More values...
 		},
-		NotificationTopicARN:       aws.String("String"),
+		NotificationTopicArn:       aws.String("String"),
 		NotificationTopicStatus:    aws.String("String"),
 		NumCacheNodes:              aws.Int64(1),
 		PreferredMaintenanceWindow: aws.String("String"),
-		SecurityGroupIDs: []*string{
+		SecurityGroupIds: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -952,22 +726,14 @@ func ExampleElastiCache_ModifyCacheCluster() {
 	resp, err := svc.ModifyCacheCluster(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_ModifyCacheParameterGroup() {
@@ -986,22 +752,14 @@ func ExampleElastiCache_ModifyCacheParameterGroup() {
 	resp, err := svc.ModifyCacheParameterGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_ModifyCacheSubnetGroup() {
@@ -1010,7 +768,7 @@ func ExampleElastiCache_ModifyCacheSubnetGroup() {
 	params := &elasticache.ModifyCacheSubnetGroupInput{
 		CacheSubnetGroupName:        aws.String("String"), // Required
 		CacheSubnetGroupDescription: aws.String("String"),
-		SubnetIDs: []*string{
+		SubnetIds: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -1018,29 +776,21 @@ func ExampleElastiCache_ModifyCacheSubnetGroup() {
 	resp, err := svc.ModifyCacheSubnetGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_ModifyReplicationGroup() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.ModifyReplicationGroupInput{
-		ReplicationGroupID:       aws.String("String"), // Required
+		ReplicationGroupId:       aws.String("String"), // Required
 		ApplyImmediately:         aws.Bool(true),
 		AutoMinorVersionUpgrade:  aws.Bool(true),
 		AutomaticFailoverEnabled: aws.Bool(true),
@@ -1050,75 +800,59 @@ func ExampleElastiCache_ModifyReplicationGroup() {
 			// More values...
 		},
 		EngineVersion:               aws.String("String"),
-		NotificationTopicARN:        aws.String("String"),
+		NotificationTopicArn:        aws.String("String"),
 		NotificationTopicStatus:     aws.String("String"),
 		PreferredMaintenanceWindow:  aws.String("String"),
-		PrimaryClusterID:            aws.String("String"),
+		PrimaryClusterId:            aws.String("String"),
 		ReplicationGroupDescription: aws.String("String"),
-		SecurityGroupIDs: []*string{
+		SecurityGroupIds: []*string{
 			aws.String("String"), // Required
 			// More values...
 		},
 		SnapshotRetentionLimit: aws.Int64(1),
 		SnapshotWindow:         aws.String("String"),
-		SnapshottingClusterID:  aws.String("String"),
+		SnapshottingClusterId:  aws.String("String"),
 	}
 	resp, err := svc.ModifyReplicationGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_PurchaseReservedCacheNodesOffering() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.PurchaseReservedCacheNodesOfferingInput{
-		ReservedCacheNodesOfferingID: aws.String("String"), // Required
+		ReservedCacheNodesOfferingId: aws.String("String"), // Required
 		CacheNodeCount:               aws.Int64(1),
-		ReservedCacheNodeID:          aws.String("String"),
+		ReservedCacheNodeId:          aws.String("String"),
 	}
 	resp, err := svc.PurchaseReservedCacheNodesOffering(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_RebootCacheCluster() {
 	svc := elasticache.New(nil)
 
 	params := &elasticache.RebootCacheClusterInput{
-		CacheClusterID: aws.String("String"), // Required
-		CacheNodeIDsToReboot: []*string{ // Required
+		CacheClusterId: aws.String("String"), // Required
+		CacheNodeIdsToReboot: []*string{ // Required
 			aws.String("String"), // Required
 			// More values...
 		},
@@ -1126,22 +860,14 @@ func ExampleElastiCache_RebootCacheCluster() {
 	resp, err := svc.RebootCacheCluster(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_RemoveTagsFromResource() {
@@ -1157,22 +883,14 @@ func ExampleElastiCache_RemoveTagsFromResource() {
 	resp, err := svc.RemoveTagsFromResource(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_ResetCacheParameterGroup() {
@@ -1192,22 +910,14 @@ func ExampleElastiCache_ResetCacheParameterGroup() {
 	resp, err := svc.ResetCacheParameterGroup(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }
 
 func ExampleElastiCache_RevokeCacheSecurityGroupIngress() {
@@ -1216,25 +926,17 @@ func ExampleElastiCache_RevokeCacheSecurityGroupIngress() {
 	params := &elasticache.RevokeCacheSecurityGroupIngressInput{
 		CacheSecurityGroupName:  aws.String("String"), // Required
 		EC2SecurityGroupName:    aws.String("String"), // Required
-		EC2SecurityGroupOwnerID: aws.String("String"), // Required
+		EC2SecurityGroupOwnerId: aws.String("String"), // Required
 	}
 	resp, err := svc.RevokeCacheSecurityGroupIngress(params)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// Generic AWS error with Code, Message, and original error (if any)
-			fmt.Println(awsErr.Code(), awsErr.Message(), awsErr.OrigErr())
-			if reqErr, ok := err.(awserr.RequestFailure); ok {
-				// A service error occurred
-				fmt.Println(reqErr.Code(), reqErr.Message(), reqErr.StatusCode(), reqErr.RequestID())
-			}
-		} else {
-			// This case should never be hit, the SDK should always return an
-			// error which satisfies the awserr.Error interface.
-			fmt.Println(err.Error())
-		}
+		// Print the error, cast err to awserr.Error to get the Code and
+		// Message from an error.
+		fmt.Println(err.Error())
+		return
 	}
 
 	// Pretty-print the response data.
-	fmt.Println(awsutil.Prettify(resp))
+	fmt.Println(resp)
 }

@@ -73,7 +73,7 @@ func (c *ASCommand) Run(args []string) int {
 				if *resp.Reservations[reservation].Instances[instance].Tags[tag].Key == "autostop" &&
 					*resp.Reservations[reservation].Instances[instance].State.Name == "running" {
 					// Found an instance that needs stopping
-					instanceSlice = append(instanceSlice, resp.Reservations[reservation].Instances[instance].InstanceID)
+					instanceSlice = append(instanceSlice, resp.Reservations[reservation].Instances[instance].InstanceId)
 				}
 			}
 		}
@@ -94,7 +94,7 @@ func (c *ASCommand) Run(args []string) int {
 		return RCOK
 	}
 
-	ec2sii := ec2.StopInstancesInput{InstanceIDs: instanceSlice}
+	ec2sii := ec2.StopInstancesInput{InstanceIds: instanceSlice}
 
 	stopinstanceResp, err := svc.StopInstances(&ec2sii)
 
@@ -109,7 +109,7 @@ func (c *ASCommand) Run(args []string) int {
 
 	for statechange := range stopinstanceResp.StoppingInstances {
 		fmt.Printf("InstanceId: %s\t\tPrevious state: %s\t\tNew State: %s\n",
-			*stopinstanceResp.StoppingInstances[statechange].InstanceID,
+			*stopinstanceResp.StoppingInstances[statechange].InstanceId,
 			*stopinstanceResp.StoppingInstances[statechange].PreviousState.Name,
 			*stopinstanceResp.StoppingInstances[statechange].CurrentState.Name)
 	}

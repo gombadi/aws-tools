@@ -91,7 +91,7 @@ func (c *ASGServersCommand) Run(args []string) int {
 	// extract the instanceid's from the auto scale details and append to a slice
 	for asGroup := range resp.AutoScalingGroups {
 		for instance := range resp.AutoScalingGroups[asGroup].Instances {
-			instanceSlice = append(instanceSlice, resp.AutoScalingGroups[asGroup].Instances[instance].InstanceID)
+			instanceSlice = append(instanceSlice, resp.AutoScalingGroups[asGroup].Instances[instance].InstanceId)
 		}
 	}
 
@@ -100,7 +100,7 @@ func (c *ASGServersCommand) Run(args []string) int {
 		return RCOK
 	}
 
-	ec2i := ec2.DescribeInstancesInput{InstanceIDs: instanceSlice}
+	ec2i := ec2.DescribeInstancesInput{InstanceIds: instanceSlice}
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
@@ -121,7 +121,7 @@ func (c *ASGServersCommand) Run(args []string) int {
 	for reservation := range respEc2.Reservations {
 		for instance := range respEc2.Reservations[reservation].Instances {
 			fmt.Printf("%s\n",
-				*respEc2.Reservations[reservation].Instances[instance].PrivateIPAddress)
+				*respEc2.Reservations[reservation].Instances[instance].PrivateIpAddress)
 		}
 	}
 

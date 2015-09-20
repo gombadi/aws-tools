@@ -4,77 +4,77 @@
 package directoryserviceiface
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/request"
 	"github.com/aws/aws-sdk-go/service/directoryservice"
 )
 
 // DirectoryServiceAPI is the interface type for directoryservice.DirectoryService.
 type DirectoryServiceAPI interface {
-	ConnectDirectoryRequest(*directoryservice.ConnectDirectoryInput) (*aws.Request, *directoryservice.ConnectDirectoryOutput)
+	ConnectDirectoryRequest(*directoryservice.ConnectDirectoryInput) (*request.Request, *directoryservice.ConnectDirectoryOutput)
 
 	ConnectDirectory(*directoryservice.ConnectDirectoryInput) (*directoryservice.ConnectDirectoryOutput, error)
 
-	CreateAliasRequest(*directoryservice.CreateAliasInput) (*aws.Request, *directoryservice.CreateAliasOutput)
+	CreateAliasRequest(*directoryservice.CreateAliasInput) (*request.Request, *directoryservice.CreateAliasOutput)
 
 	CreateAlias(*directoryservice.CreateAliasInput) (*directoryservice.CreateAliasOutput, error)
 
-	CreateComputerRequest(*directoryservice.CreateComputerInput) (*aws.Request, *directoryservice.CreateComputerOutput)
+	CreateComputerRequest(*directoryservice.CreateComputerInput) (*request.Request, *directoryservice.CreateComputerOutput)
 
 	CreateComputer(*directoryservice.CreateComputerInput) (*directoryservice.CreateComputerOutput, error)
 
-	CreateDirectoryRequest(*directoryservice.CreateDirectoryInput) (*aws.Request, *directoryservice.CreateDirectoryOutput)
+	CreateDirectoryRequest(*directoryservice.CreateDirectoryInput) (*request.Request, *directoryservice.CreateDirectoryOutput)
 
 	CreateDirectory(*directoryservice.CreateDirectoryInput) (*directoryservice.CreateDirectoryOutput, error)
 
-	CreateSnapshotRequest(*directoryservice.CreateSnapshotInput) (*aws.Request, *directoryservice.CreateSnapshotOutput)
+	CreateSnapshotRequest(*directoryservice.CreateSnapshotInput) (*request.Request, *directoryservice.CreateSnapshotOutput)
 
 	CreateSnapshot(*directoryservice.CreateSnapshotInput) (*directoryservice.CreateSnapshotOutput, error)
 
-	DeleteDirectoryRequest(*directoryservice.DeleteDirectoryInput) (*aws.Request, *directoryservice.DeleteDirectoryOutput)
+	DeleteDirectoryRequest(*directoryservice.DeleteDirectoryInput) (*request.Request, *directoryservice.DeleteDirectoryOutput)
 
 	DeleteDirectory(*directoryservice.DeleteDirectoryInput) (*directoryservice.DeleteDirectoryOutput, error)
 
-	DeleteSnapshotRequest(*directoryservice.DeleteSnapshotInput) (*aws.Request, *directoryservice.DeleteSnapshotOutput)
+	DeleteSnapshotRequest(*directoryservice.DeleteSnapshotInput) (*request.Request, *directoryservice.DeleteSnapshotOutput)
 
 	DeleteSnapshot(*directoryservice.DeleteSnapshotInput) (*directoryservice.DeleteSnapshotOutput, error)
 
-	DescribeDirectoriesRequest(*directoryservice.DescribeDirectoriesInput) (*aws.Request, *directoryservice.DescribeDirectoriesOutput)
+	DescribeDirectoriesRequest(*directoryservice.DescribeDirectoriesInput) (*request.Request, *directoryservice.DescribeDirectoriesOutput)
 
 	DescribeDirectories(*directoryservice.DescribeDirectoriesInput) (*directoryservice.DescribeDirectoriesOutput, error)
 
-	DescribeSnapshotsRequest(*directoryservice.DescribeSnapshotsInput) (*aws.Request, *directoryservice.DescribeSnapshotsOutput)
+	DescribeSnapshotsRequest(*directoryservice.DescribeSnapshotsInput) (*request.Request, *directoryservice.DescribeSnapshotsOutput)
 
 	DescribeSnapshots(*directoryservice.DescribeSnapshotsInput) (*directoryservice.DescribeSnapshotsOutput, error)
 
-	DisableRadiusRequest(*directoryservice.DisableRadiusInput) (*aws.Request, *directoryservice.DisableRadiusOutput)
+	DisableRadiusRequest(*directoryservice.DisableRadiusInput) (*request.Request, *directoryservice.DisableRadiusOutput)
 
 	DisableRadius(*directoryservice.DisableRadiusInput) (*directoryservice.DisableRadiusOutput, error)
 
-	DisableSSORequest(*directoryservice.DisableSSOInput) (*aws.Request, *directoryservice.DisableSSOOutput)
+	DisableSsoRequest(*directoryservice.DisableSsoInput) (*request.Request, *directoryservice.DisableSsoOutput)
 
-	DisableSSO(*directoryservice.DisableSSOInput) (*directoryservice.DisableSSOOutput, error)
+	DisableSso(*directoryservice.DisableSsoInput) (*directoryservice.DisableSsoOutput, error)
 
-	EnableRadiusRequest(*directoryservice.EnableRadiusInput) (*aws.Request, *directoryservice.EnableRadiusOutput)
+	EnableRadiusRequest(*directoryservice.EnableRadiusInput) (*request.Request, *directoryservice.EnableRadiusOutput)
 
 	EnableRadius(*directoryservice.EnableRadiusInput) (*directoryservice.EnableRadiusOutput, error)
 
-	EnableSSORequest(*directoryservice.EnableSSOInput) (*aws.Request, *directoryservice.EnableSSOOutput)
+	EnableSsoRequest(*directoryservice.EnableSsoInput) (*request.Request, *directoryservice.EnableSsoOutput)
 
-	EnableSSO(*directoryservice.EnableSSOInput) (*directoryservice.EnableSSOOutput, error)
+	EnableSso(*directoryservice.EnableSsoInput) (*directoryservice.EnableSsoOutput, error)
 
-	GetDirectoryLimitsRequest(*directoryservice.GetDirectoryLimitsInput) (*aws.Request, *directoryservice.GetDirectoryLimitsOutput)
+	GetDirectoryLimitsRequest(*directoryservice.GetDirectoryLimitsInput) (*request.Request, *directoryservice.GetDirectoryLimitsOutput)
 
 	GetDirectoryLimits(*directoryservice.GetDirectoryLimitsInput) (*directoryservice.GetDirectoryLimitsOutput, error)
 
-	GetSnapshotLimitsRequest(*directoryservice.GetSnapshotLimitsInput) (*aws.Request, *directoryservice.GetSnapshotLimitsOutput)
+	GetSnapshotLimitsRequest(*directoryservice.GetSnapshotLimitsInput) (*request.Request, *directoryservice.GetSnapshotLimitsOutput)
 
 	GetSnapshotLimits(*directoryservice.GetSnapshotLimitsInput) (*directoryservice.GetSnapshotLimitsOutput, error)
 
-	RestoreFromSnapshotRequest(*directoryservice.RestoreFromSnapshotInput) (*aws.Request, *directoryservice.RestoreFromSnapshotOutput)
+	RestoreFromSnapshotRequest(*directoryservice.RestoreFromSnapshotInput) (*request.Request, *directoryservice.RestoreFromSnapshotOutput)
 
 	RestoreFromSnapshot(*directoryservice.RestoreFromSnapshotInput) (*directoryservice.RestoreFromSnapshotOutput, error)
 
-	UpdateRadiusRequest(*directoryservice.UpdateRadiusInput) (*aws.Request, *directoryservice.UpdateRadiusOutput)
+	UpdateRadiusRequest(*directoryservice.UpdateRadiusInput) (*request.Request, *directoryservice.UpdateRadiusOutput)
 
 	UpdateRadius(*directoryservice.UpdateRadiusInput) (*directoryservice.UpdateRadiusOutput, error)
 }

@@ -85,17 +85,17 @@ func (c *SSCommand) Run(args []string) int {
 			createImageResp, err := svc.CreateImage(abkupInstance)
 
 			if err != nil {
-				fmt.Printf("Error creating AWS AMI for instance %s\n", *abkupInstance.InstanceID)
+				fmt.Printf("Error creating AWS AMI for instance %s\n", *abkupInstance.InstanceId)
 				fmt.Printf("Error details - %s\n", err)
 			} else {
 				if c.verbose {
-					fmt.Printf("Info - Started creating AMI: %s\n", *createImageResp.ImageID)
+					fmt.Printf("Info - Started creating AMI: %s\n", *createImageResp.ImageId)
 				}
 				// add the amiid to the list of ami's to tag
-				amis = append(amis, *createImageResp.ImageID)
+				amis = append(amis, *createImageResp.ImageId)
 			}
 		} else {
-			fmt.Printf("Dry Run - Would have created AMI for instance %s\n", *abkupInstance.InstanceID)
+			fmt.Printf("Dry Run - Would have created AMI for instance %s\n", *abkupInstance.InstanceId)
 		}
 	}
 
@@ -155,7 +155,7 @@ func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateI
 		instanceSlice = nil
 	}
 
-	ec2dii := ec2.DescribeInstancesInput{InstanceIDs: instanceSlice, Filters: []*ec2.Filter{&ec2Filter}}
+	ec2dii := ec2.DescribeInstancesInput{InstanceIds: instanceSlice, Filters: []*ec2.Filter{&ec2Filter}}
 
 	resp, err := svc.DescribeInstances(&ec2dii)
 
@@ -179,13 +179,13 @@ func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateI
 					break
 				} else {
 					theInstance.Name = aws.String(
-						*resp.Reservations[reservation].Instances[instance].InstanceID +
+						*resp.Reservations[reservation].Instances[instance].InstanceId +
 							"-" +
 							strconv.FormatInt(time.Now().Unix(), 10))
 				}
 			}
-			theInstance.Description = aws.String("Auto backup of instance " + *resp.Reservations[reservation].Instances[instance].InstanceID)
-			theInstance.InstanceID = resp.Reservations[reservation].Instances[instance].InstanceID
+			theInstance.Description = aws.String("Auto backup of instance " + *resp.Reservations[reservation].Instances[instance].InstanceId)
+			theInstance.InstanceId = resp.Reservations[reservation].Instances[instance].InstanceId
 			theInstance.NoReboot = aws.Bool(true)
 			// append details on this instance to the slice
 			bkupInstances = append(bkupInstances, &theInstance)
