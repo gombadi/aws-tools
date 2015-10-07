@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/autoscaling"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/mitchellh/cli"
@@ -62,10 +61,6 @@ func (c *ASGServersCommand) Run(args []string) int {
 	resp, err := svcAs.DescribeAutoScalingGroups(&asgi)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// process SDK error
-			fmt.Printf("AWS Error: %s - %s", awsErr.Code, awsErr.Message)
-		}
 		fmt.Printf("Fatal error: DescribeAutoScalingGroups - %s\n", err)
 		return RCERR
 	}
@@ -109,10 +104,6 @@ func (c *ASGServersCommand) Run(args []string) int {
 	respEc2, err := svcEc2.DescribeInstances(&ec2i)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// process SDK error
-			fmt.Printf("AWS Error: %s - %s", awsErr.Code, awsErr.Message)
-		}
 		fmt.Printf("Fatal error: DescribeAutoScalingGroups - %s\n", err)
 		return RCERR
 	}

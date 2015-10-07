@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/mitchellh/cli"
@@ -130,10 +129,7 @@ func users(verbose bool, csv bool) {
 
 		iamluo, err := svc.ListUsers(iamlui)
 		if err != nil {
-			if awsErr, ok := err.(awserr.Error); ok {
-				// process SDK error
-				fmt.Printf("AWS Error: %s - %s", awsErr.Code(), awsErr.Message())
-			}
+			fmt.Printf("Fatal error: ListUsers - %s\n", err)
 			return
 		}
 

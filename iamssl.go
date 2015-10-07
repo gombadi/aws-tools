@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/mitchellh/cli"
 )
@@ -63,11 +62,7 @@ func (c *IAMsslCommand) Run(args []string) int {
 	resp, err := svc.ListServerCertificates(nil)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// process SDK error
-			fmt.Printf("AWS Error: %s - %s", awsErr.Code, awsErr.Message)
-		}
-		fmt.Printf("Fatal error: %s\n", err)
+		fmt.Printf("ListServerCertificates fatal error: %s\n", err)
 		return RCERR
 	}
 

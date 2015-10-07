@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/mitchellh/cli"
 )
@@ -58,11 +57,7 @@ func (c *ASCommand) Run(args []string) int {
 	resp, err := svc.DescribeInstances(nil)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// process SDK error
-			fmt.Printf("AWS Error: %s - %s", awsErr.Code, awsErr.Message)
-		}
-		fmt.Printf("Fatal error: %s\n", err)
+		fmt.Printf("DescribeInstances fatal error: %s\n", err)
 		return RCERR
 	}
 
@@ -99,11 +94,7 @@ func (c *ASCommand) Run(args []string) int {
 	stopinstanceResp, err := svc.StopInstances(&ec2sii)
 
 	if err != nil {
-		if awsErr, ok := err.(awserr.Error); ok {
-			// process SDK error
-			fmt.Printf("AWS Error: %s - %s", awsErr.Code, awsErr.Message)
-		}
-		fmt.Printf("Fatal error: %s\n", err)
+		fmt.Printf("StopInstances fatal error: %s\n", err)
 		return RCERR
 	}
 
