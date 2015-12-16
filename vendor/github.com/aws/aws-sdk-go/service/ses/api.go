@@ -10,6 +10,136 @@ import (
 	"github.com/aws/aws-sdk-go/aws/request"
 )
 
+const opCloneReceiptRuleSet = "CloneReceiptRuleSet"
+
+// CloneReceiptRuleSetRequest generates a request for the CloneReceiptRuleSet operation.
+func (c *SES) CloneReceiptRuleSetRequest(input *CloneReceiptRuleSetInput) (req *request.Request, output *CloneReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opCloneReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CloneReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &CloneReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Creates a receipt rule set by cloning an existing one. All receipt rules
+// and configurations are copied to the new receipt rule set and are completely
+// independent of the source rule set.
+//
+// For information about setting up rule sets, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) CloneReceiptRuleSet(input *CloneReceiptRuleSetInput) (*CloneReceiptRuleSetOutput, error) {
+	req, out := c.CloneReceiptRuleSetRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opCreateReceiptFilter = "CreateReceiptFilter"
+
+// CreateReceiptFilterRequest generates a request for the CreateReceiptFilter operation.
+func (c *SES) CreateReceiptFilterRequest(input *CreateReceiptFilterInput) (req *request.Request, output *CreateReceiptFilterOutput) {
+	op := &request.Operation{
+		Name:       opCreateReceiptFilter,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CreateReceiptFilterInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &CreateReceiptFilterOutput{}
+	req.Data = output
+	return
+}
+
+// Creates a new IP address filter.
+//
+// For information about setting up IP address filters, see the Amazon SES
+// Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) CreateReceiptFilter(input *CreateReceiptFilterInput) (*CreateReceiptFilterOutput, error) {
+	req, out := c.CreateReceiptFilterRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opCreateReceiptRule = "CreateReceiptRule"
+
+// CreateReceiptRuleRequest generates a request for the CreateReceiptRule operation.
+func (c *SES) CreateReceiptRuleRequest(input *CreateReceiptRuleInput) (req *request.Request, output *CreateReceiptRuleOutput) {
+	op := &request.Operation{
+		Name:       opCreateReceiptRule,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CreateReceiptRuleInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &CreateReceiptRuleOutput{}
+	req.Data = output
+	return
+}
+
+// Creates a receipt rule.
+//
+// For information about setting up receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) CreateReceiptRule(input *CreateReceiptRuleInput) (*CreateReceiptRuleOutput, error) {
+	req, out := c.CreateReceiptRuleRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opCreateReceiptRuleSet = "CreateReceiptRuleSet"
+
+// CreateReceiptRuleSetRequest generates a request for the CreateReceiptRuleSet operation.
+func (c *SES) CreateReceiptRuleSetRequest(input *CreateReceiptRuleSetInput) (req *request.Request, output *CreateReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opCreateReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &CreateReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &CreateReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Creates an empty receipt rule set.
+//
+// For information about setting up receipt rule sets, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) CreateReceiptRuleSet(input *CreateReceiptRuleSetInput) (*CreateReceiptRuleSetOutput, error) {
+	req, out := c.CreateReceiptRuleSetRequest(input)
+	err := req.Send()
+	return out, err
+}
+
 const opDeleteIdentity = "DeleteIdentity"
 
 // DeleteIdentityRequest generates a request for the DeleteIdentity operation.
@@ -76,6 +206,102 @@ func (c *SES) DeleteIdentityPolicy(input *DeleteIdentityPolicyInput) (*DeleteIde
 	return out, err
 }
 
+const opDeleteReceiptFilter = "DeleteReceiptFilter"
+
+// DeleteReceiptFilterRequest generates a request for the DeleteReceiptFilter operation.
+func (c *SES) DeleteReceiptFilterRequest(input *DeleteReceiptFilterInput) (req *request.Request, output *DeleteReceiptFilterOutput) {
+	op := &request.Operation{
+		Name:       opDeleteReceiptFilter,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteReceiptFilterInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DeleteReceiptFilterOutput{}
+	req.Data = output
+	return
+}
+
+// Deletes the specified IP address filter.
+//
+// For information about managing IP address filters, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) DeleteReceiptFilter(input *DeleteReceiptFilterInput) (*DeleteReceiptFilterOutput, error) {
+	req, out := c.DeleteReceiptFilterRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opDeleteReceiptRule = "DeleteReceiptRule"
+
+// DeleteReceiptRuleRequest generates a request for the DeleteReceiptRule operation.
+func (c *SES) DeleteReceiptRuleRequest(input *DeleteReceiptRuleInput) (req *request.Request, output *DeleteReceiptRuleOutput) {
+	op := &request.Operation{
+		Name:       opDeleteReceiptRule,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteReceiptRuleInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DeleteReceiptRuleOutput{}
+	req.Data = output
+	return
+}
+
+// Deletes the specified receipt rule.
+//
+// For information about managing receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) DeleteReceiptRule(input *DeleteReceiptRuleInput) (*DeleteReceiptRuleOutput, error) {
+	req, out := c.DeleteReceiptRuleRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opDeleteReceiptRuleSet = "DeleteReceiptRuleSet"
+
+// DeleteReceiptRuleSetRequest generates a request for the DeleteReceiptRuleSet operation.
+func (c *SES) DeleteReceiptRuleSetRequest(input *DeleteReceiptRuleSetInput) (req *request.Request, output *DeleteReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opDeleteReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DeleteReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Deletes the specified receipt rule set and all of the receipt rules it contains.
+//
+// The currently active rule set cannot be deleted. For information about managing
+// receipt rule sets, see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) DeleteReceiptRuleSet(input *DeleteReceiptRuleSetInput) (*DeleteReceiptRuleSetOutput, error) {
+	req, out := c.DeleteReceiptRuleSetRequest(input)
+	err := req.Send()
+	return out, err
+}
+
 const opDeleteVerifiedEmailAddress = "DeleteVerifiedEmailAddress"
 
 // DeleteVerifiedEmailAddressRequest generates a request for the DeleteVerifiedEmailAddress operation.
@@ -103,6 +329,103 @@ func (c *SES) DeleteVerifiedEmailAddressRequest(input *DeleteVerifiedEmailAddres
 // This action is throttled at one request per second.
 func (c *SES) DeleteVerifiedEmailAddress(input *DeleteVerifiedEmailAddressInput) (*DeleteVerifiedEmailAddressOutput, error) {
 	req, out := c.DeleteVerifiedEmailAddressRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opDescribeActiveReceiptRuleSet = "DescribeActiveReceiptRuleSet"
+
+// DescribeActiveReceiptRuleSetRequest generates a request for the DescribeActiveReceiptRuleSet operation.
+func (c *SES) DescribeActiveReceiptRuleSetRequest(input *DescribeActiveReceiptRuleSetInput) (req *request.Request, output *DescribeActiveReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opDescribeActiveReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DescribeActiveReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DescribeActiveReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Returns the metadata and receipt rules for the receipt rule set that is currently
+// active.
+//
+// For information about setting up receipt rule sets, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) DescribeActiveReceiptRuleSet(input *DescribeActiveReceiptRuleSetInput) (*DescribeActiveReceiptRuleSetOutput, error) {
+	req, out := c.DescribeActiveReceiptRuleSetRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opDescribeReceiptRule = "DescribeReceiptRule"
+
+// DescribeReceiptRuleRequest generates a request for the DescribeReceiptRule operation.
+func (c *SES) DescribeReceiptRuleRequest(input *DescribeReceiptRuleInput) (req *request.Request, output *DescribeReceiptRuleOutput) {
+	op := &request.Operation{
+		Name:       opDescribeReceiptRule,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DescribeReceiptRuleInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DescribeReceiptRuleOutput{}
+	req.Data = output
+	return
+}
+
+// Returns the details of the specified receipt rule.
+//
+// For information about setting up receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) DescribeReceiptRule(input *DescribeReceiptRuleInput) (*DescribeReceiptRuleOutput, error) {
+	req, out := c.DescribeReceiptRuleRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opDescribeReceiptRuleSet = "DescribeReceiptRuleSet"
+
+// DescribeReceiptRuleSetRequest generates a request for the DescribeReceiptRuleSet operation.
+func (c *SES) DescribeReceiptRuleSetRequest(input *DescribeReceiptRuleSetInput) (req *request.Request, output *DescribeReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opDescribeReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DescribeReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DescribeReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Returns the details of the specified receipt rule set.
+//
+// For information about managing receipt rule sets, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) DescribeReceiptRuleSet(input *DescribeReceiptRuleSetInput) (*DescribeReceiptRuleSetOutput, error) {
+	req, out := c.DescribeReceiptRuleSetRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -352,6 +675,7 @@ func (c *SES) ListIdentities(input *ListIdentitiesInput) (*ListIdentitiesOutput,
 
 func (c *SES) ListIdentitiesPages(input *ListIdentitiesInput, fn func(p *ListIdentitiesOutput, lastPage bool) (shouldContinue bool)) error {
 	page, _ := c.ListIdentitiesRequest(input)
+	page.Handlers.Build.PushBack(request.MakeAddToUserAgentFreeFormHandler("Paginator"))
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
 		return fn(p.(*ListIdentitiesOutput), lastPage)
 	})
@@ -389,6 +713,73 @@ func (c *SES) ListIdentityPoliciesRequest(input *ListIdentityPoliciesInput) (req
 // This action is throttled at one request per second.
 func (c *SES) ListIdentityPolicies(input *ListIdentityPoliciesInput) (*ListIdentityPoliciesOutput, error) {
 	req, out := c.ListIdentityPoliciesRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opListReceiptFilters = "ListReceiptFilters"
+
+// ListReceiptFiltersRequest generates a request for the ListReceiptFilters operation.
+func (c *SES) ListReceiptFiltersRequest(input *ListReceiptFiltersInput) (req *request.Request, output *ListReceiptFiltersOutput) {
+	op := &request.Operation{
+		Name:       opListReceiptFilters,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ListReceiptFiltersInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &ListReceiptFiltersOutput{}
+	req.Data = output
+	return
+}
+
+// Lists the IP address filters associated with your account.
+//
+// For information about managing IP address filters, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) ListReceiptFilters(input *ListReceiptFiltersInput) (*ListReceiptFiltersOutput, error) {
+	req, out := c.ListReceiptFiltersRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opListReceiptRuleSets = "ListReceiptRuleSets"
+
+// ListReceiptRuleSetsRequest generates a request for the ListReceiptRuleSets operation.
+func (c *SES) ListReceiptRuleSetsRequest(input *ListReceiptRuleSetsInput) (req *request.Request, output *ListReceiptRuleSetsOutput) {
+	op := &request.Operation{
+		Name:       opListReceiptRuleSets,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ListReceiptRuleSetsInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &ListReceiptRuleSetsOutput{}
+	req.Data = output
+	return
+}
+
+// Lists the receipt rule sets that exist under your AWS account. If there are
+// additional receipt rule sets to be retrieved, you will receive a NextToken
+// that you can provide to the next call to ListReceiptRuleSets to retrieve
+// the additional entries.
+//
+// For information about managing receipt rule sets, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) ListReceiptRuleSets(input *ListReceiptRuleSetsInput) (*ListReceiptRuleSetsOutput, error) {
+	req, out := c.ListReceiptRuleSetsRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -455,6 +846,75 @@ func (c *SES) PutIdentityPolicyRequest(input *PutIdentityPolicyInput) (req *requ
 // This action is throttled at one request per second.
 func (c *SES) PutIdentityPolicy(input *PutIdentityPolicyInput) (*PutIdentityPolicyOutput, error) {
 	req, out := c.PutIdentityPolicyRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opReorderReceiptRuleSet = "ReorderReceiptRuleSet"
+
+// ReorderReceiptRuleSetRequest generates a request for the ReorderReceiptRuleSet operation.
+func (c *SES) ReorderReceiptRuleSetRequest(input *ReorderReceiptRuleSetInput) (req *request.Request, output *ReorderReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opReorderReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ReorderReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &ReorderReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Reorders the receipt rules within a receipt rule set.
+//
+// All of the rules in the rule set must be represented in this request. That
+// is, this API will return an error if the reorder request doesn’t explicitly
+// position all of the rules. For information about managing receipt rule sets,
+// see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) ReorderReceiptRuleSet(input *ReorderReceiptRuleSetInput) (*ReorderReceiptRuleSetOutput, error) {
+	req, out := c.ReorderReceiptRuleSetRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opSendBounce = "SendBounce"
+
+// SendBounceRequest generates a request for the SendBounce operation.
+func (c *SES) SendBounceRequest(input *SendBounceInput) (req *request.Request, output *SendBounceOutput) {
+	op := &request.Operation{
+		Name:       opSendBounce,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &SendBounceInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &SendBounceOutput{}
+	req.Data = output
+	return
+}
+
+// Generates and sends a bounce message to the sender of an email you received
+// through Amazon SES. You can only use this API on an email up to 24 hours
+// after you receive it.
+//
+// You cannot use this API to send generic bounces for mail that was not received
+// by Amazon SES. For information about receiving email through Amazon SES,
+// see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) SendBounce(input *SendBounceInput) (*SendBounceOutput, error) {
+	req, out := c.SendBounceRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -569,6 +1029,39 @@ func (c *SES) SendRawEmail(input *SendRawEmailInput) (*SendRawEmailOutput, error
 	return out, err
 }
 
+const opSetActiveReceiptRuleSet = "SetActiveReceiptRuleSet"
+
+// SetActiveReceiptRuleSetRequest generates a request for the SetActiveReceiptRuleSet operation.
+func (c *SES) SetActiveReceiptRuleSetRequest(input *SetActiveReceiptRuleSetInput) (req *request.Request, output *SetActiveReceiptRuleSetOutput) {
+	op := &request.Operation{
+		Name:       opSetActiveReceiptRuleSet,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &SetActiveReceiptRuleSetInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &SetActiveReceiptRuleSetOutput{}
+	req.Data = output
+	return
+}
+
+// Sets the specified receipt rule set as the active receipt rule set.
+//
+// To disable your email-receiving through Amazon SES completely, you can call
+// this API with RuleSetName set to null. For information about managing receipt
+// rule sets, see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) SetActiveReceiptRuleSet(input *SetActiveReceiptRuleSetInput) (*SetActiveReceiptRuleSetOutput, error) {
+	req, out := c.SetActiveReceiptRuleSetRequest(input)
+	err := req.Send()
+	return out, err
+}
+
 const opSetIdentityDkimEnabled = "SetIdentityDkimEnabled"
 
 // SetIdentityDkimEnabledRequest generates a request for the SetIdentityDkimEnabled operation.
@@ -678,6 +1171,70 @@ func (c *SES) SetIdentityNotificationTopicRequest(input *SetIdentityNotification
 // Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 func (c *SES) SetIdentityNotificationTopic(input *SetIdentityNotificationTopicInput) (*SetIdentityNotificationTopicOutput, error) {
 	req, out := c.SetIdentityNotificationTopicRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opSetReceiptRulePosition = "SetReceiptRulePosition"
+
+// SetReceiptRulePositionRequest generates a request for the SetReceiptRulePosition operation.
+func (c *SES) SetReceiptRulePositionRequest(input *SetReceiptRulePositionInput) (req *request.Request, output *SetReceiptRulePositionOutput) {
+	op := &request.Operation{
+		Name:       opSetReceiptRulePosition,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &SetReceiptRulePositionInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &SetReceiptRulePositionOutput{}
+	req.Data = output
+	return
+}
+
+// Sets the position of the specified receipt rule in the receipt rule set.
+//
+// For information about managing receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) SetReceiptRulePosition(input *SetReceiptRulePositionInput) (*SetReceiptRulePositionOutput, error) {
+	req, out := c.SetReceiptRulePositionRequest(input)
+	err := req.Send()
+	return out, err
+}
+
+const opUpdateReceiptRule = "UpdateReceiptRule"
+
+// UpdateReceiptRuleRequest generates a request for the UpdateReceiptRule operation.
+func (c *SES) UpdateReceiptRuleRequest(input *UpdateReceiptRuleInput) (req *request.Request, output *UpdateReceiptRuleOutput) {
+	op := &request.Operation{
+		Name:       opUpdateReceiptRule,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &UpdateReceiptRuleInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &UpdateReceiptRuleOutput{}
+	req.Data = output
+	return
+}
+
+// Updates a receipt rule.
+//
+// For information about managing receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
+//
+// This action is throttled at one request per second.
+func (c *SES) UpdateReceiptRule(input *UpdateReceiptRuleInput) (*UpdateReceiptRuleOutput, error) {
+	req, out := c.UpdateReceiptRuleRequest(input)
 	err := req.Send()
 	return out, err
 }
@@ -814,10 +1371,39 @@ func (c *SES) VerifyEmailIdentity(input *VerifyEmailIdentityInput) (*VerifyEmail
 	return out, err
 }
 
+// When included in a receipt rule, this action adds a header to the received
+// email.
+//
+// For information about adding a header using a receipt rule, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html).
+type AddHeaderAction struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the header to add. Must be between 1 and 50 characters, inclusive,
+	// and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.
+	HeaderName *string `type:"string" required:"true"`
+
+	// Must be less than 2048 characters, and must not contain newline characters
+	// ("\r" or "\n").
+	HeaderValue *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s AddHeaderAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s AddHeaderAction) GoString() string {
+	return s.String()
+}
+
 // Represents the body of the message. You can specify text, HTML, or both.
 // If you use both, then the message should display correctly in the widest
 // variety of email clients.
 type Body struct {
+	_ struct{} `type:"structure"`
+
 	// The content of the message, in HTML format. Use this for email clients that
 	// can process HTML. You can include clickable links, formatted text, and much
 	// more in an HTML message.
@@ -826,12 +1412,6 @@ type Body struct {
 	// The content of the message, in text format. Use this for text-based email
 	// clients, or clients on high-latency networks (such as mobile devices).
 	Text *Content `type:"structure"`
-
-	metadataBody `json:"-" xml:"-"`
-}
-
-type metadataBody struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -844,23 +1424,132 @@ func (s Body) GoString() string {
 	return s.String()
 }
 
+// When included in a receipt rule, this action rejects the received email by
+// returning a bounce response to the sender and, optionally, publishes a notification
+// to Amazon Simple Notification Service (Amazon SNS).
+//
+// For information about sending a bounce message in response to a received
+// email, see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html).
+type BounceAction struct {
+	_ struct{} `type:"structure"`
+
+	// Human-readable text to include in the bounce message.
+	Message *string `type:"string" required:"true"`
+
+	// The email address of the sender of the bounced email. This is the address
+	// from which the bounce message will be sent.
+	Sender *string `type:"string" required:"true"`
+
+	// The SMTP reply code, as defined by RFC 5321 (https://tools.ietf.org/html/rfc5321).
+	SmtpReplyCode *string `type:"string" required:"true"`
+
+	// The SMTP enhanced status code, as defined by RFC 3463 (https://tools.ietf.org/html/rfc3463).
+	StatusCode *string `type:"string"`
+
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
+	// bounce action is taken. An example of an Amazon SNS topic ARN is arn:aws:sns:us-west-2:123456789012:MyTopic.
+	// For more information about Amazon SNS topics, see the Amazon SNS Developer
+	// Guide (http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+	TopicArn *string `type:"string"`
+}
+
+// String returns the string representation
+func (s BounceAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BounceAction) GoString() string {
+	return s.String()
+}
+
+// Recipient-related information to include in the Delivery Status Notification
+// (DSN) when an email that Amazon SES receives on your behalf bounces.
+//
+// For information about receiving email through Amazon SES, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
+type BouncedRecipientInfo struct {
+	_ struct{} `type:"structure"`
+
+	// The reason for the bounce. You must provide either this parameter or RecipientDsnFields.
+	BounceType *string `type:"string" enum:"BounceType"`
+
+	// The email address of the recipient of the bounced email.
+	Recipient *string `type:"string" required:"true"`
+
+	// This parameter is used only for sending authorization. It is the ARN of the
+	// identity that is associated with the sending authorization policy that permits
+	// you to receive email for the recipient of the bounced email. For more information
+	// about sending authorization, see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+	RecipientArn *string `type:"string"`
+
+	// Recipient-related DSN fields, most of which would normally be filled in automatically
+	// when provided with a BounceType. You must provide either this parameter or
+	// BounceType.
+	RecipientDsnFields *RecipientDsnFields `type:"structure"`
+}
+
+// String returns the string representation
+func (s BouncedRecipientInfo) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BouncedRecipientInfo) GoString() string {
+	return s.String()
+}
+
+type CloneReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the rule set to clone.
+	OriginalRuleSetName *string `type:"string" required:"true"`
+
+	// The name of the rule set to create. The name must:
+	//
+	//  Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores
+	// (_), or dashes (-). Start and end with a letter or number. Contain less than
+	// 64 characters.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s CloneReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CloneReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type CloneReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s CloneReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CloneReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
 // Represents textual data, plus an optional character set specification.
 //
 // By default, the text must be 7-bit ASCII, due to the constraints of the
 // SMTP protocol. If the text must contain any other characters, then you must
 // also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.
 type Content struct {
+	_ struct{} `type:"structure"`
+
 	// The character set of the content.
 	Charset *string `type:"string"`
 
 	// The textual data of the content.
 	Data *string `type:"string" required:"true"`
-
-	metadataContent `json:"-" xml:"-"`
-}
-
-type metadataContent struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -873,17 +1562,120 @@ func (s Content) GoString() string {
 	return s.String()
 }
 
+type CreateReceiptFilterInput struct {
+	_ struct{} `type:"structure"`
+
+	// A data structure that describes the IP address filter to create, which consists
+	// of a name, an IP address range, and whether to allow or block mail from it.
+	Filter *ReceiptFilter `type:"structure" required:"true"`
+}
+
+// String returns the string representation
+func (s CreateReceiptFilterInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateReceiptFilterInput) GoString() string {
+	return s.String()
+}
+
+type CreateReceiptFilterOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s CreateReceiptFilterOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateReceiptFilterOutput) GoString() string {
+	return s.String()
+}
+
+type CreateReceiptRuleInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of an existing rule after which the new rule will be placed. If
+	// this parameter is null, the new rule will be inserted at the beginning of
+	// the rule list.
+	After *string `type:"string"`
+
+	// A data structure that contains the specified rule's name, actions, recipients,
+	// domains, enabled status, scan status, and TLS policy.
+	Rule *ReceiptRule `type:"structure" required:"true"`
+
+	// The name of the rule set to which to add the rule.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s CreateReceiptRuleInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateReceiptRuleInput) GoString() string {
+	return s.String()
+}
+
+type CreateReceiptRuleOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s CreateReceiptRuleOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateReceiptRuleOutput) GoString() string {
+	return s.String()
+}
+
+type CreateReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the rule set to create. The name must:
+	//
+	//  Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores
+	// (_), or dashes (-). Start and end with a letter or number. Contain less than
+	// 64 characters.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s CreateReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type CreateReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s CreateReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
 // Represents a request instructing the service to delete an identity from the
 // list of identities for the AWS Account.
 type DeleteIdentityInput struct {
+	_ struct{} `type:"structure"`
+
 	// The identity to be removed from the list of identities for the AWS Account.
 	Identity *string `type:"string" required:"true"`
-
-	metadataDeleteIdentityInput `json:"-" xml:"-"`
-}
-
-type metadataDeleteIdentityInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -899,11 +1691,7 @@ func (s DeleteIdentityInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type DeleteIdentityOutput struct {
-	metadataDeleteIdentityOutput `json:"-" xml:"-"`
-}
-
-type metadataDeleteIdentityOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -921,6 +1709,8 @@ func (s DeleteIdentityOutput) GoString() string {
 //
 // This request succeeds regardless of whether the specified policy exists.
 type DeleteIdentityPolicyInput struct {
+	_ struct{} `type:"structure"`
+
 	// The identity that is associated with the policy that you want to delete.
 	// You can specify the identity by using its name or by using its Amazon Resource
 	// Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
@@ -930,12 +1720,6 @@ type DeleteIdentityPolicyInput struct {
 
 	// The name of the policy to be deleted.
 	PolicyName *string `min:"1" type:"string" required:"true"`
-
-	metadataDeleteIdentityPolicyInput `json:"-" xml:"-"`
-}
-
-type metadataDeleteIdentityPolicyInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -951,11 +1735,7 @@ func (s DeleteIdentityPolicyInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type DeleteIdentityPolicyOutput struct {
-	metadataDeleteIdentityPolicyOutput `json:"-" xml:"-"`
-}
-
-type metadataDeleteIdentityPolicyOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -968,17 +1748,109 @@ func (s DeleteIdentityPolicyOutput) GoString() string {
 	return s.String()
 }
 
+type DeleteReceiptFilterInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the IP address filter to delete.
+	FilterName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteReceiptFilterInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteReceiptFilterInput) GoString() string {
+	return s.String()
+}
+
+type DeleteReceiptFilterOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s DeleteReceiptFilterOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteReceiptFilterOutput) GoString() string {
+	return s.String()
+}
+
+type DeleteReceiptRuleInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the receipt rule to delete.
+	RuleName *string `type:"string" required:"true"`
+
+	// The name of the receipt rule set that contains the receipt rule to delete.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteReceiptRuleInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteReceiptRuleInput) GoString() string {
+	return s.String()
+}
+
+type DeleteReceiptRuleOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s DeleteReceiptRuleOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteReceiptRuleOutput) GoString() string {
+	return s.String()
+}
+
+type DeleteReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the receipt rule set to delete.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type DeleteReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s DeleteReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
 // Represents a request instructing the service to delete an address from the
 // list of verified email addresses.
 type DeleteVerifiedEmailAddressInput struct {
+	_ struct{} `type:"structure"`
+
 	// An email address to be removed from the list of verified addresses.
 	EmailAddress *string `type:"string" required:"true"`
-
-	metadataDeleteVerifiedEmailAddressInput `json:"-" xml:"-"`
-}
-
-type metadataDeleteVerifiedEmailAddressInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -992,11 +1864,7 @@ func (s DeleteVerifiedEmailAddressInput) GoString() string {
 }
 
 type DeleteVerifiedEmailAddressOutput struct {
-	metadataDeleteVerifiedEmailAddressOutput `json:"-" xml:"-"`
-}
-
-type metadataDeleteVerifiedEmailAddressOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1009,6 +1877,118 @@ func (s DeleteVerifiedEmailAddressOutput) GoString() string {
 	return s.String()
 }
 
+type DescribeActiveReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s DescribeActiveReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeActiveReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type DescribeActiveReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The metadata for the currently active receipt rule set. The metadata consists
+	// of the rule set name and a timestamp of when the rule set was created.
+	Metadata *ReceiptRuleSetMetadata `type:"structure"`
+
+	// The receipt rules that belong to the active rule set.
+	Rules []*ReceiptRule `type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeActiveReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeActiveReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
+type DescribeReceiptRuleInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the receipt rule.
+	RuleName *string `type:"string" required:"true"`
+
+	// The name of the receipt rule set to which the receipt rule belongs.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DescribeReceiptRuleInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeReceiptRuleInput) GoString() string {
+	return s.String()
+}
+
+type DescribeReceiptRuleOutput struct {
+	_ struct{} `type:"structure"`
+
+	// A data structure that contains the specified receipt rule's name, actions,
+	// recipients, domains, enabled status, scan status, and Transport Layer Security
+	// (TLS) policy.
+	Rule *ReceiptRule `type:"structure"`
+}
+
+// String returns the string representation
+func (s DescribeReceiptRuleOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeReceiptRuleOutput) GoString() string {
+	return s.String()
+}
+
+type DescribeReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the receipt rule set to describe.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DescribeReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type DescribeReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The metadata for the receipt rule set, which consists of the rule set name
+	// and the timestamp of when the rule set was created.
+	Metadata *ReceiptRuleSetMetadata `type:"structure"`
+
+	// A list of the receipt rules that belong to the specified receipt rule set.
+	Rules []*ReceiptRule `type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
 // Represents the destination of the message, consisting of To:, CC:, and BCC:
 // fields.
 //
@@ -1017,6 +1997,8 @@ func (s DeleteVerifiedEmailAddressOutput) GoString() string {
 // of a literal string. MIME encoded-word syntax uses the following form: =?charset?encoding?encoded-text?=.
 // For more information, see RFC 2047 (http://tools.ietf.org/html/rfc2047).
 type Destination struct {
+	_ struct{} `type:"structure"`
+
 	// The BCC: field(s) of the message.
 	BccAddresses []*string `type:"list"`
 
@@ -1025,12 +2007,6 @@ type Destination struct {
 
 	// The To: field(s) of the message.
 	ToAddresses []*string `type:"list"`
-
-	metadataDestination `json:"-" xml:"-"`
-}
-
-type metadataDestination struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1043,6 +2019,33 @@ func (s Destination) GoString() string {
 	return s.String()
 }
 
+// Additional X-headers to include in the Delivery Status Notification (DSN)
+// when an email that Amazon SES receives on your behalf bounces.
+//
+// For information about receiving email through Amazon SES, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
+type ExtensionField struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the header to add. Must be between 1 and 50 characters, inclusive,
+	// and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.
+	Name *string `type:"string" required:"true"`
+
+	// The value of the header to add. Must be less than 2048 characters, and must
+	// not contain newline characters ("\r" or "\n").
+	Value *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ExtensionField) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ExtensionField) GoString() string {
+	return s.String()
+}
+
 // Given a list of verified identities, describes their DKIM attributes. The
 // DKIM attributes of an email address identity includes whether DKIM signing
 // is individually enabled or disabled for that address. The DKIM attributes
@@ -1050,15 +2053,11 @@ func (s Destination) GoString() string {
 // as the DNS records (tokens) that must remain published in the domain name's
 // DNS.
 type GetIdentityDkimAttributesInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of one or more verified identities - email addresses, domains, or
 	// both.
 	Identities []*string `type:"list" required:"true"`
-
-	metadataGetIdentityDkimAttributesInput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityDkimAttributesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1073,14 +2072,10 @@ func (s GetIdentityDkimAttributesInput) GoString() string {
 
 // Represents a list of all the DKIM attributes for the specified identity.
 type GetIdentityDkimAttributesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// The DKIM attributes for an email address or a domain.
 	DkimAttributes map[string]*IdentityDkimAttributes `type:"map" required:"true"`
-
-	metadataGetIdentityDkimAttributesOutput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityDkimAttributesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1094,16 +2089,12 @@ func (s GetIdentityDkimAttributesOutput) GoString() string {
 }
 
 type GetIdentityNotificationAttributesInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of one or more identities. You can specify an identity by using its
 	// name or by using its Amazon Resource Name (ARN). Examples: user@example.com,
 	// example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
 	Identities []*string `type:"list" required:"true"`
-
-	metadataGetIdentityNotificationAttributesInput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityNotificationAttributesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1121,14 +2112,10 @@ func (s GetIdentityNotificationAttributesInput) GoString() string {
 // specifies whether feedback forwarding is enabled for bounce and complaint
 // notifications.
 type GetIdentityNotificationAttributesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A map of Identity to IdentityNotificationAttributes.
 	NotificationAttributes map[string]*IdentityNotificationAttributes `type:"map" required:"true"`
-
-	metadataGetIdentityNotificationAttributesOutput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityNotificationAttributesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1144,6 +2131,8 @@ func (s GetIdentityNotificationAttributesOutput) GoString() string {
 // Represents a request instructing the service to retrieve the text of a list
 // of authorization policies applying to an identity.
 type GetIdentityPoliciesInput struct {
+	_ struct{} `type:"structure"`
+
 	// The identity for which the policies will be retrieved. You can specify an
 	// identity by using its name or by using its Amazon Resource Name (ARN). Examples:
 	// user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
@@ -1155,12 +2144,6 @@ type GetIdentityPoliciesInput struct {
 	// of 20 policies at a time. If you do not know the names of the policies that
 	// are attached to the identity, you can use ListIdentityPolicies.
 	PolicyNames []*string `type:"list" required:"true"`
-
-	metadataGetIdentityPoliciesInput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityPoliciesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1176,14 +2159,10 @@ func (s GetIdentityPoliciesInput) GoString() string {
 // Represents a map of policy names to policies returned from a successful GetIdentityPolicies
 // request.
 type GetIdentityPoliciesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A map of policy names to policies.
 	Policies map[string]*string `type:"map" required:"true"`
-
-	metadataGetIdentityPoliciesOutput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityPoliciesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1199,14 +2178,10 @@ func (s GetIdentityPoliciesOutput) GoString() string {
 // Represents a request instructing the service to provide the verification
 // attributes for a list of identities.
 type GetIdentityVerificationAttributesInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of identities.
 	Identities []*string `type:"list" required:"true"`
-
-	metadataGetIdentityVerificationAttributesInput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityVerificationAttributesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1221,14 +2196,10 @@ func (s GetIdentityVerificationAttributesInput) GoString() string {
 
 // Represents the verification attributes for a list of identities.
 type GetIdentityVerificationAttributesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A map of Identities to IdentityVerificationAttributes objects.
 	VerificationAttributes map[string]*IdentityVerificationAttributes `type:"map" required:"true"`
-
-	metadataGetIdentityVerificationAttributesOutput `json:"-" xml:"-"`
-}
-
-type metadataGetIdentityVerificationAttributesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1242,11 +2213,7 @@ func (s GetIdentityVerificationAttributesOutput) GoString() string {
 }
 
 type GetSendQuotaInput struct {
-	metadataGetSendQuotaInput `json:"-" xml:"-"`
-}
-
-type metadataGetSendQuotaInput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1262,6 +2229,8 @@ func (s GetSendQuotaInput) GoString() string {
 // Represents the user's current activity limits returned from a successful
 // GetSendQuota request.
 type GetSendQuotaOutput struct {
+	_ struct{} `type:"structure"`
+
 	// The maximum number of emails the user is allowed to send in a 24-hour interval.
 	// A value of -1 signifies an unlimited quota.
 	Max24HourSend *float64 `type:"double"`
@@ -1275,12 +2244,6 @@ type GetSendQuotaOutput struct {
 
 	// The number of emails sent during the previous 24 hours.
 	SentLast24Hours *float64 `type:"double"`
-
-	metadataGetSendQuotaOutput `json:"-" xml:"-"`
-}
-
-type metadataGetSendQuotaOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1294,11 +2257,7 @@ func (s GetSendQuotaOutput) GoString() string {
 }
 
 type GetSendStatisticsInput struct {
-	metadataGetSendStatisticsInput `json:"-" xml:"-"`
-}
-
-type metadataGetSendStatisticsInput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1315,14 +2274,10 @@ func (s GetSendStatisticsInput) GoString() string {
 // request. This list contains aggregated data from the previous two weeks of
 // sending activity.
 type GetSendStatisticsOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of data points, each of which represents 15 minutes of activity.
 	SendDataPoints []*SendDataPoint `type:"list"`
-
-	metadataGetSendStatisticsOutput `json:"-" xml:"-"`
-}
-
-type metadataGetSendStatisticsOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1337,6 +2292,8 @@ func (s GetSendStatisticsOutput) GoString() string {
 
 // Represents the DKIM attributes of a verified email address or a domain.
 type IdentityDkimAttributes struct {
+	_ struct{} `type:"structure"`
+
 	// True if DKIM signing is enabled for email sent from the identity; false otherwise.
 	DkimEnabled *bool `type:"boolean" required:"true"`
 
@@ -1356,12 +2313,6 @@ type IdentityDkimAttributes struct {
 	// (tokens) published in the domain name's DNS. (This only applies to domain
 	// identities, not email address identities.)
 	DkimVerificationStatus *string `type:"string" required:"true" enum:"VerificationStatus"`
-
-	metadataIdentityDkimAttributes `json:"-" xml:"-"`
-}
-
-type metadataIdentityDkimAttributes struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1379,6 +2330,8 @@ func (s IdentityDkimAttributes) GoString() string {
 // for bounce, complaint, and/or delivery notifications, and whether feedback
 // forwarding is enabled for bounce and complaint notifications.
 type IdentityNotificationAttributes struct {
+	_ struct{} `type:"structure"`
+
 	// The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
 	// publish bounce notifications.
 	BounceTopic *string `type:"string" required:"true"`
@@ -1396,12 +2349,6 @@ type IdentityNotificationAttributes struct {
 	// notifications as email, while false indicates that bounce and complaint notifications
 	// will be published only to the specified bounce and complaint Amazon SNS topics.
 	ForwardingEnabled *bool `type:"boolean" required:"true"`
-
-	metadataIdentityNotificationAttributes `json:"-" xml:"-"`
-}
-
-type metadataIdentityNotificationAttributes struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1416,18 +2363,14 @@ func (s IdentityNotificationAttributes) GoString() string {
 
 // Represents the verification attributes of a single identity.
 type IdentityVerificationAttributes struct {
+	_ struct{} `type:"structure"`
+
 	// The verification status of the identity: "Pending", "Success", "Failed",
 	// or "TemporaryFailure".
 	VerificationStatus *string `type:"string" required:"true" enum:"VerificationStatus"`
 
 	// The verification token for a domain identity. Null for email address identities.
 	VerificationToken *string `type:"string"`
-
-	metadataIdentityVerificationAttributes `json:"-" xml:"-"`
-}
-
-type metadataIdentityVerificationAttributes struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1440,9 +2383,60 @@ func (s IdentityVerificationAttributes) GoString() string {
 	return s.String()
 }
 
+// When included in a receipt rule, this action calls an AWS Lambda function
+// and, optionally, publishes a notification to Amazon Simple Notification Service
+// (Amazon SNS).
+//
+// To enable Amazon SES to call your AWS Lambda function or to publish to an
+// Amazon SNS topic of another account, Amazon SES must have permission to access
+// those resources. For information about giving permissions, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+//
+// For information about using AWS Lambda actions in receipt rules, see the
+// Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html).
+type LambdaAction struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the AWS Lambda function. An example of
+	// an AWS Lambda function ARN is arn:aws:lambda:us-west-2:account-id:function:MyFunction.
+	// For more information about AWS Lambda, see the AWS Lambda Developer Guide
+	// (http://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
+	FunctionArn *string `type:"string" required:"true"`
+
+	// The invocation type of the AWS Lambda function. An invocation type of RequestResponse
+	// means that the execution of the function will immediately result in a response,
+	// and a value of Event means that the function will be invoked asynchronously.
+	// The default value is Event. For information about AWS Lambda invocation types,
+	// see the AWS Lambda Developer Guide (http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
+	//
+	// There is a 30-second timeout on RequestResponse invocations. You should
+	// use Event invocation in most cases. Use RequestResponse only when you want
+	// to make a mail flow decision, such as whether to stop the receipt rule or
+	// the receipt rule set.
+	InvocationType *string `type:"string" enum:"InvocationType"`
+
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
+	// Lambda action is taken. An example of an Amazon SNS topic ARN is arn:aws:sns:us-west-2:123456789012:MyTopic.
+	// For more information about Amazon SNS topics, see the Amazon SNS Developer
+	// Guide (http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+	TopicArn *string `type:"string"`
+}
+
+// String returns the string representation
+func (s LambdaAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s LambdaAction) GoString() string {
+	return s.String()
+}
+
 // Represents a request instructing the service to list all identities for the
 // AWS Account.
 type ListIdentitiesInput struct {
+	_ struct{} `type:"structure"`
+
 	// The type of the identities to list. Possible values are "EmailAddress" and
 	// "Domain". If this parameter is omitted, then all identities will be listed.
 	IdentityType *string `type:"string" enum:"IdentityType"`
@@ -1452,12 +2446,6 @@ type ListIdentitiesInput struct {
 
 	// The token to use for pagination.
 	NextToken *string `type:"string"`
-
-	metadataListIdentitiesInput `json:"-" xml:"-"`
-}
-
-type metadataListIdentitiesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1472,17 +2460,13 @@ func (s ListIdentitiesInput) GoString() string {
 
 // Represents a list of all verified identities for the AWS Account.
 type ListIdentitiesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of identities.
 	Identities []*string `type:"list" required:"true"`
 
 	// The token used for pagination.
 	NextToken *string `type:"string"`
-
-	metadataListIdentitiesOutput `json:"-" xml:"-"`
-}
-
-type metadataListIdentitiesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1498,18 +2482,14 @@ func (s ListIdentitiesOutput) GoString() string {
 // Represents a request instructing the service to list all authorization policies,
 // by name, applying to an identity.
 type ListIdentityPoliciesInput struct {
+	_ struct{} `type:"structure"`
+
 	// The identity that is associated with the policy for which the policies will
 	// be listed. You can specify an identity by using its name or by using its
 	// Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
 	//
 	// To successfully call this API, you must own the identity.
 	Identity *string `type:"string" required:"true"`
-
-	metadataListIdentityPoliciesInput `json:"-" xml:"-"`
-}
-
-type metadataListIdentityPoliciesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1525,14 +2505,10 @@ func (s ListIdentityPoliciesInput) GoString() string {
 // Represents a list of policy names returned from a successful ListIdentityPolicies
 // request.
 type ListIdentityPoliciesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of names of policies that apply to the specified identity.
 	PolicyNames []*string `type:"list" required:"true"`
-
-	metadataListIdentityPoliciesOutput `json:"-" xml:"-"`
-}
-
-type metadataListIdentityPoliciesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1545,12 +2521,81 @@ func (s ListIdentityPoliciesOutput) GoString() string {
 	return s.String()
 }
 
-type ListVerifiedEmailAddressesInput struct {
-	metadataListVerifiedEmailAddressesInput `json:"-" xml:"-"`
+type ListReceiptFiltersInput struct {
+	_ struct{} `type:"structure"`
 }
 
-type metadataListVerifiedEmailAddressesInput struct {
-	SDKShapeTraits bool `type:"structure"`
+// String returns the string representation
+func (s ListReceiptFiltersInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListReceiptFiltersInput) GoString() string {
+	return s.String()
+}
+
+type ListReceiptFiltersOutput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of IP address filter data structures, which each consist of a name,
+	// an IP address range, and whether to allow or block mail from it.
+	Filters []*ReceiptFilter `type:"list"`
+}
+
+// String returns the string representation
+func (s ListReceiptFiltersOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListReceiptFiltersOutput) GoString() string {
+	return s.String()
+}
+
+type ListReceiptRuleSetsInput struct {
+	_ struct{} `type:"structure"`
+
+	// A token returned from a previous call to ListReceiptRuleSets to indicate
+	// the position in the receipt rule set list.
+	NextToken *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ListReceiptRuleSetsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListReceiptRuleSetsInput) GoString() string {
+	return s.String()
+}
+
+type ListReceiptRuleSetsOutput struct {
+	_ struct{} `type:"structure"`
+
+	// A token indicating that there are additional receipt rule sets available
+	// to be listed. Pass this token to successive calls of ListReceiptRuleSets
+	// to retrieve up to 100 receipt rule sets at a time.
+	NextToken *string `type:"string"`
+
+	// The metadata for the currently active receipt rule set. The metadata consists
+	// of the rule set name and the timestamp of when the rule set was created.
+	RuleSets []*ReceiptRuleSetMetadata `type:"list"`
+}
+
+// String returns the string representation
+func (s ListReceiptRuleSetsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListReceiptRuleSetsOutput) GoString() string {
+	return s.String()
+}
+
+type ListVerifiedEmailAddressesInput struct {
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1565,14 +2610,10 @@ func (s ListVerifiedEmailAddressesInput) GoString() string {
 
 // Represents a list of all the email addresses verified for the current user.
 type ListVerifiedEmailAddressesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of email addresses that have been verified.
 	VerifiedEmailAddresses []*string `type:"list"`
-
-	metadataListVerifiedEmailAddressesOutput `json:"-" xml:"-"`
-}
-
-type metadataListVerifiedEmailAddressesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1587,18 +2628,14 @@ func (s ListVerifiedEmailAddressesOutput) GoString() string {
 
 // Represents the message to be sent, composed of a subject and a body.
 type Message struct {
+	_ struct{} `type:"structure"`
+
 	// The message body.
 	Body *Body `type:"structure" required:"true"`
 
 	// The subject of the message: A short summary of the content, which will appear
 	// in the recipient's inbox.
 	Subject *Content `type:"structure" required:"true"`
-
-	metadataMessage `json:"-" xml:"-"`
-}
-
-type metadataMessage struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1611,9 +2648,42 @@ func (s Message) GoString() string {
 	return s.String()
 }
 
+// Message-related information to include in the Delivery Status Notification
+// (DSN) when an email that Amazon SES receives on your behalf bounces.
+//
+// For information about receiving email through Amazon SES, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
+type MessageDsn struct {
+	_ struct{} `type:"structure"`
+
+	// When the message was received by the reporting mail transfer agent (MTA),
+	// in RFC 822 (https://www.ietf.org/rfc/rfc0822.txt) date-time format.
+	ArrivalDate *time.Time `type:"timestamp" timestampFormat:"iso8601"`
+
+	// Additional X-headers to include in the DSN.
+	ExtensionFields []*ExtensionField `type:"list"`
+
+	// The reporting MTA that attempted to deliver the message, formatted as specified
+	// in RFC 3464 (https://tools.ietf.org/html/rfc3464) (mta-name-type; mta-name).
+	// The default value is dns; inbound-smtp.[region].amazonaws.com.
+	ReportingMta *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s MessageDsn) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s MessageDsn) GoString() string {
+	return s.String()
+}
+
 // Represents a request instructing the service to apply an authorization policy
 // to an identity.
 type PutIdentityPolicyInput struct {
+	_ struct{} `type:"structure"`
+
 	// The identity to which the policy will apply. You can specify an identity
 	// by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com,
 	// example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
@@ -1632,12 +2702,6 @@ type PutIdentityPolicyInput struct {
 	// The policy name cannot exceed 64 characters and can only include alphanumeric
 	// characters, dashes, and underscores.
 	PolicyName *string `min:"1" type:"string" required:"true"`
-
-	metadataPutIdentityPolicyInput `json:"-" xml:"-"`
-}
-
-type metadataPutIdentityPolicyInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1653,11 +2717,7 @@ func (s PutIdentityPolicyInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type PutIdentityPolicyOutput struct {
-	metadataPutIdentityPolicyOutput `json:"-" xml:"-"`
-}
-
-type metadataPutIdentityPolicyOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1672,6 +2732,8 @@ func (s PutIdentityPolicyOutput) GoString() string {
 
 // Represents the raw data of the message.
 type RawMessage struct {
+	_ struct{} `type:"structure"`
+
 	// The raw data of the message. The client must ensure that the message format
 	// complies with Internet email standards regarding email header fields, MIME
 	// types, MIME encoding, and base64 encoding (if necessary).
@@ -1686,12 +2748,6 @@ type RawMessage struct {
 	// by Amazon SES before sending the email. For more information, go to the Amazon
 	// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html).
 	Data []byte `type:"blob" required:"true"`
-
-	metadataRawMessage `json:"-" xml:"-"`
-}
-
-type metadataRawMessage struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1704,9 +2760,459 @@ func (s RawMessage) GoString() string {
 	return s.String()
 }
 
+// An action that Amazon SES can take when it receives an email on behalf of
+// one or more email addresses or domains that you own. An instance of this
+// data type can represent only one action.
+//
+// For information about setting up receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+type ReceiptAction struct {
+	_ struct{} `type:"structure"`
+
+	// Adds a header to the received email.
+	AddHeaderAction *AddHeaderAction `type:"structure"`
+
+	// Rejects the received email by returning a bounce response to the sender and,
+	// optionally, publishes a notification to Amazon Simple Notification Service
+	// (Amazon SNS).
+	BounceAction *BounceAction `type:"structure"`
+
+	// Calls an AWS Lambda function, and optionally, publishes a notification to
+	// Amazon SNS.
+	LambdaAction *LambdaAction `type:"structure"`
+
+	// Saves the received message to an Amazon Simple Storage Service (Amazon S3)
+	// bucket and, optionally, publishes a notification to Amazon SNS.
+	S3Action *S3Action `type:"structure"`
+
+	// Publishes the email content within a notification to Amazon SNS.
+	SNSAction *SNSAction `type:"structure"`
+
+	// Terminates the evaluation of the receipt rule set and optionally publishes
+	// a notification to Amazon SNS.
+	StopAction *StopAction `type:"structure"`
+
+	// Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
+	// SNS.
+	WorkmailAction *WorkmailAction `type:"structure"`
+}
+
+// String returns the string representation
+func (s ReceiptAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReceiptAction) GoString() string {
+	return s.String()
+}
+
+// A receipt IP address filter enables you to specify whether to accept or reject
+// mail originating from an IP address or range of IP addresses.
+//
+// For information about setting up IP address filters, see the Amazon SES
+// Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
+type ReceiptFilter struct {
+	_ struct{} `type:"structure"`
+
+	// A structure that provides the IP addresses to block or allow, and whether
+	// to block or allow incoming mail from them.
+	IpFilter *ReceiptIpFilter `type:"structure" required:"true"`
+
+	// The name of the IP address filter. The name must:
+	//
+	//  Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores
+	// (_), or dashes (-). Start and end with a letter or number. Contain less than
+	// 64 characters.
+	Name *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ReceiptFilter) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReceiptFilter) GoString() string {
+	return s.String()
+}
+
+// A receipt IP address filter enables you to specify whether to accept or reject
+// mail originating from an IP address or range of IP addresses.
+//
+// For information about setting up IP address filters, see the Amazon SES
+// Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
+type ReceiptIpFilter struct {
+	_ struct{} `type:"structure"`
+
+	// A single IP address or a range of IP addresses that you want to block or
+	// allow, specified in Classless Inter-Domain Routing (CIDR) notation. An example
+	// of a single email address is 10.0.0.1. An example of a range of IP addresses
+	// is 10.0.0.1/24. For more information about CIDR notation, see RFC 2317 (https://tools.ietf.org/html/rfc2317).
+	Cidr *string `type:"string" required:"true"`
+
+	// Indicates whether to block or allow incoming mail from the specified IP addresses.
+	Policy *string `type:"string" required:"true" enum:"ReceiptFilterPolicy"`
+}
+
+// String returns the string representation
+func (s ReceiptIpFilter) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReceiptIpFilter) GoString() string {
+	return s.String()
+}
+
+// Receipt rules enable you to specify which actions Amazon SES should take
+// when it receives mail on behalf of one or more email addresses or domains
+// that you own.
+//
+// Each receipt rule defines a set of email addresses or domains to which it
+// applies. If the email addresses or domains match at least one recipient address
+// of the message, Amazon SES executes all of the receipt rule's actions on
+// the message.
+//
+// For information about setting up receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+type ReceiptRule struct {
+	_ struct{} `type:"structure"`
+
+	// An ordered list of actions to perform on messages that match at least one
+	// of the recipient email addresses or domains specified in the receipt rule.
+	Actions []*ReceiptAction `type:"list"`
+
+	// If true, the receipt rule is active. The default value is true.
+	Enabled *bool `type:"boolean"`
+
+	// The name of the receipt rule. The name must:
+	//
+	//  Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores
+	// (_), or dashes (-). Start and end with a letter or number. Contain less than
+	// 64 characters.
+	Name *string `type:"string" required:"true"`
+
+	// The recipient domains and email addresses to which the receipt rule applies.
+	// If this field is not specified, this rule will match all recipients under
+	// all verified domains.
+	Recipients []*string `type:"list"`
+
+	// If true, then messages to which this receipt rule applies are scanned for
+	// spam and viruses. The default value is true.
+	ScanEnabled *bool `type:"boolean"`
+
+	// Specifies whether Amazon SES should require that incoming email is delivered
+	// over a connection encrypted with Transport Layer Security (TLS). If this
+	// parameter is set to Require, Amazon SES will bounce emails that are not received
+	// over TLS. The default is Optional.
+	TlsPolicy *string `type:"string" enum:"TlsPolicy"`
+}
+
+// String returns the string representation
+func (s ReceiptRule) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReceiptRule) GoString() string {
+	return s.String()
+}
+
+// Information about a receipt rule set.
+//
+// A receipt rule set is a collection of rules that specify what Amazon SES
+// should do with mail it receives on behalf of your account's verified domains.
+//
+// For information about setting up receipt rule sets, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+type ReceiptRuleSetMetadata struct {
+	_ struct{} `type:"structure"`
+
+	// The date and time the receipt rule set was created.
+	CreatedTimestamp *time.Time `type:"timestamp" timestampFormat:"iso8601"`
+
+	// The name of the receipt rule set. The name must:
+	//
+	//  Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores
+	// (_), or dashes (-). Start and end with a letter or number. Contain less than
+	// 64 characters.
+	Name *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ReceiptRuleSetMetadata) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReceiptRuleSetMetadata) GoString() string {
+	return s.String()
+}
+
+// Recipient-related information to include in the Delivery Status Notification
+// (DSN) when an email that Amazon SES receives on your behalf bounces.
+//
+// For information about receiving email through Amazon SES, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
+type RecipientDsnFields struct {
+	_ struct{} `type:"structure"`
+
+	// The action performed by the reporting mail transfer agent (MTA) as a result
+	// of its attempt to deliver the message to the recipient address. This is required
+	// by RFC 3464 (https://tools.ietf.org/html/rfc3464).
+	Action *string `type:"string" required:"true" enum:"DsnAction"`
+
+	// An extended explanation of what went wrong; this is usually an SMTP response.
+	// See RFC 3463 (https://tools.ietf.org/html/rfc3463) for the correct formatting
+	// of this parameter.
+	DiagnosticCode *string `type:"string"`
+
+	// Additional X-headers to include in the DSN.
+	ExtensionFields []*ExtensionField `type:"list"`
+
+	// The email address to which the message was ultimately delivered. This corresponds
+	// to the Final-Recipient in the DSN. If not specified, FinalRecipient will
+	// be set to the Recipient specified in the BouncedRecipientInfo structure.
+	// Either FinalRecipient or the recipient in BouncedRecipientInfo must be a
+	// recipient of the original bounced message.
+	//
+	// Do not prepend the FinalRecipient email address with rfc 822;, as described
+	// in RFC 3798 (https://tools.ietf.org/html/rfc3798).
+	FinalRecipient *string `type:"string"`
+
+	// The time the final delivery attempt was made, in RFC 822 (https://www.ietf.org/rfc/rfc0822.txt)
+	// date-time format.
+	LastAttemptDate *time.Time `type:"timestamp" timestampFormat:"iso8601"`
+
+	// The MTA to which the remote MTA attempted to deliver the message, formatted
+	// as specified in RFC 3464 (https://tools.ietf.org/html/rfc3464) (mta-name-type;
+	// mta-name). This parameter typically applies only to propagating synchronous
+	// bounces.
+	RemoteMta *string `type:"string"`
+
+	// The status code that indicates what went wrong. This is required by RFC 3464
+	// (https://tools.ietf.org/html/rfc3464).
+	Status *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s RecipientDsnFields) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RecipientDsnFields) GoString() string {
+	return s.String()
+}
+
+type ReorderReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of the specified receipt rule set's receipt rules in the order that
+	// you want to put them.
+	RuleNames []*string `type:"list" required:"true"`
+
+	// The name of the receipt rule set to reorder.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ReorderReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReorderReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type ReorderReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s ReorderReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ReorderReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
+// When included in a receipt rule, this action saves the received message to
+// an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes
+// a notification to Amazon Simple Notification Service (Amazon SNS).
+//
+// To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS
+// KMS key to encrypt your emails, or publish to an Amazon SNS topic of another
+// account, Amazon SES must have permission to access those resources. For information
+// about giving permissions, see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+//
+// When you save your emails to an Amazon S3 bucket, the maximum email size
+// (including headers) is 30 MB. Emails larger than that will bounce. For information
+// about specifying Amazon S3 actions in receipt rules, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html).
+type S3Action struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the Amazon S3 bucket to which to save the received email.
+	BucketName *string `type:"string" required:"true"`
+
+	// The customer master key that Amazon SES should use to encrypt your emails
+	// before saving them to the Amazon S3 bucket. You can use the default master
+	// key or a custom master key you created in AWS KMS as follows:
+	//
+	//  To use the default master key, provide an ARN in the form of arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses.
+	// For example, if your AWS account ID is 123456789012 and you want to use the
+	// default master key in the US West (Oregon) region, the ARN of the default
+	// master key would be arn:aws:kms:us-west-2:123456789012:alias/aws/ses. If
+	// you use the default master key, you don't need to perform any extra steps
+	// to give Amazon SES permission to use the key. To use a custom master key
+	// you created in AWS KMS, provide the ARN of the master key and ensure that
+	// you add a statement to your key's policy to give Amazon SES permission to
+	// use it. For more information about giving permissions, see the Amazon SES
+	// Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+	//  For more information about key policies, see the AWS KMS Developer Guide
+	// (http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html). If
+	// you do not specify a master key, Amazon SES will not encrypt your emails.
+	//
+	// Your mail is encrypted by Amazon SES using the Amazon S3 encryption client
+	// before the mail is submitted to Amazon S3 for storage. It is not encrypted
+	// using Amazon S3 server-side encryption. This means that you must use the
+	// Amazon S3 encryption client to decrypt the email after retrieving it from
+	// Amazon S3, as the service has no access to use your AWS KMS keys for decryption.
+	// This encryption client is currently available with the AWS Java SDK (https://aws.amazon.com/sdk-for-java/)
+	// and AWS Ruby SDK (https://aws.amazon.com/sdk-for-ruby/) only. For more information
+	// about client-side encryption using AWS KMS master keys, see the Amazon S3
+	// Developer Guide (http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+	KmsKeyArn *string `type:"string"`
+
+	// The key prefix of the Amazon S3 bucket. The key prefix is similar to a directory
+	// name that enables you to store similar data under the same directory in a
+	// bucket.
+	ObjectKeyPrefix *string `type:"string"`
+
+	// The ARN of the Amazon SNS topic to notify when the message is saved to the
+	// Amazon S3 bucket. An example of an Amazon SNS topic ARN is arn:aws:sns:us-west-2:123456789012:MyTopic.
+	// For more information about Amazon SNS topics, see the Amazon SNS Developer
+	// Guide (http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+	TopicArn *string `type:"string"`
+}
+
+// String returns the string representation
+func (s S3Action) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s S3Action) GoString() string {
+	return s.String()
+}
+
+// When included in a receipt rule, this action publishes a notification to
+// Amazon Simple Notification Service (Amazon SNS). This action includes a complete
+// copy of the email content in the Amazon SNS notifications. Amazon SNS notifications
+// for all other actions simply provide information about the email. They do
+// not include the email content itself.
+//
+// If you own the Amazon SNS topic, you don't need to do anything to give Amazon
+// SES permission to publish emails to it. However, if you don't own the Amazon
+// SNS topic, you need to attach a policy to the topic to give Amazon SES permissions
+// to access it. For information about giving permissions, see the Amazon SES
+// Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+//
+// You can only publish emails that are 150 KB or less (including the header)
+// to Amazon SNS. Larger emails will bounce. If you anticipate emails larger
+// than 150 KB, use the S3 action instead. For information about using a receipt
+// rule to publish an Amazon SNS notification, see the Amazon SES Developer
+// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html).
+type SNSAction struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example
+	// of an Amazon SNS topic ARN is arn:aws:sns:us-west-2:123456789012:MyTopic.
+	// For more information about Amazon SNS topics, see the Amazon SNS Developer
+	// Guide (http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+	TopicArn *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s SNSAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SNSAction) GoString() string {
+	return s.String()
+}
+
+// Request object for sending a simple/complex bounce. It contains all of the
+// information needed to generate a basic DSN or a fully-customized DSN.
+type SendBounceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The address to use in the "From" header of the bounce message. This must
+	// be an identity that you have verified with Amazon SES.
+	BounceSender *string `type:"string" required:"true"`
+
+	// This parameter is used only for sending authorization. It is the ARN of the
+	// identity that is associated with the sending authorization policy that permits
+	// you to use the address in the "From" header of the bounce. For more information
+	// about sending authorization, see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+	BounceSenderArn *string `type:"string"`
+
+	// A list of recipients of the bounced message, including the information required
+	// to create the Delivery Status Notifications (DSNs) for the recipients. You
+	// must specify at least one BouncedRecipientInfo in the list.
+	BouncedRecipientInfoList []*BouncedRecipientInfo `type:"list" required:"true"`
+
+	// Human-readable text for the bounce message to explain the failure. If not
+	// specified, the text will be auto-generated based on the bounced recipient
+	// information.
+	Explanation *string `type:"string"`
+
+	// Message-related DSN fields. If not specified, Amazon SES will choose the
+	// values.
+	MessageDsn *MessageDsn `type:"structure"`
+
+	// The message ID of the message to be bounced.
+	OriginalMessageId *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s SendBounceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SendBounceInput) GoString() string {
+	return s.String()
+}
+
+type SendBounceOutput struct {
+	_ struct{} `type:"structure"`
+
+	// The message ID of the bounce message.
+	MessageId *string `type:"string"`
+}
+
+// String returns the string representation
+func (s SendBounceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SendBounceOutput) GoString() string {
+	return s.String()
+}
+
 // Represents sending statistics data. Each SendDataPoint contains statistics
 // for a 15-minute period of sending activity.
 type SendDataPoint struct {
+	_ struct{} `type:"structure"`
+
 	// Number of emails that have bounced.
 	Bounces *int64 `type:"long"`
 
@@ -1721,12 +3227,6 @@ type SendDataPoint struct {
 
 	// Time of the data point.
 	Timestamp *time.Time `type:"timestamp" timestampFormat:"iso8601"`
-
-	metadataSendDataPoint `json:"-" xml:"-"`
-}
-
-type metadataSendDataPoint struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1745,6 +3245,8 @@ func (s SendDataPoint) GoString() string {
 // of source, destination, message, reply-to, and return-path parts. This object
 // can then be sent using the SendEmail action.
 type SendEmailInput struct {
+	_ struct{} `type:"structure"`
+
 	// The destination for this email, composed of To:, CC:, and BCC: fields.
 	Destination *Destination `type:"structure" required:"true"`
 
@@ -1806,12 +3308,6 @@ type SendEmailInput struct {
 	// For more information about sending authorization, see the Amazon SES Developer
 	// Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 	SourceArn *string `type:"string"`
-
-	metadataSendEmailInput `json:"-" xml:"-"`
-}
-
-type metadataSendEmailInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1826,14 +3322,10 @@ func (s SendEmailInput) GoString() string {
 
 // Represents a unique message ID returned from a successful SendEmail request.
 type SendEmailOutput struct {
+	_ struct{} `type:"structure"`
+
 	// The unique message identifier returned from the SendEmail action.
 	MessageId *string `type:"string" required:"true"`
-
-	metadataSendEmailOutput `json:"-" xml:"-"`
-}
-
-type metadataSendEmailOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1852,6 +3344,8 @@ func (s SendEmailOutput) GoString() string {
 // of source, destination, and raw message text. This object can then be sent
 // using the SendRawEmail action.
 type SendRawEmailInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of destinations for the message, consisting of To:, CC:, and BCC:
 	// addresses.
 	Destinations []*string `type:"list"`
@@ -1928,12 +3422,6 @@ type SendRawEmailInput struct {
 	// For information about when to use this parameter, see the description of
 	// SendRawEmail in this guide, or see the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 	SourceArn *string `type:"string"`
-
-	metadataSendRawEmailInput `json:"-" xml:"-"`
-}
-
-type metadataSendRawEmailInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1948,14 +3436,10 @@ func (s SendRawEmailInput) GoString() string {
 
 // Represents a unique message ID returned from a successful SendRawEmail request.
 type SendRawEmailOutput struct {
+	_ struct{} `type:"structure"`
+
 	// The unique message identifier returned from the SendRawEmail action.
 	MessageId *string `type:"string" required:"true"`
-
-	metadataSendRawEmailOutput `json:"-" xml:"-"`
-}
-
-type metadataSendRawEmailOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1968,21 +3452,49 @@ func (s SendRawEmailOutput) GoString() string {
 	return s.String()
 }
 
+type SetActiveReceiptRuleSetInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the receipt rule set to make active. Setting this value to null
+	// disables all email receiving.
+	RuleSetName *string `type:"string"`
+}
+
+// String returns the string representation
+func (s SetActiveReceiptRuleSetInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SetActiveReceiptRuleSetInput) GoString() string {
+	return s.String()
+}
+
+type SetActiveReceiptRuleSetOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s SetActiveReceiptRuleSetOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SetActiveReceiptRuleSetOutput) GoString() string {
+	return s.String()
+}
+
 // Represents a request instructing the service to enable or disable DKIM signing
 // for an identity.
 type SetIdentityDkimEnabledInput struct {
+	_ struct{} `type:"structure"`
+
 	// Sets whether DKIM signing is enabled for an identity. Set to true to enable
 	// DKIM signing for this identity; false to disable it.
 	DkimEnabled *bool `type:"boolean" required:"true"`
 
 	// The identity for which DKIM signing should be enabled or disabled.
 	Identity *string `type:"string" required:"true"`
-
-	metadataSetIdentityDkimEnabledInput `json:"-" xml:"-"`
-}
-
-type metadataSetIdentityDkimEnabledInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1998,11 +3510,7 @@ func (s SetIdentityDkimEnabledInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type SetIdentityDkimEnabledOutput struct {
-	metadataSetIdentityDkimEnabledOutput `json:"-" xml:"-"`
-}
-
-type metadataSetIdentityDkimEnabledOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -2016,6 +3524,8 @@ func (s SetIdentityDkimEnabledOutput) GoString() string {
 }
 
 type SetIdentityFeedbackForwardingEnabledInput struct {
+	_ struct{} `type:"structure"`
+
 	// Sets whether Amazon SES will forward bounce and complaint notifications as
 	// email. true specifies that Amazon SES will forward bounce and complaint notifications
 	// as email, in addition to any Amazon SNS topic publishing otherwise specified.
@@ -2027,12 +3537,6 @@ type SetIdentityFeedbackForwardingEnabledInput struct {
 	// The identity for which to set bounce and complaint notification forwarding.
 	// Examples: user@example.com, example.com.
 	Identity *string `type:"string" required:"true"`
-
-	metadataSetIdentityFeedbackForwardingEnabledInput `json:"-" xml:"-"`
-}
-
-type metadataSetIdentityFeedbackForwardingEnabledInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2048,11 +3552,7 @@ func (s SetIdentityFeedbackForwardingEnabledInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type SetIdentityFeedbackForwardingEnabledOutput struct {
-	metadataSetIdentityFeedbackForwardingEnabledOutput `json:"-" xml:"-"`
-}
-
-type metadataSetIdentityFeedbackForwardingEnabledOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -2067,6 +3567,8 @@ func (s SetIdentityFeedbackForwardingEnabledOutput) GoString() string {
 
 // Represents a request to set or clear an identity's notification topic.
 type SetIdentityNotificationTopicInput struct {
+	_ struct{} `type:"structure"`
+
 	// The identity for which the Amazon SNS topic will be set. You can specify
 	// an identity by using its name or by using its Amazon Resource Name (ARN).
 	// Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
@@ -2080,12 +3582,6 @@ type SetIdentityNotificationTopicInput struct {
 	// is omitted from the request or a null value is passed, SnsTopic is cleared
 	// and publishing is disabled.
 	SnsTopic *string `type:"string"`
-
-	metadataSetIdentityNotificationTopicInput `json:"-" xml:"-"`
-}
-
-type metadataSetIdentityNotificationTopicInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2101,11 +3597,7 @@ func (s SetIdentityNotificationTopicInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type SetIdentityNotificationTopicOutput struct {
-	metadataSetIdentityNotificationTopicOutput `json:"-" xml:"-"`
-}
-
-type metadataSetIdentityNotificationTopicOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -2118,17 +3610,113 @@ func (s SetIdentityNotificationTopicOutput) GoString() string {
 	return s.String()
 }
 
+type SetReceiptRulePositionInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the receipt rule after which to place the specified receipt rule.
+	After *string `type:"string"`
+
+	// The name of the receipt rule to reposition.
+	RuleName *string `type:"string" required:"true"`
+
+	// The name of the receipt rule set that contains the receipt rule to reposition.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s SetReceiptRulePositionInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SetReceiptRulePositionInput) GoString() string {
+	return s.String()
+}
+
+type SetReceiptRulePositionOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s SetReceiptRulePositionOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SetReceiptRulePositionOutput) GoString() string {
+	return s.String()
+}
+
+// When included in a receipt rule, this action terminates the evaluation of
+// the receipt rule set and, optionally, publishes a notification to Amazon
+// Simple Notification Service (Amazon SNS).
+//
+// For information about setting a stop action in a receipt rule, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html).
+type StopAction struct {
+	_ struct{} `type:"structure"`
+
+	// The scope to which the Stop action applies. That is, what is being stopped.
+	Scope *string `type:"string" required:"true" enum:"StopScope"`
+
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
+	// stop action is taken. An example of an Amazon SNS topic ARN is arn:aws:sns:us-west-2:123456789012:MyTopic.
+	// For more information about Amazon SNS topics, see the Amazon SNS Developer
+	// Guide (http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+	TopicArn *string `type:"string"`
+}
+
+// String returns the string representation
+func (s StopAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s StopAction) GoString() string {
+	return s.String()
+}
+
+type UpdateReceiptRuleInput struct {
+	_ struct{} `type:"structure"`
+
+	// A data structure that contains the updated receipt rule information.
+	Rule *ReceiptRule `type:"structure" required:"true"`
+
+	// The name of the receipt rule set to which the receipt rule belongs.
+	RuleSetName *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s UpdateReceiptRuleInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UpdateReceiptRuleInput) GoString() string {
+	return s.String()
+}
+
+type UpdateReceiptRuleOutput struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s UpdateReceiptRuleOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UpdateReceiptRuleOutput) GoString() string {
+	return s.String()
+}
+
 // Represents a request instructing the service to begin DKIM verification for
 // a domain.
 type VerifyDomainDkimInput struct {
+	_ struct{} `type:"structure"`
+
 	// The name of the domain to be verified for Easy DKIM signing.
 	Domain *string `type:"string" required:"true"`
-
-	metadataVerifyDomainDkimInput `json:"-" xml:"-"`
-}
-
-type metadataVerifyDomainDkimInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2144,6 +3732,8 @@ func (s VerifyDomainDkimInput) GoString() string {
 // Represents the DNS records that must be published in the domain name's DNS
 // to complete DKIM setup.
 type VerifyDomainDkimOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A set of character strings that represent the domain's identity. If the identity
 	// is an email address, the tokens represent the domain of that address.
 	//
@@ -2156,12 +3746,6 @@ type VerifyDomainDkimOutput struct {
 	// For more information about creating DNS records using DKIM tokens, go to
 	// the Amazon SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 	DkimTokens []*string `type:"list" required:"true"`
-
-	metadataVerifyDomainDkimOutput `json:"-" xml:"-"`
-}
-
-type metadataVerifyDomainDkimOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2176,14 +3760,10 @@ func (s VerifyDomainDkimOutput) GoString() string {
 
 // Represents a request instructing the service to begin domain verification.
 type VerifyDomainIdentityInput struct {
+	_ struct{} `type:"structure"`
+
 	// The domain to be verified.
 	Domain *string `type:"string" required:"true"`
-
-	metadataVerifyDomainIdentityInput `json:"-" xml:"-"`
-}
-
-type metadataVerifyDomainIdentityInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2198,15 +3778,11 @@ func (s VerifyDomainIdentityInput) GoString() string {
 
 // Represents a token used for domain ownership verification.
 type VerifyDomainIdentityOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A TXT record that must be placed in the DNS settings for the domain, in order
 	// to complete domain verification.
 	VerificationToken *string `type:"string" required:"true"`
-
-	metadataVerifyDomainIdentityOutput `json:"-" xml:"-"`
-}
-
-type metadataVerifyDomainIdentityOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2221,14 +3797,10 @@ func (s VerifyDomainIdentityOutput) GoString() string {
 
 // Represents a request instructing the service to begin email address verification.
 type VerifyEmailAddressInput struct {
+	_ struct{} `type:"structure"`
+
 	// The email address to be verified.
 	EmailAddress *string `type:"string" required:"true"`
-
-	metadataVerifyEmailAddressInput `json:"-" xml:"-"`
-}
-
-type metadataVerifyEmailAddressInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2242,11 +3814,7 @@ func (s VerifyEmailAddressInput) GoString() string {
 }
 
 type VerifyEmailAddressOutput struct {
-	metadataVerifyEmailAddressOutput `json:"-" xml:"-"`
-}
-
-type metadataVerifyEmailAddressOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -2261,14 +3829,10 @@ func (s VerifyEmailAddressOutput) GoString() string {
 
 // Represents a request instructing the service to begin email address verification.
 type VerifyEmailIdentityInput struct {
+	_ struct{} `type:"structure"`
+
 	// The email address to be verified.
 	EmailAddress *string `type:"string" required:"true"`
-
-	metadataVerifyEmailIdentityInput `json:"-" xml:"-"`
-}
-
-type metadataVerifyEmailIdentityInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2284,11 +3848,7 @@ func (s VerifyEmailIdentityInput) GoString() string {
 // An empty element. Receiving this element indicates that the request completed
 // successfully.
 type VerifyEmailIdentityOutput struct {
-	metadataVerifyEmailIdentityOutput `json:"-" xml:"-"`
-}
-
-type metadataVerifyEmailIdentityOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -2301,11 +3861,79 @@ func (s VerifyEmailIdentityOutput) GoString() string {
 	return s.String()
 }
 
+// When included in a receipt rule, this action calls Amazon WorkMail and, optionally,
+// publishes a notification to Amazon Simple Notification Service (Amazon SNS).
+// You will typically not use this action directly because Amazon WorkMail adds
+// the rule automatically during its setup procedure.
+//
+// For information using a receipt rule to call Amazon WorkMail, see the Amazon
+// SES Developer Guide (http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html).
+type WorkmailAction struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN of the Amazon WorkMail organization. An example of an Amazon WorkMail
+	// organization ARN is arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7.
+	// For information about Amazon WorkMail organizations, see the Amazon WorkMail
+	// Administrator Guide (http://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html).
+	OrganizationArn *string `type:"string" required:"true"`
+
+	// The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
+	// WorkMail action is called. An example of an Amazon SNS topic ARN is arn:aws:sns:us-west-2:123456789012:MyTopic.
+	// For more information about Amazon SNS topics, see the Amazon SNS Developer
+	// Guide (http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+	TopicArn *string `type:"string"`
+}
+
+// String returns the string representation
+func (s WorkmailAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s WorkmailAction) GoString() string {
+	return s.String()
+}
+
+const (
+	// @enum BounceType
+	BounceTypeDoesNotExist = "DoesNotExist"
+	// @enum BounceType
+	BounceTypeMessageTooLarge = "MessageTooLarge"
+	// @enum BounceType
+	BounceTypeExceededQuota = "ExceededQuota"
+	// @enum BounceType
+	BounceTypeContentRejected = "ContentRejected"
+	// @enum BounceType
+	BounceTypeUndefined = "Undefined"
+	// @enum BounceType
+	BounceTypeTemporaryFailure = "TemporaryFailure"
+)
+
+const (
+	// @enum DsnAction
+	DsnActionFailed = "failed"
+	// @enum DsnAction
+	DsnActionDelayed = "delayed"
+	// @enum DsnAction
+	DsnActionDelivered = "delivered"
+	// @enum DsnAction
+	DsnActionRelayed = "relayed"
+	// @enum DsnAction
+	DsnActionExpanded = "expanded"
+)
+
 const (
 	// @enum IdentityType
 	IdentityTypeEmailAddress = "EmailAddress"
 	// @enum IdentityType
 	IdentityTypeDomain = "Domain"
+)
+
+const (
+	// @enum InvocationType
+	InvocationTypeEvent = "Event"
+	// @enum InvocationType
+	InvocationTypeRequestResponse = "RequestResponse"
 )
 
 const (
@@ -2315,6 +3943,25 @@ const (
 	NotificationTypeComplaint = "Complaint"
 	// @enum NotificationType
 	NotificationTypeDelivery = "Delivery"
+)
+
+const (
+	// @enum ReceiptFilterPolicy
+	ReceiptFilterPolicyBlock = "Block"
+	// @enum ReceiptFilterPolicy
+	ReceiptFilterPolicyAllow = "Allow"
+)
+
+const (
+	// @enum StopScope
+	StopScopeRuleSet = "RuleSet"
+)
+
+const (
+	// @enum TlsPolicy
+	TlsPolicyRequire = "Require"
+	// @enum TlsPolicy
+	TlsPolicyOptional = "Optional"
 )
 
 const (

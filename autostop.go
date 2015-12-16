@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/mitchellh/cli"
 )
@@ -52,7 +53,7 @@ func (c *ASCommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
+	svc := ec2.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	resp, err := svc.DescribeInstances(nil)
 

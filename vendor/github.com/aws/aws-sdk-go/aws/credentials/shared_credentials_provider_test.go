@@ -1,9 +1,10 @@
 package credentials
 
 import (
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSharedCredentialsProvider(t *testing.T) {
@@ -61,6 +62,18 @@ func TestSharedCredentialsProviderWithoutTokenFromProfile(t *testing.T) {
 	os.Clearenv()
 
 	p := SharedCredentialsProvider{Filename: "example.ini", Profile: "no_token"}
+	creds, err := p.Retrieve()
+	assert.Nil(t, err, "Expect no error")
+
+	assert.Equal(t, "accessKey", creds.AccessKeyID, "Expect access key ID to match")
+	assert.Equal(t, "secret", creds.SecretAccessKey, "Expect secret access key to match")
+	assert.Empty(t, creds.SessionToken, "Expect no token")
+}
+
+func TestSharedCredentialsProviderColonInCredFile(t *testing.T) {
+	os.Clearenv()
+
+	p := SharedCredentialsProvider{Filename: "example.ini", Profile: "with_colon"}
 	creds, err := p.Retrieve()
 	assert.Nil(t, err, "Expect no error")
 

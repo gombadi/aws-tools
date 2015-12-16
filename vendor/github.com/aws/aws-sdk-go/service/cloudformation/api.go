@@ -31,9 +31,9 @@ func (c *CloudFormation) CancelUpdateStackRequest(input *CancelUpdateStackInput)
 }
 
 // Cancels an update on the specified stack. If the call completes successfully,
-// the stack will roll back the update and revert to the previous stack configuration.
+// the stack rolls back the update and reverts to the previous stack configuration.
 //
-// Only stacks that are in the UPDATE_IN_PROGRESS state can be canceled.
+// You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 func (c *CloudFormation) CancelUpdateStack(input *CancelUpdateStackInput) (*CancelUpdateStackOutput, error) {
 	req, out := c.CancelUpdateStackRequest(input)
 	err := req.Send()
@@ -98,6 +98,34 @@ func (c *CloudFormation) DeleteStack(input *DeleteStackInput) (*DeleteStackOutpu
 	return out, err
 }
 
+const opDescribeAccountLimits = "DescribeAccountLimits"
+
+// DescribeAccountLimitsRequest generates a request for the DescribeAccountLimits operation.
+func (c *CloudFormation) DescribeAccountLimitsRequest(input *DescribeAccountLimitsInput) (req *request.Request, output *DescribeAccountLimitsOutput) {
+	op := &request.Operation{
+		Name:       opDescribeAccountLimits,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DescribeAccountLimitsInput{}
+	}
+
+	req = c.newRequest(op, input, output)
+	output = &DescribeAccountLimitsOutput{}
+	req.Data = output
+	return
+}
+
+// Retrieves your account's AWS CloudFormation limits, such as the maximum number
+// of stacks that you can create in your account.
+func (c *CloudFormation) DescribeAccountLimits(input *DescribeAccountLimitsInput) (*DescribeAccountLimitsOutput, error) {
+	req, out := c.DescribeAccountLimitsRequest(input)
+	err := req.Send()
+	return out, err
+}
+
 const opDescribeStackEvents = "DescribeStackEvents"
 
 // DescribeStackEventsRequest generates a request for the DescribeStackEvents operation.
@@ -138,6 +166,7 @@ func (c *CloudFormation) DescribeStackEvents(input *DescribeStackEventsInput) (*
 
 func (c *CloudFormation) DescribeStackEventsPages(input *DescribeStackEventsInput, fn func(p *DescribeStackEventsOutput, lastPage bool) (shouldContinue bool)) error {
 	page, _ := c.DescribeStackEventsRequest(input)
+	page.Handlers.Build.PushBack(request.MakeAddToUserAgentFreeFormHandler("Paginator"))
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
 		return fn(p.(*DescribeStackEventsOutput), lastPage)
 	})
@@ -252,6 +281,7 @@ func (c *CloudFormation) DescribeStacks(input *DescribeStacksInput) (*DescribeSt
 
 func (c *CloudFormation) DescribeStacksPages(input *DescribeStacksInput, fn func(p *DescribeStacksOutput, lastPage bool) (shouldContinue bool)) error {
 	page, _ := c.DescribeStacksRequest(input)
+	page.Handlers.Build.PushBack(request.MakeAddToUserAgentFreeFormHandler("Paginator"))
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
 		return fn(p.(*DescribeStacksOutput), lastPage)
 	})
@@ -421,6 +451,7 @@ func (c *CloudFormation) ListStackResources(input *ListStackResourcesInput) (*Li
 
 func (c *CloudFormation) ListStackResourcesPages(input *ListStackResourcesInput, fn func(p *ListStackResourcesOutput, lastPage bool) (shouldContinue bool)) error {
 	page, _ := c.ListStackResourcesRequest(input)
+	page.Handlers.Build.PushBack(request.MakeAddToUserAgentFreeFormHandler("Paginator"))
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
 		return fn(p.(*ListStackResourcesOutput), lastPage)
 	})
@@ -465,6 +496,7 @@ func (c *CloudFormation) ListStacks(input *ListStacksInput) (*ListStacksOutput, 
 
 func (c *CloudFormation) ListStacksPages(input *ListStacksInput, fn func(p *ListStacksOutput, lastPage bool) (shouldContinue bool)) error {
 	page, _ := c.ListStacksRequest(input)
+	page.Handlers.Build.PushBack(request.MakeAddToUserAgentFreeFormHandler("Paginator"))
 	return page.EachPage(func(p interface{}, lastPage bool) bool {
 		return fn(p.(*ListStacksOutput), lastPage)
 	})
@@ -594,16 +626,33 @@ func (c *CloudFormation) ValidateTemplate(input *ValidateTemplateInput) (*Valida
 	return out, err
 }
 
-// The input for CancelUpdateStack action.
-type CancelUpdateStackInput struct {
-	// The name or the unique stack ID that is associated with the stack.
-	StackName *string `type:"string" required:"true"`
+// The AccountLimit data type.
+type AccountLimit struct {
+	_ struct{} `type:"structure"`
 
-	metadataCancelUpdateStackInput `json:"-" xml:"-"`
+	// The name of the account limit. Currently, the only account limit is StackLimit.
+	Name *string `type:"string"`
+
+	// The value that is associated with the account limit name.
+	Value *int64 `type:"integer"`
 }
 
-type metadataCancelUpdateStackInput struct {
-	SDKShapeTraits bool `type:"structure"`
+// String returns the string representation
+func (s AccountLimit) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s AccountLimit) GoString() string {
+	return s.String()
+}
+
+// The input for the CancelUpdateStack action.
+type CancelUpdateStackInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name or the unique stack ID that is associated with the stack.
+	StackName *string `type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -617,11 +666,7 @@ func (s CancelUpdateStackInput) GoString() string {
 }
 
 type CancelUpdateStackOutput struct {
-	metadataCancelUpdateStackOutput `json:"-" xml:"-"`
-}
-
-type metadataCancelUpdateStackOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -636,6 +681,8 @@ func (s CancelUpdateStackOutput) GoString() string {
 
 // The input for CreateStack action.
 type CreateStackInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of capabilities that you must specify before AWS CloudFormation can
 	// create or update certain stacks. Some stack templates might include resources
 	// that can affect permissions in your AWS account. For those stacks, you must
@@ -675,6 +722,22 @@ type CreateStackInput struct {
 	// A list of Parameter structures that specify input parameters for the stack.
 	Parameters []*Parameter `type:"list"`
 
+	// The template resource types that you have permissions to work with for this
+	// create stack action, such as AWS::EC2::Instance, AWS::EC2::*, or Custom::MyCustomInstance.
+	// Use the following syntax to describe template resource types: AWS::* (for
+	// all AWS resource), Custom::* (for all custom resources), Custom::logical_ID
+	// (for a specific custom resource), AWS::service_name::* (for all resources
+	// of a particular AWS service), and AWS::service_name::resource_logical_ID
+	// (for a specific AWS resource).
+	//
+	// If the list of resource types doesn't include a resource that you're creating,
+	// the stack creation fails. By default, AWS CloudFormation grants permissions
+	// to all resource types. AWS Identity and Access Management (IAM) uses this
+	// parameter for AWS CloudFormation-specific condition keys in IAM policies.
+	// For more information, see Controlling Access with AWS Identity and Access
+	// Management (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
+	ResourceTypes []*string `type:"list"`
+
 	// The name that is associated with the stack. The name must be unique in the
 	// region in which you are creating the stack.
 	//
@@ -710,8 +773,8 @@ type CreateStackInput struct {
 	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
-	// (max size: 460,800 bytes) located in an S3 bucket in the same region as the
-	// stack. For more information, go to the Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+	// (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more
+	// information, go to the Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.
 	//
 	// Conditional: You must specify either the TemplateBody or the TemplateURL
@@ -722,12 +785,6 @@ type CreateStackInput struct {
 	// if DisableRollback is not set or is set to false, the stack will be rolled
 	// back.
 	TimeoutInMinutes *int64 `min:"1" type:"integer"`
-
-	metadataCreateStackInput `json:"-" xml:"-"`
-}
-
-type metadataCreateStackInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -742,14 +799,10 @@ func (s CreateStackInput) GoString() string {
 
 // The output for a CreateStack action.
 type CreateStackOutput struct {
+	_ struct{} `type:"structure"`
+
 	// Unique identifier of the stack.
 	StackId *string `type:"string"`
-
-	metadataCreateStackOutput `json:"-" xml:"-"`
-}
-
-type metadataCreateStackOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -764,14 +817,10 @@ func (s CreateStackOutput) GoString() string {
 
 // The input for DeleteStack action.
 type DeleteStackInput struct {
+	_ struct{} `type:"structure"`
+
 	// The name or the unique stack ID that is associated with the stack.
 	StackName *string `type:"string" required:"true"`
-
-	metadataDeleteStackInput `json:"-" xml:"-"`
-}
-
-type metadataDeleteStackInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -785,11 +834,7 @@ func (s DeleteStackInput) GoString() string {
 }
 
 type DeleteStackOutput struct {
-	metadataDeleteStackOutput `json:"-" xml:"-"`
-}
-
-type metadataDeleteStackOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -802,8 +847,51 @@ func (s DeleteStackOutput) GoString() string {
 	return s.String()
 }
 
+// The input for the DescribeAccountLimits action.
+type DescribeAccountLimitsInput struct {
+	_ struct{} `type:"structure"`
+
+	// A string that identifies the next page of limits that you want to retrieve.
+	NextToken *string `min:"1" type:"string"`
+}
+
+// String returns the string representation
+func (s DescribeAccountLimitsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeAccountLimitsInput) GoString() string {
+	return s.String()
+}
+
+// The output for the DescribeAccountLimits action.
+type DescribeAccountLimitsOutput struct {
+	_ struct{} `type:"structure"`
+
+	// An account limit structure that contain a list of AWS CloudFormation account
+	// limits and their values.
+	AccountLimits []*AccountLimit `type:"list"`
+
+	// A string that identifies the next page of limits. If no additional page exists,
+	// this value is null.
+	NextToken *string `min:"1" type:"string"`
+}
+
+// String returns the string representation
+func (s DescribeAccountLimitsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeAccountLimitsOutput) GoString() string {
+	return s.String()
+}
+
 // The input for DescribeStackEvents action.
 type DescribeStackEventsInput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of events, if there is
 	// one.
 	//
@@ -817,12 +905,6 @@ type DescribeStackEventsInput struct {
 	// ID. Deleted stacks: You must specify the unique stack ID.  Default: There
 	// is no default value.
 	StackName *string `type:"string"`
-
-	metadataDescribeStackEventsInput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStackEventsInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -837,18 +919,14 @@ func (s DescribeStackEventsInput) GoString() string {
 
 // The output for a DescribeStackEvents action.
 type DescribeStackEventsOutput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of events, if there is
 	// one.
 	NextToken *string `min:"1" type:"string"`
 
 	// A list of StackEvents structures.
 	StackEvents []*StackEvent `type:"list"`
-
-	metadataDescribeStackEventsOutput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStackEventsOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -863,6 +941,8 @@ func (s DescribeStackEventsOutput) GoString() string {
 
 // The input for DescribeStackResource action.
 type DescribeStackResourceInput struct {
+	_ struct{} `type:"structure"`
+
 	// The logical name of the resource as specified in the template.
 	//
 	// Default: There is no default value.
@@ -875,12 +955,6 @@ type DescribeStackResourceInput struct {
 	// ID. Deleted stacks: You must specify the unique stack ID.  Default: There
 	// is no default value.
 	StackName *string `type:"string" required:"true"`
-
-	metadataDescribeStackResourceInput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStackResourceInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -895,15 +969,11 @@ func (s DescribeStackResourceInput) GoString() string {
 
 // The output for a DescribeStackResource action.
 type DescribeStackResourceOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A StackResourceDetail structure containing the description of the specified
 	// resource in the specified stack.
 	StackResourceDetail *StackResourceDetail `type:"structure"`
-
-	metadataDescribeStackResourceOutput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStackResourceOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -918,6 +988,8 @@ func (s DescribeStackResourceOutput) GoString() string {
 
 // The input for DescribeStackResources action.
 type DescribeStackResourcesInput struct {
+	_ struct{} `type:"structure"`
+
 	// The logical name of the resource as specified in the template.
 	//
 	// Default: There is no default value.
@@ -947,12 +1019,6 @@ type DescribeStackResourcesInput struct {
 	// Required: Conditional. If you do not specify StackName, you must specify
 	// PhysicalResourceId.
 	StackName *string `type:"string"`
-
-	metadataDescribeStackResourcesInput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStackResourcesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -967,14 +1033,10 @@ func (s DescribeStackResourcesInput) GoString() string {
 
 // The output for a DescribeStackResources action.
 type DescribeStackResourcesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of StackResource structures.
 	StackResources []*StackResource `type:"list"`
-
-	metadataDescribeStackResourcesOutput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStackResourcesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -989,6 +1051,8 @@ func (s DescribeStackResourcesOutput) GoString() string {
 
 // The input for DescribeStacks action.
 type DescribeStacksInput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
 	NextToken *string `min:"1" type:"string"`
@@ -1000,12 +1064,6 @@ type DescribeStacksInput struct {
 	// ID. Deleted stacks: You must specify the unique stack ID.  Default: There
 	// is no default value.
 	StackName *string `type:"string"`
-
-	metadataDescribeStacksInput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStacksInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1020,18 +1078,14 @@ func (s DescribeStacksInput) GoString() string {
 
 // The output for a DescribeStacks action.
 type DescribeStacksOutput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
 	NextToken *string `min:"1" type:"string"`
 
 	// A list of stack structures.
 	Stacks []*Stack `type:"list"`
-
-	metadataDescribeStacksOutput `json:"-" xml:"-"`
-}
-
-type metadataDescribeStacksOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1045,6 +1099,8 @@ func (s DescribeStacksOutput) GoString() string {
 }
 
 type EstimateTemplateCostInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of Parameter structures that specify input parameters.
 	Parameters []*Parameter `type:"list"`
 
@@ -1058,19 +1114,13 @@ type EstimateTemplateCostInput struct {
 	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
-	// located in an S3 bucket in the same region as the stack. For more information,
-	// go to Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+	// that is located in an Amazon S3 bucket. For more information, go to Template
+	// Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.
 	//
 	// Conditional: You must pass TemplateURL or TemplateBody. If both are passed,
 	// only TemplateBody is used.
 	TemplateURL *string `min:"1" type:"string"`
-
-	metadataEstimateTemplateCostInput `json:"-" xml:"-"`
-}
-
-type metadataEstimateTemplateCostInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1085,15 +1135,11 @@ func (s EstimateTemplateCostInput) GoString() string {
 
 // The output for a EstimateTemplateCost action.
 type EstimateTemplateCostOutput struct {
+	_ struct{} `type:"structure"`
+
 	// An AWS Simple Monthly Calculator URL with a query string that describes the
 	// resources required to run the template.
 	Url *string `type:"string"`
-
-	metadataEstimateTemplateCostOutput `json:"-" xml:"-"`
-}
-
-type metadataEstimateTemplateCostOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1108,15 +1154,11 @@ func (s EstimateTemplateCostOutput) GoString() string {
 
 // The input for the GetStackPolicy action.
 type GetStackPolicyInput struct {
+	_ struct{} `type:"structure"`
+
 	// The name or unique stack ID that is associated with the stack whose policy
 	// you want to get.
 	StackName *string `type:"string" required:"true"`
-
-	metadataGetStackPolicyInput `json:"-" xml:"-"`
-}
-
-type metadataGetStackPolicyInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1131,16 +1173,12 @@ func (s GetStackPolicyInput) GoString() string {
 
 // The output for the GetStackPolicy action.
 type GetStackPolicyOutput struct {
+	_ struct{} `type:"structure"`
+
 	// Structure containing the stack policy body. (For more information, go to
 	//  Prevent Updates to Stack Resources (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 	// in the AWS CloudFormation User Guide.)
 	StackPolicyBody *string `min:"1" type:"string"`
-
-	metadataGetStackPolicyOutput `json:"-" xml:"-"`
-}
-
-type metadataGetStackPolicyOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1155,6 +1193,8 @@ func (s GetStackPolicyOutput) GoString() string {
 
 // The input for a GetTemplate action.
 type GetTemplateInput struct {
+	_ struct{} `type:"structure"`
+
 	// The name or the unique stack ID that is associated with the stack, which
 	// are not always interchangeable:
 	//
@@ -1162,12 +1202,6 @@ type GetTemplateInput struct {
 	// ID. Deleted stacks: You must specify the unique stack ID.  Default: There
 	// is no default value.
 	StackName *string `type:"string" required:"true"`
-
-	metadataGetTemplateInput `json:"-" xml:"-"`
-}
-
-type metadataGetTemplateInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1182,16 +1216,12 @@ func (s GetTemplateInput) GoString() string {
 
 // The output for GetTemplate action.
 type GetTemplateOutput struct {
+	_ struct{} `type:"structure"`
+
 	// Structure containing the template body. (For more information, go to Template
 	// Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.)
 	TemplateBody *string `min:"1" type:"string"`
-
-	metadataGetTemplateOutput `json:"-" xml:"-"`
-}
-
-type metadataGetTemplateOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1206,6 +1236,8 @@ func (s GetTemplateOutput) GoString() string {
 
 // The input for the GetTemplateSummary action.
 type GetTemplateSummaryInput struct {
+	_ struct{} `type:"structure"`
+
 	// The name or the stack ID that is associated with the stack, which are not
 	// always interchangeable. For running stacks, you can specify either the stack's
 	// name or its unique stack ID. For deleted stack, you must specify the unique
@@ -1225,19 +1257,13 @@ type GetTemplateSummaryInput struct {
 	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
-	// (max size: 460,800 bytes) located in an Amazon S3 bucket. For more information
-	// about templates, see Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+	// (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more
+	// information about templates, see Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.
 	//
 	// Conditional: You must specify only one of the following parameters: StackName,
 	// TemplateBody, or TemplateURL.
 	TemplateURL *string `min:"1" type:"string"`
-
-	metadataGetTemplateSummaryInput `json:"-" xml:"-"`
-}
-
-type metadataGetTemplateSummaryInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1252,6 +1278,8 @@ func (s GetTemplateSummaryInput) GoString() string {
 
 // The output for the GetTemplateSummary action.
 type GetTemplateSummaryOutput struct {
+	_ struct{} `type:"structure"`
+
 	// The capabilities found within the template. Currently, AWS CloudFormation
 	// supports only the CAPABILITY_IAM capability. If your template contains IAM
 	// resources, you must specify the CAPABILITY_IAM value for this parameter when
@@ -1273,15 +1301,18 @@ type GetTemplateSummaryOutput struct {
 	// parameter.
 	Parameters []*ParameterDeclaration `type:"list"`
 
+	// A list of all the template resource types that are defined in the template,
+	// such as AWS::EC2::Instance, AWS::Dynamo::Table, and Custom::MyCustomInstance.
+	// Use the following syntax to describe template resource types: AWS::* (for
+	// all AWS resources), Custom::* (for all custom resources), Custom::logical_ID
+	// (for a specific custom resource), AWS::service_name::* (for all resources
+	// of a particular AWS service), and AWS::service_name::resource_logical_ID
+	// (for a specific AWS resource).
+	ResourceTypes []*string `type:"list"`
+
 	// The AWS template format version, which identifies the capabilities of the
 	// template.
 	Version *string `type:"string"`
-
-	metadataGetTemplateSummaryOutput `json:"-" xml:"-"`
-}
-
-type metadataGetTemplateSummaryOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1296,6 +1327,8 @@ func (s GetTemplateSummaryOutput) GoString() string {
 
 // The input for the ListStackResource action.
 type ListStackResourcesInput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of stack resource summaries,
 	// if there is one.
 	//
@@ -1309,12 +1342,6 @@ type ListStackResourcesInput struct {
 	// ID. Deleted stacks: You must specify the unique stack ID.  Default: There
 	// is no default value.
 	StackName *string `type:"string" required:"true"`
-
-	metadataListStackResourcesInput `json:"-" xml:"-"`
-}
-
-type metadataListStackResourcesInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1329,18 +1356,14 @@ func (s ListStackResourcesInput) GoString() string {
 
 // The output for a ListStackResources action.
 type ListStackResourcesOutput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of stack resources, if
 	// there is one.
 	NextToken *string `min:"1" type:"string"`
 
 	// A list of StackResourceSummary structures.
 	StackResourceSummaries []*StackResourceSummary `type:"list"`
-
-	metadataListStackResourcesOutput `json:"-" xml:"-"`
-}
-
-type metadataListStackResourcesOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1355,6 +1378,8 @@ func (s ListStackResourcesOutput) GoString() string {
 
 // The input for ListStacks action.
 type ListStacksInput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
 	//
@@ -1365,12 +1390,6 @@ type ListStacksInput struct {
 	// list only stacks with the specified status codes. For a complete list of
 	// stack status codes, see the StackStatus parameter of the Stack data type.
 	StackStatusFilter []*string `type:"list"`
-
-	metadataListStacksInput `json:"-" xml:"-"`
-}
-
-type metadataListStacksInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1385,6 +1404,8 @@ func (s ListStacksInput) GoString() string {
 
 // The output for ListStacks action.
 type ListStacksOutput struct {
+	_ struct{} `type:"structure"`
+
 	// String that identifies the start of the next list of stacks, if there is
 	// one.
 	NextToken *string `min:"1" type:"string"`
@@ -1392,12 +1413,6 @@ type ListStacksOutput struct {
 	// A list of StackSummary structures containing information about the specified
 	// stacks.
 	StackSummaries []*StackSummary `type:"list"`
-
-	metadataListStacksOutput `json:"-" xml:"-"`
-}
-
-type metadataListStacksOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1412,6 +1427,8 @@ func (s ListStacksOutput) GoString() string {
 
 // The Output data type.
 type Output struct {
+	_ struct{} `type:"structure"`
+
 	// User defined description associated with the output.
 	Description *string `type:"string"`
 
@@ -1420,12 +1437,6 @@ type Output struct {
 
 	// The value associated with the output.
 	OutputValue *string `type:"string"`
-
-	metadataOutput `json:"-" xml:"-"`
-}
-
-type metadataOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1440,6 +1451,8 @@ func (s Output) GoString() string {
 
 // The Parameter data type.
 type Parameter struct {
+	_ struct{} `type:"structure"`
+
 	// The key associated with the parameter. If you don't specify a key and value
 	// for a particular parameter, AWS CloudFormation uses the default value that
 	// is specified in your template.
@@ -1452,12 +1465,6 @@ type Parameter struct {
 	// using for a given parameter key. If you specify true, do not specify a parameter
 	// value.
 	UsePreviousValue *bool `type:"boolean"`
-
-	metadataParameter `json:"-" xml:"-"`
-}
-
-type metadataParameter struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1474,14 +1481,10 @@ func (s Parameter) GoString() string {
 // Although other constraints might be defined in the stack template, AWS CloudFormation
 // returns only the AllowedValues property.
 type ParameterConstraints struct {
+	_ struct{} `type:"structure"`
+
 	// A list of values that are permitted for a parameter.
 	AllowedValues []*string `type:"list"`
-
-	metadataParameterConstraints `json:"-" xml:"-"`
-}
-
-type metadataParameterConstraints struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1496,6 +1499,8 @@ func (s ParameterConstraints) GoString() string {
 
 // The ParameterDeclaration data type.
 type ParameterDeclaration struct {
+	_ struct{} `type:"structure"`
+
 	// The default value of the parameter.
 	DefaultValue *string `type:"string"`
 
@@ -1514,12 +1519,6 @@ type ParameterDeclaration struct {
 
 	// The type of parameter.
 	ParameterType *string `type:"string"`
-
-	metadataParameterDeclaration `json:"-" xml:"-"`
-}
-
-type metadataParameterDeclaration struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1534,6 +1533,8 @@ func (s ParameterDeclaration) GoString() string {
 
 // The input for the SetStackPolicy action.
 type SetStackPolicyInput struct {
+	_ struct{} `type:"structure"`
+
 	// The name or unique stack ID that you want to associate a policy with.
 	StackName *string `type:"string" required:"true"`
 
@@ -1548,12 +1549,6 @@ type SetStackPolicyInput struct {
 	// You can specify either the StackPolicyBody or the StackPolicyURL parameter,
 	// but not both.
 	StackPolicyURL *string `min:"1" type:"string"`
-
-	metadataSetStackPolicyInput `json:"-" xml:"-"`
-}
-
-type metadataSetStackPolicyInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1567,11 +1562,7 @@ func (s SetStackPolicyInput) GoString() string {
 }
 
 type SetStackPolicyOutput struct {
-	metadataSetStackPolicyOutput `json:"-" xml:"-"`
-}
-
-type metadataSetStackPolicyOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1586,6 +1577,8 @@ func (s SetStackPolicyOutput) GoString() string {
 
 // The input for the SignalResource action.
 type SignalResourceInput struct {
+	_ struct{} `type:"structure"`
+
 	// The logical ID of the resource that you want to signal. The logical ID is
 	// the name of the resource that given in the template.
 	LogicalResourceId *string `type:"string" required:"true"`
@@ -1603,12 +1596,6 @@ type SignalResourceInput struct {
 	// If you send multiple signals to a single resource (such as signaling a wait
 	// condition), each signal requires a different unique ID.
 	UniqueId *string `min:"1" type:"string" required:"true"`
-
-	metadataSignalResourceInput `json:"-" xml:"-"`
-}
-
-type metadataSignalResourceInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1622,11 +1609,7 @@ func (s SignalResourceInput) GoString() string {
 }
 
 type SignalResourceOutput struct {
-	metadataSignalResourceOutput `json:"-" xml:"-"`
-}
-
-type metadataSignalResourceOutput struct {
-	SDKShapeTraits bool `type:"structure"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -1641,13 +1624,15 @@ func (s SignalResourceOutput) GoString() string {
 
 // The Stack data type.
 type Stack struct {
+	_ struct{} `type:"structure"`
+
 	// The capabilities allowed in the stack.
 	Capabilities []*string `type:"list"`
 
-	// Time at which the stack was created.
+	// The time at which the stack was created.
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
-	// User defined description associated with the stack.
+	// A user-defined description associated with the stack.
 	Description *string `type:"string"`
 
 	// Boolean to enable or disable rollback on stack creation failures:
@@ -1685,12 +1670,6 @@ type Stack struct {
 
 	// The amount of time within which stack creation should complete.
 	TimeoutInMinutes *int64 `min:"1" type:"integer"`
-
-	metadataStack `json:"-" xml:"-"`
-}
-
-type metadataStack struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1705,6 +1684,8 @@ func (s Stack) GoString() string {
 
 // The StackEvent data type.
 type StackEvent struct {
+	_ struct{} `type:"structure"`
+
 	// The unique ID of this event.
 	EventId *string `type:"string" required:"true"`
 
@@ -1737,12 +1718,6 @@ type StackEvent struct {
 
 	// Time the status was updated.
 	Timestamp *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
-
-	metadataStackEvent `json:"-" xml:"-"`
-}
-
-type metadataStackEvent struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1757,6 +1732,8 @@ func (s StackEvent) GoString() string {
 
 // The StackResource data type.
 type StackResource struct {
+	_ struct{} `type:"structure"`
+
 	// User defined description associated with the resource.
 	Description *string `type:"string"`
 
@@ -1786,12 +1763,6 @@ type StackResource struct {
 
 	// Time the status was updated.
 	Timestamp *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
-
-	metadataStackResource `json:"-" xml:"-"`
-}
-
-type metadataStackResource struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1806,6 +1777,8 @@ func (s StackResource) GoString() string {
 
 // Contains detailed information about the specified stack resource.
 type StackResourceDetail struct {
+	_ struct{} `type:"structure"`
+
 	// User defined description associated with the resource.
 	Description *string `type:"string"`
 
@@ -1840,12 +1813,6 @@ type StackResourceDetail struct {
 
 	// The name associated with the stack.
 	StackName *string `type:"string"`
-
-	metadataStackResourceDetail `json:"-" xml:"-"`
-}
-
-type metadataStackResourceDetail struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1860,6 +1827,8 @@ func (s StackResourceDetail) GoString() string {
 
 // Contains high-level information about the specified stack resource.
 type StackResourceSummary struct {
+	_ struct{} `type:"structure"`
+
 	// Time the status was updated.
 	LastUpdatedTimestamp *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
@@ -1880,12 +1849,6 @@ type StackResourceSummary struct {
 	// (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 	// in the AWS CloudFormation User Guide.)
 	ResourceType *string `type:"string" required:"true"`
-
-	metadataStackResourceSummary `json:"-" xml:"-"`
-}
-
-type metadataStackResourceSummary struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1900,6 +1863,8 @@ func (s StackResourceSummary) GoString() string {
 
 // The StackSummary Data Type
 type StackSummary struct {
+	_ struct{} `type:"structure"`
+
 	// The time the stack was created.
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"iso8601" required:"true"`
 
@@ -1924,12 +1889,6 @@ type StackSummary struct {
 
 	// The template description of the template used to create the stack.
 	TemplateDescription *string `type:"string"`
-
-	metadataStackSummary `json:"-" xml:"-"`
-}
-
-type metadataStackSummary struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1946,6 +1905,8 @@ func (s StackSummary) GoString() string {
 // to specify a key/value pair that can be used to store information related
 // to cost allocation for an AWS CloudFormation stack.
 type Tag struct {
+	_ struct{} `type:"structure"`
+
 	// Required. A string used to identify this tag. You can specify a maximum of
 	// 128 characters for a tag key. Tags owned by Amazon Web Services (AWS) have
 	// the reserved prefix: aws:.
@@ -1954,12 +1915,6 @@ type Tag struct {
 	// Required. A string containing the value for this tag. You can specify a maximum
 	// of 256 characters for a tag value.
 	Value *string `type:"string"`
-
-	metadataTag `json:"-" xml:"-"`
-}
-
-type metadataTag struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -1974,6 +1929,8 @@ func (s Tag) GoString() string {
 
 // The TemplateParameter data type.
 type TemplateParameter struct {
+	_ struct{} `type:"structure"`
+
 	// The default value associated with the parameter.
 	DefaultValue *string `type:"string"`
 
@@ -1986,12 +1943,6 @@ type TemplateParameter struct {
 
 	// The name associated with the parameter.
 	ParameterKey *string `type:"string"`
-
-	metadataTemplateParameter `json:"-" xml:"-"`
-}
-
-type metadataTemplateParameter struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2006,6 +1957,8 @@ func (s TemplateParameter) GoString() string {
 
 // The input for UpdateStack action.
 type UpdateStackInput struct {
+	_ struct{} `type:"structure"`
+
 	// A list of capabilities that you must specify before AWS CloudFormation can
 	// create or update certain stacks. Some stack templates might include resources
 	// that can affect permissions in your AWS account. For those stacks, you must
@@ -2030,6 +1983,17 @@ type UpdateStackInput struct {
 	// For more information, see the Parameter (http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
 	// data type.
 	Parameters []*Parameter `type:"list"`
+
+	// The template resource types that you have permissions to work with for this
+	// update stack action, such as AWS::EC2::Instance, AWS::EC2::*, or Custom::MyCustomInstance.
+	//
+	// If the list of resource types doesn't include a resource that you're updating,
+	// the stack update fails. By default, AWS CloudFormation grants permissions
+	// to all resource types. AWS Identity and Access Management (IAM) uses this
+	// parameter for AWS CloudFormation-specific condition keys in IAM policies.
+	// For more information, see Controlling Access with AWS Identity and Access
+	// Management (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
+	ResourceTypes []*string `type:"list"`
 
 	// The name or unique stack ID of the stack to update.
 	StackName *string `type:"string" required:"true"`
@@ -2081,8 +2045,8 @@ type UpdateStackInput struct {
 	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
-	// located in an S3 bucket in the same region as the stack. For more information,
-	// go to Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+	// that is located in an Amazon S3 bucket. For more information, go to Template
+	// Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.
 	//
 	// Conditional: You must specify either the TemplateBody or the TemplateURL
@@ -2092,12 +2056,6 @@ type UpdateStackInput struct {
 	// Reuse the existing template that is associated with the stack that you are
 	// updating.
 	UsePreviousTemplate *bool `type:"boolean"`
-
-	metadataUpdateStackInput `json:"-" xml:"-"`
-}
-
-type metadataUpdateStackInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2112,14 +2070,10 @@ func (s UpdateStackInput) GoString() string {
 
 // The output for a UpdateStack action.
 type UpdateStackOutput struct {
+	_ struct{} `type:"structure"`
+
 	// Unique identifier of the stack.
 	StackId *string `type:"string"`
-
-	metadataUpdateStackOutput `json:"-" xml:"-"`
-}
-
-type metadataUpdateStackOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2134,6 +2088,8 @@ func (s UpdateStackOutput) GoString() string {
 
 // The input for ValidateTemplate action.
 type ValidateTemplateInput struct {
+	_ struct{} `type:"structure"`
+
 	// Structure containing the template body with a minimum length of 1 byte and
 	// a maximum length of 51,200 bytes. For more information, go to Template Anatomy
 	// (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
@@ -2144,19 +2100,13 @@ type ValidateTemplateInput struct {
 	TemplateBody *string `min:"1" type:"string"`
 
 	// Location of file containing the template body. The URL must point to a template
-	// (max size: 460,800 bytes) located in an S3 bucket in the same region as the
-	// stack. For more information, go to Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+	// (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more
+	// information, go to Template Anatomy (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 	// in the AWS CloudFormation User Guide.
 	//
 	// Conditional: You must pass TemplateURL or TemplateBody. If both are passed,
 	// only TemplateBody is used.
 	TemplateURL *string `min:"1" type:"string"`
-
-	metadataValidateTemplateInput `json:"-" xml:"-"`
-}
-
-type metadataValidateTemplateInput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation
@@ -2171,6 +2121,8 @@ func (s ValidateTemplateInput) GoString() string {
 
 // The output for ValidateTemplate action.
 type ValidateTemplateOutput struct {
+	_ struct{} `type:"structure"`
+
 	// The capabilities found within the template. Currently, AWS CloudFormation
 	// supports only the CAPABILITY_IAM capability. If your template contains IAM
 	// resources, you must specify the CAPABILITY_IAM value for this parameter when
@@ -2187,12 +2139,6 @@ type ValidateTemplateOutput struct {
 
 	// A list of TemplateParameter structures.
 	Parameters []*TemplateParameter `type:"list"`
-
-	metadataValidateTemplateOutput `json:"-" xml:"-"`
-}
-
-type metadataValidateTemplateOutput struct {
-	SDKShapeTraits bool `type:"structure"`
 }
 
 // String returns the string representation

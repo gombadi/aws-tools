@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/mitchellh/cli"
 )
@@ -57,7 +58,7 @@ func (c *IAMsslCommand) Run(args []string) int {
 
 	// Create an IAM service object
 	// Config details Keys, secret keys and region will be read from environment
-	svc := iam.New(&aws.Config{MaxRetries: aws.Int(10)})
+	svc := iam.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	resp, err := svc.ListServerCertificates(nil)
 

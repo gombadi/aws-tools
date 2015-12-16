@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/mitchellh/cli"
 )
@@ -68,7 +69,7 @@ func (c *S3infoCommand) Run(args []string) int {
 	}
 
 	// Config details Keys, secret keys and region will be read from environment
-	s3svc := s3.New(&aws.Config{MaxRetries: aws.Int(10)})
+	s3svc := s3.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	params := &s3.GetBucketLocationInput{
 		Bucket: aws.String(c.bucket),

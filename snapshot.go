@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/mitchellh/cli"
 )
@@ -15,6 +16,7 @@ type SSCommand struct {
 	verbose    bool
 	dryrun     bool
 	automode   bool
+	reboot     bool
 	instanceId string
 	Ui         cli.Ui
 }
@@ -32,6 +34,7 @@ func (c *SSCommand) Help() string {
 	-a to use auto mode to snapshot all instances with tag key of autobkup
 	-i <instanceid> to snapshot one EC2 instance
 	-n - Dry run. Report what would have happened but make no changes
+	-f force an instance reboot when making the snapshot
 	-v to produce verbose output
 	`
 }
@@ -49,6 +52,7 @@ func (c *SSCommand) Run(args []string) int {
 
 	cmdFlags.BoolVar(&c.verbose, "v", false, "Produce verbose output")
 	cmdFlags.BoolVar(&c.dryrun, "n", false, "Dry Run")
+	cmdFlags.BoolVar(&c.reboot, "f", false, "Reboot instance wehn making snapshot. default: false")
 	cmdFlags.BoolVar(&c.automode, "a", false, "auto mode to snapshot any instance with a tag key of autobkup")
 	cmdFlags.StringVar(&c.instanceId, "i", "", "instance to be backed up")
 	if err := cmdFlags.Parse(args); err != nil {
@@ -63,10 +67,10 @@ func (c *SSCommand) Run(args []string) int {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
+	svc := ec2.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	// load the struct that has details on all instances to be snapshotted
-	bkupInstances, err := getBkupInstances(svc, c.instanceId)
+	bkupInstances, err := getBkupInstances(svc, c.instanceId, c.reboot)
 
 	if err != nil {
 		// AWS DescribeInstances failed
@@ -139,7 +143,7 @@ func (c *SSCommand) Run(args []string) int {
 
 // getBkupInstances will return a slice of CreateImageInput structures for either a single instance
 // or all instances in an account that have a tag key of autobkup
-func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateImageInput, err error) {
+func getBkupInstances(svc *ec2.EC2, bkupId string, reboot bool) (bkupInstances []*ec2.CreateImageInput, err error) {
 
 	var instanceSlice []*string
 	var ec2Filter ec2.Filter
@@ -186,7 +190,8 @@ func getBkupInstances(svc *ec2.EC2, bkupId string) (bkupInstances []*ec2.CreateI
 			}
 			theInstance.Description = aws.String("Auto backup of instance " + *resp.Reservations[reservation].Instances[instance].InstanceId)
 			theInstance.InstanceId = resp.Reservations[reservation].Instances[instance].InstanceId
-			theInstance.NoReboot = aws.Bool(true)
+			// swap value as the question is NoReboot?
+			theInstance.NoReboot = aws.Bool(!reboot)
 			// append details on this instance to the slice
 			bkupInstances = append(bkupInstances, &theInstance)
 		}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/mitchellh/cli"
@@ -81,7 +82,7 @@ func public_ami(verbose bool, csv bool) {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
+	svc := ec2.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	ec2dii := ec2.DescribeImagesInput{Owners: []*string{aws.String("self")}}
 
@@ -114,7 +115,7 @@ func users(verbose bool, csv bool) {
 	// ListUsers to get a list of all users on the account. Check truncated
 	// Create an IAM service object
 	// Config details Keys, secret keys and region will be read from environment
-	svc := iam.New(&aws.Config{MaxRetries: aws.Int(10)})
+	svc := iam.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	iamlui := &iam.ListUsersInput{
 		Marker:     nil,
@@ -188,7 +189,7 @@ func snapshots(verbose bool, csv bool) {
 
 	// Create an EC2 service object
 	// config values keys, sercet key & region read from environment
-	svc := ec2.New(&aws.Config{MaxRetries: aws.Int(10)})
+	svc := ec2.New(session.New(), &aws.Config{MaxRetries: aws.Int(10)})
 
 	owners := []*string{aws.String("self")}
 
